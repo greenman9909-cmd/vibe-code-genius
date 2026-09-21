@@ -1,6 +1,6 @@
 # Node 24b — Bug Loop Orchestrator
 
-Tier: 4  Prereqs: [12b, 16a, 18c, 24]  Parallel with: [23b]  Input: static + runtime + edge reports  Output: wiring_report.json + security_report.json  Model: opus  Budget: 4000 tokens
+Tier: 4  Prereqs: [12b, 16a, 18c, 24]  Parallel with: [23b]  Input: static + runtime + edge reports  Output: wiring_report.json  Model: opus  Budget: 4000 tokens
 
 ## Working Contract
 
@@ -17,9 +17,9 @@ Read `contracts/working-contract.md` and the declared input only. Emit the exact
 
 ## Output Contract
 
-The output is `wiring_report.json + security_report.json`. It is versioned, machine-readable when the artifact is JSON, and contains a `version`, `generated_at`, `evidence`, and `status` field where the artifact shape permits.
+The output is `wiring_report.json`.json + security_report.json`. It is versioned, machine-readable when the artifact is JSON, and contains a `version`, `generated_at`, `evidence`, and `status` field where the artifact shape permits.
 
-Before marking complete: python scripts/validate-artifact.py wiring_report.json + security_report.json schema/wiring_report.schema.json. If validation fails, halt. Do not mark complete.
+Before marking complete: python scripts/validate-artifact.py --node 24b --artifact wiring_report.json --schema schema/wiring_report.schema.json. If validation fails, halt. Do not substitute a different artifact. Do not continue.
 
 
 

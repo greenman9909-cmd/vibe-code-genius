@@ -1,6 +1,6 @@
 # Node 09 — Route Extract
 
-Tier: 2  Prereqs: [02]  Parallel with: [13, 04a]  Input: reference.json.routes  Output: router config  Model: haiku  Budget: 1800 tokens
+Tier: 2  Prereqs: [02]  Parallel with: [13, 04a]  Input: reference.json.routes  Output: routes.json  Model: haiku  Budget: 1800 tokens
 
 ## Working Contract
 
@@ -17,9 +17,9 @@ Read `contracts/working-contract.md` and the declared input only. Emit the exact
 
 ## Output Contract
 
-The output is `router config`. It is versioned, machine-readable when the artifact is JSON, and contains a `version`, `generated_at`, `evidence`, and `status` field where the artifact shape permits.
+The output is `routes.json`. It is versioned, machine-readable when the artifact is JSON, and contains a `version`, `generated_at`, `evidence`, and `status` field where the artifact shape permits.
 
-Before marking complete: python scripts/validate-artifact.py router config schema/routes.schema.json. If validation fails, halt. Do not mark complete.
+Before marking complete: python scripts/validate-artifact.py --node 09 --artifact routes.json --schema schema/routes.schema.json. If validation fails, halt. Do not substitute a different artifact. Do not continue.
 
 
 

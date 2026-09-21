@@ -1,6 +1,6 @@
 # Node 11e — Motion Customization
 
-Tier: 2  Prereqs: [11d]  Parallel with: [12a, 12b]  Input: design-contract.md + motion requirements  Output: motion-customization.md + motion-config.json  Model: haiku  Budget: 2200 tokens
+Tier: 2  Prereqs: [11d]  Parallel with: [12a, 12b]  Input: design-contract.md + motion requirements  Output: motion-config.json  Model: haiku  Budget: 2200 tokens
 
 ## Working Contract
 
@@ -40,7 +40,7 @@ Read `contracts/working-contract.md`, `contracts/consistency-contract.md`, and t
 }
 ```
 
-Before marking complete: python scripts/validate-artifact.py motion-customization.md + motion-config.json schema/motion-config.schema.json. If validation fails, halt. Do not mark complete.
+Before marking complete: python scripts/validate-artifact.py --node 11e --artifact motion-config.json --schema schema/motion-config.schema.json. If validation fails, halt. Do not substitute a different artifact. Do not continue.
 
 
 

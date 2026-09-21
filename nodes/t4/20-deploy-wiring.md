@@ -1,6 +1,6 @@
 # Node 20 — Deploy Wiring
 
-Tier: 4  Prereqs: [05, 07e]  Parallel with: [20a, 20b, 20c, 20d, 24]  Input: app + backend  Output: deployment/  Model: sonnet  Budget: 3000 tokens
+Tier: 4  Prereqs: [05, 07e]  Parallel with: [20a, 20b, 20c, 20d, 24]  Input: app + backend  Output: deployment/config.json  Model: sonnet  Budget: 3000 tokens
 
 ## Working Contract
 
@@ -17,9 +17,9 @@ Read `contracts/working-contract.md` and the declared input only. Emit the exact
 
 ## Output Contract
 
-The output is `deployment/`. It is versioned, machine-readable when the artifact is JSON, and contains a `version`, `generated_at`, `evidence`, and `status` field where the artifact shape permits.
+The output is `deployment/config.json`. It is versioned, machine-readable when the artifact is JSON, and contains a `version`, `generated_at`, `evidence`, and `status` field where the artifact shape permits.
 
-Before marking complete: python scripts/validate-artifact.py deployment/ schema/wiring_report.schema.json. If validation fails, halt. Do not mark complete.
+Before marking complete: python scripts/validate-artifact.py --node 20 --artifact deployment/config.json --schema schema/wiring_report.schema.json. If validation fails, halt. Do not substitute a different artifact. Do not continue.
 
 
 

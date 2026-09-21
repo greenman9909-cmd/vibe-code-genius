@@ -19,7 +19,7 @@ Read `contracts/working-contract.md` and the declared input only. Emit the exact
 
 The output is `design_system.json`. It is versioned, machine-readable when the artifact is JSON, and contains a `version`, `generated_at`, `evidence`, and `status` field where the artifact shape permits.
 
-Before marking complete: python scripts/validate-artifact.py design_system.json schema/design_system.schema.json. If validation fails, halt. Do not mark complete.
+Before marking complete: python scripts/validate-artifact.py --node 11a --artifact design_system.json --schema schema/design_system.schema.json. If validation fails, halt. Do not substitute a different artifact. Do not continue.
 
 
 

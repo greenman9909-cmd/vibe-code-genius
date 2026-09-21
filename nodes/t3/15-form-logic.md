@@ -1,6 +1,6 @@
 # Node 15 — Form Logic
 
-Tier: 3  Prereqs: [13, 14]  Parallel with: [16, 18]  Input: pages + data hooks  Output: form-flows/  Model: sonnet  Budget: 3000 tokens
+Tier: 3  Prereqs: [13, 14]  Parallel with: [16, 18]  Input: pages + data hooks  Output: form-flows/index.ts  Model: sonnet  Budget: 3000 tokens
 
 ## Working Contract
 
@@ -17,9 +17,9 @@ Read `contracts/working-contract.md` and the declared input only. Emit the exact
 
 ## Output Contract
 
-The output is `form-flows/`. It is versioned, machine-readable when the artifact is JSON, and contains a `version`, `generated_at`, `evidence`, and `status` field where the artifact shape permits.
+The output is `form-flows/index.ts`. It is versioned, machine-readable when the artifact is JSON, and contains a `version`, `generated_at`, `evidence`, and `status` field where the artifact shape permits.
 
-Before marking complete: python scripts/validate-artifact.py form-flows/ schema/form-flows.schema.json. If validation fails, halt. Do not mark complete.
+Before marking complete: python scripts/validate-artifact.py --node 15 --artifact form-flows/index.ts --schema schema/form-flows.schema.json. If validation fails, halt. Do not substitute a different artifact. Do not continue.
 
 
 

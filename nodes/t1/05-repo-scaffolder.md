@@ -1,6 +1,6 @@
 # Node 05 — Repo Scaffolder
 
-Tier: 1  Prereqs: [04]  Parallel with: [06, 07e, 20]  Input: file-tree.md  Output: scaffold/  Model: sonnet  Budget: 2500 tokens
+Tier: 1  Prereqs: [04]  Parallel with: [06, 07e, 20]  Input: file-tree.md  Output: scaffold/package.json  Model: sonnet  Budget: 2500 tokens
 
 ## Working Contract
 
@@ -17,9 +17,9 @@ Read `contracts/working-contract.md` and the declared input only. Emit the exact
 
 ## Output Contract
 
-The output is `scaffold/`. It is versioned, machine-readable when the artifact is JSON, and contains a `version`, `generated_at`, `evidence`, and `status` field where the artifact shape permits.
+The output is `scaffold/package.json`. It is versioned, machine-readable when the artifact is JSON, and contains a `version`, `generated_at`, `evidence`, and `status` field where the artifact shape permits.
 
-Before marking complete: python scripts/validate-artifact.py scaffold/ schema/scaffold.schema.json. If validation fails, halt. Do not mark complete.
+Before marking complete: python scripts/validate-artifact.py --node 05 --artifact scaffold/package.json --schema schema/scaffold.schema.json. If validation fails, halt. Do not substitute a different artifact. Do not continue.
 
 
 

@@ -42,7 +42,7 @@ Record the selected acquirer, invocation, timestamp, source URL, route count, se
 
 The output is `reference.json`. It is versioned, machine-readable when the artifact is JSON, and contains a `version`, `generated_at`, `evidence`, `status`, `acquirer`, `acquired_at`, and `source_url` field where the artifact shape permits.
 
-Before marking complete: python scripts/validate-artifact.py reference.json schema/reference.schema.json. If validation fails, halt. Do not mark complete.
+Before marking complete: python scripts/validate-artifact.py --node 02 --artifact reference.json --schema schema/reference.schema.json. If validation fails, halt. Do not substitute a different artifact. Do not continue.
 
 
 

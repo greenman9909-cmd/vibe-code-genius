@@ -1,6 +1,6 @@
 # Node 23 — Self-Refine
 
-Tier: 5  Prereqs: [22]  Parallel with: [23b]  Input: diff report + build  Output: refined artifacts  Model: opus  Budget: 3500 tokens
+Tier: 5  Prereqs: [22]  Parallel with: [23b]  Input: diff report + build  Output: refined.json  Model: opus  Budget: 3500 tokens
 
 ## Working Contract
 
@@ -17,9 +17,9 @@ Read `contracts/working-contract.md` and the declared input only. Emit the exact
 
 ## Output Contract
 
-The output is `refined artifacts`. It is versioned, machine-readable when the artifact is JSON, and contains a `version`, `generated_at`, `evidence`, and `status` field where the artifact shape permits.
+The output is `refined.json`. It is versioned, machine-readable when the artifact is JSON, and contains a `version`, `generated_at`, `evidence`, and `status` field where the artifact shape permits.
 
-Before marking complete: python scripts/validate-artifact.py refined artifacts schema/refined.schema.json. If validation fails, halt. Do not mark complete.
+Before marking complete: python scripts/validate-artifact.py --node 23 --artifact refined.json --schema schema/refined.schema.json. If validation fails, halt. Do not substitute a different artifact. Do not continue.
 
 
 

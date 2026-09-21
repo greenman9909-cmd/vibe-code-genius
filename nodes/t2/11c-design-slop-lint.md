@@ -19,7 +19,7 @@ Read `contracts/working-contract.md` and the declared input only. Emit the exact
 
 The output is `slop-lint.json`. It is versioned, machine-readable when the artifact is JSON, and contains a `version`, `generated_at`, `evidence`, and `status` field where the artifact shape permits.
 
-Before marking complete: python scripts/validate-artifact.py slop-lint.json schema/slop-lint.schema.json. If validation fails, halt. Do not mark complete.
+Before marking complete: python scripts/validate-artifact.py --node 11c --artifact slop-lint.json --schema schema/slop-lint.schema.json. If validation fails, halt. Do not substitute a different artifact. Do not continue.
 
 
 

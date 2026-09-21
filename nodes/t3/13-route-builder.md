@@ -1,6 +1,6 @@
 # Node 13 — Route Builder
 
-Tier: 3  Prereqs: [09, 10, 12]  Parallel with: [13a, 14, 15, 16]  Input: router + components  Output: pages/  Model: sonnet  Budget: 5000 tokens
+Tier: 3  Prereqs: [09, 10, 12]  Parallel with: [13a, 14, 15, 16]  Input: router + components  Output: pages/index.tsx  Model: sonnet  Budget: 5000 tokens
 
 ## Working Contract
 
@@ -17,9 +17,9 @@ Read `contracts/working-contract.md` and the declared input only. Emit the exact
 
 ## Output Contract
 
-The output is `pages/`. It is versioned, machine-readable when the artifact is JSON, and contains a `version`, `generated_at`, `evidence`, and `status` field where the artifact shape permits.
+The output is `pages/index.tsx`. It is versioned, machine-readable when the artifact is JSON, and contains a `version`, `generated_at`, `evidence`, and `status` field where the artifact shape permits.
 
-Before marking complete: python scripts/validate-artifact.py pages/ schema/pages.schema.json. If validation fails, halt. Do not mark complete.
+Before marking complete: python scripts/validate-artifact.py --node 13 --artifact pages/index.tsx --schema schema/pages.schema.json. If validation fails, halt. Do not substitute a different artifact. Do not continue.
 
 
 

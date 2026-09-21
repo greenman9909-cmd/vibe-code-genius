@@ -1,6 +1,6 @@
 # Node 07b — Third-Party API Research
 
-Tier: 2  Prereqs: [01d]  Parallel with: [07c, 07g, 17a]  Input: system.json.integrations  Output: integrations/*.md  Model: sonnet  Budget: 3500 tokens
+Tier: 2  Prereqs: [01d]  Parallel with: [07c, 07g, 17a]  Input: system.json.integrations  Output: integrations/resend.md  Model: sonnet  Budget: 3500 tokens
 
 ## Working Contract
 
@@ -17,9 +17,9 @@ Read `contracts/working-contract.md` and the declared input only. Emit the exact
 
 ## Output Contract
 
-The output is `integrations/*.md`. It is versioned, machine-readable when the artifact is JSON, and contains a `version`, `generated_at`, `evidence`, and `status` field where the artifact shape permits.
+The output is `integrations/resend.md`. It is versioned, machine-readable when the artifact is JSON, and contains a `version`, `generated_at`, `evidence`, and `status` field where the artifact shape permits.
 
-Before marking complete: python scripts/validate-artifact.py integrations/*.md schema/integrations.schema.json. If validation fails, halt. Do not mark complete.
+Before marking complete: python scripts/validate-artifact.py --node 07b --artifact integrations/resend.md --schema schema/integrations.schema.json. If validation fails, halt. Do not substitute a different artifact. Do not continue.
 
 
 

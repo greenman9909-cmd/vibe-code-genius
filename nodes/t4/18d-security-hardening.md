@@ -19,7 +19,7 @@ Read `contracts/working-contract.md` and the declared input only. Emit the exact
 
 The output is `harden_report.json`. It is versioned, machine-readable when the artifact is JSON, and contains a `version`, `generated_at`, `evidence`, and `status` field where the artifact shape permits.
 
-Before marking complete: python scripts/validate-artifact.py harden_report.json schema/security_report.schema.json. If validation fails, halt. Do not mark complete.
+Before marking complete: python scripts/validate-artifact.py --node 18d --artifact harden_report.json --schema schema/security_report.schema.json. If validation fails, halt. Do not substitute a different artifact. Do not continue.
 
 
 

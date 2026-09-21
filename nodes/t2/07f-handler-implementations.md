@@ -1,6 +1,6 @@
 # Node 07f — Handler Implementations
 
-Tier: 2  Prereqs: [07e]  Parallel with: [19a, 20c]  Input: server + openapi.yaml  Output: handlers/  Model: sonnet  Budget: 5000 tokens
+Tier: 2  Prereqs: [07e]  Parallel with: [19a, 20c]  Input: server + openapi.yaml  Output: handlers/waitlist.ts  Model: sonnet  Budget: 5000 tokens
 
 ## Working Contract
 
@@ -17,9 +17,9 @@ Read `contracts/working-contract.md` and the declared input only. Emit the exact
 
 ## Output Contract
 
-The output is `handlers/`. It is versioned, machine-readable when the artifact is JSON, and contains a `version`, `generated_at`, `evidence`, and `status` field where the artifact shape permits.
+The output is `handlers/waitlist.ts`. It is versioned, machine-readable when the artifact is JSON, and contains a `version`, `generated_at`, `evidence`, and `status` field where the artifact shape permits.
 
-Before marking complete: python scripts/validate-artifact.py handlers/ schema/handlers.schema.json. If validation fails, halt. Do not mark complete.
+Before marking complete: python scripts/validate-artifact.py --node 07f --artifact handlers/waitlist.ts --schema schema/handlers.schema.json. If validation fails, halt. Do not substitute a different artifact. Do not continue.
 
 
 

@@ -1,37 +1,65 @@
 #!/usr/bin/env python3
 import sys
+import argparse
 import json
 from pathlib import Path
 from jsonschema import Draft202012Validator
 
 def main():
-    if len(sys.argv) < 3:
-        print(f"Usage: {sys.argv[0]} <artifact_path> <schema_path>")
+    parser = argparse.ArgumentParser(description="Validate build artifacts against schemas.")
+    parser.add_argument("--node", default=None, help="Node ID (e.g. 01, 07g)")
+    parser.add_argument("--artifact", default=None, help="Path to the declared artifact")
+    parser.add_argument("--schema", default=None, help="Path to the schema file")
+    parser.add_argument("positional", nargs="*", help="Positional fallback: <artifact> <schema>")
+
+    args = parser.parse_args()
+
+    node_id = args.node or "unknown"
+    artifact_str = args.artifact
+    schema_str = args.schema
+
+    if not artifact_str and len(args.positional) >= 1:
+        artifact_str = args.positional[0]
+    if not schema_str and len(args.positional) >= 2:
+        schema_str = args.positional[1]
+
+    if not artifact_str or not schema_str:
+        print("Usage: scripts/validate-artifact.py --node <id> --artifact <declared_path> --schema <schema_path>")
         sys.exit(1)
 
-    artifact_path = Path(sys.argv[1])
-    schema_path_str = sys.argv[2]
-    schema_path = Path(schema_path_str)
-
-    # Refuse placeholder schemas
-    if not schema_path_str or str(schema_path).replace("\\", "/").endswith("node.schema.json"):
-        print(f"FAIL: no valid artifact schema bound ({schema_path_str})")
-        sys.exit(1)
+    # Resolve artifact path
+    artifact_path = Path(artifact_str)
+    if not artifact_path.exists():
+        if (Path("first-build") / artifact_str).exists():
+            artifact_path = Path("first-build") / artifact_str
+        elif (Path("verify") / artifact_str).exists():
+            artifact_path = Path("verify") / artifact_str
 
     if not artifact_path.exists():
-        print(f"FAIL: Artifact does not exist: {artifact_path}")
+        print(f"FAIL: node {node_id} did not produce its declared artifact at {artifact_str}")
         sys.exit(1)
 
+    # Refuse placeholder schemas
+    if not schema_str or str(schema_str).replace("\\", "/").endswith("node.schema.json"):
+        print(f"FAIL: no valid artifact schema bound ({schema_str})")
+        sys.exit(1)
+
+    schema_path = Path(schema_str)
     if not schema_path.exists():
         print(f"FAIL: Schema does not exist: {schema_path}")
         sys.exit(1)
 
     # Minimum size check
-    raw = artifact_path.read_text(encoding="utf-8")
+    try:
+        raw = artifact_path.read_text(encoding="utf-8")
+    except Exception as e:
+        print(f"FAIL: could not read artifact {artifact_path}: {e}")
+        sys.exit(1)
+
     ext = artifact_path.suffix.lower()
     min_size = 500 if ext in [".md", ".ts", ".yaml", ".yml"] else 200
     if len(raw) < min_size:
-        print(f"FAIL: artifact is only {len(raw)} bytes — too thin to be real")
+        print(f"FAIL: artifact too thin ({len(raw)} bytes, minimum is {min_size})")
         sys.exit(1)
 
     # Load schema
@@ -41,14 +69,14 @@ def main():
         print(f"FAIL: Invalid JSON in schema {schema_path}: {e}")
         sys.exit(1)
 
-    # Doc artifact checking
+    # Doc / text artifact validation
     if ext in [".md", ".ts", ".yaml", ".yml"]:
-        required_headings = schema_data.get("required_headings", [])
-        missing = [h for h in required_headings if h not in raw]
+        required = schema_data.get("required_headings") or schema_data.get("required") or []
+        missing = [h for h in required if h not in raw]
         if missing:
-            print(f"FAIL: artifact missing required headings: {missing}")
+            print(f"FAIL: artifact missing required fields/headings: {missing}")
             sys.exit(1)
-        print(f"PASS: {artifact_path} conforms to {schema_path}")
+        print(f"PASS: node {node_id} artifact {artifact_path} conforms to {schema_path}")
         sys.exit(0)
 
     # JSON artifact validation
@@ -66,7 +94,7 @@ def main():
             print(f"  - {err.message} (path: {'/'.join(str(p) for p in err.absolute_path)})")
         sys.exit(1)
 
-    print(f"PASS: {artifact_path} conforms to {schema_path}")
+    print(f"PASS: node {node_id} artifact {artifact_path} conforms to {schema_path}")
     sys.exit(0)
 
 if __name__ == "__main__":

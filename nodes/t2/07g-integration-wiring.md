@@ -1,6 +1,6 @@
 # Node 07g — Integration Wiring
 
-Tier: 2  Prereqs: [07b, 07e]  Parallel with: [19a, 20c]  Input: integrations + server  Output: webhooks/  Model: sonnet  Budget: 4000 tokens
+Tier: 2  Prereqs: [07b, 07e]  Parallel with: [19a, 20c]  Input: integrations + server  Output: webhooks/resend-events.ts  Model: sonnet  Budget: 4000 tokens
 
 ## Working Contract
 
@@ -17,9 +17,9 @@ Read `contracts/working-contract.md` and the declared input only. Emit the exact
 
 ## Output Contract
 
-The output is `webhooks/`. It is versioned, machine-readable when the artifact is JSON, and contains a `version`, `generated_at`, `evidence`, and `status` field where the artifact shape permits.
+The output is `webhooks/resend-events.ts`. It is versioned, machine-readable when the artifact is JSON, and contains a `version`, `generated_at`, `evidence`, and `status` field where the artifact shape permits.
 
-Before marking complete: python scripts/validate-artifact.py webhooks/ schema/wiring_report.schema.json. If validation fails, halt. Do not mark complete.
+Before marking complete: python scripts/validate-artifact.py --node 07g --artifact webhooks/resend-events.ts --schema schema/webhook-handler.schema.json. If validation fails, halt. Do not substitute a different artifact. Do not continue.
 
 
 

@@ -1,6 +1,6 @@
 # Node 22 — Diff-Merge
 
-Tier: 5  Prereqs: [21]  Parallel with: [23, 23b]  Input: reference + build  Output: diff-report.json + correction-prompt.md  Model: opus  Budget: 3000 tokens
+Tier: 5  Prereqs: [21]  Parallel with: [23, 23b]  Input: reference + build  Output: diff-report.json  Model: opus  Budget: 3000 tokens
 
 ## Working Contract
 
@@ -17,9 +17,9 @@ Read `contracts/working-contract.md` and the declared input only. Emit the exact
 
 ## Output Contract
 
-The output is `diff-report.json + correction-prompt.md`. It is versioned, machine-readable when the artifact is JSON, and contains a `version`, `generated_at`, `evidence`, and `status` field where the artifact shape permits.
+The output is `diff-report.json`.json + correction-prompt.md`. It is versioned, machine-readable when the artifact is JSON, and contains a `version`, `generated_at`, `evidence`, and `status` field where the artifact shape permits.
 
-Before marking complete: python scripts/validate-artifact.py diff-report.json + correction-prompt.md schema/diff-report.schema.json. If validation fails, halt. Do not mark complete.
+Before marking complete: python scripts/validate-artifact.py --node 22 --artifact diff-report.json --schema schema/diff-report.schema.json. If validation fails, halt. Do not substitute a different artifact. Do not continue.
 
 
 

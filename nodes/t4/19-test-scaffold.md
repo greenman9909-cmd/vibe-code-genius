@@ -1,6 +1,6 @@
 # Node 19 — Test Scaffold
 
-Tier: 4  Prereqs: [12, 14, 18]  Parallel with: [19a, 24]  Input: app  Output: tests/  Model: sonnet  Budget: 3000 tokens
+Tier: 4  Prereqs: [12, 14, 18]  Parallel with: [19a, 24]  Input: app  Output: tests/index.test.ts  Model: sonnet  Budget: 3000 tokens
 
 ## Working Contract
 
@@ -17,9 +17,9 @@ Read `contracts/working-contract.md` and the declared input only. Emit the exact
 
 ## Output Contract
 
-The output is `tests/`. It is versioned, machine-readable when the artifact is JSON, and contains a `version`, `generated_at`, `evidence`, and `status` field where the artifact shape permits.
+The output is `tests/index.test.ts`. It is versioned, machine-readable when the artifact is JSON, and contains a `version`, `generated_at`, `evidence`, and `status` field where the artifact shape permits.
 
-Before marking complete: python scripts/validate-artifact.py tests/ schema/tests.schema.json. If validation fails, halt. Do not mark complete.
+Before marking complete: python scripts/validate-artifact.py --node 19 --artifact tests/index.test.ts --schema schema/tests.schema.json. If validation fails, halt. Do not substitute a different artifact. Do not continue.
 
 
 

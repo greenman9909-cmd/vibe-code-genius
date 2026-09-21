@@ -1,6 +1,6 @@
 # Node 12 — Component Kit
 
-Tier: 3  Prereqs: [06, 11, 11d]  Parallel with: [12a, 12b, 13, 14, 15, 16]  Input: design contract + manifest  Output: components/  Model: sonnet  Budget: 5000 tokens
+Tier: 3  Prereqs: [06, 11, 11d]  Parallel with: [12a, 12b, 13, 14, 15, 16]  Input: design contract + manifest  Output: components/index.ts  Model: sonnet  Budget: 5000 tokens
 
 ## Working Contract
 
@@ -17,9 +17,9 @@ Read `contracts/working-contract.md` and the declared input only. Emit the exact
 
 ## Output Contract
 
-The output is `components/`. It is versioned, machine-readable when the artifact is JSON, and contains a `version`, `generated_at`, `evidence`, and `status` field where the artifact shape permits.
+The output is `components/index.ts`. It is versioned, machine-readable when the artifact is JSON, and contains a `version`, `generated_at`, `evidence`, and `status` field where the artifact shape permits.
 
-Before marking complete: python scripts/validate-artifact.py components/ schema/components.schema.json. If validation fails, halt. Do not mark complete.
+Before marking complete: python scripts/validate-artifact.py --node 12 --artifact components/index.ts --schema schema/components.schema.json. If validation fails, halt. Do not substitute a different artifact. Do not continue.
 
 
 

@@ -1,6 +1,6 @@
 # Node 18 — Auth Layer
 
-Tier: 4  Prereqs: [15, 16]  Parallel with: [18b, 18c]  Input: auth requirements + state  Output: auth/  Model: sonnet  Budget: 4000 tokens
+Tier: 4  Prereqs: [15, 16]  Parallel with: [18b, 18c]  Input: auth requirements + state  Output: auth/index.ts  Model: sonnet  Budget: 4000 tokens
 
 ## Working Contract
 
@@ -17,9 +17,9 @@ Read `contracts/working-contract.md` and the declared input only. Emit the exact
 
 ## Output Contract
 
-The output is `auth/`. It is versioned, machine-readable when the artifact is JSON, and contains a `version`, `generated_at`, `evidence`, and `status` field where the artifact shape permits.
+The output is `auth/index.ts`. It is versioned, machine-readable when the artifact is JSON, and contains a `version`, `generated_at`, `evidence`, and `status` field where the artifact shape permits.
 
-Before marking complete: python scripts/validate-artifact.py auth/ schema/auth.schema.json. If validation fails, halt. Do not mark complete.
+Before marking complete: python scripts/validate-artifact.py --node 18 --artifact auth/index.ts --schema schema/auth.schema.json. If validation fails, halt. Do not substitute a different artifact. Do not continue.
 
 
 

@@ -27,7 +27,8 @@
         "01b",
         "01c",
         "01d"
-      ]
+      ],
+      "expected_artifact_path": "intent.json"
     },
     {
       "id": "01a",
@@ -49,7 +50,8 @@
       "version": "1.0.0",
       "consumers": [
         "01b"
-      ]
+      ],
+      "expected_artifact_path": "suitability.json"
     },
     {
       "id": "01b",
@@ -74,7 +76,8 @@
       "consumers": [
         "01c",
         "01d"
-      ]
+      ],
+      "expected_artifact_path": "scope.json"
     },
     {
       "id": "01c",
@@ -92,7 +95,8 @@
       "model": "haiku",
       "max_response_tokens": 500,
       "version": "1.0.0",
-      "consumers": []
+      "consumers": [],
+      "expected_artifact_path": "estimate.json"
     },
     {
       "id": "01d",
@@ -116,7 +120,8 @@
       "consumers": [
         "02",
         "02b"
-      ]
+      ],
+      "expected_artifact_path": "system.json"
     },
     {
       "id": "02",
@@ -152,7 +157,8 @@
         "09",
         "10",
         "11"
-      ]
+      ],
+      "expected_artifact_path": "reference.json"
     },
     {
       "id": "02b",
@@ -188,7 +194,8 @@
         "09",
         "10",
         "11"
-      ]
+      ],
+      "expected_artifact_path": "reference.json"
     },
     {
       "id": "03",
@@ -212,7 +219,8 @@
       "consumers": [
         "04",
         "06"
-      ]
+      ],
+      "expected_artifact_path": "style-rules.md"
     },
     {
       "id": "04",
@@ -236,7 +244,8 @@
       "consumers": [
         "04a",
         "05"
-      ]
+      ],
+      "expected_artifact_path": "file-tree.md"
     },
     {
       "id": "04a",
@@ -262,7 +271,8 @@
         "12",
         "13",
         "24"
-      ]
+      ],
+      "expected_artifact_path": "manifest.json"
     },
     {
       "id": "05",
@@ -277,7 +287,7 @@
         "20"
       ],
       "input": "file-tree.md",
-      "output": "scaffold/",
+      "output": "scaffold/package.json",
       "activates_when": "prerequisites complete for node 05",
       "skill_file": "nodes/t1/05-repo-scaffolder.md",
       "artifact_schema": "schema/scaffold.schema.json",
@@ -288,7 +298,8 @@
         "06",
         "07e",
         "20"
-      ]
+      ],
+      "expected_artifact_path": "scaffold/package.json"
     },
     {
       "id": "06",
@@ -308,7 +319,7 @@
         "14"
       ],
       "input": "reference.json + style-rules.md + file-tree.md",
-      "output": "prompt.md + handoff.md",
+      "output": "prompt.md",
       "activates_when": "prerequisites complete for node 06",
       "skill_file": "nodes/t1/06-prompt-composer.md",
       "artifact_schema": "schema/prompt.schema.json",
@@ -321,7 +332,8 @@
         "12",
         "13",
         "14"
-      ]
+      ],
+      "expected_artifact_path": "prompt.md"
     },
     {
       "id": "06a",
@@ -339,7 +351,8 @@
       "model": "haiku",
       "max_response_tokens": 800,
       "version": "1.0.0",
-      "consumers": []
+      "consumers": [],
+      "expected_artifact_path": "design-commitment.md"
     },
     {
       "id": "07",
@@ -356,7 +369,7 @@
         "17"
       ],
       "input": "reference.json.api_surface",
-      "output": "api_client + types",
+      "output": "api_client/api_client.ts",
       "activates_when": "prerequisites complete for node 07",
       "skill_file": "nodes/t2/07-api-surface.md",
       "artifact_schema": "schema/api_client.schema.json",
@@ -369,7 +382,8 @@
         "07e",
         "14",
         "17"
-      ]
+      ],
+      "expected_artifact_path": "api_client/api_client.ts"
     },
     {
       "id": "07a",
@@ -395,7 +409,8 @@
         "07c",
         "07d",
         "17a"
-      ]
+      ],
+      "expected_artifact_path": "api_research.json"
     },
     {
       "id": "07b",
@@ -410,7 +425,7 @@
         "17a"
       ],
       "input": "system.json.integrations",
-      "output": "integrations/*.md",
+      "output": "integrations/resend.md",
       "activates_when": "prerequisites complete for node 07b",
       "skill_file": "nodes/t2/07b-third-party-api-research.md",
       "artifact_schema": "schema/integrations.schema.json",
@@ -421,7 +436,8 @@
         "07c",
         "07g",
         "17a"
-      ]
+      ],
+      "expected_artifact_path": "integrations/resend.md"
     },
     {
       "id": "07c",
@@ -447,7 +463,8 @@
       "consumers": [
         "07d",
         "07e"
-      ]
+      ],
+      "expected_artifact_path": "backend-decision.md"
     },
     {
       "id": "07d",
@@ -475,7 +492,8 @@
         "07f",
         "14",
         "19a"
-      ]
+      ],
+      "expected_artifact_path": "openapi.yaml"
     },
     {
       "id": "07e",
@@ -492,7 +510,7 @@
         "20c"
       ],
       "input": "openapi.yaml + scaffold",
-      "output": "server + routes",
+      "output": "server/index.ts",
       "activates_when": "prerequisites complete for node 07e",
       "skill_file": "nodes/t2/07e-backend-scaffold.md",
       "artifact_schema": "schema/server.schema.json",
@@ -504,7 +522,8 @@
         "07g",
         "19a",
         "20c"
-      ]
+      ],
+      "expected_artifact_path": "server/index.ts"
     },
     {
       "id": "07f",
@@ -518,7 +537,7 @@
         "20c"
       ],
       "input": "server + openapi.yaml",
-      "output": "handlers/",
+      "output": "handlers/waitlist.ts",
       "activates_when": "prerequisites complete for node 07f",
       "skill_file": "nodes/t2/07f-handler-implementations.md",
       "artifact_schema": "schema/handlers.schema.json",
@@ -528,7 +547,8 @@
       "consumers": [
         "19a",
         "20c"
-      ]
+      ],
+      "expected_artifact_path": "handlers/waitlist.ts"
     },
     {
       "id": "07g",
@@ -543,17 +563,18 @@
         "20c"
       ],
       "input": "integrations + server",
-      "output": "webhooks/",
+      "output": "webhooks/resend-events.ts",
       "activates_when": "prerequisites complete for node 07g",
       "skill_file": "nodes/t2/07g-integration-wiring.md",
-      "artifact_schema": "schema/wiring_report.schema.json",
+      "artifact_schema": "schema/webhook-handler.schema.json",
       "model": "sonnet",
       "max_response_tokens": 4000,
       "version": "1.0.0",
       "consumers": [
         "19a",
         "20c"
-      ]
+      ],
+      "expected_artifact_path": "webhooks/resend-events.ts"
     },
     {
       "id": "08",
@@ -577,7 +598,8 @@
       "consumers": [
         "11",
         "05"
-      ]
+      ],
+      "expected_artifact_path": "stack-decision.md"
     },
     {
       "id": "09",
@@ -591,7 +613,7 @@
         "04a"
       ],
       "input": "reference.json.routes",
-      "output": "router config",
+      "output": "routes.json",
       "activates_when": "prerequisites complete for node 09",
       "skill_file": "nodes/t2/09-route-extract.md",
       "artifact_schema": "schema/routes.schema.json",
@@ -601,7 +623,8 @@
       "consumers": [
         "13",
         "04a"
-      ]
+      ],
+      "expected_artifact_path": "routes.json"
     },
     {
       "id": "10",
@@ -615,7 +638,7 @@
         "11"
       ],
       "input": "reference.json.sections",
-      "output": "sections.md + sections.json",
+      "output": "sections.json",
       "activates_when": "prerequisites complete for node 10",
       "skill_file": "nodes/t2/10-section-detect.md",
       "artifact_schema": "schema/sections.schema.json",
@@ -625,7 +648,8 @@
       "consumers": [
         "13",
         "11"
-      ]
+      ],
+      "expected_artifact_path": "sections.json"
     },
     {
       "id": "11",
@@ -655,7 +679,8 @@
         "11c",
         "11d",
         "12"
-      ]
+      ],
+      "expected_artifact_path": "design-tokens.json"
     },
     {
       "id": "11a",
@@ -679,7 +704,8 @@
       "consumers": [
         "11",
         "12"
-      ]
+      ],
+      "expected_artifact_path": "design_system.json"
     },
     {
       "id": "11b",
@@ -703,7 +729,8 @@
       "consumers": [
         "12",
         "13"
-      ]
+      ],
+      "expected_artifact_path": "slop-report.json"
     },
     {
       "id": "11c",
@@ -727,7 +754,8 @@
       "consumers": [
         "11d",
         "12"
-      ]
+      ],
+      "expected_artifact_path": "slop-lint.json"
     },
     {
       "id": "11d",
@@ -754,7 +782,8 @@
         "12",
         "13",
         "12b"
-      ]
+      ],
+      "expected_artifact_path": "design-contract.md"
     },
     {
       "id": "11e",
@@ -768,7 +797,7 @@
         "12b"
       ],
       "input": "design-contract.md + motion requirements",
-      "output": "motion-customization.md + motion-config.json",
+      "output": "motion-config.json",
       "activates_when": "design contract exists and motion preferences are known",
       "skill_file": "nodes/t2/11e-motion-customization.md",
       "artifact_schema": "schema/motion-config.schema.json",
@@ -779,7 +808,8 @@
         "12a",
         "12b",
         "13"
-      ]
+      ],
+      "expected_artifact_path": "motion-config.json"
     },
     {
       "id": "12",
@@ -799,7 +829,7 @@
         "16"
       ],
       "input": "design contract + manifest",
-      "output": "components/",
+      "output": "components/index.ts",
       "activates_when": "prerequisites complete for node 12",
       "skill_file": "nodes/t3/12-component-kit.md",
       "artifact_schema": "schema/components.schema.json",
@@ -813,7 +843,8 @@
         "14",
         "15",
         "16"
-      ]
+      ],
+      "expected_artifact_path": "components/index.ts"
     },
     {
       "id": "12a",
@@ -837,7 +868,8 @@
       "consumers": [
         "12b",
         "13"
-      ]
+      ],
+      "expected_artifact_path": "motion-layer.md"
     },
     {
       "id": "12b",
@@ -862,7 +894,8 @@
       "consumers": [
         "13",
         "24b"
-      ]
+      ],
+      "expected_artifact_path": "static-report.json"
     },
     {
       "id": "13",
@@ -880,7 +913,7 @@
         "16"
       ],
       "input": "router + components",
-      "output": "pages/",
+      "output": "pages/index.tsx",
       "activates_when": "prerequisites complete for node 13",
       "skill_file": "nodes/t3/13-route-builder.md",
       "artifact_schema": "schema/pages.schema.json",
@@ -892,7 +925,8 @@
         "14",
         "15",
         "16"
-      ]
+      ],
+      "expected_artifact_path": "pages/index.tsx"
     },
     {
       "id": "13a",
@@ -916,7 +950,8 @@
       "consumers": [
         "14",
         "15"
-      ]
+      ],
+      "expected_artifact_path": "consistency-report.json"
     },
     {
       "id": "14",
@@ -931,7 +966,7 @@
         "16"
       ],
       "input": "API contract + pages",
-      "output": "data-hooks/",
+      "output": "data-hooks/index.ts",
       "activates_when": "prerequisites complete for node 14",
       "skill_file": "nodes/t3/14-data-fetching.md",
       "artifact_schema": "schema/data-hooks.schema.json",
@@ -941,7 +976,8 @@
       "consumers": [
         "15",
         "16"
-      ]
+      ],
+      "expected_artifact_path": "data-hooks/index.ts"
     },
     {
       "id": "15",
@@ -956,7 +992,7 @@
         "18"
       ],
       "input": "pages + data hooks",
-      "output": "form-flows/",
+      "output": "form-flows/index.ts",
       "activates_when": "prerequisites complete for node 15",
       "skill_file": "nodes/t3/15-form-logic.md",
       "artifact_schema": "schema/form-flows.schema.json",
@@ -966,7 +1002,8 @@
       "consumers": [
         "16",
         "18"
-      ]
+      ],
+      "expected_artifact_path": "form-flows/index.ts"
     },
     {
       "id": "16",
@@ -991,7 +1028,8 @@
       "consumers": [
         "16a",
         "18"
-      ]
+      ],
+      "expected_artifact_path": "state-model.md"
     },
     {
       "id": "16a",
@@ -1015,7 +1053,8 @@
       "consumers": [
         "18c",
         "24b"
-      ]
+      ],
+      "expected_artifact_path": "runtime-report.json"
     },
     {
       "id": "17",
@@ -1030,7 +1069,7 @@
         "07f"
       ],
       "input": "api surface",
-      "output": "migrations/",
+      "output": "migrations/schema.sql",
       "activates_when": "prerequisites complete for node 17",
       "skill_file": "nodes/t4/17-db-schema.md",
       "artifact_schema": "schema/db-schema.schema.json",
@@ -1041,7 +1080,8 @@
         "17a",
         "17b",
         "07f"
-      ]
+      ],
+      "expected_artifact_path": "migrations/schema.sql"
     },
     {
       "id": "17a",
@@ -1067,7 +1107,8 @@
       "consumers": [
         "17b",
         "07f"
-      ]
+      ],
+      "expected_artifact_path": "schema-deep.json"
     },
     {
       "id": "17b",
@@ -1091,7 +1132,8 @@
       "consumers": [
         "07f",
         "20c"
-      ]
+      ],
+      "expected_artifact_path": "migration-strategy.md"
     },
     {
       "id": "18",
@@ -1106,7 +1148,7 @@
         "18c"
       ],
       "input": "auth requirements + state",
-      "output": "auth/",
+      "output": "auth/index.ts",
       "activates_when": "prerequisites complete for node 18",
       "skill_file": "nodes/t4/18-auth-layer.md",
       "artifact_schema": "schema/auth.schema.json",
@@ -1116,7 +1158,8 @@
       "consumers": [
         "18b",
         "18c"
-      ]
+      ],
+      "expected_artifact_path": "auth/index.ts"
     },
     {
       "id": "18b",
@@ -1140,7 +1183,8 @@
       "consumers": [
         "18d",
         "18e"
-      ]
+      ],
+      "expected_artifact_path": "security-report.json"
     },
     {
       "id": "18c",
@@ -1164,7 +1208,8 @@
       "consumers": [
         "18d",
         "24b"
-      ]
+      ],
+      "expected_artifact_path": "edge-report.json"
     },
     {
       "id": "18d",
@@ -1189,7 +1234,8 @@
       "consumers": [
         "18e",
         "20d"
-      ]
+      ],
+      "expected_artifact_path": "harden_report.json"
     },
     {
       "id": "18e",
@@ -1211,7 +1257,8 @@
       "version": "1.0.0",
       "consumers": [
         "23b"
-      ]
+      ],
+      "expected_artifact_path": "security-verify.json"
     },
     {
       "id": "19",
@@ -1227,7 +1274,7 @@
         "24"
       ],
       "input": "app",
-      "output": "tests/",
+      "output": "tests/index.test.ts",
       "activates_when": "prerequisites complete for node 19",
       "skill_file": "nodes/t4/19-test-scaffold.md",
       "artifact_schema": "schema/tests.schema.json",
@@ -1237,7 +1284,8 @@
       "consumers": [
         "19a",
         "24"
-      ]
+      ],
+      "expected_artifact_path": "tests/index.test.ts"
     },
     {
       "id": "19a",
@@ -1262,7 +1310,8 @@
       "version": "1.0.0",
       "consumers": [
         "24"
-      ]
+      ],
+      "expected_artifact_path": "backend-test-report.json"
     },
     {
       "id": "20",
@@ -1280,7 +1329,7 @@
         "24"
       ],
       "input": "app + backend",
-      "output": "deployment/",
+      "output": "deployment/config.json",
       "activates_when": "prerequisites complete for node 20",
       "skill_file": "nodes/t4/20-deploy-wiring.md",
       "artifact_schema": "schema/wiring_report.schema.json",
@@ -1293,7 +1342,8 @@
         "20c",
         "20d",
         "24"
-      ]
+      ],
+      "expected_artifact_path": "deployment/config.json"
     },
     {
       "id": "20a",
@@ -1315,7 +1365,8 @@
       "version": "1.0.0",
       "consumers": [
         "23b"
-      ]
+      ],
+      "expected_artifact_path": "production_checklist.json"
     },
     {
       "id": "20b",
@@ -1337,7 +1388,8 @@
       "version": "1.0.0",
       "consumers": [
         "23b"
-      ]
+      ],
+      "expected_artifact_path": "performance-report.json"
     },
     {
       "id": "20c",
@@ -1361,7 +1413,8 @@
       "version": "1.0.0",
       "consumers": [
         "23b"
-      ]
+      ],
+      "expected_artifact_path": "api-deployment.md"
     },
     {
       "id": "20d",
@@ -1384,7 +1437,8 @@
       "version": "1.0.0",
       "consumers": [
         "23b"
-      ]
+      ],
+      "expected_artifact_path": "deploy-hardening.md"
     },
     {
       "id": "24",
@@ -1408,7 +1462,8 @@
       "version": "1.0.0",
       "consumers": [
         "24b"
-      ]
+      ],
+      "expected_artifact_path": "build-report.json"
     },
     {
       "id": "24b",
@@ -1424,7 +1479,7 @@
         "23b"
       ],
       "input": "static + runtime + edge reports",
-      "output": "wiring_report.json + security_report.json",
+      "output": "wiring_report.json",
       "activates_when": "prerequisites complete for node 24b",
       "skill_file": "nodes/t4/24b-bug-loop-orchestrator.md",
       "artifact_schema": "schema/wiring_report.schema.json",
@@ -1433,7 +1488,8 @@
       "version": "1.0.0",
       "consumers": [
         "23b"
-      ]
+      ],
+      "expected_artifact_path": "wiring_report.json"
     },
     {
       "id": "21",
@@ -1457,7 +1513,8 @@
       "consumers": [
         "22",
         "23"
-      ]
+      ],
+      "expected_artifact_path": "multi-agent-report.json"
     },
     {
       "id": "22",
@@ -1471,7 +1528,7 @@
         "23b"
       ],
       "input": "reference + build",
-      "output": "diff-report.json + correction-prompt.md",
+      "output": "diff-report.json",
       "activates_when": "prerequisites complete for node 22",
       "skill_file": "nodes/t5/22-diff-merge.md",
       "artifact_schema": "schema/diff-report.schema.json",
@@ -1481,7 +1538,8 @@
       "consumers": [
         "23",
         "23b"
-      ]
+      ],
+      "expected_artifact_path": "diff-report.json"
     },
     {
       "id": "23",
@@ -1494,7 +1552,7 @@
         "23b"
       ],
       "input": "diff report + build",
-      "output": "refined artifacts",
+      "output": "refined.json",
       "activates_when": "prerequisites complete for node 23",
       "skill_file": "nodes/t5/23-self-refine.md",
       "artifact_schema": "schema/refined.schema.json",
@@ -1503,7 +1561,8 @@
       "version": "1.0.0",
       "consumers": [
         "23b"
-      ]
+      ],
+      "expected_artifact_path": "refined.json"
     },
     {
       "id": "23b",
@@ -1531,7 +1590,8 @@
       "version": "1.0.0",
       "consumers": [
         "25"
-      ]
+      ],
+      "expected_artifact_path": "ship-report.json"
     },
     {
       "id": "25",
@@ -1549,7 +1609,8 @@
       "model": "opus",
       "max_response_tokens": 3500,
       "version": "1.0.0",
-      "consumers": []
+      "consumers": [],
+      "expected_artifact_path": "repair-report.json"
     }
   ]
 }

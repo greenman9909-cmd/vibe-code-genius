@@ -1,6 +1,6 @@
 # Node 10 — Section Detect
 
-Tier: 2  Prereqs: [02]  Parallel with: [13, 11]  Input: reference.json.sections  Output: sections.md + sections.json  Model: sonnet  Budget: 2500 tokens
+Tier: 2  Prereqs: [02]  Parallel with: [13, 11]  Input: reference.json.sections  Output: sections.json  Model: sonnet  Budget: 2500 tokens
 
 ## Working Contract
 
@@ -17,9 +17,9 @@ Read `contracts/working-contract.md` and the declared input only. Emit the exact
 
 ## Output Contract
 
-The output is `sections.md + sections.json`. It is versioned, machine-readable when the artifact is JSON, and contains a `version`, `generated_at`, `evidence`, and `status` field where the artifact shape permits.
+The output is `sections.json`.md + sections.json`. It is versioned, machine-readable when the artifact is JSON, and contains a `version`, `generated_at`, `evidence`, and `status` field where the artifact shape permits.
 
-Before marking complete: python scripts/validate-artifact.py sections.md + sections.json schema/sections.schema.json. If validation fails, halt. Do not mark complete.
+Before marking complete: python scripts/validate-artifact.py --node 10 --artifact sections.json --schema schema/sections.schema.json. If validation fails, halt. Do not substitute a different artifact. Do not continue.
 
 
 

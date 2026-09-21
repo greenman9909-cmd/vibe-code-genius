@@ -1,6 +1,6 @@
 # Node 06 — Prompt Composer
 
-Tier: 1  Prereqs: [02, 03, 04, 05]  Parallel with: [06a, 07, 12, 13, 14]  Input: reference.json + style-rules.md + file-tree.md  Output: prompt.md + handoff.md  Model: sonnet  Budget: 5000 tokens
+Tier: 1  Prereqs: [02, 03, 04, 05]  Parallel with: [06a, 07, 12, 13, 14]  Input: reference.json + style-rules.md + file-tree.md  Output: prompt.md  Model: sonnet  Budget: 5000 tokens
 
 ## Working Contract
 
@@ -17,9 +17,9 @@ Read `contracts/working-contract.md` and the declared input only. Emit the exact
 
 ## Output Contract
 
-The output is `prompt.md + handoff.md`. It is versioned, machine-readable when the artifact is JSON, and contains a `version`, `generated_at`, `evidence`, and `status` field where the artifact shape permits.
+The output is `prompt.md`.md + handoff.md`. It is versioned, machine-readable when the artifact is JSON, and contains a `version`, `generated_at`, `evidence`, and `status` field where the artifact shape permits.
 
-Before marking complete: python scripts/validate-artifact.py prompt.md + handoff.md schema/prompt.schema.json. If validation fails, halt. Do not mark complete.
+Before marking complete: python scripts/validate-artifact.py --node 06 --artifact prompt.md --schema schema/prompt.schema.json. If validation fails, halt. Do not substitute a different artifact. Do not continue.
 
 
 

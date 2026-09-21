@@ -1,6 +1,6 @@
 # Node 07e — Backend Scaffold
 
-Tier: 2  Prereqs: [05, 07d]  Parallel with: [07f, 07g, 19a, 20c]  Input: openapi.yaml + scaffold  Output: server + routes  Model: sonnet  Budget: 5000 tokens
+Tier: 2  Prereqs: [05, 07d]  Parallel with: [07f, 07g, 19a, 20c]  Input: openapi.yaml + scaffold  Output: server/index.ts  Model: sonnet  Budget: 5000 tokens
 
 ## Working Contract
 
@@ -17,9 +17,9 @@ Read `contracts/working-contract.md` and the declared input only. Emit the exact
 
 ## Output Contract
 
-The output is `server + routes`. It is versioned, machine-readable when the artifact is JSON, and contains a `version`, `generated_at`, `evidence`, and `status` field where the artifact shape permits.
+The output is `server/index.ts`. It is versioned, machine-readable when the artifact is JSON, and contains a `version`, `generated_at`, `evidence`, and `status` field where the artifact shape permits.
 
-Before marking complete: python scripts/validate-artifact.py server + routes schema/server.schema.json. If validation fails, halt. Do not mark complete.
+Before marking complete: python scripts/validate-artifact.py --node 07e --artifact server/index.ts --schema schema/server.schema.json. If validation fails, halt. Do not substitute a different artifact. Do not continue.
 
 
 

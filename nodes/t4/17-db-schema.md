@@ -1,6 +1,6 @@
 # Node 17 — DB Schema
 
-Tier: 4  Prereqs: [07]  Parallel with: [17a, 17b, 07f]  Input: api surface  Output: migrations/  Model: sonnet  Budget: 3000 tokens
+Tier: 4  Prereqs: [07]  Parallel with: [17a, 17b, 07f]  Input: api surface  Output: migrations/schema.sql  Model: sonnet  Budget: 3000 tokens
 
 ## Working Contract
 
@@ -17,9 +17,9 @@ Read `contracts/working-contract.md` and the declared input only. Emit the exact
 
 ## Output Contract
 
-The output is `migrations/`. It is versioned, machine-readable when the artifact is JSON, and contains a `version`, `generated_at`, `evidence`, and `status` field where the artifact shape permits.
+The output is `migrations/schema.sql`. It is versioned, machine-readable when the artifact is JSON, and contains a `version`, `generated_at`, `evidence`, and `status` field where the artifact shape permits.
 
-Before marking complete: python scripts/validate-artifact.py migrations/ schema/db-schema.schema.json. If validation fails, halt. Do not mark complete.
+Before marking complete: python scripts/validate-artifact.py --node 17 --artifact migrations/schema.sql --schema schema/db-schema.schema.json. If validation fails, halt. Do not substitute a different artifact. Do not continue.
 
 
 

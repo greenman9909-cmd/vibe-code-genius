@@ -1,6 +1,6 @@
 # Node 14 — Data Fetching
 
-Tier: 3  Prereqs: [07, 13]  Parallel with: [15, 16]  Input: API contract + pages  Output: data-hooks/  Model: sonnet  Budget: 3000 tokens
+Tier: 3  Prereqs: [07, 13]  Parallel with: [15, 16]  Input: API contract + pages  Output: data-hooks/index.ts  Model: sonnet  Budget: 3000 tokens
 
 ## Working Contract
 
@@ -17,9 +17,9 @@ Read `contracts/working-contract.md` and the declared input only. Emit the exact
 
 ## Output Contract
 
-The output is `data-hooks/`. It is versioned, machine-readable when the artifact is JSON, and contains a `version`, `generated_at`, `evidence`, and `status` field where the artifact shape permits.
+The output is `data-hooks/index.ts`. It is versioned, machine-readable when the artifact is JSON, and contains a `version`, `generated_at`, `evidence`, and `status` field where the artifact shape permits.
 
-Before marking complete: python scripts/validate-artifact.py data-hooks/ schema/data-hooks.schema.json. If validation fails, halt. Do not mark complete.
+Before marking complete: python scripts/validate-artifact.py --node 14 --artifact data-hooks/index.ts --schema schema/data-hooks.schema.json. If validation fails, halt. Do not substitute a different artifact. Do not continue.
 
 
 
