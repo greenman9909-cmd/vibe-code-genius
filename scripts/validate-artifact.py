@@ -49,17 +49,11 @@ def main():
         print(f"FAIL: Schema does not exist: {schema_path}")
         sys.exit(1)
 
-    # Minimum size check
+    # Read artifact content
     try:
         raw = artifact_path.read_text(encoding="utf-8")
     except Exception as e:
         print(f"FAIL: could not read artifact {artifact_path}: {e}")
-        sys.exit(1)
-
-    ext = artifact_path.suffix.lower()
-    min_size = 500 if ext in [".md", ".ts", ".yaml", ".yml"] else 200
-    if len(raw) < min_size:
-        print(f"FAIL: artifact too thin ({len(raw)} bytes, minimum is {min_size})")
         sys.exit(1)
 
     # Load schema
@@ -69,6 +63,8 @@ def main():
         print(f"FAIL: Invalid JSON in schema {schema_path}: {e}")
         sys.exit(1)
 
+    ext = artifact_path.suffix.lower()
+
     # Doc / text artifact validation
     if ext in [".md", ".ts", ".yaml", ".yml"]:
         required = schema_data.get("required_headings") or schema_data.get("required") or []
@@ -76,6 +72,12 @@ def main():
         if missing:
             print(f"FAIL: artifact missing required fields/headings: {missing}")
             sys.exit(1)
+
+        min_size = 500
+        if len(raw) < min_size:
+            print(f"FAIL: artifact too thin ({len(raw)} bytes, minimum is {min_size})")
+            sys.exit(1)
+
         print(f"PASS: node {node_id} artifact {artifact_path} conforms to {schema_path}")
         sys.exit(0)
 
@@ -92,6 +94,12 @@ def main():
         print(f"FAIL: Schema validation failed for {artifact_path} against {schema_path}:")
         for err in errors:
             print(f"  - {err.message} (path: {'/'.join(str(p) for p in err.absolute_path)})")
+        sys.exit(1)
+
+    # Minimum size check for JSON
+    min_size = 200
+    if len(raw) < min_size:
+        print(f"FAIL: artifact too thin ({len(raw)} bytes, minimum is {min_size})")
         sys.exit(1)
 
     print(f"PASS: node {node_id} artifact {artifact_path} conforms to {schema_path}")
