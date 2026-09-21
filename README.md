@@ -1,5 +1,15 @@
 # Vibe Code Genius — God Tree
 
+<p align="center">
+  <img src="assets/anime/Beta.jpg" alt="Anime-themed Vibe Code Genius banner" width="100%" />
+</p>
+
+<p align="center">
+  <img src="assets/anime/Solo-Leveling-PNG.png" alt="Anime character artwork from the bundled themed asset pack" width="220" />
+</p>
+
+<p align="center"><strong>Research deeply. Build deliberately. Verify everything.</strong></p>
+
 **Vibe Code Genius** is a contract-driven build system for turning a product brief and an optional reference website into a complete, verifiable application. It combines structured research, API discovery, design-token extraction, implementation planning, security hardening, runtime verification, and post-session repair into one artifact pipeline.
 
 The repository is designed for developers who want more than a generated page: it preserves decisions, validates references, records evidence, exposes customization points, and blocks a release when the build is incomplete or insecure.
