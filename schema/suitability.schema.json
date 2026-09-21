@@ -1,16 +1,14 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://vibe-code-genius.dev/schema/manifest.schema.json",
-  "title": "manifest",
+  "$id": "https://vibe-code-genius.dev/schema/suitability.schema.json",
+  "title": "suitability",
   "type": "object",
   "additionalProperties": true,
   "properties": {
     "status": { "type": "string" },
     "version": { "type": "string" },
-    "routes": { "type": "array" },
-    "components": { "type": "array" },
-    "artifacts": { "type": "array" },
-    "gates": { "type": "object" },
+    "suitability_score": { "type": "number" },
+    "product_category": { "type": "string" },
     "evidence": { "type": "array", "items": { "type": "string" } }
   }
 }

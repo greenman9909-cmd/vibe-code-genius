@@ -3,41 +3,13 @@
   "$id": "https://vibe-code-genius.dev/schema/slop-report.schema.json",
   "title": "slop-report",
   "type": "object",
-  "additionalProperties": false,
+  "additionalProperties": true,
   "properties": {
-    "status": {
-      "type": "string"
-    },
-    "version": {
-      "type": "string"
-    },
-    "evidence": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      }
-    }
-  },
-  "required": [],
-  "$defs": {
-    "status": {
-      "type": "string",
-      "enum": [
-        "pending",
-        "complete",
-        "blocked",
-        "failed"
-      ]
-    },
-    "evidence": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      }
-    },
-    "artifact": {
-      "type": "object",
-      "additionalProperties": true
-    }
+    "status": { "type": "string" },
+    "version": { "type": "string" },
+    "score": { "type": "number" },
+    "audits": { "type": "array" },
+    "eliminated_phrases": { "type": "array" },
+    "evidence": { "type": "array", "items": { "type": "string" } }
   }
 }

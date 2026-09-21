@@ -40,9 +40,18 @@ Read `contracts/working-contract.md`, `contracts/consistency-contract.md`, and t
 }
 ```
 
+Before marking complete: python scripts/validate-artifact.py motion-customization.md + motion-config.json schema/motion-config.schema.json. If validation fails, halt. Do not mark complete.
+
+
+
+
+
+
+
 ## If this fails
 
-If a requested effect conflicts with accessibility, performance, or the design contract, preserve the semantic state change, remove the decorative motion, record the conflict, and continue with a tokenized fallback. If a component lacks a motion state, add an explicit static state rather than hiding the gap.
+Log the node id, input hash, invocation, error, and minimal reproduction to `session.log`. Append with datetime.utcnow().isoformat() + 'Z' — real timestamps only. Apply the declared fallback in `contracts/repair-contract.md`; do not silently fabricate a result.
+
 
 ## Do not
 

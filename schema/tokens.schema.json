@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://vibe-code-genius.dev/schema/design-tokens.schema.json",
+  "$id": "https://vibe-code-genius.dev/schema/tokens.schema.json",
   "title": "Design Tokens Schema",
   "type": "object",
   "required": ["colors", "typography", "spacing", "radii"],

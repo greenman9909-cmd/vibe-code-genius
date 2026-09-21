@@ -1,43 +1,100 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://vibe-code-genius.dev/schema/system.schema.json",
-  "title": "system",
+  "title": "System Model Schema",
   "type": "object",
-  "additionalProperties": false,
+  "required": [
+    "actors",
+    "journeys",
+    "routes",
+    "states",
+    "entities",
+    "integrations"
+  ],
   "properties": {
-    "status": {
-      "type": "string"
-    },
     "version": {
       "type": "string"
     },
-    "evidence": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      }
-    }
-  },
-  "required": [],
-  "$defs": {
     "status": {
       "type": "string",
-      "enum": [
-        "pending",
-        "complete",
-        "blocked",
-        "failed"
-      ]
+      "enum": ["pending", "complete", "blocked", "failed"]
+    },
+    "actors": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "role", "description"],
+        "properties": {
+          "id": { "type": "string" },
+          "role": { "type": "string" },
+          "description": { "type": "string" },
+          "goals": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+    "journeys": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "actor", "title", "steps"],
+        "properties": {
+          "id": { "type": "string" },
+          "actor": { "type": "string" },
+          "title": { "type": "string" },
+          "trigger": { "type": "string" },
+          "steps": { "type": "array", "items": { "type": "string" } },
+          "outcome": { "type": "string" }
+        }
+      }
+    },
+    "routes": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "required": ["path", "title", "purpose"],
+          "properties": {
+            "path": { "type": "string" },
+            "title": { "type": "string" },
+            "purpose": { "type": "string" },
+            "components": { "type": "array", "items": { "type": "string" } }
+          }
+        }
+      }
+    },
+    "states": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "entities": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "fields"],
+        "properties": {
+          "name": { "type": "string" },
+          "description": { "type": "string" },
+          "fields": { "type": "object" }
+        }
+      }
+    },
+    "integrations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "type", "purpose"],
+        "properties": {
+          "name": { "type": "string" },
+          "type": { "type": "string" },
+          "purpose": { "type": "string" },
+          "env_vars": { "type": "array", "items": { "type": "string" } }
+        }
+      }
     },
     "evidence": {
       "type": "array",
-      "items": {
-        "type": "string"
-      }
-    },
-    "artifact": {
-      "type": "object",
-      "additionalProperties": true
+      "items": { "type": "string" }
     }
   }
 }

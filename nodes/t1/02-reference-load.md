@@ -42,9 +42,18 @@ Record the selected acquirer, invocation, timestamp, source URL, route count, se
 
 The output is `reference.json`. It is versioned, machine-readable when the artifact is JSON, and contains a `version`, `generated_at`, `evidence`, `status`, `acquirer`, `acquired_at`, and `source_url` field where the artifact shape permits.
 
+Before marking complete: python scripts/validate-artifact.py reference.json schema/reference.schema.json. If validation fails, halt. Do not mark complete.
+
+
+
+
+
+
+
 ## If this fails
 
-Log the node id, input hash, invocation, error, and minimal reproduction to `session.log`. Apply the declared fallback in `contracts/repair-contract.md`; do not silently fabricate a result or promote a fixture to scraped evidence.
+Log the node id, input hash, invocation, error, and minimal reproduction to `session.log`. Append with datetime.utcnow().isoformat() + 'Z' — real timestamps only. Apply the declared fallback in `contracts/repair-contract.md`; do not silently fabricate a result.
+
 
 ## Do not
 

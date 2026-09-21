@@ -19,9 +19,18 @@ Read `contracts/working-contract.md` and the declared input only. Emit the exact
 
 The output is `slop-report.json`. It is versioned, machine-readable when the artifact is JSON, and contains a `version`, `generated_at`, `evidence`, and `status` field where the artifact shape permits.
 
+Before marking complete: python scripts/validate-artifact.py slop-report.json schema/slop-report.schema.json. If validation fails, halt. Do not mark complete.
+
+
+
+
+
+
+
 ## If this fails
 
-Log the node id, input hash, invocation, error, and minimal reproduction to `session.log`. Apply the declared fallback in `contracts/repair-contract.md`; do not silently fabricate a result.
+Log the node id, input hash, invocation, error, and minimal reproduction to `session.log`. Append with datetime.utcnow().isoformat() + 'Z' — real timestamps only. Apply the declared fallback in `contracts/repair-contract.md`; do not silently fabricate a result.
+
 
 ## Do not
 

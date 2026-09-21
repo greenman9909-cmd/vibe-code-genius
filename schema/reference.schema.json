@@ -1,43 +1,67 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://vibe-code-genius.dev/schema/reference.schema.json",
-  "title": "reference",
+  "title": "Reference Schema",
   "type": "object",
-  "additionalProperties": false,
+  "required": [
+    "reference_url",
+    "acquired_at",
+    "acquirer",
+    "stack",
+    "routes",
+    "sections",
+    "components",
+    "design_tokens",
+    "api_surface",
+    "external_hosts"
+  ],
   "properties": {
-    "status": {
-      "type": "string"
-    },
     "version": {
       "type": "string"
     },
-    "evidence": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      }
-    }
-  },
-  "required": [],
-  "$defs": {
     "status": {
       "type": "string",
-      "enum": [
-        "pending",
-        "complete",
-        "blocked",
-        "failed"
-      ]
+      "enum": ["pending", "complete", "blocked", "failed"]
+    },
+    "reference_url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "acquired_at": {
+      "type": "string"
+    },
+    "acquirer": {
+      "type": "string"
+    },
+    "stack": {
+      "type": "object"
+    },
+    "routes": {
+      "type": "array"
+    },
+    "sections": {
+      "type": "object"
+    },
+    "components": {
+      "type": "array"
+    },
+    "design_tokens": {
+      "type": "object"
+    },
+    "api_surface": {
+      "type": "array"
+    },
+    "external_hosts": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
     },
     "evidence": {
       "type": "array",
       "items": {
         "type": "string"
       }
-    },
-    "artifact": {
-      "type": "object",
-      "additionalProperties": true
     }
   }
 }
