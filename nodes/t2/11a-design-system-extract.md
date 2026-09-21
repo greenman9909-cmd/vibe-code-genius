@@ -1,6 +1,6 @@
 # Node 11a — Design System Extract
 
-Tier: 2  Prereqs: [02]  Parallel with: [11, 12]  Input: reference.json + rendered pages  Output: design_system.json  Model: sonnet  Budget: 3000 tokens
+Tier: 2  Prereqs: 11f  Parallel with: —  Input: clone/  Output: design_system.json  Model: sonnet  Budget: 3000
 
 ## Working Contract
 
@@ -8,46 +8,46 @@ Read `contracts/working-contract.md` and the declared input only. Emit the exact
 
 ## Instructions
 
-1. Confirm every prerequisite artifact exists and has the expected version.
-2. Inspect the input and extract only facts relevant to design system extract.
-3. Produce `design_system.json` with deterministic ordering, explicit nulls, and no invented evidence.
-4. Resolve every import, route, API call, token, environment variable, locale key, and component reference before writing.
-5. Record decisions and unresolved blockers in the artifact's evidence or report field.
-6. Mark the corresponding manifest item complete only after validation passes.
+1. Read `clone-manifest.json` for the file list.
+2. Parse every `*.css` file for:
+   - CSS custom properties in `:root` declarations
+   - Color values: hex, rgb, hsl, and oklch
+   - `font-family` declarations
+   - `border-radius` values
+   - `box-shadow` values
+   - Spacing patterns in margin and padding
+3. Read `clone-motion.json` for animation and transition data.
+4. Read `clone-components.json` for the component inventory.
+5. For each component in the inventory, note:
+   - Its source file path in the clone
+   - The count of occurrences in CSS, representing how many classes it likely has
+6. Emit `design_system.json`:
+
+   ```json
+   {
+     "tokens": {
+       "colors": {},
+       "fonts": {},
+       "spacing": [],
+       "radii": [],
+       "shadows": []
+     },
+     "motion": "<contents of clone-motion.json>",
+     "components": "<contents of clone-components.json>",
+     "source": "clone-extracted"
+   }
+   ```
+
+7. Mark complete. Announce unlocked: 11b, 11c, 11d.
 
 ## Output Contract
 
-The output is `design_system.json`. It is versioned, machine-readable when the artifact is JSON, and contains a `version`, `generated_at`, `evidence`, and `status` field where the artifact shape permits.
-
-Before marking complete: python scripts/validate-artifact.py --node 11a --artifact design_system.json --schema schema/design_system.schema.json. If validation fails, halt. Do not substitute a different artifact. Do not continue.
-
-
-
-
-
-
-
-
-
+The output is `design_system.json`. It must contain the extracted `tokens`, the complete contents of `clone-motion.json` under `motion`, the complete contents of `clone-components.json` under `components`, and `source: "clone-extracted"`. Validate it against `schema/design_system.schema.json` when present before marking complete.
 
 ## If this fails
 
+Log the node id, input hash, invocation, error, and minimal reproduction to `session.log`. Apply the declared fallback in `contracts/repair-contract.md`; do not silently fabricate a result.
 
+## Do not
 
-Log the node id, input hash, invocation, error, and minimal reproduction to `session.log`. Use datetime.utcnow().isoformat(timespec="microseconds") + "Z" (microseconds MUST vary between events). Apply the declared fallback in `contracts/repair-contract.md`; do not silently fabricate a result.
-
-
-Do not invent pages, proof, metrics, integrations, credentials, routes, or reference evidence. Do not bypass schemas, disable a failing check, write unresolved references, or emit prose in place of the artifact.
-
-## Example output
-
-```json
-{
-  "node": "11a",
-  "status": "complete",
-  "artifact": "design_system.json",
-  "version": "1.0.0",
-  "evidence": ["declared input validated"],
-  "unresolved": []
-}
-```
+Do not invent design evidence, modify the clone, or substitute category-based assumptions for values that can be extracted from the clone.

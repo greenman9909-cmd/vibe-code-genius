@@ -19,6 +19,15 @@ Read `contracts/working-contract.md` and the declared input only. Emit the exact
    - docs / utilities / libraries / CLIs → Minimal Utility
 3. Cross-check against the reference's actual aesthetic using `design-tokens.json`. Determine which direction the reference sits in.
 4. If product direction matches reference direction, stay in that direction. If they differ, decide explicitly: either borrow the reference's visual language or diverge to the product's natural direction. State the choice and the reason.
+4b. EVIDENCE FROM CLONE. If `clone-motion.json` and `clone-components.json` exist, read them.
+   - Note the reference's actual motion attitude:
+     - no transitions at all → reference is "static"
+     - < 200ms transitions → "snappy"
+     - 200–400ms → "considered"
+     - > 400ms or spring-based → "expressive"
+   - Note the component density (components per page).
+   - Note the type scale (how many distinct font sizes are used).
+   These are EVIDENCE for your direction choice, not inputs. They confirm or challenge the category-based match from step 2. Record them in the `Reference Used` section of `design-commitment.md`.
 5. Emit `design-commitment.md` with the exact six required sections below.
 6. Do not invent typefaces. Real faces only. If unsure, use one of: Geist, Inter Tight, JetBrains Mono, Söhne, Untitled Sans, Tiempos, GT Sectra, Diatype, Tobias, Migra.
 7. Mark complete and announce unlocked: 07.

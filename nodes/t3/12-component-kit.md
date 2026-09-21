@@ -9,6 +9,12 @@ Read `contracts/working-contract.md` and the declared input only. Emit the exact
 ## Instructions
 
 1. Confirm every prerequisite artifact exists and has the expected version.
+1b. If `clone-components.json` exists AND the reference's components map to your product's needs, open the source files in `clone/` and study their structure. Extract:
+   - prop signatures
+   - conditional rendering patterns
+   - `className` composition
+   - any variant logic
+   Do NOT copy code. Produce equivalent components for YOUR product informed by how the reference structured them. This raises the floor of your output from "LLM default" to "production pattern".
 2. Inspect the input and extract only facts relevant to component kit.
 3. Produce `components/` with deterministic ordering, explicit nulls, and no invented evidence.
 4. Resolve every import, route, API call, token, environment variable, locale key, and component reference before writing.
