@@ -1,5 +1,206 @@
 {
   "version": "1.0.0",
-  "references": [],
-  "last_verified": null
+  "references": [
+    {
+      "name": "linear",
+      "file": "linear.structure.json",
+      "url": "https://linear.app",
+      "tags": [
+        "curated",
+        "structure"
+      ],
+      "last_verified": "2026-09-21"
+    },
+    {
+      "name": "stripe",
+      "file": "stripe.structure.json",
+      "url": "https://stripe.com",
+      "tags": [
+        "curated",
+        "structure"
+      ],
+      "last_verified": "2026-09-21"
+    },
+    {
+      "name": "github",
+      "file": "github.structure.json",
+      "url": "https://github.com",
+      "tags": [
+        "curated",
+        "structure"
+      ],
+      "last_verified": "2026-09-21"
+    },
+    {
+      "name": "vercel",
+      "file": "vercel.structure.json",
+      "url": "https://vercel.com",
+      "tags": [
+        "curated",
+        "structure"
+      ],
+      "last_verified": "2026-09-21"
+    },
+    {
+      "name": "supabase",
+      "file": "supabase.structure.json",
+      "url": "https://supabase.com",
+      "tags": [
+        "curated",
+        "structure"
+      ],
+      "last_verified": "2026-09-21"
+    },
+    {
+      "name": "notion",
+      "file": "notion.structure.json",
+      "url": "https://www.notion.so",
+      "tags": [
+        "curated",
+        "structure"
+      ],
+      "last_verified": "2026-09-21"
+    },
+    {
+      "name": "figma",
+      "file": "figma.structure.json",
+      "url": "https://www.figma.com",
+      "tags": [
+        "curated",
+        "structure"
+      ],
+      "last_verified": "2026-09-21"
+    },
+    {
+      "name": "raycast",
+      "file": "raycast.structure.json",
+      "url": "https://www.raycast.com",
+      "tags": [
+        "curated",
+        "structure"
+      ],
+      "last_verified": "2026-09-21"
+    },
+    {
+      "name": "arc",
+      "file": "arc.structure.json",
+      "url": "https://arc.net",
+      "tags": [
+        "curated",
+        "structure"
+      ],
+      "last_verified": "2026-09-21"
+    },
+    {
+      "name": "framer",
+      "file": "framer.structure.json",
+      "url": "https://www.framer.com",
+      "tags": [
+        "curated",
+        "structure"
+      ],
+      "last_verified": "2026-09-21"
+    },
+    {
+      "name": "readme",
+      "file": "readme.structure.json",
+      "url": "https://readme.com",
+      "tags": [
+        "curated",
+        "structure"
+      ],
+      "last_verified": "2026-09-21"
+    },
+    {
+      "name": "sentry",
+      "file": "sentry.structure.json",
+      "url": "https://sentry.io",
+      "tags": [
+        "curated",
+        "structure"
+      ],
+      "last_verified": "2026-09-21"
+    },
+    {
+      "name": "resend",
+      "file": "resend.structure.json",
+      "url": "https://resend.com",
+      "tags": [
+        "curated",
+        "structure"
+      ],
+      "last_verified": "2026-09-21"
+    },
+    {
+      "name": "clerk",
+      "file": "clerk.structure.json",
+      "url": "https://clerk.com",
+      "tags": [
+        "curated",
+        "structure"
+      ],
+      "last_verified": "2026-09-21"
+    },
+    {
+      "name": "webflow",
+      "file": "webflow.structure.json",
+      "url": "https://webflow.com",
+      "tags": [
+        "curated",
+        "structure"
+      ],
+      "last_verified": "2026-09-21"
+    },
+    {
+      "name": "airtable",
+      "file": "airtable.structure.json",
+      "url": "https://airtable.com",
+      "tags": [
+        "curated",
+        "structure"
+      ],
+      "last_verified": "2026-09-21"
+    },
+    {
+      "name": "loom",
+      "file": "loom.structure.json",
+      "url": "https://www.loom.com",
+      "tags": [
+        "curated",
+        "structure"
+      ],
+      "last_verified": "2026-09-21"
+    },
+    {
+      "name": "segment",
+      "file": "segment.structure.json",
+      "url": "https://segment.com",
+      "tags": [
+        "curated",
+        "structure"
+      ],
+      "last_verified": "2026-09-21"
+    },
+    {
+      "name": "twilio",
+      "file": "twilio.structure.json",
+      "url": "https://www.twilio.com",
+      "tags": [
+        "curated",
+        "structure"
+      ],
+      "last_verified": "2026-09-21"
+    },
+    {
+      "name": "cloudflare",
+      "file": "cloudflare.structure.json",
+      "url": "https://www.cloudflare.com",
+      "tags": [
+        "curated",
+        "structure"
+      ],
+      "last_verified": "2026-09-21"
+    }
+  ],
+  "last_verified": "2026-09-21"
 }

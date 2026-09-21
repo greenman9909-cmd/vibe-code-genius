@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vibe-code-genius.dev/schema/motion-config.schema.json",
+  "title": "Motion customization configuration",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "version",
+    "profile",
+    "intensity",
+    "reduced_motion",
+    "tokens",
+    "overrides",
+    "evidence"
+  ],
+  "properties": {
+    "version": {
+      "type": "string"
+    },
+    "profile": {
+      "type": "string",
+      "enum": [
+        "calm",
+        "restrained",
+        "precise",
+        "energetic",
+        "playful",
+        "editorial",
+        "instant"
+      ]
+    },
+    "intensity": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "reduced_motion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mode",
+        "opacity_only"
+      ],
+      "properties": {
+        "mode": {
+          "enum": [
+            "replace",
+            "minimize",
+            "off"
+          ]
+        },
+        "opacity_only": {
+          "type": "boolean"
+        }
+      }
+    },
+    "tokens": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "overrides": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "$defs": {
+    "duration": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 2000
+    },
+    "cubic_bezier": {
+      "type": "string"
+    }
+  }
+}

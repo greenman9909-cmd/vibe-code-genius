@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "node_count": 60,
+  "node_count": 61,
   "declared_node_count": 42,
   "nodes": [
     {
@@ -754,6 +754,31 @@
         "12",
         "13",
         "12b"
+      ]
+    },
+    {
+      "id": "11e",
+      "name": "Motion Customization",
+      "tier": 2,
+      "prereqs": [
+        "11d"
+      ],
+      "parallel_with": [
+        "12a",
+        "12b"
+      ],
+      "input": "design-contract.md + motion requirements",
+      "output": "motion-customization.md + motion-config.json",
+      "activates_when": "design contract exists and motion preferences are known",
+      "skill_file": "nodes/t2/11e-motion-customization.md",
+      "artifact_schema": "schema/motion-config.schema.json",
+      "model": "haiku",
+      "max_response_tokens": 2200,
+      "version": "1.0.0",
+      "consumers": [
+        "12a",
+        "12b",
+        "13"
       ]
     },
     {

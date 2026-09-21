@@ -1,0 +1,40 @@
+{
+  "reference_url": "https://airtable.com",
+  "acquired_at": "2026-09-21T00:00:00Z",
+  "acquirer": "curated-reference-index",
+  "stack": {
+    "framework": {
+      "name": "unknown",
+      "confidence": "unverified",
+      "evidence": []
+    }
+  },
+  "routes": [
+    {
+      "path": "/",
+      "title": "Airtable",
+      "parent_path": null,
+      "status": "public"
+    }
+  ],
+  "sections": {
+    "/": [
+      {
+        "order": 1,
+        "type": "hero",
+        "contents": [],
+        "layout": "single-column",
+        "height": "viewport"
+      }
+    ]
+  },
+  "components": [],
+  "design_tokens": {
+    "colors": {},
+    "fonts": {},
+    "spacing": [],
+    "radii": []
+  },
+  "api_surface": [],
+  "external_hosts": []
+}
