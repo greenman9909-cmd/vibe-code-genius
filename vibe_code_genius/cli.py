@@ -20,5 +20,6 @@ def main(argv=None):
         return subprocess.call([sys.executable, str(root/"scripts/stats.py")])
     if args.command=="report-failure":
         import subprocess
-        return subprocess.call([sys.executable, str(root/"scripts/report-failure.py"), args.node], input=args.input, text=True)
+        result=subprocess.run([sys.executable, str(root/"scripts/report-failure.py"), args.node], input=args.input, text=True)
+        return result.returncode
     return 2
