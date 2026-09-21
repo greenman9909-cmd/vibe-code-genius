@@ -8,6 +8,27 @@ Read `contracts/working-contract.md` and the declared input only. Emit the exact
 
 ## Instructions
 
+CONTENT ORIGIN RULE:
+- REFERENCE STACK — tech choices from the reference (Next.js, Tailwind, etc.)
+- ROUTE MAP — URL paths from the reference OR system.json (whichever is broader)
+- HOMEPAGE SECTIONS — layout order and section types from the reference
+- KEY COMPONENTS — component patterns and props from the reference
+- DESIGN TOKENS — colors/fonts/spacing from the reference
+- MY PRODUCT — copy, headline, subhead, feature descriptions, value
+  proposition, CTAs — ALL from MY PRODUCT, NEVER from the reference
+
+The reference provides STRUCTURE and AESTHETIC.
+The product provides CONTENT and IDENTITY.
+
+If MY PRODUCT is an AI build orchestrator, the copy says
+'AI build orchestrator.' If the reference is railway.app and talks about
+cloud infrastructure, that language does NOT appear in the output unless
+the product IS cloud infrastructure.
+
+Add a validation step: after composing prompt.md, verify that no section
+of the copy contains phrases from the reference's marketing copy. If it
+does, rewrite that section using MY PRODUCT's description only.
+
 1. Confirm every prerequisite artifact exists and has the expected version.
 2. Inspect the input and extract only facts relevant to prompt composer.
 3. Produce `prompt.md + handoff.md` with deterministic ordering, explicit nulls, and no invented evidence.

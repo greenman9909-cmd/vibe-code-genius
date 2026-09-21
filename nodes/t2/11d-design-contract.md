@@ -17,7 +17,15 @@ Read `contracts/working-contract.md` and the declared input only. Emit the exact
 
 ## Output Contract
 
-The output is `design-contract.md`. It is versioned, machine-readable when the artifact is JSON, and contains a `version`, `generated_at`, `evidence`, and `status` field where the artifact shape permits.
+Output: design-contract.md AND eslint.config.slop.js (a shareable
+ESLint config). The config must contain rules that fail on:
+  - 'bg-gradient', 'from-', 'via-', 'to-' Tailwind utilities (purple gradients)
+  - 'text-transparent' + 'bg-clip-text' (gradient text)
+  - arbitrary color values in className ('bg-[#...]')
+  - emoji characters in JSX text
+  - border-radius values outside the token scale
+
+Each rule has a message pointing to references/signs-of-ai-design.md.
 
 Before marking complete: python scripts/validate-artifact.py --node 11d --artifact design-contract.md --schema schema/design-contract.schema.json. If validation fails, halt. Do not substitute a different artifact. Do not continue.
 

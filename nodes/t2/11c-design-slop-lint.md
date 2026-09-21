@@ -17,7 +17,15 @@ Read `contracts/working-contract.md` and the declared input only. Emit the exact
 
 ## Output Contract
 
-The output is `slop-lint.json`. It is versioned, machine-readable when the artifact is JSON, and contains a `version`, `generated_at`, `evidence`, and `status` field where the artifact shape permits.
+Output: slop-lint.json AND a markdown fragment called
+first-build/banned-patterns.md containing:
+
+  ## BANNED PATTERNS
+  - <rule name>: <what it looks like>: <the fix>
+  ...one line per rule triggered by the reference or product category...
+
+This file MUST be included verbatim in prompt.md under a new section
+called '## BANNED PATTERNS'. The coding AI uses it to avoid slop.
 
 Before marking complete: python scripts/validate-artifact.py --node 11c --artifact slop-lint.json --schema schema/slop-lint.schema.json. If validation fails, halt. Do not substitute a different artifact. Do not continue.
 
