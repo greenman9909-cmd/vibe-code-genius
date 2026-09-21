@@ -139,6 +139,8 @@ The repository includes 20 curated `references/{site}.json` structure fixtures i
 
 The visual direction of the documentation and examples takes inspiration from the public profile of [Debasish Ray](https://github.com/debasishray16): a terminal-oriented developer identity spanning Ubuntu/Debian, backend development, IoT, ML/DL, DevOps, Docker, Kubernetes, AWS, React, and Tailwind CSS. The profile is used as a source of aesthetic and topic cues, not as a copied brand identity. No profile image or personal asset is bundled without an explicit license or permission. See [`docs/assets-and-attribution.md`](docs/assets-and-attribution.md).
 
+The optional anime pack in [`assets/anime/`](assets/anime/) contains `Beta.jpg` and `Solo-Leveling-PNG.png` sourced from the shared profile repository. They are preserved with attribution and checksums for themed demos and reference-led customization. Their source repository does not declare an image license, so obtain permission or verify a license before commercial redistribution.
+
 ## Testing and validation
 
 ```bash

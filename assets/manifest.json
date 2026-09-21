@@ -17,6 +17,28 @@
       "attribution": null,
       "usage": "reference record only; never copied into a product build by default",
       "verified_at": "2026-09-22"
+    },
+    {
+      "source_url": "https://github.com/debasishray16/debasishray16/blob/main/.github/images/Beta.jpg",
+      "asset_type": "anime-illustration",
+      "local_path": "assets/anime/Beta.jpg",
+      "dimensions": "1920x1080 JPEG",
+      "license": "not specified in source repository; attribution retained; verify permission before commercial redistribution",
+      "attribution": "Source: Debasish Ray profile repository (debasishray16/debasishray16)",
+      "sha256": "c69cb024749261ccf580d82369096efa6dd4866cb22999d60aa8d781f40b9b10",
+      "usage": "optional visual reference asset for documentation, demos, or themed builds",
+      "verified_at": "2026-09-22"
+    },
+    {
+      "source_url": "https://github.com/debasishray16/debasishray16/blob/main/images/Solo-Leveling-PNG.png",
+      "asset_type": "anime-illustration",
+      "local_path": "assets/anime/Solo-Leveling-PNG.png",
+      "dimensions": "871x1682 PNG",
+      "license": "not specified in source repository; attribution retained; verify permission before commercial redistribution",
+      "attribution": "Source: Debasish Ray profile repository (debasishray16/debasishray16)",
+      "sha256": "edb18d2ee5a7e91c15784c0b860a85ce6d3f4b50c9c2cef4145eeb14cfac7ff5",
+      "usage": "optional visual reference asset for documentation, demos, or themed builds",
+      "verified_at": "2026-09-22"
     }
   ]
 }

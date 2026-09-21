@@ -8,7 +8,7 @@ The profile metadata was reviewed on 2026-09-22. Public profile page: `https://g
 
 ## Usage policy
 
-This repository does not bundle the profile avatar, personal photographs, logos, or copied profile text. A public URL is not automatically a license to redistribute an image. If a product-specific build wants to use an external asset, record its URL, license or permission, attribution, checksum, and intended use in an asset manifest before shipping.
+This repository does not bundle the profile avatar, personal photographs, logos, or copied profile text. It does include two explicitly marked anime reference assets under `assets/anime/`: `Beta.jpg` and `Solo-Leveling-PNG.png`, copied from the source repository at the user’s request. The source repository does not state a license for these images; attribution and SHA-256 checksums are recorded, and permission or a verified license is required before commercial redistribution. A public URL is not automatically a license to redistribute an image. If a product-specific build wants to use another external asset, record its URL, license or permission, attribution, checksum, and intended use in an asset manifest before shipping.
 
 ## Asset manifest shape
 
