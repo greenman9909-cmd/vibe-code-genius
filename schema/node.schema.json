@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vibe-code-genius.dev/schema/node.schema.json",
+  "title": "node",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "tier": {
+      "type": "integer"
+    },
+    "prereqs": {
+      "type": "array"
+    },
+    "parallel_with": {
+      "type": "array"
+    },
+    "input": {
+      "type": "string"
+    },
+    "output": {
+      "type": "string"
+    },
+    "model": {
+      "type": "string"
+    },
+    "max_response_tokens": {
+      "type": "integer"
+    },
+    "version": {
+      "type": "string"
+    },
+    "skill_file": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "id",
+    "name",
+    "tier",
+    "prereqs",
+    "parallel_with",
+    "input",
+    "output",
+    "model",
+    "max_response_tokens",
+    "version",
+    "skill_file"
+  ],
+  "$defs": {
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "complete",
+        "blocked",
+        "failed"
+      ]
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "artifact": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  }
+}

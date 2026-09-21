@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vibe-code-genius.dev/schema/repair-report.schema.json",
+  "title": "repair-report",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "tools_touched": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "fixes_applied": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "regressions_added": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "unfixed": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "skipped": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "tools_touched",
+    "fixes_applied",
+    "regressions_added",
+    "unfixed",
+    "skipped"
+  ],
+  "$defs": {
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "complete",
+        "blocked",
+        "failed"
+      ]
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "artifact": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  }
+}

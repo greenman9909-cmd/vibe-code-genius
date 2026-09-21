@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vibe-code-genius.dev/schema/session.schema.json",
+  "title": "session",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "session_id": {
+      "type": "string"
+    },
+    "started_at": {
+      "type": "string"
+    },
+    "intent": {
+      "type": "string"
+    },
+    "scope": {
+      "type": "string"
+    },
+    "active_skills": {
+      "type": "array"
+    },
+    "artifacts": {
+      "type": "array"
+    },
+    "checkpoints": {
+      "type": "array"
+    },
+    "budget": {
+      "type": "object"
+    },
+    "why_log": {
+      "type": "array"
+    }
+  },
+  "required": [
+    "session_id",
+    "started_at",
+    "intent",
+    "scope",
+    "active_skills",
+    "artifacts",
+    "checkpoints",
+    "budget",
+    "why_log"
+  ],
+  "$defs": {
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "complete",
+        "blocked",
+        "failed"
+      ]
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "artifact": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vibe-code-genius.dev/schema/wiring_report.schema.json",
+  "title": "wiring_report",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "unresolved": {
+      "type": "array"
+    },
+    "summary": {
+      "type": "object"
+    },
+    "exit_code": {
+      "type": "integer"
+    }
+  },
+  "required": [
+    "unresolved",
+    "summary",
+    "exit_code"
+  ],
+  "$defs": {
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "complete",
+        "blocked",
+        "failed"
+      ]
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "artifact": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  }
+}

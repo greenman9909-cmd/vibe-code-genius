@@ -1,0 +1,12 @@
+{
+  "reference_url": "https://example.test",
+  "acquired_at": "2026-09-21T00:00:00Z",
+  "acquirer": "fixture",
+  "stack": {},
+  "routes": [],
+  "sections": {},
+  "components": [],
+  "design_tokens": {},
+  "api_surface": [],
+  "external_hosts": []
+}

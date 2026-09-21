@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vibe-code-genius.dev/schema/security_report.schema.json",
+  "title": "security_report",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "categories": {
+      "type": "object"
+    },
+    "checks": {
+      "type": "array"
+    },
+    "pass": {
+      "type": "boolean"
+    },
+    "patches": {
+      "type": "array"
+    }
+  },
+  "required": [
+    "categories",
+    "checks",
+    "pass",
+    "patches"
+  ],
+  "$defs": {
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "complete",
+        "blocked",
+        "failed"
+      ]
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "artifact": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "node_06": {
+    "produces": "prompt.md@v1",
+    "consumers": [
+      "12",
+      "13",
+      "14"
+    ]
+  },
+  "node_11": {
+    "produces": "design-tokens.json@v1",
+    "consumers": [
+      "12"
+    ]
+  },
+  "node_11b": {
+    "produces": "slop-report.json@v1",
+    "consumers": [
+      "12",
+      "13"
+    ]
+  },
+  "node_02": {
+    "produces": "reference.json@v1",
+    "consumers": [
+      "07",
+      "08",
+      "09",
+      "10",
+      "11"
+    ]
+  },
+  "node_07a": {
+    "produces": "api_research.json@v1",
+    "consumers": [
+      "07c",
+      "07d",
+      "17a"
+    ]
+  },
+  "node_24b": {
+    "produces": "wiring_report.json@v1 + security_report.json@v1",
+    "consumers": [
+      "23b"
+    ]
+  },
+  "node_25": {
+    "produces": "repair-report.json@v1",
+    "consumers": []
+  }
+}

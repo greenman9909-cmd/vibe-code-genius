@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vibe-code-genius.dev/schema/structure.schema.json",
+  "title": "structure",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "reference_url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "acquired_at": {
+      "type": "string"
+    },
+    "acquirer": {
+      "type": "string"
+    },
+    "stack": {
+      "type": "object"
+    },
+    "routes": {
+      "type": "array"
+    },
+    "sections": {
+      "type": "object"
+    },
+    "components": {
+      "type": "array"
+    },
+    "design_tokens": {
+      "type": "object"
+    },
+    "api_surface": {
+      "type": "array"
+    },
+    "external_hosts": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "reference_url",
+    "acquired_at",
+    "acquirer",
+    "stack",
+    "routes",
+    "sections",
+    "components",
+    "design_tokens",
+    "api_surface",
+    "external_hosts"
+  ],
+  "$defs": {
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "complete",
+        "blocked",
+        "failed"
+      ]
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "artifact": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  }
+}

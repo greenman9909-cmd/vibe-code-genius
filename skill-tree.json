@@ -1,0 +1,1530 @@
+{
+  "version": "1.0.0",
+  "node_count": 60,
+  "declared_node_count": 42,
+  "nodes": [
+    {
+      "id": "01",
+      "name": "Intent Parse",
+      "tier": 1,
+      "prereqs": [],
+      "parallel_with": [
+        "01a",
+        "01b",
+        "01c",
+        "01d"
+      ],
+      "input": "free text",
+      "output": "intent.json",
+      "activates_when": "prerequisites complete for node 01",
+      "skill_file": "nodes/t1/01-intent-parse.md",
+      "artifact_schema": "schema/node.schema.json",
+      "model": "haiku",
+      "max_response_tokens": 1500,
+      "version": "1.0.0",
+      "consumers": [
+        "01a",
+        "01b",
+        "01c",
+        "01d"
+      ]
+    },
+    {
+      "id": "01a",
+      "name": "Suitability Check",
+      "tier": 1,
+      "prereqs": [
+        "01"
+      ],
+      "parallel_with": [
+        "01b"
+      ],
+      "input": "intent.json",
+      "output": "suitability.json",
+      "activates_when": "prerequisites complete for node 01a",
+      "skill_file": "nodes/t1/01a-suitability-check.md",
+      "artifact_schema": "schema/node.schema.json",
+      "model": "haiku",
+      "max_response_tokens": 800,
+      "version": "1.0.0",
+      "consumers": [
+        "01b"
+      ]
+    },
+    {
+      "id": "01b",
+      "name": "Scope Negotiation",
+      "tier": 1,
+      "prereqs": [
+        "01",
+        "01a"
+      ],
+      "parallel_with": [
+        "01c",
+        "01d"
+      ],
+      "input": "intent.json + suitability.json",
+      "output": "scope.json",
+      "activates_when": "prerequisites complete for node 01b",
+      "skill_file": "nodes/t1/01b-scope-negotiation.md",
+      "artifact_schema": "schema/node.schema.json",
+      "model": "haiku",
+      "max_response_tokens": 800,
+      "version": "1.0.0",
+      "consumers": [
+        "01c",
+        "01d"
+      ]
+    },
+    {
+      "id": "01c",
+      "name": "Budget Estimate",
+      "tier": 1,
+      "prereqs": [
+        "01b"
+      ],
+      "parallel_with": [],
+      "input": "scope.json",
+      "output": "estimate.json",
+      "activates_when": "prerequisites complete for node 01c",
+      "skill_file": "nodes/t1/01c-budget-estimate.md",
+      "artifact_schema": "schema/node.schema.json",
+      "model": "haiku",
+      "max_response_tokens": 500,
+      "version": "1.0.0",
+      "consumers": []
+    },
+    {
+      "id": "01d",
+      "name": "System Model",
+      "tier": 1,
+      "prereqs": [
+        "01b"
+      ],
+      "parallel_with": [
+        "02",
+        "02b"
+      ],
+      "input": "intent.json + scope.json",
+      "output": "system.json",
+      "activates_when": "prerequisites complete for node 01d",
+      "skill_file": "nodes/t1/01d-system-model.md",
+      "artifact_schema": "schema/node.schema.json",
+      "model": "sonnet",
+      "max_response_tokens": 4000,
+      "version": "1.0.0",
+      "consumers": [
+        "02",
+        "02b"
+      ]
+    },
+    {
+      "id": "02",
+      "name": "Reference Load",
+      "tier": 1,
+      "prereqs": [
+        "01"
+      ],
+      "parallel_with": [
+        "03",
+        "04",
+        "06",
+        "07",
+        "08",
+        "09",
+        "10",
+        "11"
+      ],
+      "input": "intent.json",
+      "output": "reference.json",
+      "activates_when": "prerequisites complete for node 02",
+      "skill_file": "nodes/t1/02-reference-load.md",
+      "artifact_schema": "schema/node.schema.json",
+      "model": "sonnet",
+      "max_response_tokens": 3000,
+      "version": "1.0.0",
+      "consumers": [
+        "03",
+        "04",
+        "06",
+        "07",
+        "08",
+        "09",
+        "10",
+        "11"
+      ]
+    },
+    {
+      "id": "02b",
+      "name": "Deep Reference Load",
+      "tier": 1,
+      "prereqs": [
+        "01"
+      ],
+      "parallel_with": [
+        "03",
+        "04",
+        "06",
+        "07",
+        "08",
+        "09",
+        "10",
+        "11"
+      ],
+      "input": "intent.json",
+      "output": "reference.json",
+      "activates_when": "prerequisites complete for node 02b",
+      "skill_file": "nodes/t1/02b-deep-reference-load.md",
+      "artifact_schema": "schema/node.schema.json",
+      "model": "sonnet",
+      "max_response_tokens": 3000,
+      "version": "1.0.0",
+      "consumers": [
+        "03",
+        "04",
+        "06",
+        "07",
+        "08",
+        "09",
+        "10",
+        "11"
+      ]
+    },
+    {
+      "id": "03",
+      "name": "Code Style Lock",
+      "tier": 1,
+      "prereqs": [
+        "02"
+      ],
+      "parallel_with": [
+        "04",
+        "06"
+      ],
+      "input": "reference.json",
+      "output": "style-rules.md",
+      "activates_when": "prerequisites complete for node 03",
+      "skill_file": "nodes/t1/03-code-style-lock.md",
+      "artifact_schema": "schema/node.schema.json",
+      "model": "haiku",
+      "max_response_tokens": 800,
+      "version": "1.0.0",
+      "consumers": [
+        "04",
+        "06"
+      ]
+    },
+    {
+      "id": "04",
+      "name": "File Tree Gen",
+      "tier": 1,
+      "prereqs": [
+        "03"
+      ],
+      "parallel_with": [
+        "04a",
+        "05"
+      ],
+      "input": "style-rules.md",
+      "output": "file-tree.md",
+      "activates_when": "prerequisites complete for node 04",
+      "skill_file": "nodes/t1/04-file-tree-gen.md",
+      "artifact_schema": "schema/node.schema.json",
+      "model": "sonnet",
+      "max_response_tokens": 2500,
+      "version": "1.0.0",
+      "consumers": [
+        "04a",
+        "05"
+      ]
+    },
+    {
+      "id": "04a",
+      "name": "Completeness Manifest",
+      "tier": 1,
+      "prereqs": [
+        "04"
+      ],
+      "parallel_with": [
+        "12",
+        "13",
+        "24"
+      ],
+      "input": "file-tree.md",
+      "output": "manifest.json",
+      "activates_when": "prerequisites complete for node 04a",
+      "skill_file": "nodes/t1/04a-completeness-manifest.md",
+      "artifact_schema": "schema/node.schema.json",
+      "model": "sonnet",
+      "max_response_tokens": 2000,
+      "version": "1.0.0",
+      "consumers": [
+        "12",
+        "13",
+        "24"
+      ]
+    },
+    {
+      "id": "05",
+      "name": "Repo Scaffolder",
+      "tier": 1,
+      "prereqs": [
+        "04"
+      ],
+      "parallel_with": [
+        "06",
+        "07e",
+        "20"
+      ],
+      "input": "file-tree.md",
+      "output": "scaffold/",
+      "activates_when": "prerequisites complete for node 05",
+      "skill_file": "nodes/t1/05-repo-scaffolder.md",
+      "artifact_schema": "schema/node.schema.json",
+      "model": "sonnet",
+      "max_response_tokens": 2500,
+      "version": "1.0.0",
+      "consumers": [
+        "06",
+        "07e",
+        "20"
+      ]
+    },
+    {
+      "id": "06",
+      "name": "Prompt Composer",
+      "tier": 1,
+      "prereqs": [
+        "02",
+        "03",
+        "04",
+        "05"
+      ],
+      "parallel_with": [
+        "06a",
+        "07",
+        "12",
+        "13",
+        "14"
+      ],
+      "input": "reference.json + style-rules.md + file-tree.md",
+      "output": "prompt.md + handoff.md",
+      "activates_when": "prerequisites complete for node 06",
+      "skill_file": "nodes/t1/06-prompt-composer.md",
+      "artifact_schema": "schema/node.schema.json",
+      "model": "sonnet",
+      "max_response_tokens": 5000,
+      "version": "1.0.0",
+      "consumers": [
+        "06a",
+        "07",
+        "12",
+        "13",
+        "14"
+      ]
+    },
+    {
+      "id": "06a",
+      "name": "Design Commitment",
+      "tier": 1,
+      "prereqs": [
+        "06"
+      ],
+      "parallel_with": [],
+      "input": "prompt.md",
+      "output": "design-commitment.md",
+      "activates_when": "prerequisites complete for node 06a",
+      "skill_file": "nodes/t1/06a-design-commitment.md",
+      "artifact_schema": "schema/node.schema.json",
+      "model": "haiku",
+      "max_response_tokens": 800,
+      "version": "1.0.0",
+      "consumers": []
+    },
+    {
+      "id": "07",
+      "name": "API Surface",
+      "tier": 2,
+      "prereqs": [
+        "02"
+      ],
+      "parallel_with": [
+        "07c",
+        "07d",
+        "07e",
+        "14",
+        "17"
+      ],
+      "input": "reference.json.api_surface",
+      "output": "api_client + types",
+      "activates_when": "prerequisites complete for node 07",
+      "skill_file": "nodes/t2/07-api-surface.md",
+      "artifact_schema": "schema/node.schema.json",
+      "model": "sonnet",
+      "max_response_tokens": 6000,
+      "version": "1.0.0",
+      "consumers": [
+        "07c",
+        "07d",
+        "07e",
+        "14",
+        "17"
+      ]
+    },
+    {
+      "id": "07a",
+      "name": "API Research",
+      "tier": 2,
+      "prereqs": [
+        "02"
+      ],
+      "parallel_with": [
+        "07c",
+        "07d",
+        "17a"
+      ],
+      "input": "endpoints.txt",
+      "output": "api_research.json",
+      "activates_when": "prerequisites complete for node 07a",
+      "skill_file": "nodes/t2/07a-api-research.md",
+      "artifact_schema": "schema/node.schema.json",
+      "model": "sonnet",
+      "max_response_tokens": 4500,
+      "version": "1.0.0",
+      "consumers": [
+        "07c",
+        "07d",
+        "17a"
+      ]
+    },
+    {
+      "id": "07b",
+      "name": "Third-Party API Research",
+      "tier": 2,
+      "prereqs": [
+        "01d"
+      ],
+      "parallel_with": [
+        "07c",
+        "07g",
+        "17a"
+      ],
+      "input": "system.json.integrations",
+      "output": "integrations/*.md",
+      "activates_when": "prerequisites complete for node 07b",
+      "skill_file": "nodes/t2/07b-third-party-api-research.md",
+      "artifact_schema": "schema/node.schema.json",
+      "model": "sonnet",
+      "max_response_tokens": 3500,
+      "version": "1.0.0",
+      "consumers": [
+        "07c",
+        "07g",
+        "17a"
+      ]
+    },
+    {
+      "id": "07c",
+      "name": "Backend Architecture",
+      "tier": 2,
+      "prereqs": [
+        "07",
+        "07a",
+        "07b"
+      ],
+      "parallel_with": [
+        "07d",
+        "07e"
+      ],
+      "input": "API research + integrations",
+      "output": "backend-decision.md",
+      "activates_when": "prerequisites complete for node 07c",
+      "skill_file": "nodes/t2/07c-backend-architecture.md",
+      "artifact_schema": "schema/node.schema.json",
+      "model": "sonnet",
+      "max_response_tokens": 3500,
+      "version": "1.0.0",
+      "consumers": [
+        "07d",
+        "07e"
+      ]
+    },
+    {
+      "id": "07d",
+      "name": "API Design",
+      "tier": 2,
+      "prereqs": [
+        "07c"
+      ],
+      "parallel_with": [
+        "07e",
+        "07f",
+        "14",
+        "19a"
+      ],
+      "input": "backend-decision.md",
+      "output": "openapi.yaml",
+      "activates_when": "prerequisites complete for node 07d",
+      "skill_file": "nodes/t2/07d-api-design.md",
+      "artifact_schema": "schema/node.schema.json",
+      "model": "sonnet",
+      "max_response_tokens": 4000,
+      "version": "1.0.0",
+      "consumers": [
+        "07e",
+        "07f",
+        "14",
+        "19a"
+      ]
+    },
+    {
+      "id": "07e",
+      "name": "Backend Scaffold",
+      "tier": 2,
+      "prereqs": [
+        "05",
+        "07d"
+      ],
+      "parallel_with": [
+        "07f",
+        "07g",
+        "19a",
+        "20c"
+      ],
+      "input": "openapi.yaml + scaffold",
+      "output": "server + routes",
+      "activates_when": "prerequisites complete for node 07e",
+      "skill_file": "nodes/t2/07e-backend-scaffold.md",
+      "artifact_schema": "schema/node.schema.json",
+      "model": "sonnet",
+      "max_response_tokens": 5000,
+      "version": "1.0.0",
+      "consumers": [
+        "07f",
+        "07g",
+        "19a",
+        "20c"
+      ]
+    },
+    {
+      "id": "07f",
+      "name": "Handler Implementations",
+      "tier": 2,
+      "prereqs": [
+        "07e"
+      ],
+      "parallel_with": [
+        "19a",
+        "20c"
+      ],
+      "input": "server + openapi.yaml",
+      "output": "handlers/",
+      "activates_when": "prerequisites complete for node 07f",
+      "skill_file": "nodes/t2/07f-handler-implementations.md",
+      "artifact_schema": "schema/node.schema.json",
+      "model": "sonnet",
+      "max_response_tokens": 5000,
+      "version": "1.0.0",
+      "consumers": [
+        "19a",
+        "20c"
+      ]
+    },
+    {
+      "id": "07g",
+      "name": "Integration Wiring",
+      "tier": 2,
+      "prereqs": [
+        "07b",
+        "07e"
+      ],
+      "parallel_with": [
+        "19a",
+        "20c"
+      ],
+      "input": "integrations + server",
+      "output": "webhooks/",
+      "activates_when": "prerequisites complete for node 07g",
+      "skill_file": "nodes/t2/07g-integration-wiring.md",
+      "artifact_schema": "schema/node.schema.json",
+      "model": "sonnet",
+      "max_response_tokens": 4000,
+      "version": "1.0.0",
+      "consumers": [
+        "19a",
+        "20c"
+      ]
+    },
+    {
+      "id": "08",
+      "name": "Stack Fingerprint",
+      "tier": 2,
+      "prereqs": [
+        "02"
+      ],
+      "parallel_with": [
+        "11",
+        "05"
+      ],
+      "input": "reference.json.stack",
+      "output": "stack-decision.md",
+      "activates_when": "prerequisites complete for node 08",
+      "skill_file": "nodes/t2/08-stack-fingerprint.md",
+      "artifact_schema": "schema/node.schema.json",
+      "model": "haiku",
+      "max_response_tokens": 1200,
+      "version": "1.0.0",
+      "consumers": [
+        "11",
+        "05"
+      ]
+    },
+    {
+      "id": "09",
+      "name": "Route Extract",
+      "tier": 2,
+      "prereqs": [
+        "02"
+      ],
+      "parallel_with": [
+        "13",
+        "04a"
+      ],
+      "input": "reference.json.routes",
+      "output": "router config",
+      "activates_when": "prerequisites complete for node 09",
+      "skill_file": "nodes/t2/09-route-extract.md",
+      "artifact_schema": "schema/node.schema.json",
+      "model": "haiku",
+      "max_response_tokens": 1800,
+      "version": "1.0.0",
+      "consumers": [
+        "13",
+        "04a"
+      ]
+    },
+    {
+      "id": "10",
+      "name": "Section Detect",
+      "tier": 2,
+      "prereqs": [
+        "02"
+      ],
+      "parallel_with": [
+        "13",
+        "11"
+      ],
+      "input": "reference.json.sections",
+      "output": "sections.md + sections.json",
+      "activates_when": "prerequisites complete for node 10",
+      "skill_file": "nodes/t2/10-section-detect.md",
+      "artifact_schema": "schema/node.schema.json",
+      "model": "sonnet",
+      "max_response_tokens": 2500,
+      "version": "1.0.0",
+      "consumers": [
+        "13",
+        "11"
+      ]
+    },
+    {
+      "id": "11",
+      "name": "Design Tokens",
+      "tier": 2,
+      "prereqs": [
+        "02"
+      ],
+      "parallel_with": [
+        "11a",
+        "11b",
+        "11c",
+        "11d",
+        "12"
+      ],
+      "input": "reference.json.design_tokens",
+      "output": "design-tokens.json",
+      "activates_when": "prerequisites complete for node 11",
+      "skill_file": "nodes/t2/11-design-tokens.md",
+      "artifact_schema": "schema/node.schema.json",
+      "model": "sonnet",
+      "max_response_tokens": 3500,
+      "version": "1.0.0",
+      "consumers": [
+        "11a",
+        "11b",
+        "11c",
+        "11d",
+        "12"
+      ]
+    },
+    {
+      "id": "11a",
+      "name": "Design System Extract",
+      "tier": 2,
+      "prereqs": [
+        "02"
+      ],
+      "parallel_with": [
+        "11",
+        "12"
+      ],
+      "input": "reference.json + rendered pages",
+      "output": "design_system.json",
+      "activates_when": "prerequisites complete for node 11a",
+      "skill_file": "nodes/t2/11a-design-system-extract.md",
+      "artifact_schema": "schema/node.schema.json",
+      "model": "sonnet",
+      "max_response_tokens": 3000,
+      "version": "1.0.0",
+      "consumers": [
+        "11",
+        "12"
+      ]
+    },
+    {
+      "id": "11b",
+      "name": "Copy Cleanse",
+      "tier": 2,
+      "prereqs": [
+        "11"
+      ],
+      "parallel_with": [
+        "12",
+        "13"
+      ],
+      "input": "copy + design tokens",
+      "output": "slop-report.json",
+      "activates_when": "prerequisites complete for node 11b",
+      "skill_file": "nodes/t2/11b-copy-cleanse.md",
+      "artifact_schema": "schema/node.schema.json",
+      "model": "haiku",
+      "max_response_tokens": 1800,
+      "version": "1.0.0",
+      "consumers": [
+        "12",
+        "13"
+      ]
+    },
+    {
+      "id": "11c",
+      "name": "Design Slop Lint",
+      "tier": 2,
+      "prereqs": [
+        "11"
+      ],
+      "parallel_with": [
+        "11d",
+        "12"
+      ],
+      "input": "design tokens + references",
+      "output": "slop-lint.json",
+      "activates_when": "prerequisites complete for node 11c",
+      "skill_file": "nodes/t2/11c-design-slop-lint.md",
+      "artifact_schema": "schema/node.schema.json",
+      "model": "haiku",
+      "max_response_tokens": 1500,
+      "version": "1.0.0",
+      "consumers": [
+        "11d",
+        "12"
+      ]
+    },
+    {
+      "id": "11d",
+      "name": "Design Contract",
+      "tier": 2,
+      "prereqs": [
+        "11",
+        "11c"
+      ],
+      "parallel_with": [
+        "12",
+        "13",
+        "12b"
+      ],
+      "input": "design tokens + slop lint",
+      "output": "design-contract.md",
+      "activates_when": "prerequisites complete for node 11d",
+      "skill_file": "nodes/t2/11d-design-contract.md",
+      "artifact_schema": "schema/node.schema.json",
+      "model": "sonnet",
+      "max_response_tokens": 2200,
+      "version": "1.0.0",
+      "consumers": [
+        "12",
+        "13",
+        "12b"
+      ]
+    },
+    {
+      "id": "12",
+      "name": "Component Kit",
+      "tier": 3,
+      "prereqs": [
+        "06",
+        "11",
+        "11d"
+      ],
+      "parallel_with": [
+        "12a",
+        "12b",
+        "13",
+        "14",
+        "15",
+        "16"
+      ],
+      "input": "design contract + manifest",
+      "output": "components/",
+      "activates_when": "prerequisites complete for node 12",
+      "skill_file": "nodes/t3/12-component-kit.md",
+      "artifact_schema": "schema/node.schema.json",
+      "model": "sonnet",
+      "max_response_tokens": 5000,
+      "version": "1.0.0",
+      "consumers": [
+        "12a",
+        "12b",
+        "13",
+        "14",
+        "15",
+        "16"
+      ]
+    },
+    {
+      "id": "12a",
+      "name": "Motion Layer",
+      "tier": 3,
+      "prereqs": [
+        "12"
+      ],
+      "parallel_with": [
+        "12b",
+        "13"
+      ],
+      "input": "component kit",
+      "output": "motion-layer.md",
+      "activates_when": "prerequisites complete for node 12a",
+      "skill_file": "nodes/t3/12a-motion-layer.md",
+      "artifact_schema": "schema/node.schema.json",
+      "model": "haiku",
+      "max_response_tokens": 1500,
+      "version": "1.0.0",
+      "consumers": [
+        "12b",
+        "13"
+      ]
+    },
+    {
+      "id": "12b",
+      "name": "Static Verify",
+      "tier": 3,
+      "prereqs": [
+        "12",
+        "11d"
+      ],
+      "parallel_with": [
+        "13",
+        "24b"
+      ],
+      "input": "source tree",
+      "output": "static-report.json",
+      "activates_when": "prerequisites complete for node 12b",
+      "skill_file": "nodes/t3/12b-static-verify.md",
+      "artifact_schema": "schema/node.schema.json",
+      "model": "sonnet",
+      "max_response_tokens": 2500,
+      "version": "1.0.0",
+      "consumers": [
+        "13",
+        "24b"
+      ]
+    },
+    {
+      "id": "13",
+      "name": "Route Builder",
+      "tier": 3,
+      "prereqs": [
+        "09",
+        "10",
+        "12"
+      ],
+      "parallel_with": [
+        "13a",
+        "14",
+        "15",
+        "16"
+      ],
+      "input": "router + components",
+      "output": "pages/",
+      "activates_when": "prerequisites complete for node 13",
+      "skill_file": "nodes/t3/13-route-builder.md",
+      "artifact_schema": "schema/node.schema.json",
+      "model": "sonnet",
+      "max_response_tokens": 5000,
+      "version": "1.0.0",
+      "consumers": [
+        "13a",
+        "14",
+        "15",
+        "16"
+      ]
+    },
+    {
+      "id": "13a",
+      "name": "Consistency Check",
+      "tier": 3,
+      "prereqs": [
+        "13"
+      ],
+      "parallel_with": [
+        "14",
+        "15"
+      ],
+      "input": "page + design contract",
+      "output": "consistency-report.json",
+      "activates_when": "prerequisites complete for node 13a",
+      "skill_file": "nodes/t3/13a-consistency-check.md",
+      "artifact_schema": "schema/node.schema.json",
+      "model": "haiku",
+      "max_response_tokens": 1800,
+      "version": "1.0.0",
+      "consumers": [
+        "14",
+        "15"
+      ]
+    },
+    {
+      "id": "14",
+      "name": "Data Fetching",
+      "tier": 3,
+      "prereqs": [
+        "07",
+        "13"
+      ],
+      "parallel_with": [
+        "15",
+        "16"
+      ],
+      "input": "API contract + pages",
+      "output": "data-hooks/",
+      "activates_when": "prerequisites complete for node 14",
+      "skill_file": "nodes/t3/14-data-fetching.md",
+      "artifact_schema": "schema/node.schema.json",
+      "model": "sonnet",
+      "max_response_tokens": 3000,
+      "version": "1.0.0",
+      "consumers": [
+        "15",
+        "16"
+      ]
+    },
+    {
+      "id": "15",
+      "name": "Form Logic",
+      "tier": 3,
+      "prereqs": [
+        "13",
+        "14"
+      ],
+      "parallel_with": [
+        "16",
+        "18"
+      ],
+      "input": "pages + data hooks",
+      "output": "form-flows/",
+      "activates_when": "prerequisites complete for node 15",
+      "skill_file": "nodes/t3/15-form-logic.md",
+      "artifact_schema": "schema/node.schema.json",
+      "model": "sonnet",
+      "max_response_tokens": 3000,
+      "version": "1.0.0",
+      "consumers": [
+        "16",
+        "18"
+      ]
+    },
+    {
+      "id": "16",
+      "name": "State Patterns",
+      "tier": 3,
+      "prereqs": [
+        "13",
+        "14"
+      ],
+      "parallel_with": [
+        "16a",
+        "18"
+      ],
+      "input": "pages + data hooks",
+      "output": "state-model.md",
+      "activates_when": "prerequisites complete for node 16",
+      "skill_file": "nodes/t3/16-state-patterns.md",
+      "artifact_schema": "schema/node.schema.json",
+      "model": "sonnet",
+      "max_response_tokens": 3000,
+      "version": "1.0.0",
+      "consumers": [
+        "16a",
+        "18"
+      ]
+    },
+    {
+      "id": "16a",
+      "name": "Runtime Verify",
+      "tier": 3,
+      "prereqs": [
+        "16"
+      ],
+      "parallel_with": [
+        "18c",
+        "24b"
+      ],
+      "input": "running app",
+      "output": "runtime-report.json",
+      "activates_when": "prerequisites complete for node 16a",
+      "skill_file": "nodes/t3/16a-runtime-verify.md",
+      "artifact_schema": "schema/node.schema.json",
+      "model": "sonnet",
+      "max_response_tokens": 3500,
+      "version": "1.0.0",
+      "consumers": [
+        "18c",
+        "24b"
+      ]
+    },
+    {
+      "id": "17",
+      "name": "DB Schema",
+      "tier": 4,
+      "prereqs": [
+        "07"
+      ],
+      "parallel_with": [
+        "17a",
+        "17b",
+        "07f"
+      ],
+      "input": "api surface",
+      "output": "migrations/",
+      "activates_when": "prerequisites complete for node 17",
+      "skill_file": "nodes/t4/17-db-schema.md",
+      "artifact_schema": "schema/node.schema.json",
+      "model": "sonnet",
+      "max_response_tokens": 3000,
+      "version": "1.0.0",
+      "consumers": [
+        "17a",
+        "17b",
+        "07f"
+      ]
+    },
+    {
+      "id": "17a",
+      "name": "Schema Deep Infer",
+      "tier": 4,
+      "prereqs": [
+        "07a",
+        "07b",
+        "17"
+      ],
+      "parallel_with": [
+        "17b",
+        "07f"
+      ],
+      "input": "system + api research",
+      "output": "schema-deep.json",
+      "activates_when": "prerequisites complete for node 17a",
+      "skill_file": "nodes/t4/17a-schema-deep-infer.md",
+      "artifact_schema": "schema/node.schema.json",
+      "model": "sonnet",
+      "max_response_tokens": 3500,
+      "version": "1.0.0",
+      "consumers": [
+        "17b",
+        "07f"
+      ]
+    },
+    {
+      "id": "17b",
+      "name": "Migration Strategy",
+      "tier": 4,
+      "prereqs": [
+        "17"
+      ],
+      "parallel_with": [
+        "07f",
+        "20c"
+      ],
+      "input": "database schema",
+      "output": "migration-strategy.md",
+      "activates_when": "prerequisites complete for node 17b",
+      "skill_file": "nodes/t4/17b-migration-strategy.md",
+      "artifact_schema": "schema/node.schema.json",
+      "model": "sonnet",
+      "max_response_tokens": 1800,
+      "version": "1.0.0",
+      "consumers": [
+        "07f",
+        "20c"
+      ]
+    },
+    {
+      "id": "18",
+      "name": "Auth Layer",
+      "tier": 4,
+      "prereqs": [
+        "15",
+        "16"
+      ],
+      "parallel_with": [
+        "18b",
+        "18c"
+      ],
+      "input": "auth requirements + state",
+      "output": "auth/",
+      "activates_when": "prerequisites complete for node 18",
+      "skill_file": "nodes/t4/18-auth-layer.md",
+      "artifact_schema": "schema/node.schema.json",
+      "model": "sonnet",
+      "max_response_tokens": 4000,
+      "version": "1.0.0",
+      "consumers": [
+        "18b",
+        "18c"
+      ]
+    },
+    {
+      "id": "18b",
+      "name": "Security Pass",
+      "tier": 4,
+      "prereqs": [
+        "18"
+      ],
+      "parallel_with": [
+        "18d",
+        "18e"
+      ],
+      "input": "auth + backend",
+      "output": "security-report.json",
+      "activates_when": "prerequisites complete for node 18b",
+      "skill_file": "nodes/t4/18b-security-pass.md",
+      "artifact_schema": "schema/node.schema.json",
+      "model": "sonnet",
+      "max_response_tokens": 3500,
+      "version": "1.0.0",
+      "consumers": [
+        "18d",
+        "18e"
+      ]
+    },
+    {
+      "id": "18c",
+      "name": "Edge Verify",
+      "tier": 4,
+      "prereqs": [
+        "16a"
+      ],
+      "parallel_with": [
+        "18d",
+        "24b"
+      ],
+      "input": "runtime report",
+      "output": "edge-report.json",
+      "activates_when": "prerequisites complete for node 18c",
+      "skill_file": "nodes/t4/18c-edge-verify.md",
+      "artifact_schema": "schema/node.schema.json",
+      "model": "sonnet",
+      "max_response_tokens": 2500,
+      "version": "1.0.0",
+      "consumers": [
+        "18d",
+        "24b"
+      ]
+    },
+    {
+      "id": "18d",
+      "name": "Security Hardening",
+      "tier": 4,
+      "prereqs": [
+        "18b",
+        "18c"
+      ],
+      "parallel_with": [
+        "18e",
+        "20d"
+      ],
+      "input": "security report + app",
+      "output": "harden_report.json",
+      "activates_when": "prerequisites complete for node 18d",
+      "skill_file": "nodes/t4/18d-security-hardening.md",
+      "artifact_schema": "schema/node.schema.json",
+      "model": "sonnet",
+      "max_response_tokens": 3000,
+      "version": "1.0.0",
+      "consumers": [
+        "18e",
+        "20d"
+      ]
+    },
+    {
+      "id": "18e",
+      "name": "Security Verify",
+      "tier": 4,
+      "prereqs": [
+        "18d"
+      ],
+      "parallel_with": [
+        "23b"
+      ],
+      "input": "harden report + preview",
+      "output": "security-verify.json",
+      "activates_when": "prerequisites complete for node 18e",
+      "skill_file": "nodes/t4/18e-security-verify.md",
+      "artifact_schema": "schema/node.schema.json",
+      "model": "sonnet",
+      "max_response_tokens": 2500,
+      "version": "1.0.0",
+      "consumers": [
+        "23b"
+      ]
+    },
+    {
+      "id": "19",
+      "name": "Test Scaffold",
+      "tier": 4,
+      "prereqs": [
+        "12",
+        "14",
+        "18"
+      ],
+      "parallel_with": [
+        "19a",
+        "24"
+      ],
+      "input": "app",
+      "output": "tests/",
+      "activates_when": "prerequisites complete for node 19",
+      "skill_file": "nodes/t4/19-test-scaffold.md",
+      "artifact_schema": "schema/node.schema.json",
+      "model": "sonnet",
+      "max_response_tokens": 3000,
+      "version": "1.0.0",
+      "consumers": [
+        "19a",
+        "24"
+      ]
+    },
+    {
+      "id": "19a",
+      "name": "Backend Test Suite",
+      "tier": 4,
+      "prereqs": [
+        "07e",
+        "07f",
+        "07g",
+        "19"
+      ],
+      "parallel_with": [
+        "24"
+      ],
+      "input": "backend + contracts",
+      "output": "backend-test-report.json",
+      "activates_when": "prerequisites complete for node 19a",
+      "skill_file": "nodes/t4/19a-backend-test-suite.md",
+      "artifact_schema": "schema/node.schema.json",
+      "model": "sonnet",
+      "max_response_tokens": 3000,
+      "version": "1.0.0",
+      "consumers": [
+        "24"
+      ]
+    },
+    {
+      "id": "20",
+      "name": "Deploy Wiring",
+      "tier": 4,
+      "prereqs": [
+        "05",
+        "07e"
+      ],
+      "parallel_with": [
+        "20a",
+        "20b",
+        "20c",
+        "20d",
+        "24"
+      ],
+      "input": "app + backend",
+      "output": "deployment/",
+      "activates_when": "prerequisites complete for node 20",
+      "skill_file": "nodes/t4/20-deploy-wiring.md",
+      "artifact_schema": "schema/node.schema.json",
+      "model": "sonnet",
+      "max_response_tokens": 3000,
+      "version": "1.0.0",
+      "consumers": [
+        "20a",
+        "20b",
+        "20c",
+        "20d",
+        "24"
+      ]
+    },
+    {
+      "id": "20a",
+      "name": "Production Readiness",
+      "tier": 4,
+      "prereqs": [
+        "20"
+      ],
+      "parallel_with": [
+        "23b"
+      ],
+      "input": "deployment + routes",
+      "output": "production_checklist.json",
+      "activates_when": "prerequisites complete for node 20a",
+      "skill_file": "nodes/t4/20a-production-readiness.md",
+      "artifact_schema": "schema/node.schema.json",
+      "model": "sonnet",
+      "max_response_tokens": 2500,
+      "version": "1.0.0",
+      "consumers": [
+        "23b"
+      ]
+    },
+    {
+      "id": "20b",
+      "name": "Performance Pass",
+      "tier": 4,
+      "prereqs": [
+        "20"
+      ],
+      "parallel_with": [
+        "23b"
+      ],
+      "input": "preview build",
+      "output": "performance-report.json",
+      "activates_when": "prerequisites complete for node 20b",
+      "skill_file": "nodes/t4/20b-performance-pass.md",
+      "artifact_schema": "schema/node.schema.json",
+      "model": "sonnet",
+      "max_response_tokens": 2200,
+      "version": "1.0.0",
+      "consumers": [
+        "23b"
+      ]
+    },
+    {
+      "id": "20c",
+      "name": "API Deployment",
+      "tier": 4,
+      "prereqs": [
+        "07f",
+        "07g",
+        "20"
+      ],
+      "parallel_with": [
+        "23b"
+      ],
+      "input": "backend + deployment",
+      "output": "api-deployment.md",
+      "activates_when": "prerequisites complete for node 20c",
+      "skill_file": "nodes/t4/20c-api-deployment.md",
+      "artifact_schema": "schema/node.schema.json",
+      "model": "sonnet",
+      "max_response_tokens": 2400,
+      "version": "1.0.0",
+      "consumers": [
+        "23b"
+      ]
+    },
+    {
+      "id": "20d",
+      "name": "Deploy Hardening",
+      "tier": 4,
+      "prereqs": [
+        "20",
+        "18d"
+      ],
+      "parallel_with": [
+        "23b"
+      ],
+      "input": "deployment + security",
+      "output": "deploy-hardening.md",
+      "activates_when": "prerequisites complete for node 20d",
+      "skill_file": "nodes/t4/20d-deploy-hardening.md",
+      "artifact_schema": "schema/node.schema.json",
+      "model": "sonnet",
+      "max_response_tokens": 2200,
+      "version": "1.0.0",
+      "consumers": [
+        "23b"
+      ]
+    },
+    {
+      "id": "24",
+      "name": "Build Verify",
+      "tier": 4,
+      "prereqs": [
+        "19",
+        "19a",
+        "20"
+      ],
+      "parallel_with": [
+        "24b"
+      ],
+      "input": "scaffold output",
+      "output": "build-report.json",
+      "activates_when": "prerequisites complete for node 24",
+      "skill_file": "nodes/t4/24-build-verify.md",
+      "artifact_schema": "schema/node.schema.json",
+      "model": "sonnet",
+      "max_response_tokens": 3000,
+      "version": "1.0.0",
+      "consumers": [
+        "24b"
+      ]
+    },
+    {
+      "id": "24b",
+      "name": "Bug Loop Orchestrator",
+      "tier": 4,
+      "prereqs": [
+        "12b",
+        "16a",
+        "18c",
+        "24"
+      ],
+      "parallel_with": [
+        "23b"
+      ],
+      "input": "static + runtime + edge reports",
+      "output": "wiring_report.json + security_report.json",
+      "activates_when": "prerequisites complete for node 24b",
+      "skill_file": "nodes/t4/24b-bug-loop-orchestrator.md",
+      "artifact_schema": "schema/node.schema.json",
+      "model": "opus",
+      "max_response_tokens": 4000,
+      "version": "1.0.0",
+      "consumers": [
+        "23b"
+      ]
+    },
+    {
+      "id": "21",
+      "name": "Multi-Agent",
+      "tier": 5,
+      "prereqs": [
+        "24"
+      ],
+      "parallel_with": [
+        "22",
+        "23"
+      ],
+      "input": "session + artifacts",
+      "output": "multi-agent-report.json",
+      "activates_when": "prerequisites complete for node 21",
+      "skill_file": "nodes/t5/21-multi-agent.md",
+      "artifact_schema": "schema/node.schema.json",
+      "model": "opus",
+      "max_response_tokens": 3000,
+      "version": "1.0.0",
+      "consumers": [
+        "22",
+        "23"
+      ]
+    },
+    {
+      "id": "22",
+      "name": "Diff-Merge",
+      "tier": 5,
+      "prereqs": [
+        "21"
+      ],
+      "parallel_with": [
+        "23",
+        "23b"
+      ],
+      "input": "reference + build",
+      "output": "diff-report.json + correction-prompt.md",
+      "activates_when": "prerequisites complete for node 22",
+      "skill_file": "nodes/t5/22-diff-merge.md",
+      "artifact_schema": "schema/node.schema.json",
+      "model": "opus",
+      "max_response_tokens": 3000,
+      "version": "1.0.0",
+      "consumers": [
+        "23",
+        "23b"
+      ]
+    },
+    {
+      "id": "23",
+      "name": "Self-Refine",
+      "tier": 5,
+      "prereqs": [
+        "22"
+      ],
+      "parallel_with": [
+        "23b"
+      ],
+      "input": "diff report + build",
+      "output": "refined artifacts",
+      "activates_when": "prerequisites complete for node 23",
+      "skill_file": "nodes/t5/23-self-refine.md",
+      "artifact_schema": "schema/node.schema.json",
+      "model": "opus",
+      "max_response_tokens": 3500,
+      "version": "1.0.0",
+      "consumers": [
+        "23b"
+      ]
+    },
+    {
+      "id": "23b",
+      "name": "Final Ship Gate",
+      "tier": 5,
+      "prereqs": [
+        "18e",
+        "20a",
+        "20b",
+        "20c",
+        "20d",
+        "22",
+        "23"
+      ],
+      "parallel_with": [
+        "25"
+      ],
+      "input": "full build",
+      "output": "ship-report.json",
+      "activates_when": "prerequisites complete for node 23b",
+      "skill_file": "nodes/t5/23b-final-ship-gate.md",
+      "artifact_schema": "schema/node.schema.json",
+      "model": "opus",
+      "max_response_tokens": 4000,
+      "version": "1.0.0",
+      "consumers": [
+        "25"
+      ]
+    },
+    {
+      "id": "25",
+      "name": "Post-Session Repair",
+      "tier": 5,
+      "prereqs": [
+        "23b"
+      ],
+      "parallel_with": [],
+      "input": "session.log + ship report",
+      "output": "repair-report.json",
+      "activates_when": "prerequisites complete for node 25",
+      "skill_file": "nodes/t5/25-post-session-repair.md",
+      "artifact_schema": "schema/node.schema.json",
+      "model": "opus",
+      "max_response_tokens": 3500,
+      "version": "1.0.0",
+      "consumers": []
+    }
+  ]
+}

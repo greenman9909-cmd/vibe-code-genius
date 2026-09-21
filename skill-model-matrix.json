@@ -1,0 +1,10 @@
+{
+  "claude-sonnet-4.5": "supported",
+  "claude-opus-4.5": "supported",
+  "claude-haiku-4.5": "supported",
+  "gpt-5": "supported",
+  "gpt-5-mini": "degraded",
+  "gemini-2.5-pro": "supported",
+  "gemini-2.5-flash": "degraded",
+  "cursor-composer-1": "partial"
+}
