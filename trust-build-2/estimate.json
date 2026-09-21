@@ -1,0 +1,12 @@
+{
+  "status": "complete",
+  "version": "1.0.0",
+  "tier_stop": 2,
+  "total_nodes": 30,
+  "tokens_estimated": 49000,
+  "time_budget_minutes": 15,
+  "evidence": [
+    "Budget estimated across 13 Tier 1 nodes and 17 Tier 2 nodes",
+    "Allocation accounts for prompt synthesis, design contract emission, and schema validations"
+  ]
+}

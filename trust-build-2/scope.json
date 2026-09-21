@@ -1,0 +1,18 @@
+{
+  "status": "complete",
+  "version": "1.0.0",
+  "deliverable": "landing-page",
+  "tier_stop": 2,
+  "routes_include": [
+    "/",
+    "/pricing",
+    "/about",
+    "/blog",
+    "/contact"
+  ],
+  "evidence": [
+    "Deliverable locked at landing-page with 5 declared routes",
+    "Execution bounded to tier_stop: 2",
+    "Derived from intent.json and confirmed against suitability assessment"
+  ]
+}

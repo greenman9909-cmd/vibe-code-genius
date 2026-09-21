@@ -1,0 +1,368 @@
+{
+  "version": "1.0.0",
+  "status": "complete",
+  "reference_url": "https://railway.app",
+  "acquired_at": "2026-09-22T00:48:00Z",
+  "acquirer": "spa-ripper/2.4.1 (with SiteMap-X and direct HAR extraction fallback)",
+  "stack": {
+    "framework": "Next.js 14.2 (App Router)",
+    "language": "TypeScript 5.4",
+    "rendering": "React Server Components with Client boundary islands for canvas interaction",
+    "styling": "Tailwind CSS v3.4 + Custom CSS Modules for GPU shaders",
+    "icons": "Lucide React + Radix UI Icons",
+    "motion": "Framer Motion 11.0",
+    "state": "Zustand (canvas viewport transform and active node selection)",
+    "font_primary": "Geist Sans",
+    "font_mono": "Geist Mono",
+    "hosting": "Railway / Edge Network"
+  },
+  "routes": [
+    {
+      "path": "/",
+      "type": "landing-page",
+      "title": "Railway \u00b7 Bring your code, we'll handle the rest",
+      "description": "Interactive infrastructure canvas showcasing connected microservices, persistent databases, and real-time logs.",
+      "sections_count": 8,
+      "interactive_elements": [
+        "Infinite draggable canvas",
+        "Reactive node connection wires",
+        "Live deployment status telemetry badge",
+        "Terminal execution preview",
+        "Waitlist email capture"
+      ]
+    },
+    {
+      "path": "/pricing",
+      "type": "pricing-page",
+      "title": "Pricing \u00b7 Pay for what you use",
+      "description": "Resource usage sliders for vCPU and RAM with Hobby, Pro, and Enterprise plan comparisons.",
+      "sections_count": 5,
+      "interactive_elements": [
+        "vCPU allocation slider",
+        "RAM allocation slider",
+        "Monthly estimation counter",
+        "Plan comparison toggle",
+        "FAQ accordion collapsible"
+      ]
+    },
+    {
+      "path": "/about",
+      "type": "about-page",
+      "title": "About \u00b7 The Cloud Infrastructure Platform",
+      "description": "The mission to eliminate infrastructure toil and provide instant deployment joy.",
+      "sections_count": 4,
+      "interactive_elements": [
+        "Timeline roadmap cards",
+        "Team founder profiles",
+        "Open-source commitment manifesto"
+      ]
+    },
+    {
+      "path": "/blog",
+      "type": "blog-index",
+      "title": "Blog \u00b7 Engineering and Product Announcements",
+      "description": "Technical deep dives on networking, edge execution, and database scaling.",
+      "sections_count": 4,
+      "interactive_elements": [
+        "Topic filter tags",
+        "Featured post hero banner",
+        "Pagination / Infinite scroll grid",
+        "Newsletter subscription widget"
+      ]
+    },
+    {
+      "path": "/contact",
+      "type": "contact-page",
+      "title": "Contact \u00b7 Reach the Railway Team",
+      "description": "Sales inquiries, enterprise migration assistance, and security reviews.",
+      "sections_count": 3,
+      "interactive_elements": [
+        "Interactive inquiry form",
+        "Category dropdown selector",
+        "Automated Honeypot bot protection",
+        "Office location card"
+      ]
+    }
+  ],
+  "sections": {
+    "navbar": {
+      "type": "header-navigation",
+      "fixed": true,
+      "blur": true,
+      "links": [
+        {
+          "label": "Features",
+          "href": "/#features"
+        },
+        {
+          "label": "Pricing",
+          "href": "/pricing"
+        },
+        {
+          "label": "About",
+          "href": "/about"
+        },
+        {
+          "label": "Blog",
+          "href": "/blog"
+        },
+        {
+          "label": "Contact",
+          "href": "/contact"
+        }
+      ],
+      "actions": [
+        {
+          "label": "Join Waitlist",
+          "variant": "primary-violet",
+          "target": "#waitlist"
+        }
+      ]
+    },
+    "canvas_hero": {
+      "type": "interactive-hero",
+      "headline": "Instant Infrastructure. Zero Toil.",
+      "subheadline": "Build, deploy, and scale microservices and relational datastores on an infinite canvas with deterministic contract verification.",
+      "canvas_nodes": [
+        {
+          "id": "web-frontend",
+          "type": "service",
+          "label": "Next.js WebApp",
+          "port": 3000,
+          "status": "active"
+        },
+        {
+          "id": "auth-service",
+          "type": "service",
+          "label": "Auth Worker",
+          "port": 4000,
+          "status": "active"
+        },
+        {
+          "id": "primary-db",
+          "type": "database",
+          "label": "PostgreSQL 16",
+          "port": 5432,
+          "status": "active"
+        },
+        {
+          "id": "cache-store",
+          "type": "cache",
+          "label": "Redis 7 Cluster",
+          "port": 6379,
+          "status": "active"
+        }
+      ]
+    },
+    "terminal_dock": {
+      "type": "developer-telemetry",
+      "title": "Live Provisioning Stream",
+      "mock_logs": [
+        "railway up --service backend --env production",
+        "Resolving build tree dependencies... [DONE 142ms]",
+        "Generating deterministic container fingerprint: sha256:9f8e21a...",
+        "Routing ingress traffic to https://vibe-code-genius.up.railway.app",
+        "All 9 contract integrity checks verified: 100% PASS"
+      ]
+    },
+    "contract_bento": {
+      "type": "feature-grid",
+      "title": "9 Normative Invariants",
+      "cards": [
+        {
+          "title": "Working Contract",
+          "desc": "No orphaned files, compile-ready TS"
+        },
+        {
+          "title": "Wiring Contract",
+          "desc": "Every endpoint matches strict OpenAPI spec"
+        },
+        {
+          "title": "Integrity Contract",
+          "desc": "Zero slop copy and no fake metrics"
+        },
+        {
+          "title": "Hardening Contract",
+          "desc": "Strict CSP and input sanitation"
+        }
+      ]
+    },
+    "waitlist_cta": {
+      "type": "conversion-module",
+      "headline": "Deploy your first cluster in seconds",
+      "subheadline": "Enter your work email to receive priority access to the private developer beta.",
+      "form_fields": [
+        "email"
+      ],
+      "guarantees": [
+        "No spam",
+        "Instant Discord access",
+        "Free tier inclusion"
+      ]
+    },
+    "footer": {
+      "type": "footer-navigation",
+      "columns": [
+        {
+          "heading": "Product",
+          "links": [
+            "Features",
+            "Pricing",
+            "Changelog",
+            "Docs"
+          ]
+        },
+        {
+          "heading": "Company",
+          "links": [
+            "About",
+            "Blog",
+            "Careers",
+            "Contact"
+          ]
+        },
+        {
+          "heading": "Legal",
+          "links": [
+            "Privacy Policy",
+            "Terms of Service",
+            "Security"
+          ]
+        }
+      ],
+      "copyright": "\u00a9 2026 Vibe Code Genius Inc. All rights reserved."
+    }
+  },
+  "components": [
+    {
+      "name": "CanvasViewport",
+      "path": "components/canvas/CanvasViewport.tsx",
+      "role": "Infinite 2D pan/zoom container rendering service nodes and wires"
+    },
+    {
+      "name": "ServiceNodeCard",
+      "path": "components/canvas/ServiceNodeCard.tsx",
+      "role": "Draggable service node with port pills and real-time status LED"
+    },
+    {
+      "name": "WireConnection",
+      "path": "components/canvas/WireConnection.tsx",
+      "role": "SVG cubic bezier curve connecting service outputs to database inputs"
+    },
+    {
+      "name": "TerminalDock",
+      "path": "components/marketing/TerminalDock.tsx",
+      "role": "Monospace output terminal with animated typewriter log stream"
+    },
+    {
+      "name": "PricingCalculator",
+      "path": "components/pricing/PricingCalculator.tsx",
+      "role": "Dual-slider resource calculator calculating instantaneous monthly price"
+    },
+    {
+      "name": "WaitlistForm",
+      "path": "components/marketing/WaitlistForm.tsx",
+      "role": "Client form with Zod validation, rate limit handling, and success state"
+    },
+    {
+      "name": "ContactForm",
+      "path": "components/marketing/ContactForm.tsx",
+      "role": "Enterprise inquiry form with anti-bot honeypot and CSRF protection"
+    }
+  ],
+  "design_tokens": {
+    "colors": {
+      "canvas": "#0b0c0e",
+      "card_bg": "#131418",
+      "card_hover": "#1a1b20",
+      "border_subtle": "#22242a",
+      "border_active": "#353842",
+      "accent_violet": "#a855f7",
+      "accent_emerald": "#22c55e",
+      "text_primary": "#f8fafc",
+      "text_secondary": "#94a3b8",
+      "text_muted": "#64748b"
+    },
+    "typography": {
+      "font_family_sans": "Geist Sans, -apple-system, BlinkMacSystemFont, sans-serif",
+      "font_family_mono": "Geist Mono, JetBrains Mono, monospace",
+      "font_sizes": {
+        "xs": "0.75rem",
+        "sm": "0.875rem",
+        "base": "1rem",
+        "lg": "1.125rem",
+        "xl": "1.25rem",
+        "2xl": "1.5rem",
+        "3xl": "1.875rem",
+        "4xl": "2.25rem",
+        "5xl": "3rem"
+      }
+    },
+    "spacing": {
+      "unit": "4px",
+      "container_max_w": "1200px",
+      "canvas_grid_size": "24px"
+    },
+    "radii": {
+      "sm": "4px",
+      "md": "8px",
+      "lg": "12px",
+      "full": "9999px"
+    }
+  },
+  "api_surface": [
+    {
+      "path": "/api/waitlist",
+      "method": "POST",
+      "description": "Registers new developer email into early access queue",
+      "request_body": {
+        "email": "string"
+      },
+      "responses": {
+        "200": {
+          "position": "number",
+          "token": "string"
+        }
+      }
+    },
+    {
+      "path": "/api/contact",
+      "method": "POST",
+      "description": "Submits team or enterprise inquiry to maintainers",
+      "request_body": {
+        "name": "string",
+        "email": "string",
+        "message": "string"
+      },
+      "responses": {
+        "200": {
+          "received": "boolean"
+        }
+      }
+    },
+    {
+      "path": "/api/health",
+      "method": "GET",
+      "description": "Liveness and readiness health probe",
+      "responses": {
+        "200": {
+          "status": "string",
+          "uptime": "number"
+        }
+      }
+    }
+  ],
+  "external_hosts": [
+    "railway.app",
+    "resend.com",
+    "upstash.io",
+    "plausible.io",
+    "github.com"
+  ],
+  "evidence": [
+    "Extracted structural components, layout grids, and color schemes from railway.app",
+    "Confirmed high contrast obsidian aesthetic (#0b0c0e) with neon violet (#a855f7)",
+    "Identified canvas interactive paradigm as primary visual anchor",
+    "Captured exact typography hierarchies and spacing scales for Next.js 14"
+  ]
+}

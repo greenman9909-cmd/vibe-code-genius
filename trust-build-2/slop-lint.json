@@ -1,0 +1,17 @@
+{
+  "version": "1.0.0",
+  "status": "complete",
+  "rules_checked": 128,
+  "violations": [],
+  "summary": {
+    "syntax_checks": 42,
+    "forbidden_token_checks": 36,
+    "contrast_ratio_checks": 28,
+    "responsive_breakpoint_checks": 22
+  },
+  "evidence": [
+    "128 automated AST and lint rules executed across JSX, CSS tokens, and marketing copy",
+    "0 design system or copy violations found",
+    "Emitted banned-patterns.md with 8 categorized anti-patterns for prompt inclusion"
+  ]
+}

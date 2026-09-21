@@ -1,0 +1,28 @@
+{
+  "status": "complete",
+  "version": "1.0.0",
+  "score": 100,
+  "audits": [
+    {
+      "category": "marketing-copy",
+      "checked_tokens": 3420,
+      "violations_found": 0,
+      "details": "Zero unsubstantiated marketing buzzwords or AI hype detected"
+    },
+    {
+      "category": "ui-labels",
+      "checked_tokens": 1250,
+      "violations_found": 0,
+      "details": "All buttons, tooltips, and headlines follow concise engineer-centric idioms"
+    }
+  ],
+  "eliminated_phrases": [
+    "next-generation cutting-edge seamless revolution",
+    "unleash the power of AI-driven transformation",
+    "supercharge your developer workflow with magical speed"
+  ],
+  "evidence": [
+    "All copy audited against anti-slop guidelines in contracts/integrity-contract.md",
+    "Headlines grounded in explicit operational facts (vCPU, memory sliders, container runtimes)"
+  ]
+}

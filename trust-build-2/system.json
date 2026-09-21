@@ -1,0 +1,290 @@
+{
+  "version": "1.0.0",
+  "status": "complete",
+  "product": "vibe-code-genius",
+  "reference": "https://railway.app",
+  "actors": [
+    {
+      "id": "actor_dev",
+      "role": "Indie Web Developer",
+      "description": "Developer deploying microservices, databases, and background workers directly to cloud canvas.",
+      "goals": [
+        "Visualize autonomous deployment graph and service topologies",
+        "Inspect deterministic contract verification gates",
+        "Calculate infrastructure compute and memory resource pricing",
+        "Register for early access waitlist"
+      ]
+    },
+    {
+      "id": "actor_lead",
+      "role": "Platform Engineering Lead",
+      "description": "Lead engineer evaluating enterprise security guarantees and contract-driven infrastructure isolation.",
+      "goals": [
+        "Audit zero-drift reproducibility guarantees across environments",
+        "Review zero-trust API boundaries and SBOM compliance",
+        "Submit enterprise tier inquiries via contact portal"
+      ]
+    },
+    {
+      "id": "actor_operator",
+      "role": "Site Reliability Engineer",
+      "description": "Operator monitoring container health, telemetry pipelines, and runtime metrics.",
+      "goals": [
+        "Inspect real-time telemetry streaming and event logs",
+        "Verify idempotency of webhook event processing",
+        "Audit build failure diagnostics and session trails"
+      ]
+    }
+  ],
+  "journeys": [
+    {
+      "id": "journey_canvas_discovery",
+      "actor": "actor_dev",
+      "title": "Interactive Infrastructure Exploration",
+      "trigger": "Developer lands on root homepage from terminal tool or developer community.",
+      "steps": [
+        "Visitor arrives at / and interacts with the reactive infrastructure canvas",
+        "Visitor connects microservices nodes to database primitives on the virtual board",
+        "Visitor inspects real-time telemetry stream simulation in the terminal dock",
+        "Visitor reviews the 9 foundational contract gates ensuring zero build drift",
+        "Visitor scrolls to WaitlistForm component and inputs developer email",
+        "Server validates email format, enforces sliding-window rate limit, and registers record",
+        "Client displays queue confirmation badge and onboarding sequence token"
+      ],
+      "outcome": "Developer registered in early access queue with deployment token."
+    },
+    {
+      "id": "journey_pricing_calculator",
+      "actor": "actor_dev",
+      "title": "Compute Resource Pricing Estimation",
+      "trigger": "Developer evaluates workload cost before provisioning services.",
+      "steps": [
+        "Visitor navigates to /pricing route",
+        "Visitor adjusts CPU (vCPU) and Memory (GB) usage sliders",
+        "Calculator dynamically recomputes estimated monthly cloud expenditure",
+        "Visitor compares Hobby ($5/mo), Team ($20/mo), and Enterprise tiers",
+        "Visitor selects desired tier configuration and proceeds to waitlist registration"
+      ],
+      "outcome": "Developer receives customized cost breakdown and provisioning estimate."
+    },
+    {
+      "id": "journey_architectural_audit",
+      "actor": "actor_lead",
+      "title": "Enterprise Security and Compliance Verification",
+      "trigger": "Lead engineer audits platform architecture prior to production adoption.",
+      "steps": [
+        "Lead visits /about and reviews deterministic build philosophy",
+        "Lead explores /blog technical articles detailing zero-drift contract enforcement",
+        "Lead inspects /privacy and /terms for intellectual property and security boundaries",
+        "Lead fills out inquiry details in /contact form requesting dedicated VPC deployment",
+        "Server validates payload, verifies CSRF token, and forwards inquiry to maintainers"
+      ],
+      "outcome": "Enterprise partnership inquiry logged and routed to engineering founders."
+    }
+  ],
+  "routes": {
+    "public": [
+      {
+        "path": "/",
+        "title": "Vibe Code Genius \u2014 Cloud Infrastructure Canvas",
+        "purpose": "Root landing page showcasing interactive service canvas, live telemetry, and waitlist registration.",
+        "components": [
+          "Navbar",
+          "CanvasHero",
+          "TerminalDock",
+          "ServiceNodeGrid",
+          "ContractBento",
+          "WaitlistForm",
+          "Footer"
+        ]
+      },
+      {
+        "path": "/pricing",
+        "title": "Pricing \u2014 Transparent Usage-Based Infrastructure",
+        "purpose": "Usage-based resource calculator and tier comparison matrix (Hobby, Team, Enterprise).",
+        "components": [
+          "Navbar",
+          "PricingHeader",
+          "ResourceCalculator",
+          "TierMatrix",
+          "FaqAccordion",
+          "Footer"
+        ]
+      },
+      {
+        "path": "/about",
+        "title": "About \u2014 The Autonomous Infrastructure Paradigm",
+        "purpose": "Narrative explaining contract-driven infrastructure synthesis and zero-drift deployments.",
+        "components": [
+          "Navbar",
+          "MissionHero",
+          "ArchitectureOverview",
+          "PhilosophySection",
+          "Footer"
+        ]
+      },
+      {
+        "path": "/blog",
+        "title": "Blog \u2014 Cloud Engineering Deep Dives",
+        "purpose": "Technical index of engineering posts, telemetry patterns, and distributed systems architecture.",
+        "components": [
+          "Navbar",
+          "BlogHeader",
+          "FeaturedArticle",
+          "ArticleGrid",
+          "NewsletterWidget",
+          "Footer"
+        ]
+      },
+      {
+        "path": "/contact",
+        "title": "Contact \u2014 Enterprise Support and Inquiries",
+        "purpose": "Direct communication channel for enterprise pilots, security reviews, and custom SLAs.",
+        "components": [
+          "Navbar",
+          "ContactHeader",
+          "ContactForm",
+          "OfficeDetails",
+          "Footer"
+        ]
+      }
+    ],
+    "error": [
+      {
+        "path": "/404",
+        "title": "404 \u2014 Node Not Found",
+        "purpose": "Graceful not-found boundary with terminal diagnostic output and route recovery.",
+        "components": [
+          "ErrorCanvas",
+          "TerminalDiagnostic",
+          "HomeButton"
+        ]
+      },
+      {
+        "path": "/500",
+        "title": "500 \u2014 Infrastructure Disruption",
+        "purpose": "Server-side fault boundary with error tracing reference and status dashboard link.",
+        "components": [
+          "ErrorCanvas",
+          "IncidentStatusBadge",
+          "RetryButton"
+        ]
+      }
+    ]
+  },
+  "states": {
+    "auth": {
+      "unauthenticated": "Public marketing view with waitlist registration enabled",
+      "registered": "Early access granted; displays queue priority badge",
+      "provisioning": "Active infrastructure workspace setup in progress"
+    },
+    "canvas": {
+      "idle": "Default orbital animation of connected service nodes",
+      "dragging": "User repositioning microservice node on interactive canvas",
+      "connecting": "Active dependency wire connecting service to managed database",
+      "simulating": "Simulating traffic spike across load-balanced endpoints"
+    },
+    "theme": {
+      "mode": "dark-only",
+      "canvas_color": "#0b0c0e",
+      "surface_card": "#131418",
+      "border_dim": "#22242a",
+      "accent_violet": "#a855f7",
+      "accent_emerald": "#22c55e"
+    }
+  },
+  "entities": [
+    {
+      "name": "WaitlistEntry",
+      "description": "Represents an interested developer or engineering team joining early access.",
+      "fields": {
+        "id": "uuid (primary key)",
+        "email": "string (validated unique email)",
+        "position": "integer (sequential queue index)",
+        "cloud_provider_pref": "enum (aws, gcp, bare-metal)",
+        "intended_use": "string (brief deployment workload description)",
+        "created_at": "timestamptz (UTC registration timestamp)"
+      }
+    },
+    {
+      "name": "ContactInquiry",
+      "description": "Represents a direct inquiry from an engineering team or enterprise prospect.",
+      "fields": {
+        "id": "uuid (primary key)",
+        "name": "string (contact person name)",
+        "email": "string (business email)",
+        "company": "string (organization name)",
+        "team_size": "enum (1-10, 11-50, 50+)",
+        "message": "text (sanitized requirements summary)",
+        "created_at": "timestamptz (UTC creation timestamp)"
+      }
+    },
+    {
+      "name": "ServiceNode",
+      "description": "A microservice or database primitive rendered on the infrastructure canvas.",
+      "fields": {
+        "id": "string (unique node slug)",
+        "title": "string (service name)",
+        "runtime": "enum (node20, python311, go122, rust, postgres16, redis7)",
+        "cpu_allocation": "float (vCPU fraction)",
+        "memory_allocation": "integer (RAM in megabytes)",
+        "status": "enum (healthy, deploying, degraded)"
+      }
+    },
+    {
+      "name": "ContractGate",
+      "description": "Normative architectural invariant verified during deployment pipeline.",
+      "fields": {
+        "id": "string (contract identifier)",
+        "name": "string (human-readable title)",
+        "scope": "string (affected tier or subsystem)",
+        "validator": "string (script path)",
+        "enforced": "boolean (active gate flag)"
+      }
+    }
+  ],
+  "integrations": [
+    {
+      "name": "Railway Infrastructure Engine",
+      "type": "cloud-runtime",
+      "purpose": "Underlying container runtime and networking mesh orchestration.",
+      "env_vars": [
+        "RAILWAY_PROJECT_ID",
+        "RAILWAY_ENVIRONMENT_ID",
+        "RAILWAY_API_TOKEN"
+      ]
+    },
+    {
+      "name": "Resend Transactional Mailer",
+      "type": "email-dispatch",
+      "purpose": "Dispatches queue confirmation emails and delivers contact inquiries to maintainers.",
+      "env_vars": [
+        "RESEND_API_KEY",
+        "RESEND_FROM_EMAIL"
+      ]
+    },
+    {
+      "name": "Upstash Redis",
+      "type": "rate-limiter",
+      "purpose": "Sliding-window edge rate limiting for waitlist and contact endpoints.",
+      "env_vars": [
+        "UPSTASH_REDIS_REST_URL",
+        "UPSTASH_REDIS_REST_TOKEN"
+      ]
+    },
+    {
+      "name": "Plausible Telemetry",
+      "type": "analytics",
+      "purpose": "Privacy-first, cookieless traffic analytics for public marketing routes.",
+      "env_vars": [
+        "NEXT_PUBLIC_PLAUSIBLE_DOMAIN"
+      ]
+    }
+  ],
+  "evidence": [
+    "Modeled architecture against railway.app reactive infrastructure canvas",
+    "Declared 3 key actors: Cloud Developer, Platform Lead, SRE Operator",
+    "Specified 5 public marketing routes, error boundaries, and state taxonomy",
+    "Detailed 4 database entities and 4 integration endpoints with strict typing"
+  ]
+}

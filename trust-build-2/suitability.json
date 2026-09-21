@@ -1,0 +1,10 @@
+{
+  "status": "complete",
+  "version": "1.0.0",
+  "suitability_score": 0.98,
+  "product_category": "developer-tool",
+  "evidence": [
+    "Railway.app aesthetic maps cleanly to dark-mode Next.js Server Components and Tailwind CSS tokens",
+    "Target scope bounded strictly to 5 public marketing routes"
+  ]
+}

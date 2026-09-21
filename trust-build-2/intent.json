@@ -1,0 +1,20 @@
+{
+  "status": "complete",
+  "version": "1.0.0",
+  "product_name": "vibe-code-genius",
+  "product_type": "developer-tool",
+  "target_user": "indie developers and small teams who use AI to build web products",
+  "key_flows": [
+    "Explore contract-driven build orchestration graph",
+    "Inspect automated verification gates and integrity checks",
+    "Evaluate execution tiers and developer resource plans",
+    "Sign up for developer early access waitlist"
+  ],
+  "reference_url": "https://railway.app",
+  "vibe": "canvas-orchestration-neon-dark",
+  "evidence": [
+    "Analyzed railway.app layout and canvas aesthetic structure",
+    "Calibrated obsidian surfaces (#0b0c0e) with electric violet and emerald telemetry accents",
+    "Enforced complete product identity isolation for vibe-code-genius AI build orchestrator"
+  ]
+}

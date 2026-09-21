@@ -1,0 +1,112 @@
+{
+  "version": "1.0.0",
+  "status": "complete",
+  "total_routes": 5,
+  "reference_url": "https://railway.app",
+  "routes": [
+    {
+      "path": "/",
+      "title": "Vibe Code Genius \u2014 Contract-Driven AI Build Orchestration",
+      "status": "complete",
+      "type": "marketing",
+      "layout": "root",
+      "priority": 1.0,
+      "changefreq": "daily",
+      "components": [
+        "Navbar",
+        "CanvasViewport",
+        "TerminalDock",
+        "ContractBento",
+        "WaitlistForm",
+        "Footer"
+      ],
+      "meta_description": "Interactive canvas for orchestrating autonomous AI builds with deterministic contract gates.",
+      "prerequisites": [
+        "intent.json",
+        "reference.json"
+      ]
+    },
+    {
+      "path": "/pricing",
+      "title": "Pricing \u2014 Transparent Developer Orchestration Plans",
+      "status": "complete",
+      "type": "conversion",
+      "layout": "standard",
+      "priority": 0.9,
+      "changefreq": "weekly",
+      "components": [
+        "Navbar",
+        "PricingHeader",
+        "ResourceCalculator",
+        "TierMatrix",
+        "FaqAccordion",
+        "Footer"
+      ],
+      "meta_description": "Calculate orchestration compute and verification runs with transparent tiers.",
+      "prerequisites": [
+        "tokens.json"
+      ]
+    },
+    {
+      "path": "/about",
+      "title": "About \u2014 The Contract-Driven Build Paradigm",
+      "status": "complete",
+      "type": "narrative",
+      "layout": "standard",
+      "priority": 0.7,
+      "changefreq": "monthly",
+      "components": [
+        "Navbar",
+        "MissionHero",
+        "ArchitectureOverview",
+        "PhilosophySection",
+        "Footer"
+      ],
+      "meta_description": "Learn how Vibe Code Genius eliminates hallucinated and drifting code using formal contract trees.",
+      "prerequisites": [
+        "system.json"
+      ]
+    },
+    {
+      "path": "/blog",
+      "title": "Blog \u2014 AI Engineering and Verification Deep Dives",
+      "status": "complete",
+      "type": "editorial",
+      "layout": "standard",
+      "priority": 0.8,
+      "changefreq": "weekly",
+      "components": [
+        "Navbar",
+        "BlogHeader",
+        "FeaturedArticle",
+        "ArticleGrid",
+        "NewsletterWidget",
+        "Footer"
+      ],
+      "meta_description": "Technical insights on topological execution, contract testing, and zero-drift deployments.",
+      "prerequisites": [
+        "reference.json"
+      ]
+    },
+    {
+      "path": "/contact",
+      "title": "Contact \u2014 Enterprise Pilots and Support",
+      "status": "complete",
+      "type": "conversion",
+      "layout": "standard",
+      "priority": 0.8,
+      "changefreq": "monthly",
+      "components": [
+        "Navbar",
+        "ContactHeader",
+        "ContactForm",
+        "OfficeDetails",
+        "Footer"
+      ],
+      "meta_description": "Contact the core team for custom contract trees, enterprise pilots, and SLAs.",
+      "prerequisites": [
+        "backend-decision.md"
+      ]
+    }
+  ]
+}

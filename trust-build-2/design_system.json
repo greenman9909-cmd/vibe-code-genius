@@ -1,0 +1,62 @@
+{
+  "version": "1.0.0",
+  "status": "complete",
+  "system_name": "Railway-Canvas-Design-System",
+  "components": [
+    {
+      "name": "CanvasViewport",
+      "category": "canvas",
+      "description": "Infinite pan and zoom 2D coordinate container with dotted grid backdrop.",
+      "variants": ["default", "interactive", "static-preview"],
+      "props": ["initialZoom", "enableDrag", "gridSnap"]
+    },
+    {
+      "name": "ServiceNodeCard",
+      "category": "canvas",
+      "description": "Interactive microservice card showing status indicator, port, and compute allocation.",
+      "variants": ["service", "database", "worker", "storage"],
+      "props": ["nodeId", "label", "status", "runtime", "metrics"]
+    },
+    {
+      "name": "WireConnection",
+      "category": "canvas",
+      "description": "SVG cubic bezier curve connecting source output port to target input port.",
+      "variants": ["idle", "active-flow", "error-severed"],
+      "props": ["from", "to", "flowAnimated"]
+    },
+    {
+      "name": "ResourceCalculator",
+      "category": "pricing",
+      "description": "Dual range slider calculating compute and memory costs in real time.",
+      "variants": ["compact", "full-matrix"],
+      "props": ["defaultCpu", "defaultRam", "onTierSelect"]
+    }
+  ],
+  "tokens": {
+    "canvas_bg": "#0b0c0e",
+    "card_surface": "#131418",
+    "card_border": "#22242a",
+    "accent_violet": "#a855f7",
+    "accent_emerald": "#22c55e",
+    "font_primary": "Geist Sans",
+    "font_mono": "Geist Mono",
+    "radius_md": "8px"
+  },
+  "keyframes": [
+    {
+      "name": "pulseGlow",
+      "definition": "0%, 100% { opacity: 0.4; transform: scale(1); } 50% { opacity: 0.8; transform: scale(1.05); }",
+      "usage": "Used on active telemetry status pills and canvas connection ports"
+    },
+    {
+      "name": "streamDash",
+      "definition": "from { stroke-dashoffset: 24; } to { stroke-dashoffset: 0; }",
+      "usage": "Animates active network packet flow along SVG cubic bezier connection wires"
+    },
+    {
+      "name": "fadeSlideUp",
+      "definition": "from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); }",
+      "usage": "Smooth entrance animation for newly mounted microservice nodes and modal overlays"
+    }
+  ]
+}

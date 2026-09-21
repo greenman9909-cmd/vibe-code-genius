@@ -1,0 +1,26 @@
+{
+  "version": "1.0.0",
+  "profile": "precise",
+  "intensity": 0.75,
+  "reduced_motion": {
+    "mode": "minimize",
+    "opacity_only": true
+  },
+  "tokens": {
+    "duration_fast_ms": 150,
+    "duration_normal_ms": 250,
+    "duration_slow_ms": 400,
+    "easing_canvas_spring": "cubic-bezier(0.16, 1, 0.3, 1)",
+    "easing_wire_pulse": "cubic-bezier(0.4, 0, 0.2, 1)"
+  },
+  "overrides": {
+    "canvas_pan_damping": 28,
+    "canvas_zoom_stiffness": 180,
+    "node_drag_elasticity": 0.2
+  },
+  "evidence": [
+    "Configured precise physics profile for interactive infrastructure canvas",
+    "Set reduced motion fallback to minimize layout shifts while retaining opacity fades",
+    "Calibrated cubic bezier easing curves for responsive wire telemetry animation"
+  ]
+}

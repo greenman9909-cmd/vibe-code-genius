@@ -1,0 +1,97 @@
+openapi: 3.1.0
+info:
+  title: Vibe Code Genius API
+  version: 1.0.0
+  description: Public marketing and developer onboarding API endpoints for Vibe Code Genius.
+servers:
+  - url: https://vibe-code-genius.dev
+    description: Production API Server
+  - url: http://localhost:3000
+    description: Local Development Server
+
+paths:
+  /api/waitlist:
+    post:
+      summary: Join Early Access Waitlist
+      description: Registers a developer email address into the queue.
+      operationId: joinWaitlist
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - email
+              properties:
+                email:
+                  type: string
+                  format: email
+      responses:
+        '200':
+          description: Successfully joined waitlist
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  position:
+                    type: integer
+                  token:
+                    type: string
+        '400':
+          description: Invalid email or payload
+        '429':
+          description: Rate limit exceeded
+
+  /api/contact:
+    post:
+      summary: Submit Enterprise Inquiry
+      description: Dispatches enterprise inquiries to core platform maintainers.
+      operationId: submitContact
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - name
+                - email
+                - message
+              properties:
+                name:
+                  type: string
+                email:
+                  type: string
+                  format: email
+                message:
+                  type: string
+      responses:
+        '200':
+          description: Inquiry received
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  received:
+                    type: boolean
+
+  /api/health:
+    get:
+      summary: Health Check Probe
+      description: Returns service availability and uptime metrics.
+      operationId: getHealth
+      responses:
+        '200':
+          description: Service healthy
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  uptime:
+                    type: number

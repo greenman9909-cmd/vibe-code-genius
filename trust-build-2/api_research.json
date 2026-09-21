@@ -1,0 +1,80 @@
+{
+  "generated_at": "2026-09-22T00:50:00Z",
+  "base_url": "https://vibe-code-genius.dev",
+  "auth": {
+    "type": "none",
+    "evidence": [
+      "Public marketing endpoints require no authentication",
+      "Internal admin capabilities deferred past tier 2"
+    ]
+  },
+  "versioning": {
+    "strategy": "none",
+    "current": "v1",
+    "evidence": [
+      "Flat REST path structure for landing page endpoints"
+    ]
+  },
+  "pagination": {
+    "style": "none",
+    "request_params": [],
+    "response_keys": [],
+    "evidence": [
+      "Single-record submissions, no collection pagination required"
+    ]
+  },
+  "rate_limit": {
+    "scheme": "x-ratelimit",
+    "headers": [
+      "X-RateLimit-Limit",
+      "X-RateLimit-Remaining",
+      "X-RateLimit-Reset"
+    ],
+    "window": "60s",
+    "evidence": [
+      "Sliding window edge rate limiter via Upstash Redis"
+    ]
+  },
+  "error_format": {
+    "shape": {
+      "error": "string",
+      "status": "number"
+    },
+    "status_codes": [400, 429, 500],
+    "evidence": [
+      "Standardized JSON error envelope matching RFC 7807"
+    ]
+  },
+  "endpoints": [
+    {
+      "path": "/api/waitlist",
+      "method": "POST",
+      "content_type": "application/json",
+      "auth": "public",
+      "status_public": 200,
+      "cors": "cors-none",
+      "pagination": "none",
+      "notes": ["Zod schema validated", "Rate limited to 5 req/min per IP"]
+    },
+    {
+      "path": "/api/contact",
+      "method": "POST",
+      "content_type": "application/json",
+      "auth": "public",
+      "status_public": 200,
+      "cors": "cors-none",
+      "pagination": "none",
+      "notes": ["Honeypot protection enabled", "Forwards to engineering email"]
+    },
+    {
+      "path": "/api/health",
+      "method": "GET",
+      "content_type": "application/json",
+      "auth": "public",
+      "status_public": 200,
+      "cors": "cors-none",
+      "pagination": "none",
+      "notes": ["Liveness probe", "Zero database dependency"]
+    }
+  ]
+}

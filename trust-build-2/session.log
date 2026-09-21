@@ -1,0 +1,31 @@
+{"event": "session_start", "session_id": "trust_run_2_1790032135", "deliverable": "landing-page", "tier_stop": 2, "reference": "https://railway.app", "tool_status": {"spa-ripper": "installed", "python": "installed", "node": "installed"}, "at": "2026-09-21T23:08:55.898052Z"}
+{"event": "node_complete", "node": "01", "name": "Intent Parse", "artifact": "intent.json", "tokens": 1200, "validation": "PASS", "at": "2026-09-21T23:08:56.011997Z"}
+{"event": "node_complete", "node": "01a", "name": "Suitability Check", "artifact": "suitability.json", "tokens": 650, "validation": "PASS", "at": "2026-09-21T23:08:56.135110Z"}
+{"event": "node_complete", "node": "01b", "name": "Scope Negotiation", "artifact": "scope.json", "tokens": 700, "validation": "PASS", "at": "2026-09-21T23:08:56.251474Z"}
+{"event": "node_complete", "node": "01c", "name": "Budget Estimate", "artifact": "estimate.json", "tokens": 450, "validation": "PASS", "at": "2026-09-21T23:08:56.366745Z"}
+{"event": "node_complete", "node": "01d", "name": "System Model", "artifact": "system.json", "tokens": 2800, "validation": "PASS", "at": "2026-09-21T23:08:56.482290Z"}
+{"event": "node_complete", "node": "02", "name": "Reference Load", "artifact": "reference.json", "tokens": 2400, "validation": "PASS", "at": "2026-09-21T23:08:56.604818Z"}
+{"event": "node_complete", "node": "02b", "name": "Deep Reference Load", "artifact": "reference.json", "tokens": 2400, "validation": "PASS", "at": "2026-09-21T23:08:56.719110Z"}
+{"event": "node_complete", "node": "03", "name": "Code Style Lock", "artifact": "style-rules.md", "tokens": 800, "validation": "PASS", "at": "2026-09-21T23:08:56.835304Z"}
+{"event": "node_complete", "node": "04", "name": "File Tree Gen", "artifact": "file-tree.md", "tokens": 2500, "validation": "PASS", "at": "2026-09-21T23:08:56.949970Z"}
+{"event": "node_complete", "node": "04a", "name": "Completeness Manifest", "artifact": "manifest.json", "tokens": 2000, "validation": "PASS", "at": "2026-09-21T23:08:57.063697Z"}
+{"event": "node_complete", "node": "05", "name": "Repo Scaffolder", "artifact": "scaffold/package.json", "tokens": 2500, "validation": "PASS", "at": "2026-09-21T23:08:57.187708Z"}
+{"event": "node_complete", "node": "06", "name": "Prompt Composer", "artifact": "prompt.md", "tokens": 4200, "validation": "PASS", "at": "2026-09-21T23:08:57.301987Z"}
+{"event": "node_complete", "node": "06a", "name": "Design Commitment", "artifact": "design-commitment.md", "tokens": 800, "validation": "PASS", "at": "2026-09-21T23:08:57.414689Z"}
+{"event": "node_complete", "node": "07", "name": "API Surface", "artifact": "api_client/api_client.ts", "tokens": 1500, "validation": "PASS", "at": "2026-09-21T23:08:57.528302Z"}
+{"event": "node_complete", "node": "07a", "name": "API Research", "artifact": "api_research.json", "tokens": 1600, "validation": "PASS", "at": "2026-09-21T23:08:57.650568Z"}
+{"event": "node_complete", "node": "07b", "name": "Third-Party API Research", "artifact": "integrations/resend.md", "tokens": 1200, "validation": "PASS", "at": "2026-09-21T23:08:57.767233Z"}
+{"event": "node_complete", "node": "07c", "name": "Backend Architecture", "artifact": "backend-decision.md", "tokens": 1400, "validation": "PASS", "at": "2026-09-21T23:08:57.880793Z"}
+{"event": "node_complete", "node": "07d", "name": "API Design", "artifact": "openapi.yaml", "tokens": 2000, "validation": "PASS", "at": "2026-09-21T23:08:58.004191Z"}
+{"event": "node_complete", "node": "07e", "name": "Backend Scaffold", "artifact": "server/index.ts", "tokens": 1500, "validation": "PASS", "at": "2026-09-21T23:08:58.119321Z"}
+{"event": "node_complete", "node": "07f", "name": "Handler Implementations", "artifact": "handlers/waitlist.ts", "tokens": 1800, "validation": "PASS", "at": "2026-09-21T23:08:58.234332Z"}
+{"event": "node_complete", "node": "07g", "name": "Integration Wiring", "artifact": "webhooks/resend-events.ts", "tokens": 1500, "validation": "PASS", "at": "2026-09-21T23:08:58.349304Z"}
+{"event": "node_complete", "node": "08", "name": "Stack Fingerprint", "artifact": "stack-decision.md", "tokens": 1000, "validation": "PASS", "at": "2026-09-21T23:08:58.464338Z"}
+{"event": "node_complete", "node": "09", "name": "Route Extract", "artifact": "routes.json", "tokens": 1200, "validation": "PASS", "at": "2026-09-21T23:08:58.579726Z"}
+{"event": "node_complete", "node": "10", "name": "Section Detect", "artifact": "sections.json", "tokens": 1400, "validation": "PASS", "at": "2026-09-21T23:08:58.697095Z"}
+{"event": "node_complete", "node": "11", "name": "Design Tokens", "artifact": "design-tokens.json", "tokens": 2000, "validation": "PASS", "at": "2026-09-21T23:08:58.811818Z"}
+{"event": "node_complete", "node": "11a", "name": "Design System Extract", "artifact": "design_system.json", "tokens": 1800, "validation": "PASS", "at": "2026-09-21T23:08:58.929161Z"}
+{"event": "node_complete", "node": "11b", "name": "Copy Cleanse", "artifact": "slop-report.json", "tokens": 1200, "validation": "PASS", "at": "2026-09-21T23:08:59.043613Z"}
+{"event": "node_complete", "node": "11c", "name": "Design Slop Lint", "artifact": "slop-lint.json", "tokens": 1000, "validation": "PASS", "at": "2026-09-21T23:08:59.159609Z"}
+{"event": "node_complete", "node": "11d", "name": "Design Contract", "artifact": "design-contract.md", "tokens": 1500, "validation": "PASS", "at": "2026-09-21T23:08:59.283391Z"}
+{"event": "node_complete", "node": "11e", "name": "Motion Customization", "artifact": "motion-config.json", "tokens": 1400, "validation": "PASS", "at": "2026-09-21T23:08:59.397021Z"}

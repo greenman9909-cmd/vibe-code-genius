@@ -1,0 +1,47 @@
+{
+  "version": "1.0.0",
+  "status": "complete",
+  "reference": "https://railway.app",
+  "colors": {
+    "canvas": "#0b0c0e",
+    "surface": "#131418",
+    "surface_hover": "#1a1b20",
+    "border_subtle": "#22242a",
+    "border_focus": "#353842",
+    "accent_violet": "#a855f7",
+    "accent_emerald": "#22c55e",
+    "text_primary": "#f8fafc",
+    "text_secondary": "#94a3b8",
+    "text_muted": "#64748b"
+  },
+  "typography": {
+    "font_family_sans": "Geist Sans, -apple-system, BlinkMacSystemFont, sans-serif",
+    "font_family_mono": "Geist Mono, JetBrains Mono, monospace",
+    "line_heights": {
+      "tight": "1.25",
+      "normal": "1.5",
+      "relaxed": "1.75"
+    }
+  },
+  "spacing": {
+    "scale_unit": "4px",
+    "container_max": "1200px",
+    "grid_step": "24px"
+  },
+  "radii": {
+    "sm": "4px",
+    "md": "8px",
+    "lg": "12px",
+    "full": "9999px"
+  },
+  "shadows": {
+    "glow_violet": "0 0 24px -4px rgba(168, 85, 247, 0.25)",
+    "glow_emerald": "0 0 20px -4px rgba(34, 197, 94, 0.25)",
+    "panel_shadow": "0 10px 30px -10px rgba(0, 0, 0, 0.6)"
+  },
+  "evidence": [
+    "Extracted color hierarchy directly from Railway canvas styling",
+    "Obsidian background (#0b0c0e) matched with elevated card tokens (#131418)",
+    "Contrasting violet and emerald neon accents calibrated for dark mode"
+  ]
+}

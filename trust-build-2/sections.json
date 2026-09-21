@@ -1,0 +1,56 @@
+{
+  "version": "1.0.0",
+  "status": "complete",
+  "target_page": "/",
+  "total_sections": 6,
+  "sections": [
+    {
+      "id": "navbar",
+      "name": "Global Frosted Navigation Header",
+      "description": "Sticky top bar with glassmorphic blur, logo, route navigation links, and primary violet call-to-action button.",
+      "component": "Navbar",
+      "order": 1,
+      "viewport": "all"
+    },
+    {
+      "id": "canvas-hero",
+      "name": "Interactive Build Orchestration Canvas Hero",
+      "description": "Infinite pan/zoom 2D grid viewport rendering reactive build orchestration nodes, contract gates, and animated bezier connection curves.",
+      "component": "CanvasViewport",
+      "order": 2,
+      "viewport": "all"
+    },
+    {
+      "id": "terminal-dock",
+      "name": "Monospace Deployment Telemetry Stream",
+      "description": "Terminal drawer rendering realistic build, verification, and deploy logs with animated status pills.",
+      "component": "TerminalDock",
+      "order": 3,
+      "viewport": "all"
+    },
+    {
+      "id": "contract-bento",
+      "name": "Contract Verification Bento Grid",
+      "description": "Bento-style 4-column layout demonstrating the 9 normative invariants guaranteeing deterministic build execution.",
+      "component": "ContractBento",
+      "order": 4,
+      "viewport": "all"
+    },
+    {
+      "id": "waitlist-cta",
+      "name": "Developer Waitlist Conversion Section",
+      "description": "Zod-validated single-field email capture form with rate limiting, queue sequence generator, and instant confirmation badge.",
+      "component": "WaitlistForm",
+      "order": 5,
+      "viewport": "all"
+    },
+    {
+      "id": "footer",
+      "name": "Global Multi-Column Footer",
+      "description": "Semantic footer with categorised link matrices, GitHub repository reference, status page indicator, and legal notices.",
+      "component": "Footer",
+      "order": 6,
+      "viewport": "all"
+    }
+  ]
+}
