@@ -1,70 +1,14 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://vibe-code-genius.dev/schema/api_research.schema.json",
-  "title": "api_research",
-  "type": "object",
-  "additionalProperties": false,
-  "properties": {
-    "generated_at": {
-      "type": "string"
-    },
-    "base_url": {
-      "type": "string"
-    },
-    "auth": {
-      "type": "object"
-    },
-    "versioning": {
-      "type": "object"
-    },
-    "pagination": {
-      "type": "object"
-    },
-    "rate_limit": {
-      "type": "object"
-    },
-    "error_format": {
-      "type": "object"
-    },
-    "endpoints": {
-      "type": "array"
-    },
-    "graphql_schema": {
-      "type": [
-        "object",
-        "null"
-      ]
-    }
-  },
-  "required": [
-    "generated_at",
-    "base_url",
-    "auth",
-    "versioning",
-    "pagination",
-    "rate_limit",
-    "error_format",
-    "endpoints"
-  ],
-  "$defs": {
-    "status": {
-      "type": "string",
-      "enum": [
-        "pending",
-        "complete",
-        "blocked",
-        "failed"
-      ]
-    },
-    "evidence": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      }
-    },
-    "artifact": {
-      "type": "object",
-      "additionalProperties": true
-    }
+  "$schema":"https://json-schema.org/draft/2020-12/schema","type":"object",
+  "required":["generated_at","base_url","auth","versioning","pagination","rate_limit","error_format","endpoints"],
+  "properties":{
+    "generated_at":{"type":"string","format":"date-time"},"base_url":{"type":"string"},
+    "auth":{"type":"object","properties":{"type":{"enum":["none","bearer","basic","api-key-header","api-key-query","session-cookie","mixed","unknown"]},"evidence":{"type":"array","items":{"type":"string"}}}},
+    "versioning":{"type":"object","properties":{"strategy":{"enum":["path","header","query","none","mixed"]},"current":{"type":["string","null"]},"evidence":{"type":"array","items":{"type":"string"}}}},
+    "pagination":{"type":"object","properties":{"style":{"enum":["cursor","offset","page","none","mixed"]},"request_params":{"type":"array","items":{"type":"string"}},"response_keys":{"type":"array","items":{"type":"string"}},"evidence":{"type":"array","items":{"type":"string"}}}},
+    "rate_limit":{"type":"object","properties":{"scheme":{"enum":["x-ratelimit","ratelimit-draft","retry-after-only","none","mixed"]},"headers":{"type":"array","items":{"type":"string"}},"window":{"type":["string","null"]},"evidence":{"type":"array","items":{"type":"string"}}}},
+    "error_format":{"type":"object","properties":{"shape":{"type":"object"},"status_codes":{"type":"array","items":{"type":"integer"}},"evidence":{"type":"array","items":{"type":"string"}}}},
+    "endpoints":{"type":"array","items":{"type":"object","required":["path","method","content_type","auth"],"properties":{"path":{"type":"string"},"method":{"type":"string"},"content_type":{"type":"string"},"auth":{"enum":["public","required","role-gated","unknown"]},"status_public":{"type":["integer","null"]},"status_authed":{"type":["integer","null"]},"cors":{"enum":["cors-open","cors-allowlist","cors-reflective","cors-none","unknown"]},"pagination":{"enum":["cursor","offset","page","none","unknown"]},"response_shape":{"type":["object","null"]},"observed_params":{"type":"array","items":{"type":"string"}},"notes":{"type":"array","items":{"type":"string"}}}}},
+    "graphql_schema":{"type":["object","null"]}
   }
 }
