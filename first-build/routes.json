@@ -1,0 +1,103 @@
+{
+  "routes": [
+    {
+      "path": "/",
+      "title": "Vibe Code Genius \u2014 Contract-Driven AI Build Orchestration",
+      "status": "complete",
+      "category": "public",
+      "file": "app/page.tsx",
+      "description": "Root marketing hero landing page showcasing interactive terminal, 9 contracts, and tree visualizer.",
+      "components": [
+        "Navbar",
+        "HeroSection",
+        "TerminalShowcase",
+        "ContractBento",
+        "TreeVisualizer",
+        "WaitlistForm",
+        "Footer"
+      ]
+    },
+    {
+      "path": "/pricing",
+      "title": "Pricing Plans \u2014 Transparent Scale-Ready Tiers",
+      "status": "complete",
+      "category": "public",
+      "file": "app/pricing/page.tsx",
+      "description": "Granular tier comparison covering Hobby, Indie, and Scale plans with feature checklist.",
+      "components": [
+        "Navbar",
+        "PricingMatrix",
+        "FaqSection",
+        "Footer"
+      ]
+    },
+    {
+      "path": "/about",
+      "title": "About \u2014 The Deterministic Software Movement",
+      "status": "complete",
+      "category": "public",
+      "file": "app/about/page.tsx",
+      "description": "Philosophy of contract-driven generative coding, eliminating hallucination slop via deterministic trees.",
+      "components": [
+        "Navbar",
+        "MissionBento",
+        "TimelineSection",
+        "Footer"
+      ]
+    },
+    {
+      "path": "/blog",
+      "title": "Engineering Blog & Release Chronicle",
+      "status": "complete",
+      "category": "public",
+      "file": "app/blog/page.tsx",
+      "description": "Deep architectural breakdowns, tree execution traces, and release announcements.",
+      "components": [
+        "Navbar",
+        "ArticleList",
+        "CategoryPills",
+        "Footer"
+      ]
+    },
+    {
+      "path": "/contact",
+      "title": "Contact Engineering & Partnerships",
+      "status": "complete",
+      "category": "public",
+      "file": "app/contact/page.tsx",
+      "description": "Direct communication channel for custom contract requirements, bug bounty reports, and team access.",
+      "components": [
+        "Navbar",
+        "ContactForm",
+        "OfficeDetails",
+        "Footer"
+      ]
+    },
+    {
+      "path": "/privacy",
+      "title": "Privacy Commitments \u2014 Default-Deny Telemetry",
+      "status": "complete",
+      "category": "public",
+      "file": "app/privacy/page.tsx",
+      "description": "Explicit data privacy guarantees: zero third-party tracking cookies and full GDPR rights compliance.",
+      "components": [
+        "Navbar",
+        "LegalContent",
+        "Footer"
+      ]
+    },
+    {
+      "path": "/terms",
+      "title": "Terms of Service & Code Ownership",
+      "status": "complete",
+      "category": "public",
+      "file": "app/terms/page.tsx",
+      "description": "Legal warranty parameters, open-source license permissions, and 100% user code ownership rights.",
+      "components": [
+        "Navbar",
+        "LegalContent",
+        "Footer"
+      ]
+    }
+  ]
+}

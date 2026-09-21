@@ -1,0 +1,23 @@
+{
+  "version": "1.0.0",
+  "profile": "precise",
+  "intensity": 0.35,
+  "reduced_motion": {
+    "mode": "minimize",
+    "opacity_only": true
+  },
+  "tokens": {
+    "duration_fast": 150,
+    "duration_base": 220,
+    "easing_spring": "cubic-bezier(0.16, 1, 0.3, 1)"
+  },
+  "overrides": {
+    "terminal_cursor": {
+      "blink_rate": 800
+    }
+  },
+  "evidence": [
+    "Calibrated for developer precision",
+    "Respects prefers-reduced-motion media query"
+  ]
+}

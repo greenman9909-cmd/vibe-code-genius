@@ -1,0 +1,223 @@
+{
+  "reference_url": "https://resend.com",
+  "acquired_at": "2026-09-21T22:20:00Z",
+  "acquirer": "vibe-code-genius",
+  "stack": {
+    "framework": "Next.js",
+    "rendering": "App Router (RSC)",
+    "styling": "Tailwind CSS",
+    "ui_components": "Radix UI Primitives",
+    "motion": "Framer Motion",
+    "icons": "Lucide React",
+    "hosting": "Vercel"
+  },
+  "routes": [
+    {
+      "path": "/",
+      "type": "landing-page",
+      "title": "Email for developers",
+      "description": "The best API to reach humans instead of spam folders.",
+      "has_subroutes": false
+    },
+    {
+      "path": "/pricing",
+      "type": "marketing",
+      "title": "Pricing",
+      "description": "Transparent, predictable volume pricing.",
+      "has_subroutes": false
+    },
+    {
+      "path": "/about",
+      "type": "marketing",
+      "title": "About",
+      "description": "Building the future of email infrastructure.",
+      "has_subroutes": false
+    },
+    {
+      "path": "/blog",
+      "type": "content",
+      "title": "Blog",
+      "description": "Updates, deep dives, and company announcements.",
+      "has_subroutes": true
+    },
+    {
+      "path": "/contact",
+      "type": "lead-capture",
+      "title": "Contact Sales",
+      "description": "Get in touch with our team.",
+      "has_subroutes": false
+    },
+    {
+      "path": "/privacy",
+      "type": "legal",
+      "title": "Privacy Policy",
+      "description": "Data privacy and security standards.",
+      "has_subroutes": false
+    },
+    {
+      "path": "/terms",
+      "type": "legal",
+      "title": "Terms of Service",
+      "description": "Platform rules and agreements.",
+      "has_subroutes": false
+    }
+  ],
+  "sections": {
+    "hero": {
+      "headline": "Email for developers",
+      "subheadline": "The best API to reach humans instead of spam folders. Build, test, and deliver transactional emails at scale.",
+      "ctas": [
+        {
+          "label": "Get Started",
+          "href": "/signup",
+          "variant": "primary"
+        },
+        {
+          "label": "Documentation",
+          "href": "/docs",
+          "variant": "secondary"
+        }
+      ]
+    },
+    "bento_features": {
+      "title": "Engineered for speed and deliverability",
+      "cards": [
+        {
+          "title": "Zero-config deliverability",
+          "description": "Pre-warmed IPs and SPF/DKIM automated records."
+        },
+        {
+          "title": "First-class SDKs",
+          "description": "Typed libraries for Node.js, Python, Ruby, Go, Rust."
+        },
+        {
+          "title": "Interactive code samples",
+          "description": "Live request/response previews directly in browser."
+        }
+      ]
+    },
+    "terminal_showcase": {
+      "title": "Code first",
+      "language": "typescript",
+      "snippet": "import { Resend } from 'resend';\nconst resend = new Resend(process.env.RESEND_API_KEY);\nawait resend.emails.send({ ... });"
+    },
+    "metrics": {
+      "stats": [
+        {
+          "value": "99.99%",
+          "label": "Uptime SLA"
+        },
+        {
+          "value": "< 100ms",
+          "label": "Global API latency"
+        },
+        {
+          "value": "100M+",
+          "label": "Monthly emails delivered"
+        }
+      ]
+    },
+    "footer": {
+      "copyright": "\u00a9 2026 Resend Inc.",
+      "links": [
+        {
+          "label": "Twitter",
+          "href": "https://twitter.com/resend"
+        },
+        {
+          "label": "GitHub",
+          "href": "https://github.com/resend"
+        }
+      ]
+    }
+  },
+  "components": [
+    {
+      "name": "Navbar",
+      "role": "navigation",
+      "interactive": true
+    },
+    {
+      "name": "HeroSection",
+      "role": "marketing-lead",
+      "interactive": false
+    },
+    {
+      "name": "CodeBlock",
+      "role": "developer-demo",
+      "interactive": true
+    },
+    {
+      "name": "BentoCard",
+      "role": "feature-highlight",
+      "interactive": true
+    },
+    {
+      "name": "Button",
+      "role": "ui-primitive",
+      "interactive": true
+    },
+    {
+      "name": "Footer",
+      "role": "navigation",
+      "interactive": false
+    }
+  ],
+  "design_tokens": {
+    "colors": {
+      "background": "#000000",
+      "card_bg": "#09090b",
+      "border": "#27272a",
+      "border_hover": "#3f3f46",
+      "text_primary": "#ffffff",
+      "text_muted": "#a1a1aa",
+      "accent": "#ffffff"
+    },
+    "typography": {
+      "font_sans": "Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
+      "font_mono": "'JetBrains Mono', 'Fira Code', monospace",
+      "scale": {
+        "hero": "clamp(2.5rem, 5vw, 4.5rem)",
+        "heading": "2rem",
+        "subheading": "1.25rem",
+        "body": "1rem",
+        "caption": "0.875rem"
+      }
+    },
+    "spacing": {
+      "section_gap": "6rem",
+      "container_max_w": "1200px",
+      "card_padding": "2rem"
+    },
+    "radii": {
+      "card": "12px",
+      "button": "8px",
+      "badge": "9999px"
+    },
+    "shadows": {
+      "glow": "0 0 50px -10px rgba(255, 255, 255, 0.08)"
+    }
+  },
+  "api_surface": [
+    {
+      "method": "POST",
+      "path": "/emails",
+      "description": "Send transactional email"
+    },
+    {
+      "method": "GET",
+      "path": "/domains",
+      "description": "List verified sending domains"
+    },
+    {
+      "method": "POST",
+      "path": "/api-keys",
+      "description": "Create access key"
+    }
+  ],
+  "external_hosts": [
+    "api.resend.com",
+    "assets.resend.com",
+    "avatars.githubusercontent.com"
+  ]
+}

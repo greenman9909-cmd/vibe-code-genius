@@ -1,0 +1,109 @@
+{
+  "sections": [
+    {
+      "id": "navbar",
+      "name": "Global Header Navigation",
+      "file": "components/navbar.tsx",
+      "order": 1,
+      "description": "Sticky top navigation bar with blur backdrop, brand logo mark, routes menu, and primary waitlist CTA.",
+      "elements": [
+        "Logo",
+        "NavLinks",
+        "GitHubStarsBadge",
+        "WaitlistCTA"
+      ]
+    },
+    {
+      "id": "hero",
+      "name": "Primary Value Proposition Hero",
+      "file": "components/hero.tsx",
+      "order": 2,
+      "description": "Pitch black canvas hero with high-contrast headline, subheadline, interactive badge, and primary action buttons.",
+      "elements": [
+        "VersionPill",
+        "H1Headline",
+        "SubheadCopy",
+        "PrimaryButton",
+        "SecondaryButton"
+      ]
+    },
+    {
+      "id": "terminal-showcase",
+      "name": "Interactive Contract Execution Showcase",
+      "file": "components/terminal-showcase.tsx",
+      "order": 3,
+      "description": "Simulated live terminal displaying autonomous tree execution with authentic ANSI output and tabbed views.",
+      "elements": [
+        "TerminalWindow",
+        "TabGroup",
+        "AnsiOutput",
+        "CursorEmulator"
+      ]
+    },
+    {
+      "id": "contract-bento",
+      "name": "Normative Contract Bento Grid",
+      "file": "components/contract-bento.tsx",
+      "order": 4,
+      "description": "9-card glassmorphic bento grid highlighting Working, Integrity, Hardening, Completeness, and Parity contracts.",
+      "elements": [
+        "BentoCardWorking",
+        "BentoCardIntegrity",
+        "BentoCardHardening",
+        "BentoCardParity"
+      ]
+    },
+    {
+      "id": "tree-visualizer",
+      "name": "61-Node Topological Graph Visualizer",
+      "file": "components/tree-visualizer.tsx",
+      "order": 5,
+      "description": "Visual hierarchical graph showing Tiers 1 through 5, highlighting prerequisite gates and parallel execution paths.",
+      "elements": [
+        "GraphCanvas",
+        "TierColumns",
+        "NodeNodes",
+        "PrereqEdges"
+      ]
+    },
+    {
+      "id": "pricing-preview",
+      "name": "Pricing Teaser Section",
+      "file": "components/pricing-preview.tsx",
+      "order": 6,
+      "description": "Streamlined 3-column summary of Hobby, Indie, and Scale plans with feature highlights and route link to full matrix.",
+      "elements": [
+        "TierHobby",
+        "TierIndie",
+        "TierScale",
+        "ViewMatrixLink"
+      ]
+    },
+    {
+      "id": "waitlist-cta",
+      "name": "Early Access Waitlist Capture",
+      "file": "components/waitlist-form.tsx",
+      "order": 7,
+      "description": "High-conversion lead capture component featuring instant email validation, role selector, and submission animation.",
+      "elements": [
+        "EmailInput",
+        "RoleDropdown",
+        "SubmitButton",
+        "PrivacyNotice"
+      ]
+    },
+    {
+      "id": "footer",
+      "name": "Global Site Footer",
+      "file": "components/footer.tsx",
+      "order": 8,
+      "description": "Multi-column layout containing legal notices, documentation links, social icons, and real-time tree health status.",
+      "elements": [
+        "BrandWordmark",
+        "LinkColumns",
+        "CopyrightText",
+        "StatusBadge"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "version": "1.0.0",
+  "status": "complete",
+  "colors": {
+    "background": "#000000",
+    "surface": "#09090b",
+    "surface_elevated": "#18181b",
+    "border": "#27272a",
+    "border_highlight": "#3f3f46",
+    "text_primary": "#ffffff",
+    "text_muted": "#a1a1aa",
+    "accent": "#ffffff"
+  },
+  "typography": {
+    "font_sans": "var(--font-geist-sans), Inter, sans-serif",
+    "font_mono": "var(--font-geist-mono), monospace",
+    "h1": "text-4xl sm:text-6xl font-semibold tracking-tight",
+    "h2": "text-2xl sm:text-3xl font-semibold tracking-tight",
+    "body": "text-base text-zinc-400 leading-relaxed",
+    "caption": "text-xs text-zinc-500"
+  },
+  "spacing": {
+    "base": "4px",
+    "card_padding": "24px",
+    "section_gap": "80px",
+    "container_max": "1200px"
+  },
+  "radii": {
+    "sm": "6px",
+    "base": "8px",
+    "lg": "12px",
+    "full": "9999px"
+  },
+  "shadows": {
+    "subtle": "0 1px 2px 0 rgba(0, 0, 0, 0.5)",
+    "glow": "0 0 25px -5px rgba(255, 255, 255, 0.12)"
+  },
+  "evidence": [
+    "Derived from https://resend.com high-contrast dark aesthetic",
+    "Calibrated for pitch-black OLED displays"
+  ]
+}

@@ -1,0 +1,66 @@
+openapi: 3.1.0
+info:
+  title: Vibe Code Genius Landing Page API
+  version: 1.0.0
+  description: Public lead capture endpoints for Vibe Code Genius.
+paths:
+  /api/waitlist:
+    post:
+      summary: Register email for early access
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [email]
+              properties:
+                email: { type: string, format: email }
+                role: { type: string }
+                source: { type: string }
+      responses:
+        '200':
+          description: Registration accepted
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ok: { type: boolean }
+                  position: { type: integer }
+  /api/contact:
+    post:
+      summary: Submit developer inquiry
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [name, email, message]
+              properties:
+                name: { type: string }
+                email: { type: string, format: email }
+                subject: { type: string }
+                message: { type: string }
+      responses:
+        '200':
+          description: Inquiry received
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ok: { type: boolean }
+  /api/health:
+    get:
+      summary: Health check probe
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status: { type: string }

@@ -1,0 +1,24 @@
+{
+  "status": "complete",
+  "version": "1.0.0",
+  "score": 100,
+  "audits": [
+    "hero-headline",
+    "contract-bento-descriptions",
+    "pricing-tier-summaries",
+    "footer-disclaimers"
+  ],
+  "eliminated_phrases": [
+    "delve",
+    "testament",
+    "leverage",
+    "paradigm shift",
+    "game changer",
+    "supercharge",
+    "unleash"
+  ],
+  "evidence": [
+    "Zero banned marketing buzzwords present in copy",
+    "Direct, high-information developer-centric terminology verified"
+  ]
+}

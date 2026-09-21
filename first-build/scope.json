@@ -1,0 +1,26 @@
+{
+  "status": "complete",
+  "version": "1.0.0",
+  "deliverable": "landing-page",
+  "tier_stop": 2,
+  "routes_include": [
+    "/",
+    "/pricing",
+    "/about",
+    "/blog",
+    "/contact",
+    "/privacy",
+    "/terms"
+  ],
+  "routes_exclude": [
+    "/dashboard",
+    "/login",
+    "/register",
+    "/app",
+    "/admin"
+  ],
+  "evidence": [
+    "Tier stop fixed at 2 (no Tier 3-5 execution)",
+    "Deliverable locked at landing-page with 7 routes"
+  ]
+}

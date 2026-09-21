@@ -1,0 +1,10 @@
+{
+  "status": "complete",
+  "version": "1.0.0",
+  "suitability_score": 0.99,
+  "product_category": "developer-tool",
+  "evidence": [
+    "Scope bounded strictly to landing page delivery",
+    "Aesthetic matches reference dark palette and static RSC generation"
+  ]
+}

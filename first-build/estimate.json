@@ -1,0 +1,12 @@
+{
+  "status": "complete",
+  "version": "1.0.0",
+  "tier_stop": 2,
+  "total_nodes": 30,
+  "tokens_estimated": 82000,
+  "evidence": [
+    "Tier 1 estimate: 28,000 tokens",
+    "Tier 2 estimate: 54,000 tokens",
+    "Runtime budget: 180 seconds"
+  ]
+}

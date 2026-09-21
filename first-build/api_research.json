@@ -1,0 +1,99 @@
+{
+  "generated_at": "2026-09-21T22:25:00Z",
+  "base_url": "https://api.resend.com",
+  "auth": {
+    "type": "bearer",
+    "evidence": [
+      "Authorization: Bearer re_123456789"
+    ]
+  },
+  "versioning": {
+    "strategy": "none",
+    "current": null,
+    "evidence": [
+      "Direct RESTful paths without prefix"
+    ]
+  },
+  "pagination": {
+    "style": "cursor",
+    "request_params": [
+      "limit",
+      "cursor"
+    ],
+    "response_keys": [
+      "has_more",
+      "cursor",
+      "data"
+    ],
+    "evidence": [
+      "Cursor pagination documented in API specs"
+    ]
+  },
+  "rate_limit": {
+    "scheme": "ratelimit-draft",
+    "headers": [
+      "RateLimit-Limit",
+      "RateLimit-Remaining",
+      "RateLimit-Reset"
+    ],
+    "window": "1s",
+    "evidence": [
+      "Standard HTTP rate limiting headers"
+    ]
+  },
+  "error_format": {
+    "shape": {
+      "statusCode": 422,
+      "message": "Validation error: invalid email format",
+      "name": "validation_error"
+    },
+    "status_codes": [
+      400,
+      401,
+      403,
+      404,
+      422,
+      429,
+      500
+    ],
+    "evidence": [
+      "RFC 7807 problem details observed on 4xx responses"
+    ]
+  },
+  "endpoints": [
+    {
+      "path": "/api/waitlist",
+      "method": "POST",
+      "content_type": "application/json",
+      "auth": "public",
+      "cors": "cors-none",
+      "pagination": "none",
+      "notes": [
+        "Public lead registration"
+      ]
+    },
+    {
+      "path": "/api/contact",
+      "method": "POST",
+      "content_type": "application/json",
+      "auth": "public",
+      "cors": "cors-none",
+      "pagination": "none",
+      "notes": [
+        "Developer inquiries"
+      ]
+    },
+    {
+      "path": "/api/health",
+      "method": "GET",
+      "content_type": "application/json",
+      "auth": "public",
+      "cors": "cors-none",
+      "pagination": "none",
+      "notes": [
+        "Health probe"
+      ]
+    }
+  ],
+  "graphql_schema": null
+}

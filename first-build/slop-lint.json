@@ -1,0 +1,13 @@
+{
+  "version": "1.0.0",
+  "rules_checked": 114,
+  "violations": [],
+  "status": "pass",
+  "checked_categories": [
+    "color-invariance",
+    "typography-scale",
+    "spacing-cadence",
+    "wcag-contrast-ratios",
+    "motion-restraint"
+  ]
+}

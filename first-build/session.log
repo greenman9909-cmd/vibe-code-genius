@@ -1,0 +1,57 @@
+{"event": "session_start", "at": "2026-09-21T22:33:10.711912+00:00Z", "session_id": "p6_run_e19450", "deliverable": "landing-page", "tier_stop": 2, "reference": "https://resend.com", "tool_status": {"spa-ripper": "installed (/c/Users/green/bin/spa-ripper)", "python": "installed", "node": "installed"}}
+{"event": "node_complete", "at": "2026-09-21T22:33:22.400936+00:00Z", "node": "01", "name": "Intent Parse", "artifact": "intent.json", "tokens": 1200, "validation": "PASS"}
+{"event": "node_complete", "at": "2026-09-21T22:33:31.753657+00:00Z", "node": "01a", "name": "Suitability Check", "artifact": "suitability.json", "tokens": 650, "validation": "PASS"}
+{"event": "node_complete", "at": "2026-09-21T22:33:43.177740+00:00Z", "node": "01b", "name": "Scope Negotiation", "artifact": "scope.json", "tokens": 700, "validation": "PASS"}
+{"event": "node_complete", "at": "2026-09-21T22:33:52.042289+00:00Z", "node": "01c", "name": "Budget Estimate", "artifact": "estimate.json", "tokens": 450, "validation": "PASS"}
+{"event": "node_complete", "at": "2026-09-21T22:34:14.910859+00:00Z", "node": "01d", "name": "System Model", "artifact": "system.json", "tokens": 4800, "validation": "PASS"}
+{"event": "node_complete", "at": "2026-09-21T22:34:39.609093+00:00Z", "node": "02", "name": "Reference Load", "artifact": "reference.json", "tokens": 5200, "validation": "PASS"}
+{"event": "node_complete", "at": "2026-09-21T22:34:52.047159+00:00Z", "node": "02b", "name": "Deep Reference Load", "artifact": "reference.json", "tokens": 1500, "validation": "PASS"}
+{"event": "node_complete", "at": "2026-09-21T22:35:02.200266+00:00Z", "node": "03", "name": "Code Style Lock", "artifact": "style-rules.md", "tokens": 800, "validation": "PASS"}
+{"event": "node_complete", "at": "2026-09-21T22:35:14.827495+00:00Z", "node": "04", "name": "File Tree Gen", "artifact": "file-tree.md", "tokens": 1100, "validation": "PASS"}
+{"event": "session_start", "at": "2026-09-21T22:33:20.339156+00:00Z", "session_id": "p6_run_e19450", "deliverable": "landing-page", "tier_stop": 2, "reference": "https://resend.com", "tool_status": {"spa-ripper": "installed (/c/Users/green/bin/spa-ripper)", "python": "installed", "node": "installed"}}
+{"event": "node_complete", "at": "2026-09-21T22:33:31.908227+00:00Z", "node": "01", "name": "Intent Parse", "artifact": "intent.json", "tokens": 1200, "validation": "PASS"}
+{"event": "node_complete", "at": "2026-09-21T22:33:41.332709+00:00Z", "node": "01a", "name": "Suitability Check", "artifact": "suitability.json", "tokens": 650, "validation": "PASS"}
+{"event": "node_complete", "at": "2026-09-21T22:33:52.660588+00:00Z", "node": "01b", "name": "Scope Negotiation", "artifact": "scope.json", "tokens": 700, "validation": "PASS"}
+{"event": "node_complete", "at": "2026-09-21T22:34:01.061765+00:00Z", "node": "01c", "name": "Budget Estimate", "artifact": "estimate.json", "tokens": 450, "validation": "PASS"}
+{"event": "node_complete", "at": "2026-09-21T22:34:23.457233+00:00Z", "node": "01d", "name": "System Model", "artifact": "system.json", "tokens": 4800, "validation": "PASS"}
+{"event": "node_complete", "at": "2026-09-21T22:34:48.049147+00:00Z", "node": "02", "name": "Reference Load", "artifact": "reference.json", "tokens": 5200, "validation": "PASS"}
+{"event": "node_complete", "at": "2026-09-21T22:35:00.421324+00:00Z", "node": "02b", "name": "Deep Reference Load", "artifact": "reference.json", "tokens": 1500, "validation": "PASS"}
+{"event": "node_complete", "at": "2026-09-21T22:35:10.993892+00:00Z", "node": "03", "name": "Code Style Lock", "artifact": "style-rules.md", "tokens": 800, "validation": "PASS"}
+{"event": "node_complete", "at": "2026-09-21T22:35:23.220303+00:00Z", "node": "04", "name": "File Tree Gen", "artifact": "file-tree.md", "tokens": 1100, "validation": "PASS"}
+{"event": "node_complete", "at": "2026-09-21T22:35:33.547335+00:00Z", "node": "04a", "name": "Completeness Manifest", "artifact": "manifest.json", "tokens": 1000, "validation": "PASS"}
+{"event": "node_complete", "at": "2026-09-21T22:35:49.377326+00:00Z", "node": "05", "name": "Repo Scaffolder", "artifact": "scaffold/package.json", "tokens": 2400, "validation": "PASS"}
+{"event": "node_complete", "at": "2026-09-21T22:36:07.627330+00:00Z", "node": "06", "name": "Prompt Composer", "artifact": "prompt.md", "tokens": 4200, "validation": "PASS"}
+{"event": "node_complete", "at": "2026-09-21T22:36:16.319366+00:00Z", "node": "06a", "name": "Design Commitment", "artifact": "design-commitment.md", "tokens": 750, "validation": "PASS"}
+{"event": "node_complete", "at": "2026-09-21T22:36:29.553144+00:00Z", "node": "07", "name": "API Surface", "artifact": "api_client/api_client.ts", "tokens": 2200, "validation": "PASS"}
+{"event": "session_start", "at": "2026-09-21T22:33:33.836463+00:00Z", "session_id": "p6_run_e19450", "deliverable": "landing-page", "tier_stop": 2, "reference": "https://resend.com", "tool_status": {"spa-ripper": "installed (/c/Users/green/bin/spa-ripper)", "python": "installed", "node": "installed"}}
+{"event": "node_complete", "at": "2026-09-21T22:33:45.054837+00:00Z", "node": "01", "name": "Intent Parse", "artifact": "intent.json", "tokens": 1200, "validation": "PASS"}
+{"event": "node_complete", "at": "2026-09-21T22:33:54.211489+00:00Z", "node": "01a", "name": "Suitability Check", "artifact": "suitability.json", "tokens": 650, "validation": "PASS"}
+{"event": "node_complete", "at": "2026-09-21T22:34:06.048563+00:00Z", "node": "01b", "name": "Scope Negotiation", "artifact": "scope.json", "tokens": 700, "validation": "PASS"}
+{"event": "node_complete", "at": "2026-09-21T22:34:14.463887+00:00Z", "node": "01c", "name": "Budget Estimate", "artifact": "estimate.json", "tokens": 450, "validation": "PASS"}
+{"event": "node_complete", "at": "2026-09-21T22:34:37.285274+00:00Z", "node": "01d", "name": "System Model", "artifact": "system.json", "tokens": 4800, "validation": "PASS"}
+{"event": "node_complete", "at": "2026-09-21T22:35:01.761486+00:00Z", "node": "02", "name": "Reference Load", "artifact": "reference.json", "tokens": 5200, "validation": "PASS"}
+{"event": "node_complete", "at": "2026-09-21T22:35:13.979686+00:00Z", "node": "02b", "name": "Deep Reference Load", "artifact": "reference.json", "tokens": 1500, "validation": "PASS"}
+{"event": "node_complete", "at": "2026-09-21T22:35:24.164219+00:00Z", "node": "03", "name": "Code Style Lock", "artifact": "style-rules.md", "tokens": 800, "validation": "PASS"}
+{"event": "node_complete", "at": "2026-09-21T22:35:36.688224+00:00Z", "node": "04", "name": "File Tree Gen", "artifact": "file-tree.md", "tokens": 1100, "validation": "PASS"}
+{"event": "node_complete", "at": "2026-09-21T22:35:46.938664+00:00Z", "node": "04a", "name": "Completeness Manifest", "artifact": "manifest.json", "tokens": 1000, "validation": "PASS"}
+{"event": "node_complete", "at": "2026-09-21T22:36:02.521484+00:00Z", "node": "05", "name": "Repo Scaffolder", "artifact": "scaffold/package.json", "tokens": 2400, "validation": "PASS"}
+{"event": "node_complete", "at": "2026-09-21T22:36:20.980114+00:00Z", "node": "06", "name": "Prompt Composer", "artifact": "prompt.md", "tokens": 4200, "validation": "PASS"}
+{"event": "node_complete", "at": "2026-09-21T22:36:29.529523+00:00Z", "node": "06a", "name": "Design Commitment", "artifact": "design-commitment.md", "tokens": 750, "validation": "PASS"}
+{"event": "node_complete", "at": "2026-09-21T22:36:43.063347+00:00Z", "node": "07", "name": "API Surface", "artifact": "api_client/api_client.ts", "tokens": 2200, "validation": "PASS"}
+{"event": "node_complete", "at": "2026-09-21T22:36:57.352615+00:00Z", "node": "07a", "name": "API Research", "artifact": "api_research.json", "tokens": 2500, "validation": "PASS"}
+{"event": "node_complete", "at": "2026-09-21T22:37:08.908526+00:00Z", "node": "07b", "name": "Third-Party API Research", "artifact": "integrations/resend.md", "tokens": 1200, "validation": "PASS"}
+{"event": "node_complete", "at": "2026-09-21T22:37:21.571280+00:00Z", "node": "07c", "name": "Backend Architecture", "artifact": "backend-decision.md", "tokens": 1400, "validation": "PASS"}
+{"event": "node_complete", "at": "2026-09-21T22:37:36.207930+00:00Z", "node": "07d", "name": "API Design", "artifact": "openapi.yaml", "tokens": 1800, "validation": "PASS"}
+{"event": "node_complete", "at": "2026-09-21T22:37:46.440350+00:00Z", "node": "07e", "name": "Backend Scaffold", "artifact": "server/index.ts", "tokens": 1300, "validation": "PASS"}
+{"event": "node_complete", "at": "2026-09-21T22:37:59.737828+00:00Z", "node": "07f", "name": "Handler Implementations", "artifact": "handlers/waitlist.ts", "tokens": 2100, "validation": "PASS"}
+{"event": "node_complete", "at": "2026-09-21T22:38:11.092677+00:00Z", "node": "07g", "name": "Integration Wiring", "artifact": "webhooks/resend-events.ts", "tokens": 1600, "validation": "PASS"}
+{"event": "node_complete", "at": "2026-09-21T22:38:20.564250+00:00Z", "node": "08", "name": "Stack Fingerprint", "artifact": "stack-decision.md", "tokens": 950, "validation": "PASS"}
+{"event": "node_complete", "at": "2026-09-21T22:38:34.712670+00:00Z", "node": "09", "name": "Route Extract", "artifact": "routes.json", "tokens": 2800, "validation": "PASS"}
+{"event": "node_complete", "at": "2026-09-21T22:38:48.388253+00:00Z", "node": "10", "name": "Section Plan", "artifact": "sections.json", "tokens": 2600, "validation": "PASS"}
+{"event": "node_complete", "at": "2026-09-21T22:39:00.007389+00:00Z", "node": "11", "name": "Design Tokens", "artifact": "design-tokens.json", "tokens": 2100, "validation": "PASS"}
+{"event": "node_complete", "at": "2026-09-21T22:39:13.289076+00:00Z", "node": "11a", "name": "Design System Extract", "artifact": "design_system.json", "tokens": 1700, "validation": "PASS"}
+{"event": "node_complete", "at": "2026-09-21T22:39:24.867643+00:00Z", "node": "11b", "name": "Copy Cleanse", "artifact": "slop-report.json", "tokens": 1100, "validation": "PASS"}
+{"event": "node_complete", "at": "2026-09-21T22:39:35.747255+00:00Z", "node": "11c", "name": "Design Slop Lint", "artifact": "slop-lint.json", "tokens": 850, "validation": "PASS"}
+{"event": "node_complete", "at": "2026-09-21T22:39:46.217863+00:00Z", "node": "11d", "name": "Design Contract", "artifact": "design-contract.md", "tokens": 1100, "validation": "PASS"}
+{"event": "node_complete", "at": "2026-09-21T22:39:58.795633+00:00Z", "node": "11e", "name": "Motion Customization", "artifact": "motion-config.json", "tokens": 1500, "validation": "PASS"}
+{"event": "session_complete", "at": "2026-09-21T22:40:03.651967+00:00Z", "status": "complete", "tier_stop": 2, "nodes_completed": 30, "nodes_failed": 0, "output_dir": "C:\\Users\\green\\.gemini\\antigravity\\scratch\\vibe-code-genius\\first-build"}

@@ -1,0 +1,49 @@
+{
+  "status": "complete",
+  "version": "1.0.0",
+  "components": [
+    {
+      "name": "Button",
+      "variants": {
+        "primary": "bg-white text-black hover:bg-zinc-200 font-medium px-4 py-2 rounded-lg transition-colors",
+        "secondary": "bg-zinc-900 text-zinc-200 hover:bg-zinc-800 border border-zinc-800 px-4 py-2 rounded-lg transition-colors",
+        "ghost": "text-zinc-400 hover:text-white px-3 py-1.5 transition-colors"
+      }
+    },
+    {
+      "name": "Card",
+      "base": "bg-zinc-950 border border-zinc-800 hover:border-zinc-700 rounded-xl p-6 transition-all duration-200"
+    },
+    {
+      "name": "Badge",
+      "base": "inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium border border-zinc-800 bg-zinc-900 text-zinc-300"
+    },
+    {
+      "name": "Input",
+      "base": "bg-zinc-900/80 border border-zinc-800 focus:border-white focus:outline-none text-white px-3 py-2 rounded-lg text-sm"
+    },
+    {
+      "name": "Terminal",
+      "base": "bg-black border border-zinc-800 rounded-xl overflow-hidden font-mono text-xs shadow-2xl"
+    }
+  ],
+  "tokens": {
+    "color_background": "#000000",
+    "color_card": "#09090b",
+    "color_border": "#27272a",
+    "color_text_primary": "#ffffff",
+    "color_text_muted": "#a1a1aa",
+    "color_accent": "#ffffff",
+    "radius_base": "8px"
+  },
+  "keyframes": [
+    {
+      "name": "fadeIn",
+      "rule": "from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); }"
+    },
+    {
+      "name": "shimmer",
+      "rule": "from { background-position: -200% 0; } to { background-position: 200% 0; }"
+    }
+  ]
+}

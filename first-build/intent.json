@@ -1,0 +1,19 @@
+{
+  "status": "complete",
+  "version": "1.0.0",
+  "product_name": "vibe-code-genius",
+  "product_type": "developer-tool",
+  "target_user": "Indie developers and small teams who use AI to build web products",
+  "key_flows": [
+    "Explore 61-node contract tree topology",
+    "Audit normative contracts and verification gates",
+    "Review transparent pricing tier comparisons",
+    "Register for developer waitlist with rate-limiting"
+  ],
+  "reference_url": "https://resend.com",
+  "vibe": "minimal-developer-dark",
+  "evidence": [
+    "Declared intent verified against product specifications",
+    "Target user and problem space calibrated for deterministic builds"
+  ]
+}
