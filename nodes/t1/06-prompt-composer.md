@@ -51,6 +51,12 @@ Before marking complete: python scripts/validate-artifact.py --node 06 --artifac
 
 
 
+`prompt.md` must contain these sections in order: `ROUTE MAP`, `AESTHETIC DIRECTION`, and `HOMEPAGE SECTIONS`.
+
+## AESTHETIC DIRECTION
+
+This required section appears between `ROUTE MAP` and `HOMEPAGE SECTIONS`. Source it from `design-commitment.md` and include the full `## Visual Rules`, `## Copy Tone`, and `## Banned For This Direction` sections. Do not summarize them away or replace them with a token dump.
+
 ## If this fails
 
 
