@@ -1,7 +1,7 @@
 {
-  "reference_url": "https://www.figma.com",
+  "reference_url": "https://github.com",
   "acquired_at": "2026-09-21T00:00:00Z",
-  "acquirer": "curated-reference-index",
+  "acquirer": "fixture",
   "stack": {
     "framework": {
       "name": "unknown",
@@ -12,7 +12,7 @@
   "routes": [
     {
       "path": "/",
-      "title": "Figma",
+      "title": "Github",
       "parent_path": null,
       "status": "public"
     }

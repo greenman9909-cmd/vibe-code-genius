@@ -145,7 +145,7 @@ See [`docs/animation-customization.md`](docs/animation-customization.md), [`refe
 
 ## Reference library and asset sourcing
 
-The repository includes 20 curated `references/{site}.json` structure fixtures indexed in `references/index.json`, plus API, security, design, writing, motion, and trust references. Run `python scripts/validate-references.py` to validate every indexed fixture against `schema/structure.schema.json`. These fixtures are provenance records and validation inputs; they are not claims that the referenced companies endorse this project.
+The repository includes 20 schema-valid, explicitly labeled **non-scraped fixtures** under `references/fixtures/{site}.json`, indexed in `references/index.json`, plus API, security, design, writing, motion, and trust references. Run `python scripts/validate-references.py` to validate the fixtures and any future scraped entries. Fixtures are examples and validation inputs; they are not claims that the referenced companies endorse this project and are never loaded as scraped evidence.
 
 The visual direction of the documentation and examples takes inspiration from the public profile of [Debasish Ray](https://github.com/debasishray16): a terminal-oriented developer identity spanning Ubuntu/Debian, backend development, IoT, ML/DL, DevOps, Docker, Kubernetes, AWS, React, and Tailwind CSS. The profile is used as a source of aesthetic and topic cues, not as a copied brand identity. No profile image or personal asset is bundled without an explicit license or permission. See [`docs/assets-and-attribution.md`](docs/assets-and-attribution.md).
 

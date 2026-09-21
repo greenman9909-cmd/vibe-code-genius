@@ -1,7 +1,7 @@
 {
-  "reference_url": "https://github.com",
+  "reference_url": "https://stripe.com",
   "acquired_at": "2026-09-21T00:00:00Z",
-  "acquirer": "curated-reference-index",
+  "acquirer": "fixture",
   "stack": {
     "framework": {
       "name": "unknown",
@@ -12,7 +12,7 @@
   "routes": [
     {
       "path": "/",
-      "title": "Github",
+      "title": "Stripe",
       "parent_path": null,
       "status": "public"
     }

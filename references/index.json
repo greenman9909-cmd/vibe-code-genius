@@ -3,204 +3,304 @@
   "references": [
     {
       "name": "linear",
-      "file": "linear.json",
+      "file": "fixtures/linear.json",
       "url": "https://linear.app",
       "tags": [
         "curated",
+        "fixture",
+        "not-scraped",
         "structure"
       ],
-      "last_verified": "2026-09-21"
+      "last_verified": "2026-09-21",
+      "type": "fixture",
+      "note": "schema-valid example, not scraped",
+      "acquirer": "fixture"
     },
     {
       "name": "stripe",
-      "file": "stripe.json",
+      "file": "fixtures/stripe.json",
       "url": "https://stripe.com",
       "tags": [
         "curated",
+        "fixture",
+        "not-scraped",
         "structure"
       ],
-      "last_verified": "2026-09-21"
+      "last_verified": "2026-09-21",
+      "type": "fixture",
+      "note": "schema-valid example, not scraped",
+      "acquirer": "fixture"
     },
     {
       "name": "github",
-      "file": "github.json",
+      "file": "fixtures/github.json",
       "url": "https://github.com",
       "tags": [
         "curated",
+        "fixture",
+        "not-scraped",
         "structure"
       ],
-      "last_verified": "2026-09-21"
+      "last_verified": "2026-09-21",
+      "type": "fixture",
+      "note": "schema-valid example, not scraped",
+      "acquirer": "fixture"
     },
     {
       "name": "vercel",
-      "file": "vercel.json",
+      "file": "fixtures/vercel.json",
       "url": "https://vercel.com",
       "tags": [
         "curated",
+        "fixture",
+        "not-scraped",
         "structure"
       ],
-      "last_verified": "2026-09-21"
+      "last_verified": "2026-09-21",
+      "type": "fixture",
+      "note": "schema-valid example, not scraped",
+      "acquirer": "fixture"
     },
     {
       "name": "supabase",
-      "file": "supabase.json",
+      "file": "fixtures/supabase.json",
       "url": "https://supabase.com",
       "tags": [
         "curated",
+        "fixture",
+        "not-scraped",
         "structure"
       ],
-      "last_verified": "2026-09-21"
+      "last_verified": "2026-09-21",
+      "type": "fixture",
+      "note": "schema-valid example, not scraped",
+      "acquirer": "fixture"
     },
     {
       "name": "notion",
-      "file": "notion.json",
+      "file": "fixtures/notion.json",
       "url": "https://www.notion.so",
       "tags": [
         "curated",
+        "fixture",
+        "not-scraped",
         "structure"
       ],
-      "last_verified": "2026-09-21"
+      "last_verified": "2026-09-21",
+      "type": "fixture",
+      "note": "schema-valid example, not scraped",
+      "acquirer": "fixture"
     },
     {
       "name": "figma",
-      "file": "figma.json",
+      "file": "fixtures/figma.json",
       "url": "https://www.figma.com",
       "tags": [
         "curated",
+        "fixture",
+        "not-scraped",
         "structure"
       ],
-      "last_verified": "2026-09-21"
+      "last_verified": "2026-09-21",
+      "type": "fixture",
+      "note": "schema-valid example, not scraped",
+      "acquirer": "fixture"
     },
     {
       "name": "raycast",
-      "file": "raycast.json",
+      "file": "fixtures/raycast.json",
       "url": "https://www.raycast.com",
       "tags": [
         "curated",
+        "fixture",
+        "not-scraped",
         "structure"
       ],
-      "last_verified": "2026-09-21"
+      "last_verified": "2026-09-21",
+      "type": "fixture",
+      "note": "schema-valid example, not scraped",
+      "acquirer": "fixture"
     },
     {
       "name": "arc",
-      "file": "arc.json",
+      "file": "fixtures/arc.json",
       "url": "https://arc.net",
       "tags": [
         "curated",
+        "fixture",
+        "not-scraped",
         "structure"
       ],
-      "last_verified": "2026-09-21"
+      "last_verified": "2026-09-21",
+      "type": "fixture",
+      "note": "schema-valid example, not scraped",
+      "acquirer": "fixture"
     },
     {
       "name": "framer",
-      "file": "framer.json",
+      "file": "fixtures/framer.json",
       "url": "https://www.framer.com",
       "tags": [
         "curated",
+        "fixture",
+        "not-scraped",
         "structure"
       ],
-      "last_verified": "2026-09-21"
+      "last_verified": "2026-09-21",
+      "type": "fixture",
+      "note": "schema-valid example, not scraped",
+      "acquirer": "fixture"
     },
     {
       "name": "readme",
-      "file": "readme.json",
+      "file": "fixtures/readme.json",
       "url": "https://readme.com",
       "tags": [
         "curated",
+        "fixture",
+        "not-scraped",
         "structure"
       ],
-      "last_verified": "2026-09-21"
+      "last_verified": "2026-09-21",
+      "type": "fixture",
+      "note": "schema-valid example, not scraped",
+      "acquirer": "fixture"
     },
     {
       "name": "sentry",
-      "file": "sentry.json",
+      "file": "fixtures/sentry.json",
       "url": "https://sentry.io",
       "tags": [
         "curated",
+        "fixture",
+        "not-scraped",
         "structure"
       ],
-      "last_verified": "2026-09-21"
+      "last_verified": "2026-09-21",
+      "type": "fixture",
+      "note": "schema-valid example, not scraped",
+      "acquirer": "fixture"
     },
     {
       "name": "resend",
-      "file": "resend.json",
+      "file": "fixtures/resend.json",
       "url": "https://resend.com",
       "tags": [
         "curated",
+        "fixture",
+        "not-scraped",
         "structure"
       ],
-      "last_verified": "2026-09-21"
+      "last_verified": "2026-09-21",
+      "type": "fixture",
+      "note": "schema-valid example, not scraped",
+      "acquirer": "fixture"
     },
     {
       "name": "clerk",
-      "file": "clerk.json",
+      "file": "fixtures/clerk.json",
       "url": "https://clerk.com",
       "tags": [
         "curated",
+        "fixture",
+        "not-scraped",
         "structure"
       ],
-      "last_verified": "2026-09-21"
+      "last_verified": "2026-09-21",
+      "type": "fixture",
+      "note": "schema-valid example, not scraped",
+      "acquirer": "fixture"
     },
     {
       "name": "webflow",
-      "file": "webflow.json",
+      "file": "fixtures/webflow.json",
       "url": "https://webflow.com",
       "tags": [
         "curated",
+        "fixture",
+        "not-scraped",
         "structure"
       ],
-      "last_verified": "2026-09-21"
+      "last_verified": "2026-09-21",
+      "type": "fixture",
+      "note": "schema-valid example, not scraped",
+      "acquirer": "fixture"
     },
     {
       "name": "airtable",
-      "file": "airtable.json",
+      "file": "fixtures/airtable.json",
       "url": "https://airtable.com",
       "tags": [
         "curated",
+        "fixture",
+        "not-scraped",
         "structure"
       ],
-      "last_verified": "2026-09-21"
+      "last_verified": "2026-09-21",
+      "type": "fixture",
+      "note": "schema-valid example, not scraped",
+      "acquirer": "fixture"
     },
     {
       "name": "loom",
-      "file": "loom.json",
+      "file": "fixtures/loom.json",
       "url": "https://www.loom.com",
       "tags": [
         "curated",
+        "fixture",
+        "not-scraped",
         "structure"
       ],
-      "last_verified": "2026-09-21"
+      "last_verified": "2026-09-21",
+      "type": "fixture",
+      "note": "schema-valid example, not scraped",
+      "acquirer": "fixture"
     },
     {
       "name": "segment",
-      "file": "segment.json",
+      "file": "fixtures/segment.json",
       "url": "https://segment.com",
       "tags": [
         "curated",
+        "fixture",
+        "not-scraped",
         "structure"
       ],
-      "last_verified": "2026-09-21"
+      "last_verified": "2026-09-21",
+      "type": "fixture",
+      "note": "schema-valid example, not scraped",
+      "acquirer": "fixture"
     },
     {
       "name": "twilio",
-      "file": "twilio.json",
+      "file": "fixtures/twilio.json",
       "url": "https://www.twilio.com",
       "tags": [
         "curated",
+        "fixture",
+        "not-scraped",
         "structure"
       ],
-      "last_verified": "2026-09-21"
+      "last_verified": "2026-09-21",
+      "type": "fixture",
+      "note": "schema-valid example, not scraped",
+      "acquirer": "fixture"
     },
     {
       "name": "cloudflare",
-      "file": "cloudflare.json",
+      "file": "fixtures/cloudflare.json",
       "url": "https://www.cloudflare.com",
       "tags": [
         "curated",
+        "fixture",
+        "not-scraped",
         "structure"
       ],
-      "last_verified": "2026-09-21"
+      "last_verified": "2026-09-21",
+      "type": "fixture",
+      "note": "schema-valid example, not scraped",
+      "acquirer": "fixture"
     }
   ],
-  "last_verified": "2026-09-21"
+  "last_verified": "2026-09-22"
 }
