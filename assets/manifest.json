@@ -1,0 +1,22 @@
+{
+  "version": "1.0.0",
+  "policy": "inspiration-only-unless-licensed",
+  "sources": [
+    {
+      "source_url": "https://github.com/debasishray16/debasishray16",
+      "asset_type": "design-inspiration",
+      "license": "profile content; do not redistribute without permission",
+      "attribution": "Inspired by the public developer profile of Debasish Ray",
+      "usage": "terminal-oriented documentation tone and developer-tool topic cues",
+      "verified_at": "2026-09-22"
+    },
+    {
+      "source_url": "https://avatars.githubusercontent.com/u/83941421?v=4",
+      "asset_type": "avatar-reference-only",
+      "license": "not bundled; obtain permission or a license before use",
+      "attribution": null,
+      "usage": "reference record only; never copied into a product build by default",
+      "verified_at": "2026-09-22"
+    }
+  ]
+}

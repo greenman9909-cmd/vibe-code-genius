@@ -1,47 +1,162 @@
 # Vibe Code Genius — God Tree
 
-Vibe Code Genius is a contract-driven orchestration tree for turning a product brief and a reference website into a complete, verifiable application. It plans the work, preserves artifacts between nodes, validates wiring and security, and converts failures into regression cases.
+**Vibe Code Genius** is a contract-driven build system for turning a product brief and an optional reference website into a complete, verifiable application. It combines structured research, API discovery, design-token extraction, implementation planning, security hardening, runtime verification, and post-session repair into one artifact pipeline.
 
-## What ships
+The repository is designed for developers who want more than a generated page: it preserves decisions, validates references, records evidence, exposes customization points, and blocks a release when the build is incomplete or insecure.
 
-The repository contains 61 named node specifications from the authoritative tree, frozen JSON Schemas, contracts, tool integration documents, reference checklists, platform integrations, deterministic scripts, golden tests, and a multi-target installer. The specification calls this a 42-node tree; the README enumerates 61 identifiers when the dedicated motion-customization stage is included, so this implementation preserves every listed identifier and reports the exact count.
+## What this repository is for
 
-## Quick start
+Use the god tree when a build needs repeatability, not just a one-off prompt. It is useful for product teams, solo builders, agentic coding workflows, design-system migrations, reference-led rebuilds, backend/frontend coordination, and teams that need an audit trail for generated artifacts.
+
+The authoritative specification describes a 42-node tree. Its lettered subnodes enumerate **61 node files**, all of which are included here: 13 foundation nodes, 17 structure nodes, 9 composition nodes, 17 product nodes, and 5 meta nodes.
+
+## Core capabilities
+
+| Capability | What it provides |
+|---|---|
+| Intent and scope | Product type, target user, key flows, route scope, tier stop, and budget estimate |
+| Reference acquisition | Structured reference loading with SPA-Ripper, SiteMap-X, HAR, manual, and screenshot fallbacks |
+| API understanding | API surface extraction plus `api-researcher` behavior profiles for auth, pagination, versioning, rate limits, errors, CORS, and response shapes |
+| Design system | Semantic tokens, section maps, component patterns, motion rules, and anti-slop checks |
+| Anticipatory architecture | Declared routes, layouts, auth context, uniform data fetching, state patterns, and future-proof component boundaries |
+| Security | Default-deny auth, input validation, secure headers, cookie rules, secret scanning, CORS policy, SSRF controls, and production checks |
+| Verification | Static, runtime, edge, security, performance, wiring, and final ship gates |
+| Self-improvement | Failure logs, minimal reproductions, repair reports, and permanent regression cases |
+
+## Use cases
+
+### 1. Build a reference-led SaaS dashboard
+
+Provide a product brief and a reference URL. The tree extracts route structure, sections, tokens, components, and API hints, then creates a scoped plan for a dashboard without copying unverified claims or inventing screens.
+
+### 2. Turn discovered endpoints into a typed product
+
+Run `api-researcher` against endpoints found by SPA-Ripper or SiteMap-X. Feed `api_research.json` into API Surface, Backend Architecture, API Design, and Schema Deep Infer so frontend, backend, and database decisions share one observed contract.
+
+### 3. Migrate a design system without visual drift
+
+Use Design Tokens, Design System Extract, Design Contract, Component Kit, and Consistency Check to move a product to a new framework while preserving spacing rhythm, typography, component states, and approved motion.
+
+### 4. Generate a secure MVP scaffold
+
+Stop at tier 3 for a frontend composition, or continue through tier 4 for auth, persistence, deployment, security, and production-readiness checks. The tree keeps unfinished capabilities explicit rather than hiding them behind a “complete” claim.
+
+### 5. Run a multi-agent build with an audit trail
+
+Use the meta tier when work can be split across research, frontend, backend, tests, and verification. The coordinator merges artifacts by schema and produces a fidelity report and correction prompt for weak categories.
+
+### 6. Repair a failed build instead of restarting
+
+When a validator, tool, or node fails, write a minimal reproduction. Post-Session Repair verifies the fix against the original tests and promotes the case to a permanent regression test.
+
+## Installation
 
 ```bash
-python -m venv .venv && source .venv/bin/activate
+git clone https://github.com/greenman9909-cmd/vibe-code-genius
+cd vibe-code-genius
+python -m venv .venv
+source .venv/bin/activate
 pip install -e .
-python scripts/validate-tree.py
-python tests/golden.py
-vibe-tree plan --intent "Build a research dashboard" --out .artifacts/session
 ```
 
-Use `vibe-tree debug on` or `debug off` to control state-block output. Use `vibe-tree stats` to inspect failures and `vibe-tree report-failure` to create a permanent reproduction.
+Install into an agent platform:
 
-## Contracts
+```bash
+./install.sh --target cursor
+# targets: claude, claude-project, claude-skill, custom-gpt,
+#          gemini, antigravity, aider, continue, generic
+```
 
-Every node reads a declared input, emits a versioned artifact, validates references, and records failures. The wiring, integrity, hardening, completeness, consistency, load-once, maintenance, and repair contracts are normative.
+The installer copies only the tree, contracts, schemas, and platform-specific entry files required by the selected target. It does not transmit credentials or create external accounts.
 
-## Animation customization
+## First run
 
-Animation is fully tokenized and customizable through node 11e and `motion-config.json`. Choose a motion profile (`instant`, `restrained`, `precise`, `energetic`, or `editorial`), set intensity from 0 to 1, define reduced-motion behavior, and use scoped component overrides. The implementation guide lives at `docs/animation-customization.md`; pattern guidance lives at `references/motion-patterns.md`. Every effect has a stable state, cancellation behavior, keyboard behavior, and reduced-motion fallback.
+```bash
+python scripts/validate-tree.py
+python scripts/validate-structure.py
+python tests/golden.py
+python -m unittest discover -s tests -v
 
-## Support
+vibe-tree plan \
+  --intent "Build a research dashboard for API teams" \
+  --out .artifacts/session
+```
 
-Ko-fi placeholder: https://ko-fi.com/YOUR_HANDLE
+Useful commands:
 
-## Integrations
+```bash
+vibe-tree tree
+vibe-tree debug on
+vibe-tree debug off
+vibe-tree stats
+vibe-tree report-failure 13a --input '{"route":"/settings"}'
+```
 
-See `tools/` for acquisition, API research, design extraction, copy quality, wiring, hardening, and legal generation. See `integrations/` for Claude, GPT, Gemini CLI, Cursor, and other installation targets.
+A plan creates `intent.json`, `scope.json`, `session.json`, and `plan.md`. A real agent integration then consumes the plan and writes the node artifacts in prerequisite order.
 
-## Safety and quality gates
+## How the tree works
 
-The tree defaults to private/authenticated behavior, explicit CORS, validated input, redacted logs, secure cookies, no source maps in production, no unverified claims, and no unresolved references. The final ship gate blocks on failed design, accessibility, runtime, security, performance, or completeness checks.
+1. **Foundation** defines intent, suitability, scope, budget, system model, reference inputs, coding style, file tree, manifest, and scaffold.
+2. **Structure** defines API behavior, backend contracts, route maps, sections, design tokens, copy quality, design anti-patterns, and the design contract.
+3. **Composition** creates reusable components, motion, pages, data fetching, forms, state, and static/runtime consistency checks.
+4. **Product** adds database design, auth, security, edge states, hardening, tests, deployment, performance, and production readiness.
+5. **Meta** coordinates parallel work, compares output to the reference, refines weak areas, runs the final ship gate, and repairs failed tools.
 
-## How to use this repository
+Every node has prerequisites, declared inputs and outputs, a model/budget hint, a schema, failure behavior, banned behaviors, and an example artifact. See `skill-tree.json` and `nodes/`.
 
-1. Run the validators. 2. Install into a supported agent platform with `./install.sh --target cursor` or another target. 3. Start a session with a product brief and optional reference URL. 4. Keep generated artifacts and `session.log` under the session directory. 5. Run the ship gate before deploying.
+## Contracts and quality gates
 
-Support placeholder: https://ko-fi.com/YOUR_HANDLE
+The contracts are normative, not advisory:
 
-License: MIT.
+- `wiring-contract.md` rejects unresolved imports, routes, API calls, tokens, environment variables, i18n keys, and components.
+- `integrity-contract.md` covers types, state, assets, promises, listeners, leaks, and accessibility.
+- `hardening-contract.md` covers secrets, headers, auth, CSRF, input/output, CORS, dependencies, infrastructure, runtime, logging, cookies, external services, and build-time security.
+- `completeness-contract.md` makes `system.json` and `manifest.json` the source of truth for scope.
+- `consistency-contract.md` keeps pages on the same layout, token, component, and spacing system.
+- `repair-contract.md` turns a verified failure into a regression case instead of silently changing behavior.
+
+## Animation and motion customization
+
+Motion is a first-class design contract, not a pile of local CSS values. Node `11e` emits `motion-customization.md` and `motion-config.json`, while node `12a` applies the motion layer.
+
+Supported profiles:
+
+| Profile | Behavior | Typical use |
+|---|---|---|
+| `instant` | Removes decorative travel and keeps state changes immediate | Dense tools and accessibility-first workflows |
+| `restrained` | Short, quiet confirmation motion | Research, finance, and technical products |
+| `precise` | Directional transitions explain hierarchy | Navigation-heavy applications |
+| `energetic` | More visible reveals and gesture feedback | Consumer products and onboarding |
+| `editorial` | Slower, intentional entrance rhythm | Storytelling and portfolio surfaces |
+
+Customize `profile`, `intensity` from `0` to `1`, `reduced_motion.mode`, token durations, easing, spring stiffness/damping, and scoped component overrides. Every effect must have a stable state, cancellation behavior, keyboard behavior, and `prefers-reduced-motion` fallback.
+
+See [`docs/animation-customization.md`](docs/animation-customization.md), [`references/motion-patterns.md`](references/motion-patterns.md), and [`schema/motion-config.schema.json`](schema/motion-config.schema.json).
+
+## Reference library and asset sourcing
+
+The repository includes 20 curated structure fixtures indexed in `references/index.json`, plus API, security, design, writing, motion, and trust references. These fixtures are provenance records and validation inputs; they are not claims that the referenced companies endorse this project.
+
+The visual direction of the documentation and examples takes inspiration from the public profile of [Debasish Ray](https://github.com/debasishray16): a terminal-oriented developer identity spanning Ubuntu/Debian, backend development, IoT, ML/DL, DevOps, Docker, Kubernetes, AWS, React, and Tailwind CSS. The profile is used as a source of aesthetic and topic cues, not as a copied brand identity. No profile image or personal asset is bundled without an explicit license or permission. See [`docs/assets-and-attribution.md`](docs/assets-and-attribution.md).
+
+## Testing and validation
+
+```bash
+python scripts/validate-tree.py
+python scripts/validate-structure.py
+python tests/golden.py
+python -m unittest discover -s tests -v
+grep -r "TODO\|STUB\|placeholder\|implement here" nodes/ vibe_code_genius/
+```
+
+The expected result is an acyclic tree, valid structure fixture, 3/3 golden checks, passing unit tests, and no forbidden stub markers in node or runtime code.
+
+## Support and contribution
+
+Open an issue with the smallest reproducible artifact and the exact validator output. Keep schema changes versioned, add golden coverage for behavior changes, and preserve evidence rather than replacing it with a confident guess.
+
+Ko-fi placeholder: **https://ko-fi.com/YOUR_HANDLE**
+
+## License
+
+MIT. See [`LICENSE`](LICENSE).
