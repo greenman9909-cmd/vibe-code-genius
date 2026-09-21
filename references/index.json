@@ -3,7 +3,7 @@
   "references": [
     {
       "name": "linear",
-      "file": "linear.structure.json",
+      "file": "linear.json",
       "url": "https://linear.app",
       "tags": [
         "curated",
@@ -13,7 +13,7 @@
     },
     {
       "name": "stripe",
-      "file": "stripe.structure.json",
+      "file": "stripe.json",
       "url": "https://stripe.com",
       "tags": [
         "curated",
@@ -23,7 +23,7 @@
     },
     {
       "name": "github",
-      "file": "github.structure.json",
+      "file": "github.json",
       "url": "https://github.com",
       "tags": [
         "curated",
@@ -33,7 +33,7 @@
     },
     {
       "name": "vercel",
-      "file": "vercel.structure.json",
+      "file": "vercel.json",
       "url": "https://vercel.com",
       "tags": [
         "curated",
@@ -43,7 +43,7 @@
     },
     {
       "name": "supabase",
-      "file": "supabase.structure.json",
+      "file": "supabase.json",
       "url": "https://supabase.com",
       "tags": [
         "curated",
@@ -53,7 +53,7 @@
     },
     {
       "name": "notion",
-      "file": "notion.structure.json",
+      "file": "notion.json",
       "url": "https://www.notion.so",
       "tags": [
         "curated",
@@ -63,7 +63,7 @@
     },
     {
       "name": "figma",
-      "file": "figma.structure.json",
+      "file": "figma.json",
       "url": "https://www.figma.com",
       "tags": [
         "curated",
@@ -73,7 +73,7 @@
     },
     {
       "name": "raycast",
-      "file": "raycast.structure.json",
+      "file": "raycast.json",
       "url": "https://www.raycast.com",
       "tags": [
         "curated",
@@ -83,7 +83,7 @@
     },
     {
       "name": "arc",
-      "file": "arc.structure.json",
+      "file": "arc.json",
       "url": "https://arc.net",
       "tags": [
         "curated",
@@ -93,7 +93,7 @@
     },
     {
       "name": "framer",
-      "file": "framer.structure.json",
+      "file": "framer.json",
       "url": "https://www.framer.com",
       "tags": [
         "curated",
@@ -103,7 +103,7 @@
     },
     {
       "name": "readme",
-      "file": "readme.structure.json",
+      "file": "readme.json",
       "url": "https://readme.com",
       "tags": [
         "curated",
@@ -113,7 +113,7 @@
     },
     {
       "name": "sentry",
-      "file": "sentry.structure.json",
+      "file": "sentry.json",
       "url": "https://sentry.io",
       "tags": [
         "curated",
@@ -123,7 +123,7 @@
     },
     {
       "name": "resend",
-      "file": "resend.structure.json",
+      "file": "resend.json",
       "url": "https://resend.com",
       "tags": [
         "curated",
@@ -133,7 +133,7 @@
     },
     {
       "name": "clerk",
-      "file": "clerk.structure.json",
+      "file": "clerk.json",
       "url": "https://clerk.com",
       "tags": [
         "curated",
@@ -143,7 +143,7 @@
     },
     {
       "name": "webflow",
-      "file": "webflow.structure.json",
+      "file": "webflow.json",
       "url": "https://webflow.com",
       "tags": [
         "curated",
@@ -153,7 +153,7 @@
     },
     {
       "name": "airtable",
-      "file": "airtable.structure.json",
+      "file": "airtable.json",
       "url": "https://airtable.com",
       "tags": [
         "curated",
@@ -163,7 +163,7 @@
     },
     {
       "name": "loom",
-      "file": "loom.structure.json",
+      "file": "loom.json",
       "url": "https://www.loom.com",
       "tags": [
         "curated",
@@ -173,7 +173,7 @@
     },
     {
       "name": "segment",
-      "file": "segment.structure.json",
+      "file": "segment.json",
       "url": "https://segment.com",
       "tags": [
         "curated",
@@ -183,7 +183,7 @@
     },
     {
       "name": "twilio",
-      "file": "twilio.structure.json",
+      "file": "twilio.json",
       "url": "https://www.twilio.com",
       "tags": [
         "curated",
@@ -193,7 +193,7 @@
     },
     {
       "name": "cloudflare",
-      "file": "cloudflare.structure.json",
+      "file": "cloudflare.json",
       "url": "https://www.cloudflare.com",
       "tags": [
         "curated",
