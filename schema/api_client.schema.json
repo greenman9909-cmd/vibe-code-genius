@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vibe-code-genius.dev/schema/api_client.schema.json",
+  "title": "api_client",
+  "type": "object",
+  "required_headings": [
+    "ApiClient",
+    "ApiResponse"
+  ]
+}

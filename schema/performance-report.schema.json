@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vibe-code-genius.dev/schema/performance-report.schema.json",
+  "title": "performance-report",
+  "type": "object",
+  "required_headings": [
+    "performance-report"
+  ]
+}

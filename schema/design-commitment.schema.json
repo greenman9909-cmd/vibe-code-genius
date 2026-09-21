@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vibe-code-genius.dev/schema/design-commitment.schema.json",
+  "title": "design-commitment",
+  "type": "object",
+  "required_headings": [
+    "Visual Integrity Commitments",
+    "Accessibility Commitments"
+  ]
+}

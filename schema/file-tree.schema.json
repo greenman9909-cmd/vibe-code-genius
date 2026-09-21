@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vibe-code-genius.dev/schema/file-tree.schema.json",
+  "title": "file-tree",
+  "type": "object",
+  "required_headings": [
+    "Project File Tree",
+    "app/",
+    "components/"
+  ]
+}

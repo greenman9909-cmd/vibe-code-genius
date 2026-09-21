@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vibe-code-genius.dev/schema/build-report.schema.json",
+  "title": "build-report",
+  "type": "object",
+  "required_headings": [
+    "build-report"
+  ]
+}

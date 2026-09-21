@@ -3,7 +3,15 @@
   "$id": "https://vibe-code-genius.dev/schema/estimate.schema.json",
   "title": "estimate",
   "type": "object",
-  "additionalProperties": false,
+  "required": [
+    "status",
+    "version",
+    "tier_stop",
+    "total_nodes",
+    "tokens_estimated",
+    "evidence"
+  ],
+  "minProperties": 6,
   "properties": {
     "status": {
       "type": "string"
@@ -11,33 +19,20 @@
     "version": {
       "type": "string"
     },
-    "evidence": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      }
-    }
-  },
-  "required": [],
-  "$defs": {
-    "status": {
-      "type": "string",
-      "enum": [
-        "pending",
-        "complete",
-        "blocked",
-        "failed"
-      ]
+    "tier_stop": {
+      "type": "integer"
+    },
+    "total_nodes": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "tokens_estimated": {
+      "type": "integer",
+      "minimum": 1000
     },
     "evidence": {
       "type": "array",
-      "items": {
-        "type": "string"
-      }
-    },
-    "artifact": {
-      "type": "object",
-      "additionalProperties": true
+      "minItems": 1
     }
   }
 }

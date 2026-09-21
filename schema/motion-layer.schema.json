@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vibe-code-genius.dev/schema/motion-layer.schema.json",
+  "title": "motion-layer",
+  "type": "object",
+  "required_headings": [
+    "motion"
+  ]
+}

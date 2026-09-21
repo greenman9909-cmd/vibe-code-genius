@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vibe-code-genius.dev/schema/runtime-report.schema.json",
+  "title": "runtime-report",
+  "type": "object",
+  "required_headings": [
+    "runtime-report"
+  ]
+}

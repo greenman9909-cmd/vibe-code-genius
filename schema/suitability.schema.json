@@ -3,12 +3,32 @@
   "$id": "https://vibe-code-genius.dev/schema/suitability.schema.json",
   "title": "suitability",
   "type": "object",
-  "additionalProperties": true,
+  "required": [
+    "status",
+    "version",
+    "suitability_score",
+    "product_category",
+    "evidence"
+  ],
+  "minProperties": 5,
   "properties": {
-    "status": { "type": "string" },
-    "version": { "type": "string" },
-    "suitability_score": { "type": "number" },
-    "product_category": { "type": "string" },
-    "evidence": { "type": "array", "items": { "type": "string" } }
+    "status": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string"
+    },
+    "suitability_score": {
+      "type": "number",
+      "minimum": 0.0,
+      "maximum": 1.0
+    },
+    "product_category": {
+      "type": "string"
+    },
+    "evidence": {
+      "type": "array",
+      "minItems": 1
+    }
   }
 }

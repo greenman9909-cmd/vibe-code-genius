@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vibe-code-genius.dev/schema/routes.schema.json",
+  "title": "routes",
+  "type": "object",
+  "required": [
+    "routes"
+  ],
+  "minProperties": 1,
+  "properties": {
+    "routes": {
+      "type": "array",
+      "minItems": 5,
+      "items": {
+        "type": "object",
+        "required": [
+          "path",
+          "title",
+          "status"
+        ],
+        "minProperties": 3,
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

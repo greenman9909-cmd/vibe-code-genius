@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vibe-code-genius.dev/schema/api-deployment.schema.json",
+  "title": "api-deployment",
+  "type": "object",
+  "required_headings": [
+    "api-deployment"
+  ]
+}

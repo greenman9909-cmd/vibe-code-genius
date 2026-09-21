@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vibe-code-genius.dev/schema/scaffold.schema.json",
+  "title": "scaffold",
+  "type": "object",
+  "required_headings": [
+    "package.json",
+    "tsconfig.json",
+    "tailwind.config.ts"
+  ]
+}

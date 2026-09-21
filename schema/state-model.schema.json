@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vibe-code-genius.dev/schema/state-model.schema.json",
+  "title": "state-model",
+  "type": "object",
+  "required_headings": [
+    "state-model"
+  ]
+}

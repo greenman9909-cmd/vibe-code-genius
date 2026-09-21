@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vibe-code-genius.dev/schema/slop-lint.schema.json",
+  "title": "slop-lint",
+  "type": "object",
+  "required": [
+    "rules_checked",
+    "violations"
+  ],
+  "minProperties": 2,
+  "properties": {
+    "rules_checked": {
+      "type": "integer",
+      "minimum": 100
+    },
+    "violations": {
+      "type": "array"
+    }
+  }
+}

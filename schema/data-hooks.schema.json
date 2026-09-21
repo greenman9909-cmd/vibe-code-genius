@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vibe-code-genius.dev/schema/data-hooks.schema.json",
+  "title": "data-hooks",
+  "type": "object",
+  "required_headings": [
+    "data-hooks"
+  ]
+}

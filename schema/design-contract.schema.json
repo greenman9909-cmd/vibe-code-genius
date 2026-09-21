@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vibe-code-genius.dev/schema/design-contract.schema.json",
+  "title": "design-contract",
+  "type": "object",
+  "required_headings": [
+    "Normative Design Contract",
+    "Surface Invariance"
+  ]
+}

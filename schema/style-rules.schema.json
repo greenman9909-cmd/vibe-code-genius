@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vibe-code-genius.dev/schema/style-rules.schema.json",
+  "title": "style-rules",
+  "type": "object",
+  "required_headings": [
+    "Stack & Runtime",
+    "Aesthetic & Color Tokens",
+    "Contract Guarantees"
+  ]
+}

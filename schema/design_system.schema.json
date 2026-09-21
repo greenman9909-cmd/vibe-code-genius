@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vibe-code-genius.dev/schema/design_system.schema.json",
+  "title": "design_system",
+  "type": "object",
+  "required": [
+    "components",
+    "tokens",
+    "keyframes"
+  ],
+  "minProperties": 3,
+  "properties": {
+    "components": {
+      "type": "array",
+      "minItems": 3,
+      "items": {
+        "type": "object",
+        "required": [
+          "name"
+        ]
+      }
+    },
+    "tokens": {
+      "type": "object",
+      "minProperties": 6
+    },
+    "keyframes": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "type": "object",
+        "required": [
+          "name"
+        ]
+      }
+    }
+  }
+}

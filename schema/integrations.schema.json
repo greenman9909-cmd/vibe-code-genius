@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vibe-code-genius.dev/schema/integrations.schema.json",
+  "title": "integrations",
+  "type": "object",
+  "required_headings": [
+    "Resend",
+    "Analytics"
+  ]
+}

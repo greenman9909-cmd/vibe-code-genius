@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vibe-code-genius.dev/schema/consistency-report.schema.json",
+  "title": "consistency-report",
+  "type": "object",
+  "required_headings": [
+    "consistency-report"
+  ]
+}

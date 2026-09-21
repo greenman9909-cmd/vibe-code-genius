@@ -19,7 +19,10 @@ Read `contracts/working-contract.md` and the declared input only. Emit the exact
 
 The output is `design-contract.md`. It is versioned, machine-readable when the artifact is JSON, and contains a `version`, `generated_at`, `evidence`, and `status` field where the artifact shape permits.
 
-Before marking complete: python scripts/validate-artifact.py design-contract.md schema/node.schema.json. If validation fails, halt. Do not mark complete.
+Before marking complete: python scripts/validate-artifact.py design-contract.md schema/design-contract.schema.json. If validation fails, halt. Do not mark complete.
+
+
+
 
 
 
@@ -29,10 +32,10 @@ Before marking complete: python scripts/validate-artifact.py design-contract.md 
 
 ## If this fails
 
-Log the node id, input hash, invocation, error, and minimal reproduction to `session.log`. Append with datetime.utcnow().isoformat() + 'Z' — real timestamps only. Apply the declared fallback in `contracts/repair-contract.md`; do not silently fabricate a result.
 
 
-## Do not
+Log the node id, input hash, invocation, error, and minimal reproduction to `session.log`. Use datetime.utcnow().isoformat(timespec="microseconds") + "Z" (microseconds MUST vary between events). Apply the declared fallback in `contracts/repair-contract.md`; do not silently fabricate a result.
+
 
 Do not invent pages, proof, metrics, integrations, credentials, routes, or reference evidence. Do not bypass schemas, disable a failing check, write unresolved references, or emit prose in place of the artifact.
 

@@ -3,16 +3,50 @@
   "$id": "https://vibe-code-genius.dev/schema/intent.schema.json",
   "title": "intent",
   "type": "object",
-  "additionalProperties": true,
+  "required": [
+    "status",
+    "version",
+    "product_name",
+    "product_type",
+    "target_user",
+    "key_flows"
+  ],
+  "minProperties": 6,
   "properties": {
-    "status": { "type": "string" },
-    "version": { "type": "string" },
-    "product_name": { "type": "string" },
-    "product_type": { "type": "string" },
-    "target_user": { "type": "string" },
-    "key_flows": { "type": "array" },
-    "reference_url": { "type": ["string", "null"] },
-    "vibe": { "type": "string" },
-    "evidence": { "type": "array", "items": { "type": "string" } }
+    "status": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string"
+    },
+    "product_name": {
+      "type": "string"
+    },
+    "product_type": {
+      "type": "string"
+    },
+    "target_user": {
+      "type": "string"
+    },
+    "key_flows": {
+      "type": "array",
+      "minItems": 2
+    },
+    "reference_url": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "vibe": {
+      "type": "string"
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    }
   }
 }

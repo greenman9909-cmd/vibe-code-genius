@@ -48,12 +48,15 @@ Before marking complete: python scripts/validate-artifact.py motion-customizatio
 
 
 
+
+
+
 ## If this fails
 
-Log the node id, input hash, invocation, error, and minimal reproduction to `session.log`. Append with datetime.utcnow().isoformat() + 'Z' — real timestamps only. Apply the declared fallback in `contracts/repair-contract.md`; do not silently fabricate a result.
 
 
-## Do not
+Log the node id, input hash, invocation, error, and minimal reproduction to `session.log`. Use datetime.utcnow().isoformat(timespec="microseconds") + "Z" (microseconds MUST vary between events). Apply the declared fallback in `contracts/repair-contract.md`; do not silently fabricate a result.
+
 
 Do not use infinite decorative loops, cursor-following effects, bounce or elastic easing by default, layout animation for content changes, motion that blocks keyboard input, animation without reduced-motion behavior, or component-local magic numbers. Do not add a library solely for one effect.
 

@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vibe-code-genius.dev/schema/multi-agent-report.schema.json",
+  "title": "multi-agent-report",
+  "type": "object",
+  "required_headings": [
+    "multi-agent-report"
+  ]
+}

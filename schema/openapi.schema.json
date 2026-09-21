@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vibe-code-genius.dev/schema/openapi.schema.json",
+  "title": "openapi",
+  "type": "object",
+  "required_headings": [
+    "openapi:",
+    "paths:",
+    "info:"
+  ]
+}

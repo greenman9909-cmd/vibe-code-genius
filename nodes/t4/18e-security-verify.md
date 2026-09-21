@@ -27,12 +27,15 @@ Before marking complete: python scripts/validate-artifact.py security-verify.jso
 
 
 
+
+
+
 ## If this fails
 
-Log the node id, input hash, invocation, error, and minimal reproduction to `session.log`. Append with datetime.utcnow().isoformat() + 'Z' — real timestamps only. Apply the declared fallback in `contracts/repair-contract.md`; do not silently fabricate a result.
 
 
-## Do not
+Log the node id, input hash, invocation, error, and minimal reproduction to `session.log`. Use datetime.utcnow().isoformat(timespec="microseconds") + "Z" (microseconds MUST vary between events). Apply the declared fallback in `contracts/repair-contract.md`; do not silently fabricate a result.
+
 
 Do not invent pages, proof, metrics, integrations, credentials, routes, or reference evidence. Do not bypass schemas, disable a failing check, write unresolved references, or emit prose in place of the artifact.
 
