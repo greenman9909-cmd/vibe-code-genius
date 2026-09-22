@@ -114,6 +114,14 @@ A plan creates `intent.json`, `scope.json`, `session.json`, and `plan.md`. A rea
 
 Every node has prerequisites, declared inputs and outputs, a model/budget hint, a schema, failure behavior, banned behaviors, and an example artifact. See `skill-tree.json` and `nodes/`.
 
+## Operational experience
+
+The God Tree keeps reusable field knowledge under [`walkthroughs/`](walkthroughs/). These reports record real build decisions, tool behavior, failures, corrections, and verification outcomes so future agents can avoid repeating the same mistakes.
+
+Walkthroughs are **strategy memory, not evidence**. A prior crawl, endpoint profile, screenshot, or build result never satisfies a current node's evidence requirement by itself. Read [`walkthroughs/README.md`](walkthroughs/README.md) before substantial runs, then open only the reports relevant to the current target or failure mode.
+
+The first full field report documents the [Resend-inspired God Tree explainer build](walkthroughs/2026-09-22-resend-god-tree-explainer.md), including reference acquisition, SiteMap-X reuse, SlopMonster corrections, CI verification, runtime limitations, and a failed GitHub Pages deployment caused by repository configuration.
+
 ## Contracts and quality gates
 
 The contracts are normative, not advisory:
