@@ -1,0 +1,4 @@
+[submodule "references/extracted/ani-pm/code"]
+	path = references/extracted/ani-pm/code
+	url = https://github.com/greenman9909-cmd/ani-pm-frontend.git
+	branch = main
