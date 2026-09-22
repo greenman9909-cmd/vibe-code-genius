@@ -1,0 +1,30 @@
+{
+  "version": "1.0.0",
+  "status": "partial-runtime-verification",
+  "reference": {
+    "target": "https://resend.com",
+    "evidence": [
+      "Existing SiteMap-X crawl: 25 URLs, 5 navigable pages, 266 mapped endpoints, 7 technology fingerprints, 6 forms",
+      "Current Resend public homepage reviewed",
+      "Current Resend brand handbook reviewed: dark-mode-first public brand with simple, factual, technical voice"
+    ],
+    "note": "The authored references/fixtures/resend.json file was not treated as scrape evidence because Node 02 explicitly forbids that."
+  },
+  "static_checks": {
+    "node_count": 61,
+    "tier_counts": {
+      "1": 13,
+      "2": 17,
+      "3": 9,
+      "4": 17,
+      "5": 5
+    },
+    "javascript_syntax": "pass on local build analogue",
+    "design_gradient_gate": "pass",
+    "slopmonster_score": "5/5 on local build analogue"
+  },
+  "runtime": {
+    "status": "blocked",
+    "reason": "The execution container blocks browser navigation by administrator policy (ERR_BLOCKED_BY_ADMINISTRATOR). No browser pass was fabricated."
+  }
+}
