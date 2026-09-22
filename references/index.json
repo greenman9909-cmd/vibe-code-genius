@@ -300,6 +300,23 @@
       "type": "fixture",
       "note": "schema-valid example, not scraped",
       "acquirer": "fixture"
+    },
+    {
+      "name": "ani-pm-extracted-frontend",
+      "file": "extracted/ani-pm/reference-source.json",
+      "url": "https://ani.pm",
+      "tags": [
+        "external-code-reference",
+        "spa-ripper",
+        "streaming",
+        "anime",
+        "design-code",
+        "historical-pinned"
+      ],
+      "last_verified": "2026-09-22",
+      "type": "external-code-reference",
+      "note": "Pinned SPA-Ripper-extracted frontend code reference stored in greenman9909-cmd/ani-pm-frontend at commit 2f734e7334a9a9e2db6a43c876fe88613687827f. Historical reference; not current-site proof.",
+      "acquirer": "spa-ripper"
     }
   ],
   "last_verified": "2026-09-22"
