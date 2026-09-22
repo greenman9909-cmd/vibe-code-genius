@@ -1,3 +1,5 @@
+> Superseded for this user's actual target. The run below rebuilt the ani.pm surface from extracted evidence, but the user clarified that the desired operation was to **edit/remix the SPA-Ripper-extracted frontend itself**. See `2026-09-22-ani-pm-extracted-aml-remix.md` for the corrected workflow.
+
 # Field Report — ani.pm full-surface mock rebuild
 
 Date: 2026-09-22  
