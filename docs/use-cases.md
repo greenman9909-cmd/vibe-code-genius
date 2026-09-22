@@ -33,6 +33,24 @@
 4. Build the Component Kit once, then route pages through shared layout primitives.
 5. Run Consistency Check after each page and compare the final build with Diff-Merge.
 
+## Recipe: streaming/media app
+
+For anime, video, movie, TV, music, or other streaming products, prioritize a **media-first layout** before falling back to a generic SaaS/dashboard shell.
+
+Default design priorities:
+
+1. Start with a full-width cinematic hero/spotlight area using real design code from the reference when available: backdrop, title/logo, score/year/episode or duration metadata, genres/tags, synopsis, primary Play/Resume action, library/save action, and secondary details action.
+2. Follow the hero with horizontal media shelves rather than dashboard cards: Continue Watching, Trending, Latest, Popular, Recommended, genres/collections, and schedule/release rows as appropriate.
+3. Treat title/detail pages as a primary surface: large artwork, metadata, synopsis, episode/season lists, cast/details, related titles, comments/community, library state, and playback entry points.
+4. Preserve a dedicated player/watch layout with playlist/episode navigation, progress, subtitles/audio controls, fullscreen/theater states, and responsive mobile behavior.
+5. Give Library, Search/Browse, Profile, Settings, Community, Schedule/Leaderboard and Watch-Together flows the same design-system treatment as Home; do not make them generic utility pages.
+6. Prefer dark, immersive media surfaces, restrained glass/overlay treatments, strong artwork hierarchy, dense but readable metadata, and motion that supports browsing without competing with the content.
+7. On extracted-SPA remix work, preserve the original component/CSS/responsive/motion code path whenever possible. The design is code; do not replace it with screenshots or a hand-built lookalike unless the task explicitly calls for a redesign.
+8. Keep record identity separate from artwork/metadata identity. If the extracted design keys hero assets by external IDs such as AniList IDs, preserve or adapt those keys at the data boundary instead of rewriting the hero component.
+9. Verify the actual browser DOM and responsive layout for the hero, shelves, title page, and player. API success alone does not prove the streaming design rendered correctly.
+
+This is a default heuristic, not a universal contract. An explicit product brief, accessibility requirement, or stronger reference should override it. See `walkthroughs/2026-09-22-ani-pm-extracted-aml-remix.md` for the field report that motivated this recipe.
+
 ## Recipe: failure repair
 
 1. Preserve the exact command, input artifact, and validator output.
