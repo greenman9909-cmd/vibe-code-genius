@@ -41,7 +41,8 @@ Do not silently convert one agent's preference into a global contract.
 
 ## Field reports
 
-- [2026-09-22 — Resend-inspired God Tree explainer](2026-09-22-resend-god-tree-explainer.md) — real build using the repo's own tree, Resend reference evidence, SiteMap-X data, SlopMonster, GitHub CI, and deployment attempts.\n- [2026-09-22 — ani.pm full-surface mock rebuild](2026-09-22-ani-pm-full-surface-mock.md) — first real use of Node 11f cached Clone Extract, route/component inventory, synthetic-data boundaries, and network-isolation CI.
+- [2026-09-22 — Resend-inspired God Tree explainer](2026-09-22-resend-god-tree-explainer.md) — real build using the repo's own tree, Resend reference evidence, SiteMap-X data, SlopMonster, GitHub CI, and deployment attempts.\n- [2026-09-22 — ani.pm full-surface mock rebuild](2026-09-22-ani-pm-full-surface-mock.md) — first real use of Node 11f cached Clone Extract, route/component inventory, synthetic-data boundaries, and network-isolation CI. **Superseded for the user's final target.**
+- [2026-09-22 — ani.pm extracted frontend → AML remix](2026-09-22-ani-pm-extracted-aml-remix.md) — corrected Node 11f remix workflow: keep the extracted SPA, replace its data/runtime layer, disable production network fallbacks, and verify the real bundle in CI.
 - `walkthrough-1.md` through `walkthrough-4.md` are legacy placeholders and should be replaced with real runs rather than copied forward.
 
 ## Recommended walkthrough format
