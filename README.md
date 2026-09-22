@@ -181,3 +181,16 @@ Ko-fi placeholder: **https://ko-fi.com/YOUR_HANDLE**
 ## License
 
 MIT. See [`LICENSE`](LICENSE).
+
+## Project showcase site
+
+This repository includes a lightweight, dependency-free showcase site in [`site/`](site/). It presents the God Tree, its five tiers, quality contracts, recent reference work, and the first-run CLI workflow. The site runs on Python’s standard library and is ready for Railway.
+
+Run it locally:
+
+```bash
+python server.py
+# open http://localhost:8080
+```
+
+Railway detects [`railway.json`](railway.json) and starts the server with `python server.py`; the server binds to Railway’s injected `PORT` and listens on `0.0.0.0`.
