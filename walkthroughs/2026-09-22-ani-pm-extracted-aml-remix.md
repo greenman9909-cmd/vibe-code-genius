@@ -86,6 +86,69 @@ The repair:
 
 Reusable lesson: after large string-based code transformations, verify both **symbol existence** and **declaration/use ordering**, not just syntax.
 
+## Design is code in extracted-SPA remix work
+
+A later clarification exposed another important distinction: the design was not a screenshot or a hand-recreated visual target.
+
+In this build, the design itself lives in the extracted frontend code:
+
+- React/Vite component markup and composition;
+- CSS files and design tokens;
+- responsive breakpoints and mobile layout rules;
+- glass/overlay treatments;
+- card and hero structure;
+- motion/transition logic;
+- route-level page composition;
+- interaction states such as tabs, menus, filters, watch controls and settings.
+
+Static assets such as banners, logos, posters, icons and fonts support that design, but they are not the design system by themselves.
+
+### Reusable lesson
+
+When remixing an extracted SPA, preserve the **design code path** whenever fidelity matters. Replacing it with screenshots, hand-authored lookalikes, or newly invented component trees discards the highest-value part of the extraction.
+
+For this class of task, "use the design" should usually mean "keep and run the extracted layout/style/component code", not "visually imitate the screenshot".
+
+## Hero artwork key failure and repair
+
+The first AML mock fixture pass used synthetic AniList IDs such as `91001`.
+
+The extracted Home bundle did not render the hero banner even though the spotlight API returned valid items. Investigation showed that the original Home/glass-list code contains an artwork allowlist keyed by specific original AniList IDs:
+
+- `189046`
+- `135865`
+- `178789`
+- `196187`
+- `16498`
+- `113415`
+- `185874`
+- `187538`
+
+Those IDs map to already-extracted local banner/logo assets.
+
+The repair kept the AML mock records but mapped their `anilistId` fields onto those original artwork keys. This preserved the original hero selection and artwork pipeline instead of bypassing or rewriting it.
+
+A second metadata mismatch was found at the same time:
+
+- mock data provided `episodeCount` and `synopsis`;
+- `HeroCarousel` expected `episodes` and `description`.
+
+The Home metadata adapter was patched to carry both shapes through.
+
+### Verification improvement
+
+The CI gate was strengthened from API/static checks to a real headless-browser assertion. It now boots the extracted SPA and verifies that the homepage DOM contains the original hero structure, title and episode metadata.
+
+### Reusable lesson
+
+When an extracted UI silently omits a component:
+
+1. inspect component-side allowlists and key maps;
+2. preserve original external identifiers when they are structural keys;
+3. distinguish record identity from artwork/metadata identity;
+4. adapt response-field names at the boundary instead of rewriting the component;
+5. verify the actual browser DOM, not only the API response.
+
 ## Runtime verification
 
 Workflow: `aml-extracted-runtime`
