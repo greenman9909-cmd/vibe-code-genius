@@ -18,7 +18,7 @@ The repository is designed for developers who want more than a generated page: i
 
 Use the god tree when a build needs repeatability, not just a one-off prompt. It is useful for product teams, solo builders, agentic coding workflows, design-system migrations, reference-led rebuilds, backend/frontend coordination, and teams that need an audit trail for generated artifacts.
 
-The authoritative specification describes a 42-node core tree. Its lettered subnodes enumerate **62 registered node files**: 13 foundation nodes, 18 structure nodes, 9 composition nodes, 17 product nodes, and 5 meta nodes. `scripts/validate-tree.py` also rejects orphan node files so a node cannot silently exist outside `skill-tree.json`.
+The authoritative specification describes a 42-node tree. Its lettered subnodes enumerate **61 node files**, all of which are included here: 13 foundation nodes, 17 structure nodes, 9 composition nodes, 17 product nodes, and 5 meta nodes.
 
 ## Core capabilities
 
@@ -77,17 +77,7 @@ Install into an agent platform:
 #          gemini, antigravity, aider, continue, generic
 ```
 
-The installer copies the tree, contracts, schemas, tool specs, and platform-specific entry files required by the selected target. It does not install the external acquisition repositories automatically, transmit credentials, or create external accounts.
-
-For a reference-led build, install/check the acquisition tools explicitly:
-
-```bash
-vibe-tree check-tools
-# includes SPA-Ripper, SiteMap-X, and API Researcher
-# add --all to include SlopMonster
-```
-
-The preflight prints the exact install command for anything missing.
+The installer copies only the tree, contracts, schemas, and platform-specific entry files required by the selected target. It does not transmit credentials or create external accounts.
 
 ## First run
 
@@ -99,17 +89,12 @@ python -m unittest discover -s tests -v
 
 vibe-tree plan \
   --intent "Build a research dashboard for API teams" \
-  --reference-url https://example.com \
-  --out .artifacts/session \
-  --acquire
+  --out .artifacts/session
 ```
 
 Useful commands:
 
 ```bash
-vibe-tree check-tools --all
-vibe-tree acquire --url https://example.com --out .artifacts/session
-vibe-tree slop-check path/to/page.html
 vibe-tree tree
 vibe-tree debug on
 vibe-tree debug off
@@ -117,7 +102,7 @@ vibe-tree stats
 vibe-tree report-failure 13a --input '{"route":"/settings"}'
 ```
 
-A plan creates `intent.json`, `scope.json`, `session.json`, and `plan.md`. When `--acquire` is supplied with `--reference-url`, the runtime also executes the installed acquisition tools and writes `reference.json`, `reference-source.json`, and `acquisition-manifest.json` from actual command results. The remaining generation/verification nodes are still executed by the agent in prerequisite order; the main runtime does not yet claim to be a full 62-node autonomous executor.
+A plan creates `intent.json`, `scope.json`, `session.json`, and `plan.md`. A real agent integration then consumes the plan and writes the node artifacts in prerequisite order.
 
 ## How the tree works
 
@@ -128,6 +113,14 @@ A plan creates `intent.json`, `scope.json`, `session.json`, and `plan.md`. When 
 5. **Meta** coordinates parallel work, compares output to the reference, refines weak areas, runs the final ship gate, and repairs failed tools.
 
 Every node has prerequisites, declared inputs and outputs, a model/budget hint, a schema, failure behavior, banned behaviors, and an example artifact. See `skill-tree.json` and `nodes/`.
+
+## Operational experience
+
+The God Tree keeps reusable field knowledge under [`walkthroughs/`](walkthroughs/). These reports record real build decisions, tool behavior, failures, corrections, and verification outcomes so future agents can avoid repeating the same mistakes.
+
+Walkthroughs are **strategy memory, not evidence**. A prior crawl, endpoint profile, screenshot, or build result never satisfies a current node's evidence requirement by itself. Read [`walkthroughs/README.md`](walkthroughs/README.md) before substantial runs, then open only the reports relevant to the current target or failure mode.
+
+The first full field report documents the [Resend-inspired God Tree explainer build](walkthroughs/2026-09-22-resend-god-tree-explainer.md), including reference acquisition, SiteMap-X reuse, SlopMonster corrections, CI verification, runtime limitations, and a failed GitHub Pages deployment caused by repository configuration.
 
 ## Contracts and quality gates
 
@@ -177,7 +170,7 @@ python -m unittest discover -s tests -v
 grep -r "TODO\|STUB\|placeholder\|implement here" nodes/ vibe_code_genius/
 ```
 
-The expected result is an acyclic 62-node registered tree with no orphan node files, a valid structure fixture, 3/3 golden checks, and passing unit tests. External tool preflight is intentionally separate from CI because those tools are standalone repositories.
+The expected result is an acyclic tree, valid structure fixture, 3/3 golden checks, passing unit tests, and no forbidden stub markers in node or runtime code.
 
 ## Support and contribution
 
