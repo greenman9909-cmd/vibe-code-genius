@@ -18,7 +18,7 @@ The repository is designed for developers who want more than a generated page: i
 
 Use the god tree when a build needs repeatability, not just a one-off prompt. It is useful for product teams, solo builders, agentic coding workflows, design-system migrations, reference-led rebuilds, backend/frontend coordination, and teams that need an audit trail for generated artifacts.
 
-The authoritative specification describes a 42-node tree. Its lettered subnodes enumerate **61 node files**, all of which are included here: 13 foundation nodes, 17 structure nodes, 9 composition nodes, 17 product nodes, and 5 meta nodes.
+The authoritative specification describes a 42-node core tree. Its lettered subnodes enumerate **62 registered node files**: 13 foundation nodes, 18 structure nodes, 9 composition nodes, 17 product nodes, and 5 meta nodes. `scripts/validate-tree.py` also rejects orphan node files so a node cannot silently exist outside `skill-tree.json`.
 
 ## Core capabilities
 
@@ -77,7 +77,17 @@ Install into an agent platform:
 #          gemini, antigravity, aider, continue, generic
 ```
 
-The installer copies only the tree, contracts, schemas, and platform-specific entry files required by the selected target. It does not transmit credentials or create external accounts.
+The installer copies the tree, contracts, schemas, tool specs, and platform-specific entry files required by the selected target. It does not install the external acquisition repositories automatically, transmit credentials, or create external accounts.
+
+For a reference-led build, install/check the acquisition tools explicitly:
+
+```bash
+vibe-tree check-tools
+# includes SPA-Ripper, SiteMap-X, and API Researcher
+# add --all to include SlopMonster
+```
+
+The preflight prints the exact install command for anything missing.
 
 ## First run
 
@@ -89,12 +99,17 @@ python -m unittest discover -s tests -v
 
 vibe-tree plan \
   --intent "Build a research dashboard for API teams" \
-  --out .artifacts/session
+  --reference-url https://example.com \
+  --out .artifacts/session \
+  --acquire
 ```
 
 Useful commands:
 
 ```bash
+vibe-tree check-tools --all
+vibe-tree acquire --url https://example.com --out .artifacts/session
+vibe-tree slop-check path/to/page.html
 vibe-tree tree
 vibe-tree debug on
 vibe-tree debug off
@@ -102,7 +117,7 @@ vibe-tree stats
 vibe-tree report-failure 13a --input '{"route":"/settings"}'
 ```
 
-A plan creates `intent.json`, `scope.json`, `session.json`, and `plan.md`. A real agent integration then consumes the plan and writes the node artifacts in prerequisite order.
+A plan creates `intent.json`, `scope.json`, `session.json`, and `plan.md`. When `--acquire` is supplied with `--reference-url`, the runtime also executes the installed acquisition tools and writes `reference.json`, `reference-source.json`, and `acquisition-manifest.json` from actual command results. The remaining generation/verification nodes are still executed by the agent in prerequisite order; the main runtime does not yet claim to be a full 62-node autonomous executor.
 
 ## How the tree works
 
@@ -162,7 +177,7 @@ python -m unittest discover -s tests -v
 grep -r "TODO\|STUB\|placeholder\|implement here" nodes/ vibe_code_genius/
 ```
 
-The expected result is an acyclic tree, valid structure fixture, 3/3 golden checks, passing unit tests, and no forbidden stub markers in node or runtime code.
+The expected result is an acyclic 62-node registered tree with no orphan node files, a valid structure fixture, 3/3 golden checks, and passing unit tests. External tool preflight is intentionally separate from CI because those tools are standalone repositories.
 
 ## Support and contribution
 

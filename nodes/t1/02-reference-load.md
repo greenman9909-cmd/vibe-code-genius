@@ -8,6 +8,10 @@ Read `contracts/working-contract.md` and the declared input only. Emit the exact
 
 ## Acquisition policy
 
+### Runtime wiring
+
+For live reference-led sessions, prefer `vibe-tree acquire --url <reference_url> --out <output_dir>` (or `vibe-tree plan ... --acquire`) before executing this node. The runtime writes a normalized `reference.json`, `reference-source.json`, and `acquisition-manifest.json` from commands that actually ran. If `reference-source.json` is cached, consume that evidence rather than re-scraping.
+
 The bundled reference vault is not a substitute for evidence. Load a local entry from `references/index.json` only when all of the following are true:
 
 ```json

@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vibe-code-genius.dev/schema/clone-manifest.schema.json",
+  "title": "Clone Manifest Schema",
+  "type": "object",
+  "required": [
+    "reference_url",
+    "acquired_at",
+    "pages",
+    "stylesheets",
+    "chunks",
+    "assets",
+    "total_bytes"
+  ],
+  "properties": {
+    "reference_url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "acquired_at": {
+      "type": "string"
+    },
+    "pages": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "stylesheets": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "chunks": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "assets": {
+      "type": "object",
+      "required": [
+        "images",
+        "fonts",
+        "svgs"
+      ],
+      "properties": {
+        "images": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "fonts": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "svgs": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "additionalProperties": false
+    },
+    "total_bytes": {
+      "type": "integer",
+      "minimum": 0
+    }
+  },
+  "additionalProperties": true
+}

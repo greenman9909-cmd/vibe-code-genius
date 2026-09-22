@@ -8,6 +8,10 @@ Read `contracts/working-contract.md` and the declared input only. Emit the exact
 
 ## Instructions
 
+### Runtime wiring
+
+`vibe-tree acquire` automatically feeds a real discovered `endpoints.txt` into `apiresearch` unless `--no-api` is supplied. If `api_research_path` exists in cached `reference-source.json`, consume it directly. Credentials must be explicit; the runtime accepts `--auth-header-env <NAME>` and redacts the value from provenance.
+
 0. Check `reference-source.json` for `api_research_path`. If `mode == "cached"` AND the file exists, read it directly into `api_research.json` and skip the apiresearch invocation. Otherwise, invoke apiresearch against `endpoints.txt`.
 
 1. Confirm every prerequisite artifact exists and has the expected version.

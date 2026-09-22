@@ -1,16 +1,43 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "type": "object",
-  "required": ["mode"],
+  "required": [
+    "mode"
+  ],
   "properties": {
-    "mode": {"enum": ["live", "cached"]},
-    "mirror_path": {"type": "string"},
-    "report_path": {"type": "string"},
-    "endpoints_path": {"type": "string"},
-    "api_research_path": {"type": "string"},
-    "clone_manifest_path": {"type": "string"},
-    "reference_url": {"type": ["string", "null"]},
-    "note": {"type": "string"}
+    "mode": {
+      "enum": [
+        "live",
+        "cached"
+      ]
+    },
+    "mirror_path": {
+      "type": "string"
+    },
+    "report_path": {
+      "type": "string"
+    },
+    "endpoints_path": {
+      "type": "string"
+    },
+    "api_research_path": {
+      "type": "string"
+    },
+    "clone_manifest_path": {
+      "type": "string"
+    },
+    "reference_url": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "note": {
+      "type": "string"
+    },
+    "acquisition_manifest_path": {
+      "type": "string"
+    }
   },
   "additionalProperties": false
 }

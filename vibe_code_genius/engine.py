@@ -19,13 +19,13 @@ def artifact_hash(value):
 
 def now(): return datetime.now(timezone.utc).isoformat().replace("+00:00","Z")
 
-def plan(intent: str, out: Path, root: Path):
+def plan(intent: str, out: Path, root: Path, reference_url: str | None = None):
     out.mkdir(parents=True, exist_ok=True)
     tree=load_tree(root); order=topo_order(tree)
-    data={"product_type":"custom","target_user":"unspecified","key_flows":[intent],"reference_url":None,"vibe":"technical"}
+    data={"product_type":"custom","target_user":"unspecified","key_flows":[intent],"reference_url":reference_url,"vibe":"technical"}
     scope={"deliverable":"mvp","tier_stop":3,"routes_include":[],"routes_exclude":[],"time_budget_minutes":30}
     session={"session_id":artifact_hash({"intent":intent,"at":str(out)}),"started_at":now(),"intent":intent,"scope":"mvp","active_skills":["vibe-code-genius"],"artifacts":[],"checkpoints":[],"budget":{"nodes_count":len(order)},"why_log":[]}
     for name,value in (("intent.json",data),("scope.json",scope),("session.json",session)):
         (out/name).write_text(json.dumps(value, indent=2)+"\n")
     (out/"plan.md").write_text("# Build Plan\n\n"+"\n".join(f"{i+1}. Node {n}" for i,n in enumerate(order))+"\n")
-    return {"out":str(out),"nodes":len(order),"order":order}
+    return {"out":str(out),"nodes":len(order),"order":order,"reference_url":reference_url}

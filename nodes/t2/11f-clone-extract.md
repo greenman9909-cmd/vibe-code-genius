@@ -8,6 +8,10 @@ Read `contracts/working-contract.md` and the declared input only. Emit the exact
 
 ## Instructions
 
+### Runtime wiring
+
+This node is registered in `skill-tree.json`. `vibe-tree acquire` can populate `mirror_path` with the real SPA-Ripper clone; cached mode must inventory that directory rather than cloning it again. If live invocation is required, the supported command is `spa-ripper clone <reference_url> -o <output_dir>/clone -t 20`.
+
 0. Check `reference-source.json` for `mirror_path`. If `mode == "cached"` AND the directory exists, treat `mirror_path` as the clone, skip the SPA-Ripper invocation, and proceed directly to steps 2–4 (inventory, motion, and components). Otherwise, invoke SPA-Ripper per step 1.
 
 1. Invoke SPA-Ripper against the reference URL:

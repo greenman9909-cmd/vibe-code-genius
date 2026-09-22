@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "node_count": 61,
+  "node_count": 62,
   "declared_node_count": 42,
   "nodes": [
     {
@@ -810,6 +810,35 @@
         "13"
       ],
       "expected_artifact_path": "motion-config.json"
+    },
+    {
+      "id": "11f",
+      "name": "Clone Extract",
+      "tier": 2,
+      "prereqs": [
+        "02"
+      ],
+      "parallel_with": [
+        "07",
+        "08",
+        "09",
+        "10",
+        "11",
+        "11a"
+      ],
+      "input": "reference_url + output_dir",
+      "output": "clone/ + clone-manifest.json + clone-motion.json + clone-components.json",
+      "activates_when": "reference URL exists or cached mirror_path exists",
+      "skill_file": "nodes/t2/11f-clone-extract.md",
+      "artifact_schema": "schema/clone-manifest.schema.json",
+      "model": "sonnet",
+      "max_response_tokens": 3500,
+      "version": "1.0.0",
+      "consumers": [
+        "11a",
+        "12"
+      ],
+      "expected_artifact_path": "clone-manifest.json"
     },
     {
       "id": "12",
