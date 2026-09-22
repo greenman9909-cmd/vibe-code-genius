@@ -49,7 +49,7 @@ Default design priorities:
 8. Keep record identity separate from artwork/metadata identity. If the extracted design keys hero assets by external IDs such as AniList IDs, preserve or adapt those keys at the data boundary instead of rewriting the hero component.
 9. Verify the actual browser DOM and responsive layout for the hero, shelves, title page, and player. API success alone does not prove the streaming design rendered correctly.
 
-This is a default heuristic, not a universal contract. An explicit product brief, accessibility requirement, or stronger reference should override it. See `walkthroughs/2026-09-22-ani-pm-extracted-aml-remix.md` for the field report that motivated this recipe.
+This is a default heuristic, not a universal contract. An explicit product brief, accessibility requirement, or stronger reference should override it. For a concrete code reference, load `references/extracted/ani-pm/reference-source.json` and `references/extracted/ani-pm/README.md`. See `walkthroughs/2026-09-22-ani-pm-extracted-aml-remix.md` for the field report that motivated this recipe.
 
 ## Recipe: failure repair
 
