@@ -198,6 +198,23 @@ Mock data is not enough if old fallbacks can still contact production services. 
 
 Static syntax checks would not have found the missing fixture block. Starting the gateway and requesting search/profile/auth/watch routes did.
 
+## Streaming-app design priority
+
+For future streaming/media builds, this run establishes a preferred starting layout when no stronger product-specific direction exists:
+
+- cinematic hero/spotlight first;
+- media shelves/carousels rather than dashboard grids;
+- metadata-rich title pages;
+- prominent Play/Resume and Library actions;
+- dedicated watch/player composition;
+- dark immersive surfaces with restrained glass overlays;
+- responsive navigation that keeps Browse, Search, Library and Profile one tap away;
+- consistent visual treatment across Home, Search, Library, Profile, Settings, Community and Schedule.
+
+The important principle is that a streaming product should **feel like a media product before it feels like a web dashboard**.
+
+When a suitable extracted/reference frontend already contains this design language, preserve and adapt its code rather than rebuilding the layout from memory.
+
 ## Outcome
 
 The corrected branch now runs the actual SPA-Ripper-extracted ani.pm frontend as an AML mock build with synthetic data and local playback fixtures, with runtime CI passing.
