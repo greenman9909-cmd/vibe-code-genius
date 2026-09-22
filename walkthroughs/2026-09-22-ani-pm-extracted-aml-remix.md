@@ -218,3 +218,33 @@ When a suitable extracted/reference frontend already contains this design langua
 ## Outcome
 
 The corrected branch now runs the actual SPA-Ripper-extracted ani.pm frontend as an AML mock build with synthetic data and local playback fixtures, with runtime CI passing.
+
+
+## Node 25 repair — TSX artifact validation and mock-auth identity
+
+This AML run exposed two reusable failures that belong in the build system, not in one-off workarounds.
+
+### Declared `.tsx` artifacts must validate as text
+
+Node 13 declares `pages/index.tsx` as its artifact, but `scripts/validate-artifact.py` originally treated only `.md`, `.ts`, `.yaml` and `.yml` as text artifacts. The declared `.tsx` output therefore fell through to JSON parsing and failed even when the file satisfied the Node 13 schema.
+
+Repair:
+
+1. include `.tsx` in the validator's text-artifact extension set;
+2. add a regression test that validates a real `pages.tsx` fixture against a heading schema;
+3. never “fix” this class of failure by renaming the declared artifact or skipping the authoritative validator.
+
+Reusable lesson: **the validator must understand every extension that the skill tree itself declares as an output artifact.**
+
+### Mock authenticated users must obey extracted identity invariants
+
+The extracted auth provider normalizes the current user ID with a positive-safe-integer check before it binds browser storage to the account. Synthetic users initially used string IDs such as `aml-tester`. The API response looked valid, but authenticated routes entered a revalidation loop and repeatedly fetched `/api/auth/me`.
+
+Repair:
+
+1. inspect the extracted auth protocol, not only the API response shape;
+2. assign stable positive integer IDs to synthetic authenticated users;
+3. keep display usernames/handles as strings;
+4. regression-test authenticated routes in a real browser so storage/identity loops are observable.
+
+Reusable lesson: **mock data must satisfy hidden client-side identity invariants as well as visible JSON field shapes.**

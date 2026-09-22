@@ -66,7 +66,7 @@ def main():
     ext = artifact_path.suffix.lower()
 
     # Doc / text artifact validation
-    if ext in [".md", ".ts", ".yaml", ".yml"]:
+    if ext in [".md", ".ts", ".tsx", ".yaml", ".yml"]:
         required = schema_data.get("required_headings") or schema_data.get("required") or []
         missing = [h for h in required if h not in raw]
         if missing:
