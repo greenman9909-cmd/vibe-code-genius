@@ -1,0 +1,55 @@
+{
+  "version": "1.0.0",
+  "name": "ani-pm-extracted-frontend",
+  "reference_url": "https://ani.pm",
+  "source_repository": "https://github.com/greenman9909-cmd/ani-pm-frontend",
+  "source_repository_full_name": "greenman9909-cmd/ani-pm-frontend",
+  "source_branch": "main",
+  "source_commit": "2f734e7334a9a9e2db6a43c876fe88613687827f",
+  "extracted_path": "ani.pm_frontend",
+  "acquisition": {
+    "tool": "spa-ripper",
+    "mode": "external-pinned-reference",
+    "note": "The extracted frontend code is stored in the separate ani-pm-frontend repository. Pin the exact commit before using it as a code/design reference."
+  },
+  "inventory": {
+    "files": 227,
+    "total_bytes": 17479101,
+    "javascript_chunks": 120,
+    "stylesheets": 26,
+    "images": 64,
+    "fonts": 12,
+    "svgs": 1
+  },
+  "priority_for": [
+    "anime streaming apps",
+    "video streaming apps",
+    "movie and TV streaming apps",
+    "media-first browsing interfaces",
+    "extracted-SPA remix workflows"
+  ],
+  "important_surfaces": [
+    "Home",
+    "HeroCarousel",
+    "AnimeCard",
+    "AnimeDetails",
+    "Search",
+    "Library",
+    "Profile",
+    "Settings",
+    "Community",
+    "Leaderboard",
+    "ReleaseSchedule",
+    "WatchRoom",
+    "WatchTogether",
+    "player overlays and controls"
+  ],
+  "usage_rules": [
+    "Use this repository as a concrete code/design reference for streaming layout and extracted-SPA behavior.",
+    "Preserve provenance: this is a historical pinned capture, not proof of the current ani.pm site state.",
+    "For current-state claims or fresh cloning, run Node 02/11f acquisition again.",
+    "When remixing an extracted SPA the user controls, preserve the component/CSS/responsive/motion code path when fidelity matters.",
+    "Do not treat bundled artwork or third-party media as automatically licensed for redistribution."
+  ],
+  "last_verified": "2026-09-22"
+}
