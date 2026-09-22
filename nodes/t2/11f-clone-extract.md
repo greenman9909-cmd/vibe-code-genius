@@ -8,6 +8,8 @@ Read `contracts/working-contract.md` and the declared input only. Emit the exact
 
 ## Instructions
 
+0. Check `reference-source.json` for `mirror_path`. If `mode == "cached"` AND the directory exists, treat `mirror_path` as the clone, skip the SPA-Ripper invocation, and proceed directly to steps 2–4 (inventory, motion, and components). Otherwise, invoke SPA-Ripper per step 1.
+
 1. Invoke SPA-Ripper against the reference URL:
 
    ```text

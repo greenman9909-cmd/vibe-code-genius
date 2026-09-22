@@ -8,6 +8,8 @@ Read `contracts/working-contract.md` and the declared input only. Emit the exact
 
 ## Instructions
 
+0. Check `reference-source.json` for `api_research_path`. If `mode == "cached"` AND the file exists, read it directly into `api_research.json` and skip the apiresearch invocation. Otherwise, invoke apiresearch against `endpoints.txt`.
+
 1. Confirm every prerequisite artifact exists and has the expected version.
 2. Inspect the input and extract only facts relevant to api research.
 3. Produce `api_research.json` with deterministic ordering, explicit nulls, and no invented evidence.

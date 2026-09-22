@@ -30,6 +30,12 @@ Record the selected acquirer, invocation, timestamp, source URL, route count, se
 
 ## Instructions
 
+0. Check for `./reference-source.json` in the output directory. If it exists AND `mode == "cached"`:
+   - read `report_path` into `reference.json` and normalize the shape
+   - mark node 02 complete
+   - skip the SPA-Ripper invocation
+   If it does not exist OR `mode == "live"`, proceed with the standard acquisition chain (steps 1+).
+
 1. Confirm every prerequisite artifact exists and has the expected version.
 2. Inspect the input and extract only facts relevant to reference load.
 3. Evaluate local index entries against the explicit `{type: scraped, acquirer: spa-ripper}` gate.

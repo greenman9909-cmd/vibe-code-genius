@@ -8,6 +8,8 @@ Read `contracts/working-contract.md` and the declared input only. Emit the exact
 
 ## Instructions
 
+0. If `reference-source.json` exists with `mode == "cached"`, subtract acquisition node costs from the estimate and note `cached reference — acquisition skipped`.
+
 1. Confirm every prerequisite artifact exists and has the expected version.
 2. Inspect the input and extract only facts relevant to budget estimate.
 3. Produce `estimate.json` with deterministic ordering, explicit nulls, and no invented evidence.

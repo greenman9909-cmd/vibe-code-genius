@@ -8,6 +8,8 @@ Read `contracts/working-contract.md` and the declared input only. Emit the exact
 
 ## Instructions
 
+0. Check for `./reference-source.json` in the output directory. If it exists AND `mode == "cached"` and `endpoints_path` exists, use `endpoints_path` as the endpoint input and skip SiteMap-X. Otherwise, proceed with the standard SiteMap-X acquisition chain in steps 1+.
+
 1. Confirm every prerequisite artifact exists and has the expected version.
 2. Inspect the input and extract only facts relevant to deep reference load.
 3. Produce `reference.json` with deterministic ordering, explicit nulls, and no invented evidence.
