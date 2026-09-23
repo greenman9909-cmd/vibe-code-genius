@@ -18,7 +18,7 @@ The repository is designed for developers who want more than a generated page: i
 
 Use the god tree when a build needs repeatability, not just a one-off prompt. It is useful for product teams, solo builders, agentic coding workflows, design-system migrations, reference-led rebuilds, backend/frontend coordination, and teams that need an audit trail for generated artifacts.
 
-The authoritative specification describes a 42-node tree. Its lettered subnodes enumerate **61 node files**, all of which are included here: 13 foundation nodes, 17 structure nodes, 9 composition nodes, 17 product nodes, and 5 meta nodes.
+The executable specification contains **62 nodes** across five tiers. Every node is registered in `skill-tree.json`, bound to a concrete skill file and artifact schema, and checked for graph integrity in CI.
 
 ## Core capabilities
 
