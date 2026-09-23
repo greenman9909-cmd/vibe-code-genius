@@ -1,6 +1,6 @@
 # Node 09 — Route Extract
 
-Tier: 2  Prereqs: [02]  Parallel with: [13, 04a]  Input: reference.json.routes  Output: routes.json  Model: haiku  Budget: 1800 tokens
+Tier: 2  Prereqs: [02, 01d]  Parallel with: [13, 04a]  Input: reference.json.routes  Output: routes.json  Model: haiku  Budget: 1800 tokens
 
 ## Working Contract
 
