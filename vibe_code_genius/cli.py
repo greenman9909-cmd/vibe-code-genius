@@ -60,6 +60,7 @@ def main(argv=None):
     rn.add_argument("--out", default=".artifacts/session")
     rn.add_argument("--executor", required=True, help="executable that reads VIBE_TASK_FILE and writes the declared artifact")
     rn.add_argument("--stop-after", type=int)
+    rn.add_argument("--executor-timeout", type=int, default=1800, help="seconds allowed for one node execution")
 
     c = sub.add_parser("check-tools")
     c.add_argument("--all", action="store_true", help="also check SlopMonster")
@@ -154,6 +155,7 @@ def main(argv=None):
             load_tree(root),
             executor=args.executor,
             stop_after=args.stop_after,
+            timeout_seconds=args.executor_timeout,
         )
         print(json.dumps(result, indent=2))
         return 0 if result["status"] in {"complete", "ready", "pending"} else 1
