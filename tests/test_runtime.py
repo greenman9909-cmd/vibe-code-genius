@@ -61,6 +61,68 @@ class RuntimeTests(unittest.TestCase):
             }))
             self.assertEqual(validate_artifact_file(artifact, schema), [])
 
+    def test_precreated_downstream_artifact_cannot_bypass_prerequisites(self):
+        with tempfile.TemporaryDirectory() as d:
+            out = Path(d)
+            plan("Build a product", out, self.root)
+            scope = {
+                "status": "complete",
+                "version": "1.0.0",
+                "deliverable": "web app",
+                "tier_stop": 5,
+                "routes_include": ["/"],
+                "routes_exclude": [],
+                "capabilities": ["backend"],
+                "acceptance_criteria": ["home renders"],
+                "out_of_scope": [],
+                "evidence": ["test"],
+            }
+            (out / "scope.json").write_text(json.dumps(scope))
+            session = refresh_status(self.root, out, self.tree)
+            self.assertEqual(session["nodes"]["01b"]["status"], "blocked")
+            self.assertNotIn("backend", session["active_features"])
+
+    def test_valid_scope_activates_backend_and_implied_api(self):
+        with tempfile.TemporaryDirectory() as d:
+            out = Path(d)
+            plan("Build a product", out, self.root)
+
+            (out / "intent.json").write_text(json.dumps({
+                "status": "complete",
+                "version": "1.0.0",
+                "product_name": "Example",
+                "product_type": "web app",
+                "target_user": "developers",
+                "key_flows": ["create"],
+                "evidence": ["test"],
+            }))
+            (out / "suitability.json").write_text(json.dumps({
+                "status": "complete",
+                "version": "1.0.0",
+                "suitability_score": 1,
+                "product_category": "web",
+                "evidence": ["test"],
+            }))
+            (out / "scope.json").write_text(json.dumps({
+                "status": "complete",
+                "version": "1.0.0",
+                "deliverable": "web app",
+                "tier_stop": 5,
+                "routes_include": ["/"],
+                "routes_exclude": [],
+                "capabilities": ["backend"],
+                "acceptance_criteria": ["home renders"],
+                "out_of_scope": [],
+                "evidence": ["test"],
+            }))
+
+            session = refresh_status(self.root, out, self.tree)
+            self.assertIn("backend", session["active_features"])
+            self.assertIn("api", session["active_features"])
+            self.assertIn("07", session["nodes"])
+            self.assertIn("07c", session["nodes"])
+            self.assertNotIn("17", session["nodes"])
+
     def test_validate_artifact_accepts_schema_valid_intent(self):
         with tempfile.TemporaryDirectory() as d:
             out = Path(d)
