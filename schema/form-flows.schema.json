@@ -3,7 +3,8 @@
   "$id": "https://vibe-code-genius.dev/schema/form-flows.schema.json",
   "title": "form-flows",
   "type": "object",
-  "required_headings": [
-    "form-flows"
+  "x-required-patterns": [
+    "\\bexport\\b",
+    "\\b(submit|validate|form|field)\\b"
   ]
 }
