@@ -1,6 +1,6 @@
 # Node 15 — Form Logic
 
-Tier: 3  Prereqs: [13, 14]  Parallel with: [16, 18]  Input: pages + data hooks  Output: form-flows/index.ts  Model: sonnet  Budget: 3000 tokens
+Tier: 3  Prereqs: [13]  Parallel with: [16, 18]  Input: pages + data hooks when selected  Output: form-flows/index.ts  Model: sonnet  Budget: 3000 tokens
 
 ## Working Contract
 
