@@ -1,6 +1,6 @@
 # Node 02b — Deep Reference Load
 
-Tier: 1  Prereqs: [01]  Parallel with: [03, 04, 06, 07, 08, 09, 10, 11]  Input: intent.json  Output: reference.json  Model: sonnet  Budget: 3000 tokens
+Tier: 1  Prereqs: [02]  Parallel with: [03, 04, 06, 07, 08, 09, 10, 11]  Input: reference.json + reference-source.json/endpoints  Output: reference-deep.json  Model: sonnet  Budget: 3000 tokens
 
 ## Working Contract
 
@@ -16,16 +16,16 @@ Read `contracts/working-contract.md` and the declared input only. Emit the exact
 
 1. Confirm every prerequisite artifact exists and has the expected version.
 2. Inspect the input and extract only facts relevant to deep reference load.
-3. Produce `reference.json` with deterministic ordering, explicit nulls, and no invented evidence.
+3. Produce `reference-deep.json` with deterministic ordering, explicit nulls, and no invented evidence.
 4. Resolve every import, route, API call, token, environment variable, locale key, and component reference before writing.
 5. Record decisions and unresolved blockers in the artifact's evidence or report field.
 6. Mark the corresponding manifest item complete only after validation passes.
 
 ## Output Contract
 
-The output is `reference.json`. It is versioned, machine-readable when the artifact is JSON, and contains a `version`, `generated_at`, `evidence`, and `status` field where the artifact shape permits.
+The output is `reference-deep.json`. It is versioned, machine-readable when the artifact is JSON, and contains a `version`, `generated_at`, `evidence`, and `status` field where the artifact shape permits.
 
-Before marking complete: python scripts/validate-artifact.py --node 02b --artifact reference.json --schema schema/reference.schema.json. If validation fails, halt. Do not substitute a different artifact. Do not continue.
+Before marking complete: python scripts/validate-artifact.py --node 02b --artifact reference-deep.json --schema schema/reference.schema.json. If validation fails, halt. Do not substitute a different artifact. Do not continue.
 
 
 
@@ -51,7 +51,7 @@ Do not invent pages, proof, metrics, integrations, credentials, routes, or refer
 {
   "node": "02b",
   "status": "complete",
-  "artifact": "reference.json",
+  "artifact": "reference-deep.json",
   "version": "1.0.0",
   "evidence": ["declared input validated"],
   "unresolved": []
