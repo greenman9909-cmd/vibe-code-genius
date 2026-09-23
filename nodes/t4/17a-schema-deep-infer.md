@@ -1,6 +1,6 @@
 # Node 17a — Schema Deep Infer
 
-Tier: 4  Prereqs: [07a, 07b, 17]  Parallel with: [17b, 07f]  Input: system + api research  Output: schema-deep.json  Model: sonnet  Budget: 3500 tokens
+Tier: 4  Prereqs: [17]  Parallel with: [17b, 07f]  Input: system + API/backend research when selected  Output: schema-deep.json  Model: sonnet  Budget: 3500 tokens
 
 ## Working Contract
 
