@@ -1,6 +1,6 @@
 # Node 03 — Code Style Lock
 
-Tier: 1  Prereqs: [02]  Parallel with: [04, 06]  Input: reference.json  Output: style-rules.md  Model: haiku  Budget: 800 tokens
+Tier: 1  Prereqs: [02, 01d]  Parallel with: [04, 06]  Input: reference.json  Output: style-rules.md  Model: haiku  Budget: 800 tokens
 
 ## Working Contract
 
