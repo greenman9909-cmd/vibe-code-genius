@@ -1,6 +1,6 @@
 # Node 18b — Security Pass
 
-Tier: 4  Prereqs: [18]  Parallel with: [18d, 18e]  Input: auth + backend  Output: security-report.json  Model: sonnet  Budget: 3500 tokens
+Tier: 4  Prereqs: [16a]  Parallel with: [18d, 18e]  Input: application + auth/backend when selected  Output: security-report.json  Model: sonnet  Budget: 3500 tokens
 
 ## Working Contract
 
