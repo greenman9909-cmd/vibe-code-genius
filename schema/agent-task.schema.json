@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://godtree.local/schema/agent-task.schema.json",
+  "title": "GodTree Agent Task",
+  "type": "object",
+  "required": ["version","objective","workspace","policy","allowed_paths","forbidden_paths","acceptance","instructions"],
+  "properties": {
+    "version": {"const":"1.0.0"},
+    "objective": {"type":"string","minLength":1},
+    "workspace": {"type":"string","minLength":1},
+    "policy": {
+      "type":"object",
+      "required":["cost","write_scope","success_claims"],
+      "properties":{
+        "cost":{"const":"zero-cost-first"},
+        "write_scope":{"const":"explicit"},
+        "success_claims":{"const":"validator-owned"}
+      },
+      "additionalProperties":false
+    },
+    "allowed_paths":{"type":"array","items":{"type":"string"},"uniqueItems":true},
+    "forbidden_paths":{"type":"array","items":{"type":"string"},"uniqueItems":true},
+    "acceptance":{"type":"array","items":{"type":"string"},"uniqueItems":true},
+    "working_tree_changes":{"type":"array","items":{"type":"string"}},
+    "instructions":{"type":"array","items":{"type":"string"},"minItems":1}
+  },
+  "additionalProperties":false
+}
