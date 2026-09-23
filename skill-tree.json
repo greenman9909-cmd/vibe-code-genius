@@ -330,15 +330,17 @@
         "06"
       ],
       "parallel_with": [],
-      "input": "prompt.md",
+      "input": "prompt.md + intent.json + reference.json + design-tokens.json (optional) + references/aesthetic-directions.md",
       "output": "design-commitment.md",
       "activates_when": "prerequisites complete for node 06a",
       "skill_file": "nodes/t1/06a-design-commitment.md",
       "artifact_schema": "schema/design-commitment.schema.json",
-      "model": "haiku",
-      "max_response_tokens": 800,
+      "model": "sonnet",
+      "max_response_tokens": 2500,
       "version": "1.0.0",
-      "consumers": [],
+      "consumers": [
+        "11d"
+      ],
       "expected_artifact_path": "design-commitment.md"
     },
     {
@@ -694,7 +696,7 @@
       "max_response_tokens": 3000,
       "version": "1.0.0",
       "consumers": [
-        "11",
+        "11d",
         "12"
       ],
       "expected_artifact_path": "design_system.json"
@@ -754,7 +756,9 @@
       "name": "Design Contract",
       "tier": 2,
       "prereqs": [
+        "06a",
         "11",
+        "11a",
         "11c"
       ],
       "parallel_with": [
@@ -762,7 +766,7 @@
         "13",
         "12b"
       ],
-      "input": "design tokens + slop lint",
+      "input": "design commitment + design system + design tokens + slop lint",
       "output": "design-contract.md",
       "activates_when": "prerequisites complete for node 11d",
       "skill_file": "nodes/t2/11d-design-contract.md",
