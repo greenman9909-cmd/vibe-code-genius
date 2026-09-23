@@ -7,7 +7,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Iterable
 
-from jsonschema import Draft202012Validator
+from .validation import validate_artifact_file
 
 
 def now() -> str:
@@ -50,33 +50,7 @@ def topo_order(nodes: list[dict[str, Any]]) -> list[str]:
 def validate_artifact(root: Path, out: Path, node: dict[str, Any]) -> tuple[bool, list[str]]:
     artifact = out / node["expected_artifact_path"]
     schema_path = root / node["artifact_schema"]
-    errors: list[str] = []
-
-    if not artifact.exists():
-        return False, [f"missing artifact: {node['expected_artifact_path']}"]
-    if not schema_path.is_file():
-        return False, [f"missing schema: {node['artifact_schema']}"]
-
-    schema = _read_json(schema_path)
-    suffix = artifact.suffix.lower()
-
-    if suffix == ".json":
-        try:
-            data = _read_json(artifact)
-        except Exception as exc:
-            return False, [f"invalid JSON: {exc}"]
-        for err in Draft202012Validator(schema).iter_errors(data):
-            where = "/".join(str(p) for p in err.absolute_path)
-            errors.append(f"{err.message}" + (f" at {where}" if where else ""))
-        return not errors, errors
-
-    raw = artifact.read_text(encoding="utf-8", errors="replace")
-    required_snippets = schema.get("required_headings") or schema.get("x-required-snippets") or []
-    for snippet in required_snippets:
-        if snippet not in raw:
-            errors.append(f"missing required text/snippet: {snippet}")
-    if not raw.strip():
-        errors.append("artifact is empty")
+    errors = validate_artifact_file(artifact, schema_path)
     return not errors, errors
 
 
