@@ -4,35 +4,111 @@
   "title": "design_system",
   "type": "object",
   "required": [
-    "components",
+    "status",
+    "version",
+    "source",
     "tokens",
-    "keyframes"
+    "components",
+    "keyframes",
+    "design_analysis",
+    "evidence"
   ],
-  "minProperties": 3,
   "properties": {
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "complete",
+        "blocked",
+        "failed"
+      ]
+    },
+    "version": {
+      "type": "string"
+    },
+    "source": {
+      "type": "string",
+      "enum": [
+        "reference-extracted",
+        "clone-extracted",
+        "product-derived",
+        "mixed"
+      ]
+    },
+    "tokens": {
+      "type": "object"
+    },
     "components": {
       "type": "array",
-      "minItems": 3,
       "items": {
         "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          }
+        },
         "required": [
           "name"
         ]
       }
-    },
-    "tokens": {
-      "type": "object",
-      "minProperties": 6
     },
     "keyframes": {
       "type": "array",
-      "minItems": 2,
       "items": {
         "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          }
+        },
         "required": [
           "name"
         ]
       }
+    },
+    "design_analysis": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "patterns": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "rationale": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "remix_rules": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "anti_patterns": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "patterns",
+        "rationale",
+        "remix_rules",
+        "anti_patterns"
+      ]
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
     }
-  }
+  },
+  "additionalProperties": false
 }
