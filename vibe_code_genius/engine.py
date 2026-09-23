@@ -39,7 +39,10 @@ def plan(
 
     out.mkdir(parents=True, exist_ok=True)
     tree = load_tree(root)
-    chosen = selected_nodes(tree, tier_stop=tier_stop, features=features)
+    planning_features = set(features)
+    if reference_url:
+        planning_features.add("reference_comparison")
+    chosen = selected_nodes(tree, tier_stop=tier_stop, features=planning_features)
     order = runtime_topo_order(chosen)
     by_id = {n["id"]: n for n in chosen}
 
@@ -68,7 +71,7 @@ def plan(
         f"Intent: {intent}",
         f"Tier stop: {tier_stop}",
         f"Reference: {reference_url or 'none'}",
-        f"Optional features: {', '.join(sorted(set(features))) or 'none'}",
+        f"Active planning features: {', '.join(sorted(planning_features)) or 'none'}",
         "",
         "## Node order",
         "",
@@ -86,4 +89,5 @@ def plan(
         "reference_url": reference_url,
         "tier_stop": tier_stop,
         "features": sorted(set(features)),
+        "planning_features": sorted(planning_features),
     }
