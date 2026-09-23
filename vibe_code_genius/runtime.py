@@ -19,16 +19,60 @@ def _read_json(path: Path) -> dict[str, Any]:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
-def selected_nodes(tree: dict[str, Any], tier_stop: int = 5, features: Iterable[str] = ()) -> list[dict[str, Any]]:
+FEATURE_IMPLIES = {
+    "backend": {"api"},
+    "integrations": {"backend", "api"},
+}
+
+
+def expand_features(features: Iterable[str]) -> set[str]:
     enabled = set(features)
+    changed = True
+    while changed:
+        changed = False
+        for feature in list(enabled):
+            for implied in FEATURE_IMPLIES.get(feature, set()):
+                if implied not in enabled:
+                    enabled.add(implied)
+                    changed = True
+    return enabled
+
+
+def activation_satisfied(key: str | None, enabled: set[str]) -> bool:
+    if not key:
+        return True
+    required = {part.strip() for part in key.split("+") if part.strip()}
+    return required.issubset(enabled)
+
+
+def selected_nodes(tree: dict[str, Any], tier_stop: int = 5, features: Iterable[str] = ()) -> list[dict[str, Any]]:
+    enabled = expand_features(features)
     selected = []
     for node in tree["nodes"]:
         if int(node["tier"]) > int(tier_stop):
             continue
-        if node.get("optional") and node.get("activation_key") not in enabled:
+        if node.get("optional") and not activation_satisfied(node.get("activation_key"), enabled):
             continue
         selected.append(node)
     return selected
+
+
+def resolve_features(out: Path, session: dict[str, Any]) -> list[str]:
+    enabled = set(session.get("features", []))
+    if session.get("reference_url"):
+        enabled.add("reference_comparison")
+
+    scope_path = out / "scope.json"
+    if scope_path.is_file():
+        try:
+            scope = _read_json(scope_path)
+            if scope.get("status") == "complete":
+                enabled.update(scope.get("capabilities") or [])
+        except Exception:
+            # Invalid scope is handled by the normal artifact validator.
+            pass
+
+    return sorted(expand_features(enabled))
 
 
 def topo_order(nodes: list[dict[str, Any]]) -> list[str]:
@@ -80,6 +124,7 @@ def init_session(
         "reference_url": reference_url,
         "tier_stop": tier_stop,
         "features": sorted(set(features)),
+        "active_features": sorted(expand_features(features)),
         "active_skills": ["vibe-code-genius"],
         "nodes": {n["id"]: {"status": "pending", "artifact": n["expected_artifact_path"], "errors": []} for n in selected},
         "artifacts": [],
@@ -105,8 +150,16 @@ def save_session(out: Path, session: dict[str, Any]) -> None:
 
 def refresh_status(root: Path, out: Path, tree: dict[str, Any]) -> dict[str, Any]:
     session = load_session(out)
-    selected = selected_nodes(tree, session["tier_stop"], session.get("features", []))
+    active_features = resolve_features(out, session)
+    session["active_features"] = active_features
+    selected = selected_nodes(tree, session["tier_stop"], active_features)
     by_id = {n["id"]: n for n in selected}
+
+    for node in selected:
+        session["nodes"].setdefault(
+            node["id"],
+            {"status": "pending", "artifact": node["expected_artifact_path"], "errors": []},
+        )
     complete: set[str] = set()
 
     for nid in topo_order(selected):
@@ -133,7 +186,19 @@ def refresh_status(root: Path, out: Path, tree: dict[str, Any]) -> dict[str, Any
             "blocked_by": blockers,
         }
 
-    states = [v["status"] for v in session["nodes"].values()]
+    selected_ids = set(by_id)
+    for node in tree["nodes"]:
+        if node["id"] in session["nodes"] and node["id"] not in selected_ids and node.get("optional"):
+            previous = session["nodes"][node["id"]]
+            if previous.get("status") != "complete":
+                session["nodes"][node["id"]] = {
+                    "status": "skipped",
+                    "artifact": node["expected_artifact_path"],
+                    "errors": [],
+                    "reason": f"inactive capability: {node.get('activation_key')}",
+                }
+
+    states = [session["nodes"][nid]["status"] for nid in selected_ids]
     if states and all(s == "complete" for s in states):
         session["status"] = "complete"
     elif any(s == "failed" for s in states):
@@ -154,7 +219,7 @@ def refresh_status(root: Path, out: Path, tree: dict[str, Any]) -> dict[str, Any
 
 def ready_nodes(root: Path, out: Path, tree: dict[str, Any], *, include_failed: bool = False) -> list[dict[str, Any]]:
     session = refresh_status(root, out, tree)
-    selected = selected_nodes(tree, session["tier_stop"], session.get("features", []))
+    selected = selected_nodes(tree, session["tier_stop"], session.get("active_features", session.get("features", [])))
     runnable = []
     for node in selected:
         state = session["nodes"][node["id"]]
