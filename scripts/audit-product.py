@@ -18,6 +18,14 @@ def load_json(path: Path):
         raise RuntimeError(f"{path.relative_to(ROOT)}: invalid JSON: {exc}") from exc
 
 
+def parse_prereqs(value: str) -> list[str]:
+    value = value.strip()
+    if value in {"—", "none", "[none]", "[]"}:
+        return []
+    value = value.strip("[]")
+    return [part.strip() for part in value.split(",") if part.strip()]
+
+
 def main() -> int:
     errors: list[str] = []
     warnings: list[str] = []
@@ -55,10 +63,12 @@ def main() -> int:
             prereq_match = re.search(r"Prereqs:\s*([^\n]+?)\s+Parallel with:", header)
             input_match = re.search(r"Input:\s*([^\n]+?)\s+Output:", header)
             output_match = re.search(r"Output:\s*([^\n]+?)\s+Model:", header)
-            expected_prereqs = "[" + ", ".join(node.get("prereqs", [])) + "]" if node.get("prereqs") else "[none]"
-            if prereq_match and prereq_match.group(1).strip() != expected_prereqs:
+            model_match = re.search(r"Model:\s*([^\s]+)", header)
+            budget_match = re.search(r"Budget:\s*(\d+)", header)
+            expected_prereqs = node.get("prereqs", [])
+            if prereq_match and parse_prereqs(prereq_match.group(1)) != expected_prereqs:
                 errors.append(
-                    f"node {nid}: skill header prereqs {prereq_match.group(1).strip()!r} "
+                    f"node {nid}: skill header prereqs {parse_prereqs(prereq_match.group(1))!r} "
                     f"!= tree {expected_prereqs!r}"
                 )
             if input_match and input_match.group(1).strip() != node.get("input", "").strip():
@@ -70,6 +80,16 @@ def main() -> int:
                 errors.append(
                     f"node {nid}: skill header output {output_match.group(1).strip()!r} "
                     f"!= tree {node.get('output', '').strip()!r}"
+                )
+            if model_match and model_match.group(1).strip() != node.get("model"):
+                errors.append(
+                    f"node {nid}: skill header model {model_match.group(1).strip()!r} "
+                    f"!= tree {node.get('model')!r}"
+                )
+            if budget_match and int(budget_match.group(1)) != int(node.get("max_response_tokens", 0)):
+                errors.append(
+                    f"node {nid}: skill header budget {budget_match.group(1)} "
+                    f"!= tree {node.get('max_response_tokens')}"
                 )
 
         schema_rel = node.get("artifact_schema")
@@ -104,6 +124,19 @@ def main() -> int:
             status = schema.get("properties", {}).get("status")
             if status and status.get("type") == "string" and "enum" not in status:
                 warnings.append(f"{title}: status is unconstrained")
+
+        def scan_cardinality(value, path=""):
+            if isinstance(value, dict):
+                if isinstance(value.get("minItems"), int) and value["minItems"] > 1:
+                    warnings.append(f"{title}: review minItems={value['minItems']} at {path or '<root>'}")
+                if isinstance(value.get("minProperties"), int) and value["minProperties"] > 3:
+                    warnings.append(f"{title}: review minProperties={value['minProperties']} at {path or '<root>'}")
+                for key, child in value.items():
+                    scan_cardinality(child, f"{path}.{key}" if path else key)
+            elif isinstance(value, list):
+                for index, child in enumerate(value):
+                    scan_cardinality(child, f"{path}[{index}]")
+        scan_cardinality(schema)
 
     # Source-of-truth docs must not advertise stale node counts.
     readme = (ROOT / "README.md").read_text(encoding="utf-8")
