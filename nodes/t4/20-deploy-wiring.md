@@ -4,50 +4,27 @@ Tier: 4  Prereqs: [24]  Parallel with: [20a, 20b, 20c, 20d, 24]  Input: build re
 
 ## Working Contract
 
-Read `contracts/working-contract.md` and the declared input only. Emit the exact declared artifact, validate it against its schema, and update the manifest. Keep evidence separate from inference.
+Deployment is active only when requested by scope. Wire the already verified build to the chosen platform; do not change application architecture just to fit a provider default.
 
 ## Instructions
 
-1. Confirm every prerequisite artifact exists and has the expected version.
-2. Inspect the input and extract only facts relevant to deploy wiring.
-3. Produce `deployment/` with deterministic ordering, explicit nulls, and no invented evidence.
-4. Resolve every import, route, API call, token, environment variable, locale key, and component reference before writing.
-5. Record decisions and unresolved blockers in the artifact's evidence or report field.
-6. Mark the corresponding manifest item complete only after validation passes.
+1. Read `build-report.json`, system deployment requirements and the chosen provider's current official configuration guidance.
+2. Record root directory, build/start commands, environment variable names (never secret values), target environment, domains, health check, observability and rollback strategy.
+3. Keep secrets in provider secret/env storage and keep browser-safe/public variables explicitly separated.
+4. Configure SPA rewrites, server/function runtime, regions and caching only when required by the app.
+5. Ensure deployment uses a reproducible lockfile/build and the exact source revision intended for release.
+6. Define a health check that proves the application is serving the intended build, not merely that the platform returned 200.
+7. Verify a rollback mechanism exists before production promotion.
+8. Produce `deployment/config.json` and validate it.
 
 ## Output Contract
 
-The output is `deployment/config.json`. It is versioned, machine-readable when the artifact is JSON, and contains a `version`, `generated_at`, `evidence`, and `status` field where the artifact shape permits.
+`deployment/config.json` must satisfy `schema/deployment-config.schema.json`. Do not include actual secret values.
 
-Before marking complete: python scripts/validate-artifact.py --node 20 --artifact deployment/config.json --schema schema/wiring_report.schema.json. If validation fails, halt. Do not substitute a different artifact. Do not continue.
+Before marking complete:
 
-
-
-
-
-
-
-
-
+python scripts/validate-artifact.py --node 20 --artifact deployment/config.json --schema schema/deployment-config.schema.json
 
 ## If this fails
 
-
-
-Log the node id, input hash, invocation, error, and minimal reproduction to `session.log`. Use datetime.utcnow().isoformat(timespec="microseconds") + "Z" (microseconds MUST vary between events). Apply the declared fallback in `contracts/repair-contract.md`; do not silently fabricate a result.
-
-
-Do not invent pages, proof, metrics, integrations, credentials, routes, or reference evidence. Do not bypass schemas, disable a failing check, write unresolved references, or emit prose in place of the artifact.
-
-## Example output
-
-```json
-{
-  "node": "20",
-  "status": "complete",
-  "artifact": "deployment/",
-  "version": "1.0.0",
-  "evidence": ["declared input validated"],
-  "unresolved": []
-}
-```
+Keep deployment blocked. Do not hard-code credentials or bypass a provider/security check.
