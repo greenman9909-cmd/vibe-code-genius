@@ -4,50 +4,26 @@ Tier: 5  Prereqs: [23b]  Parallel with: []  Input: session.log + ship report  Ou
 
 ## Working Contract
 
-Read `contracts/working-contract.md` and the declared input only. Emit the exact declared artifact, validate it against its schema, and update the manifest. Keep evidence separate from inference.
+Learn only from verified failures in the completed session. A successful session may legitimately produce a repair report with no fixes; do not invent lessons for activity.
 
 ## Instructions
 
-1. Confirm every prerequisite artifact exists and has the expected version.
-2. Inspect the input and extract only facts relevant to post-session repair.
-3. Produce `repair-report.json` with deterministic ordering, explicit nulls, and no invented evidence.
-4. Resolve every import, route, API call, token, environment variable, locale key, and component reference before writing.
-5. Record decisions and unresolved blockers in the artifact's evidence or report field.
-6. Mark the corresponding manifest item complete only after validation passes.
+1. Read session failures, ship-gate blockers, regression evidence and the patches that actually resolved them.
+2. Separate one-off project fixes from reusable God Tree failures.
+3. For each reusable failure, record the problem, minimal change, evidence and the regression test/validator that prevents recurrence.
+4. Update global contracts/references only when the lesson generalizes beyond this project and is supported by repeated or authoritative evidence.
+5. Never weaken a schema/check because it caught a real failure.
+6. List tools touched and any items deliberately skipped, with reason.
+7. `status: complete` requires no unfixed reusable failures from this repair pass.
 
 ## Output Contract
 
-The output is `repair-report.json`. It is versioned, machine-readable when the artifact is JSON, and contains a `version`, `generated_at`, `evidence`, and `status` field where the artifact shape permits.
+`repair-report.json` must satisfy `schema/repair-report.schema.json`.
 
-Before marking complete: python scripts/validate-artifact.py --node 25 --artifact repair-report.json --schema schema/repair-report.schema.json. If validation fails, halt. Do not substitute a different artifact. Do not continue.
+Before marking complete:
 
-
-
-
-
-
-
-
-
+python scripts/validate-artifact.py --node 25 --artifact repair-report.json --schema schema/repair-report.schema.json
 
 ## If this fails
 
-
-
-Log the node id, input hash, invocation, error, and minimal reproduction to `session.log`. Use datetime.utcnow().isoformat(timespec="microseconds") + "Z" (microseconds MUST vary between events). Apply the declared fallback in `contracts/repair-contract.md`; do not silently fabricate a result.
-
-
-Do not invent pages, proof, metrics, integrations, credentials, routes, or reference evidence. Do not bypass schemas, disable a failing check, write unresolved references, or emit prose in place of the artifact.
-
-## Example output
-
-```json
-{
-  "node": "25",
-  "status": "complete",
-  "artifact": "repair-report.json",
-  "version": "1.0.0",
-  "evidence": ["declared input validated"],
-  "unresolved": []
-}
-```
+Keep the failure in the report and leave the global tree unchanged rather than encoding an unverified workaround.
