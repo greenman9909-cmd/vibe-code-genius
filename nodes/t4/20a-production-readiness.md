@@ -4,50 +4,26 @@ Tier: 4  Prereqs: [20]  Parallel with: [23b]  Input: deployment + routes  Output
 
 ## Working Contract
 
-Read `contracts/working-contract.md` and the declared input only. Emit the exact declared artifact, validate it against its schema, and update the manifest. Keep evidence separate from inference.
+Evaluate the deployment against the product's real production risk. Use `references/production-engineering-2026.md` and current provider docs; mark irrelevant enterprise-only controls `not-applicable` rather than pretending they are configured.
 
 ## Instructions
 
-1. Confirm every prerequisite artifact exists and has the expected version.
-2. Inspect the input and extract only facts relevant to production readiness.
-3. Produce `production_checklist.json` with deterministic ordering, explicit nulls, and no invented evidence.
-4. Resolve every import, route, API call, token, environment variable, locale key, and component reference before writing.
-5. Record decisions and unresolved blockers in the artifact's evidence or report field.
-6. Mark the corresponding manifest item complete only after validation passes.
+1. Check rollback/recovery, domains/TLS, health checks, environment separation, secret handling, dependency/lockfile reproducibility and exact release revision.
+2. Check CSP/security headers, deployment protection where appropriate, rate/abuse controls, logging/observability and incident/recovery path.
+3. Check database migration status, RLS/security tests and backup/restore expectations when database capability is active.
+4. Check provider/runtime region alignment, caching and third-party origin constraints where they materially affect reliability.
+5. Verify all declared routes and critical flows against the deployment target; do not substitute local evidence for deployed behavior.
+6. Put every check in `production_checklist.json` with pass/fail/blocked/not-applicable and evidence.
+7. Any blocking failure keeps the checklist non-complete.
 
 ## Output Contract
 
-The output is `production_checklist.json`. It is versioned, machine-readable when the artifact is JSON, and contains a `version`, `generated_at`, `evidence`, and `status` field where the artifact shape permits.
+`production_checklist.json` must satisfy `schema/production_checklist.schema.json`.
 
-Before marking complete: python scripts/validate-artifact.py --node 20a --artifact production_checklist.json --schema schema/production_checklist.schema.json. If validation fails, halt. Do not substitute a different artifact. Do not continue.
+Before marking complete:
 
-
-
-
-
-
-
-
-
+python scripts/validate-artifact.py --node 20a --artifact production_checklist.json --schema schema/production_checklist.schema.json
 
 ## If this fails
 
-
-
-Log the node id, input hash, invocation, error, and minimal reproduction to `session.log`. Use datetime.utcnow().isoformat(timespec="microseconds") + "Z" (microseconds MUST vary between events). Apply the declared fallback in `contracts/repair-contract.md`; do not silently fabricate a result.
-
-
-Do not invent pages, proof, metrics, integrations, credentials, routes, or reference evidence. Do not bypass schemas, disable a failing check, write unresolved references, or emit prose in place of the artifact.
-
-## Example output
-
-```json
-{
-  "node": "20a",
-  "status": "complete",
-  "artifact": "production_checklist.json",
-  "version": "1.0.0",
-  "evidence": ["declared input validated"],
-  "unresolved": []
-}
-```
+Do not rename missing production controls as future work and ship anyway; keep them blocked or explicitly remove them from declared scope.
