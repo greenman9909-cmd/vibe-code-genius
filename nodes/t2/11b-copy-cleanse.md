@@ -4,50 +4,29 @@ Tier: 2  Prereqs: [11]  Parallel with: [12, 13]  Input: copy + design tokens  Ou
 
 ## Working Contract
 
-Read `contracts/working-contract.md` and the declared input only. Emit the exact declared artifact, validate it against its schema, and update the manifest. Keep evidence separate from inference.
+Read `contracts/working-contract.md` and `contracts/human-quality-contract.md`. Emit only the declared artifact, validate it, and keep evidence separate from judgment.
 
 ## Instructions
 
-1. Confirm every prerequisite artifact exists and has the expected version.
-2. Inspect the input and extract only facts relevant to copy cleanse.
-3. Produce `slop-report.json` with deterministic ordering, explicit nulls, and no invented evidence.
-4. Resolve every import, route, API call, token, environment variable, locale key, and component reference before writing.
-5. Record decisions and unresolved blockers in the artifact's evidence or report field.
-6. Mark the corresponding manifest item complete only after validation passes.
+1. Inventory the actual user-facing copy available in the declared inputs. If there is no copy to audit, record that explicitly; do not invent sample phrases just to satisfy the node.
+2. Use `references/signs-of-ai-writing.md` as a risk checklist, not as a word blacklist.
+3. Flag copy only when context supports the finding. Look for generic claims, filler transitions, manufactured contrast, repetitive three-part slogans, fake precision, unsupported proof, needless section kickers, and wording that could belong to any product.
+4. Preserve domain language, user terminology, legal text, reference copy intentionally locked by the project, and concise functional labels unless there is a concrete quality/accessibility problem.
+5. For each finding choose one action: keep, rewrite, or remove. Explain why. A clean audit may legitimately contain zero eliminated phrases.
+6. Errors, empty states, loading states, confirmations, destructive actions, and recovery messages must tell the user what happened and what they can do next.
+7. Never manufacture metrics, testimonials, customer counts, awards, urgency, guarantees, or social proof.
+8. Produce `slop-report.json` with evidence pointing to the inspected source/artifact and validate it before completion.
 
 ## Output Contract
 
-The output is `slop-report.json`. It is versioned, machine-readable when the artifact is JSON, and contains a `version`, `generated_at`, `evidence`, and `status` field where the artifact shape permits.
+`slop-report.json` must conform to `schema/slop-report.schema.json`. The score may be null when a meaningful numeric score is not justified; findings and evidence are authoritative.
 
-Before marking complete: python scripts/validate-artifact.py --node 11b --artifact slop-report.json --schema schema/slop-report.schema.json. If validation fails, halt. Do not substitute a different artifact. Do not continue.
+Before marking complete:
 
-
-
-
-
-
-
-
-
+python scripts/validate-artifact.py --node 11b --artifact slop-report.json --schema schema/slop-report.schema.json
 
 ## If this fails
 
+Record the node id, input hash, invocation, error, and minimal reproduction in `session.log`. Do not weaken the schema or fabricate audit findings to make the node pass.
 
-
-Log the node id, input hash, invocation, error, and minimal reproduction to `session.log`. Use datetime.utcnow().isoformat(timespec="microseconds") + "Z" (microseconds MUST vary between events). Apply the declared fallback in `contracts/repair-contract.md`; do not silently fabricate a result.
-
-
-Do not invent pages, proof, metrics, integrations, credentials, routes, or reference evidence. Do not bypass schemas, disable a failing check, write unresolved references, or emit prose in place of the artifact.
-
-## Example output
-
-```json
-{
-  "node": "11b",
-  "status": "complete",
-  "artifact": "slop-report.json",
-  "version": "1.0.0",
-  "evidence": ["declared input validated"],
-  "unresolved": []
-}
-```
+Do not invent pages, proof, metrics, integrations, credentials, routes, or reference evidence.
