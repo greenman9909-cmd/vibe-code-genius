@@ -129,8 +129,9 @@ The contracts are normative, not advisory:
 - `wiring-contract.md` rejects unresolved imports, routes, API calls, tokens, environment variables, i18n keys, and components.
 - `integrity-contract.md` covers types, state, assets, promises, listeners, leaks, and accessibility.
 - `hardening-contract.md` covers secrets, headers, auth, CSRF, input/output, CORS, dependencies, infrastructure, runtime, logging, cookies, external services, and build-time security.
-- `completeness-contract.md` makes `system.json` and `manifest.json` the source of truth for scope.
+- `completeness-contract.md` makes `system.json` and `manifest.json` the source of truth for scope and blocks partial work from being labeled complete.
 - `consistency-contract.md` keeps pages on the same layout, token, component, and spacing system.
+- `extracted-design-learning-contract.md` requires extracted frontend code to be analyzed as design evidence, turns those observations into remix rules, and prevents new features from collapsing into generic AI-generated UI.
 - `repair-contract.md` turns a verified failure into a regression case instead of silently changing behavior.
 
 ## Animation and motion customization
