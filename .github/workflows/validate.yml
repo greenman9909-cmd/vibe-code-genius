@@ -10,3 +10,5 @@ jobs:
       - run: pip install -e .
       - run: python scripts/validate-tree.py
       - run: python scripts/validate-structure.py
+      - run: python scripts/validate-references.py
+      - run: python scripts/audit-product.py
