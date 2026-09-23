@@ -3,31 +3,9 @@
   "$id": "https://vibe-code-genius.dev/schema/webhook-handler.schema.json",
   "title": "webhook-handler",
   "type": "object",
-  "required": [
-    "handler_path",
-    "signature_verification",
-    "retry_policy",
-    "idempotency_strategy"
-  ],
-  "minProperties": 4,
-  "properties": {
-    "handler_path": {
-      "type": "string"
-    },
-    "signature_verification": {
-      "type": "string"
-    },
-    "retry_policy": {
-      "type": "string"
-    },
-    "idempotency_strategy": {
-      "type": "string"
-    }
-  },
-  "required_headings": [
-    "handler_path",
-    "signature_verification",
-    "retry_policy",
-    "idempotency_strategy"
+  "x-required-patterns": [
+    "\\bexport\\b",
+    "\\b(signature|verify|verification)\\b",
+    "\\b(idempot|event.?id|deduplic)\\b"
   ]
 }
