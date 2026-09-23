@@ -1,6 +1,6 @@
 # Node 11d — Design Contract
 
-Tier: 2  Prereqs: [11, 11c]  Parallel with: [12, 13, 12b]  Input: design tokens + slop lint  Output: design-contract.md  Model: sonnet  Budget: 2200 tokens
+Tier: 2  Prereqs: [06a, 11, 11a, 11c]  Parallel with: [12, 13, 12b]  Input: design commitment + design system + design tokens + slop lint  Output: design-contract.md  Model: sonnet  Budget: 2200 tokens
 
 ## Working Contract
 
