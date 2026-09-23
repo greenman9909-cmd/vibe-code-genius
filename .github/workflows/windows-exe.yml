@@ -1,0 +1,32 @@
+name: Windows EXE
+on:
+  workflow_dispatch:
+  pull_request:
+    branches: [main]
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install
+        run: pip install -e . -r requirements-build.txt
+      - name: Unit tests
+        run: python -m unittest discover -s tests -v
+      - name: Build GodTree OS
+        run: pyinstaller --clean GodTreeOS.spec
+      - name: Smoke test artifact
+        shell: pwsh
+        run: |
+          if (!(Test-Path "dist/GodTreeOS.exe")) { throw "GodTreeOS.exe missing" }
+          $hash=(Get-FileHash "dist/GodTreeOS.exe" -Algorithm SHA256).Hash
+          $hash | Out-File "dist/GodTreeOS.exe.sha256.txt"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: GodTreeOS-Windows-x64
+          path: |
+            dist/GodTreeOS.exe
+            dist/GodTreeOS.exe.sha256.txt
+          if-no-files-found: error
