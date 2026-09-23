@@ -1,0 +1,115 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vibe-code-genius.dev/schema/external-code-reference.schema.json",
+  "title": "External pinned code reference",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "reference_url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "source_repository": {
+      "type": "string",
+      "format": "uri"
+    },
+    "source_repository_full_name": {
+      "type": "string",
+      "pattern": "^[^/]+/[^/]+$"
+    },
+    "source_branch": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_commit": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "extracted_path": {
+      "type": "string",
+      "minLength": 1
+    },
+    "acquisition": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "tool": {
+          "type": "string",
+          "minLength": 1
+        },
+        "mode": {
+          "type": "string",
+          "minLength": 1
+        },
+        "note": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "tool",
+        "mode",
+        "note"
+      ]
+    },
+    "inventory": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "integer",
+        "minimum": 0
+      },
+      "required": [
+        "files",
+        "total_bytes"
+      ]
+    },
+    "priority_for": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "important_surfaces": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "usage_rules": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 3
+    },
+    "last_verified": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+    }
+  },
+  "required": [
+    "version",
+    "name",
+    "reference_url",
+    "source_repository",
+    "source_repository_full_name",
+    "source_branch",
+    "source_commit",
+    "extracted_path",
+    "acquisition",
+    "inventory",
+    "priority_for",
+    "important_surfaces",
+    "usage_rules",
+    "last_verified"
+  ]
+}
