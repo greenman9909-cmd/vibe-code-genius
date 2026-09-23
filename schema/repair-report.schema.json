@@ -5,6 +5,25 @@
   "type": "object",
   "additionalProperties": false,
   "properties": {
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "complete",
+        "blocked",
+        "failed"
+      ]
+    },
+    "version": {
+      "type": "string"
+    },
+    "generated_at": {
+      "type": "string"
+    },
+    "trigger": {
+      "type": "string",
+      "minLength": 1
+    },
     "tools_touched": {
       "type": "array",
       "items": {
@@ -14,7 +33,28 @@
     "fixes_applied": {
       "type": "array",
       "items": {
-        "type": "string"
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "problem": {
+            "type": "string"
+          },
+          "change": {
+            "type": "string"
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "minItems": 1
+          }
+        },
+        "required": [
+          "problem",
+          "change",
+          "evidence"
+        ]
       }
     },
     "regressions_added": {
@@ -30,38 +70,50 @@
       }
     },
     "skipped": {
-      "type": [
-        "string",
-        "null"
-      ]
-    }
-  },
-  "required": [
-    "tools_touched",
-    "fixes_applied",
-    "regressions_added",
-    "unfixed",
-    "skipped"
-  ],
-  "$defs": {
-    "status": {
-      "type": "string",
-      "enum": [
-        "pending",
-        "complete",
-        "blocked",
-        "failed"
-      ]
-    },
-    "evidence": {
       "type": "array",
       "items": {
         "type": "string"
       }
     },
-    "artifact": {
-      "type": "object",
-      "additionalProperties": true
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
     }
-  }
+  },
+  "required": [
+    "status",
+    "version",
+    "generated_at",
+    "trigger",
+    "tools_touched",
+    "fixes_applied",
+    "regressions_added",
+    "unfixed",
+    "skipped",
+    "evidence"
+  ],
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "complete"
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "then": {
+        "properties": {
+          "unfixed": {
+            "maxItems": 0
+          }
+        }
+      }
+    }
+  ]
 }
