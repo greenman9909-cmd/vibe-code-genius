@@ -3,7 +3,114 @@
   "$id": "https://vibe-code-genius.dev/schema/runtime-report.schema.json",
   "title": "runtime-report",
   "type": "object",
-  "required_headings": [
-    "runtime-report"
+  "additionalProperties": false,
+  "properties": {
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "complete",
+        "blocked",
+        "failed"
+      ]
+    },
+    "version": {
+      "type": "string"
+    },
+    "generated_at": {
+      "type": "string"
+    },
+    "target": {
+      "type": "string",
+      "minLength": 1
+    },
+    "pass": {
+      "type": "boolean"
+    },
+    "checks": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "surface": {
+            "type": "string"
+          },
+          "scenario": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "pass",
+              "fail",
+              "blocked",
+              "not-applicable"
+            ]
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "minItems": 1
+          }
+        },
+        "required": [
+          "surface",
+          "scenario",
+          "status",
+          "evidence"
+        ]
+      }
+    },
+    "failures": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    }
+  },
+  "required": [
+    "status",
+    "version",
+    "generated_at",
+    "target",
+    "pass",
+    "checks",
+    "failures",
+    "evidence"
+  ],
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "pass": {
+            "const": true
+          }
+        },
+        "required": [
+          "pass"
+        ]
+      },
+      "then": {
+        "properties": {
+          "status": {
+            "const": "complete"
+          },
+          "failures": {
+            "maxItems": 0
+          }
+        }
+      }
+    }
   ]
 }
