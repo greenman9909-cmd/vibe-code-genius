@@ -3,7 +3,8 @@
   "$id": "https://vibe-code-genius.dev/schema/data-hooks.schema.json",
   "title": "data-hooks",
   "type": "object",
-  "required_headings": [
-    "data-hooks"
+  "x-required-patterns": [
+    "\\bexport\\b",
+    "\\b(fetch|query|request|load|client|api)\\b"
   ]
 }
