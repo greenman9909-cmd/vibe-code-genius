@@ -3,7 +3,7 @@
   "$id": "https://vibe-code-genius.dev/schema/db-schema.schema.json",
   "title": "db-schema",
   "type": "object",
-  "required_headings": [
-    "db-schema"
+  "x-required-patterns": [
+    "\\bcreate\\s+(table|view|type|index)\\b"
   ]
 }
