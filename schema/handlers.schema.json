@@ -3,9 +3,8 @@
   "$id": "https://vibe-code-genius.dev/schema/handlers.schema.json",
   "title": "handlers",
   "type": "object",
-  "required_headings": [
-    "POST",
-    "NextRequest",
-    "NextResponse"
+  "x-required-patterns": [
+    "\\bexport\\b",
+    "\\b(request|response|handler|route|context)\\b"
   ]
 }
