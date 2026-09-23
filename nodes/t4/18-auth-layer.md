@@ -1,6 +1,6 @@
 # Node 18 — Auth Layer
 
-Tier: 4  Prereqs: [15, 16]  Parallel with: [18b, 18c]  Input: auth requirements + state  Output: auth/index.ts  Model: sonnet  Budget: 4000 tokens
+Tier: 4  Prereqs: [16]  Parallel with: [18b, 18c]  Input: auth requirements + state + backend/database when selected  Output: auth/index.ts  Model: sonnet  Budget: 4000 tokens
 
 ## Working Contract
 
