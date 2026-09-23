@@ -4,50 +4,26 @@ Tier: 4  Prereqs: [20]  Parallel with: [23b]  Input: preview build  Output: perf
 
 ## Working Contract
 
-Read `contracts/working-contract.md` and the declared input only. Emit the exact declared artifact, validate it against its schema, and update the manifest. Keep evidence separate from inference.
+Measure the deployed/preview product before optimizing. Use current browser/platform guidance and project-specific budgets; do not invent Lighthouse/Core Web Vitals numbers.
 
 ## Instructions
 
-1. Confirm every prerequisite artifact exists and has the expected version.
-2. Inspect the input and extract only facts relevant to performance pass.
-3. Produce `performance-report.json` with deterministic ordering, explicit nulls, and no invented evidence.
-4. Resolve every import, route, API call, token, environment variable, locale key, and component reference before writing.
-5. Record decisions and unresolved blockers in the artifact's evidence or report field.
-6. Mark the corresponding manifest item complete only after validation passes.
+1. Identify relevant user journeys and measure the deployed target or a production-equivalent preview.
+2. Collect available evidence for loading/rendering responsiveness, long tasks/INP, LCP where meaningful, bundle/payload behavior, images/fonts, caching and network waterfalls.
+3. Inspect server/API/database latency when those capabilities are active, including expensive queries/RLS impact where relevant.
+4. Compare measurements to explicit project budgets or accepted baselines. If no numeric budget exists, mark observations as observed rather than fabricating thresholds.
+5. Fix high-impact regressions first: duplicate work, render-blocking resources, unnecessary JS, oversized media, uncached repeated calls, slow queries or region mismatch.
+6. Re-measure after fixes and record before/after evidence.
+7. Produce `performance-report.json`; passing requires no blocking regressions.
 
 ## Output Contract
 
-The output is `performance-report.json`. It is versioned, machine-readable when the artifact is JSON, and contains a `version`, `generated_at`, `evidence`, and `status` field where the artifact shape permits.
+`performance-report.json` must satisfy `schema/performance-report.schema.json`.
 
-Before marking complete: python scripts/validate-artifact.py --node 20b --artifact performance-report.json --schema schema/performance-report.schema.json. If validation fails, halt. Do not substitute a different artifact. Do not continue.
+Before marking complete:
 
-
-
-
-
-
-
-
-
+python scripts/validate-artifact.py --node 20b --artifact performance-report.json --schema schema/performance-report.schema.json
 
 ## If this fails
 
-
-
-Log the node id, input hash, invocation, error, and minimal reproduction to `session.log`. Use datetime.utcnow().isoformat(timespec="microseconds") + "Z" (microseconds MUST vary between events). Apply the declared fallback in `contracts/repair-contract.md`; do not silently fabricate a result.
-
-
-Do not invent pages, proof, metrics, integrations, credentials, routes, or reference evidence. Do not bypass schemas, disable a failing check, write unresolved references, or emit prose in place of the artifact.
-
-## Example output
-
-```json
-{
-  "node": "20b",
-  "status": "complete",
-  "artifact": "performance-report.json",
-  "version": "1.0.0",
-  "evidence": ["declared input validated"],
-  "unresolved": []
-}
-```
+Keep measurements unavailable/blocked rather than fabricating performance data.
