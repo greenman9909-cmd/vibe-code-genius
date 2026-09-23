@@ -3,7 +3,7 @@
   "$id": "https://vibe-code-genius.dev/schema/pages.schema.json",
   "title": "pages",
   "type": "object",
-  "required_headings": [
-    "pages"
+  "x-required-patterns": [
+    "\\bexport\\b"
   ]
 }
