@@ -111,6 +111,13 @@
     },
     "why_log": {
       "type": "array"
+    },
+    "active_features": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
     }
   },
   "required": [
@@ -123,6 +130,7 @@
     "reference_url",
     "tier_stop",
     "features",
+    "active_features",
     "active_skills",
     "nodes",
     "artifacts",
