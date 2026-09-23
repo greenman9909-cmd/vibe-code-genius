@@ -5,6 +5,9 @@ from .tooling import acquire_reference, preflight_payload, run_slop_check
 from .agent_gateway import discovery_payload, create_task_packet
 from .project_graph import save_graph, query_graph
 from .mission_engine import create_mission
+from .local_api import serve
+from .validator_engine import run_command
+from .capability_router import route
 
 def _auth_from_env(name):
     if not name:
@@ -58,6 +61,20 @@ def main(argv=None):
     m.add_argument("--objective", required=True)
     m.add_argument("--repo", default=".")
     m.add_argument("--out", default=".godtree/missions")
+
+    daemon=sub.add_parser("daemon")
+    daemon.add_argument("--repo",default=".")
+    daemon.add_argument("--host",default="127.0.0.1")
+    daemon.add_argument("--port",type=int,default=7331)
+
+    vr=sub.add_parser("verify")
+    vr.add_argument("--repo",default=".")
+    vr.add_argument("--receipt",default=".godtree/receipts/verify.json")
+    vr.add_argument("cmd",nargs=argparse.REMAINDER)
+
+    rr=sub.add_parser("route")
+    rr.add_argument("capability")
+    rr.add_argument("--prefer")
 
     s=sub.add_parser("slop-check")
     s.add_argument("path")
@@ -135,6 +152,17 @@ def main(argv=None):
     if args.command=="mission":
         print(str(create_mission(args.objective,Path(args.repo),Path(args.out))))
         return 0
+
+    if args.command=="daemon":
+        serve(Path(args.repo),args.host,args.port);return 0
+
+    if args.command=="verify":
+        cmd=args.cmd[1:] if args.cmd[:1]==["--"] else args.cmd
+        result=run_command(Path(args.repo),cmd,Path(args.receipt))
+        print(json.dumps(result,indent=2));return 0 if result["status"]=="passed" else 1
+
+    if args.command=="route":
+        print(json.dumps(route(args.capability,args.prefer),indent=2));return 0
 
     if args.command=="slop-check":
         result=run_slop_check(Path(args.path), allow_proof=args.allow_proof)
