@@ -4,50 +4,42 @@ Tier: 1  Prereqs: [01, 01a]  Parallel with: [01c, 01d]  Input: intent.json + sui
 
 ## Working Contract
 
-Read `contracts/working-contract.md` and the declared input only. Emit the exact declared artifact, validate it against its schema, and update the manifest. Keep evidence separate from inference.
+Read `contracts/working-contract.md` and only the declared inputs. Convert the user's requested outcome into explicit included work, excluded work, acceptance criteria, and capability switches. Do not add infrastructure just because the tree knows how to build it.
 
 ## Instructions
 
-1. Confirm every prerequisite artifact exists and has the expected version.
-2. Inspect the input and extract only facts relevant to scope negotiation.
-3. Produce `scope.json` with deterministic ordering, explicit nulls, and no invented evidence.
-4. Resolve every import, route, API call, token, environment variable, locale key, and component reference before writing.
-5. Record decisions and unresolved blockers in the artifact's evidence or report field.
-6. Mark the corresponding manifest item complete only after validation passes.
+1. Preserve the user's requested deliverable and fidelity/completeness requirements. Separate "must ship" from ideas that are merely possible.
+2. List included routes/surfaces that are actually required. Use an empty route list for non-routed products instead of inventing pages.
+3. List explicit exclusions and unresolved constraints. If something is ambiguous but materially changes architecture, keep it visible rather than silently choosing the larger scope.
+4. Set `tier_stop` to the minimum tier that can satisfy the requested deliverable; use Tier 5 for production-complete work that requires final verification.
+5. Select capabilities only when the product requires them:
+   - `api`: the product consumes or exposes network APIs.
+   - `backend`: custom server/API logic is required.
+   - `database`: persistent structured storage/migrations are required.
+   - `auth`: identity/session/authorization behavior is required.
+   - `forms`: non-trivial forms or submission workflows are required.
+   - `integrations`: third-party services/webhooks are required.
+   - `deployment`: deployment/hosting is part of the requested deliverable.
+   - `motion`: product-specific motion beyond minimal interaction feedback is required.
+   - `multi_agent`: the execution plan explicitly benefits from independent agent workstreams.
+   - `reference_comparison`: fidelity to a supplied reference must be checked.
+   - `deep_reference` / `clone_extract`: only when those acquisition modes were explicitly requested/available.
+6. Do not infer backend/database/auth merely from "web app". A static or client-only product may legitimately omit them.
+7. Add acceptance criteria written as observable outcomes, not implementation slogans.
+8. Produce and validate `scope.json`.
+
+## Capability implications
+
+The runtime may add safe dependency implications such as `backend -> api` and `integrations -> backend -> api`. Do not manually add unrelated capabilities just to satisfy the graph.
 
 ## Output Contract
 
-The output is `scope.json`. It is versioned, machine-readable when the artifact is JSON, and contains a `version`, `generated_at`, `evidence`, and `status` field where the artifact shape permits.
+`scope.json` must satisfy `schema/scope.schema.json`. It is the source of truth for capability-gated branches.
 
-Before marking complete: python scripts/validate-artifact.py --node 01b --artifact scope.json --schema schema/scope.schema.json. If validation fails, halt. Do not substitute a different artifact. Do not continue.
+Before marking complete:
 
-
-
-
-
-
-
-
-
+python scripts/validate-artifact.py --node 01b --artifact scope.json --schema schema/scope.schema.json
 
 ## If this fails
 
-
-
-Log the node id, input hash, invocation, error, and minimal reproduction to `session.log`. Use datetime.utcnow().isoformat(timespec="microseconds") + "Z" (microseconds MUST vary between events). Apply the declared fallback in `contracts/repair-contract.md`; do not silently fabricate a result.
-
-
-Do not invent pages, proof, metrics, integrations, credentials, routes, or reference evidence. Do not bypass schemas, disable a failing check, write unresolved references, or emit prose in place of the artifact.
-
-## Example output
-
-```json
-{
-  "node": "01b",
-  "status": "complete",
-  "artifact": "scope.json",
-  "version": "1.0.0",
-  "evidence": ["declared input validated"],
-  "unresolved": []
-}
-```
+Record the missing decision or conflicting requirement. Do not broaden scope to make the schema pass and do not invent routes, services, databases, credentials, or deployment targets.
