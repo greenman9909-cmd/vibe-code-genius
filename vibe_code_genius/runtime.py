@@ -57,7 +57,7 @@ def selected_nodes(tree: dict[str, Any], tier_stop: int = 5, features: Iterable[
     return selected
 
 
-def resolve_features(out: Path, session: dict[str, Any]) -> list[str]:
+def resolve_features(root: Path, out: Path, session: dict[str, Any]) -> list[str]:
     enabled = set(session.get("features", []))
     if session.get("reference_url"):
         enabled.add("reference_comparison")
@@ -65,11 +65,13 @@ def resolve_features(out: Path, session: dict[str, Any]) -> list[str]:
     scope_path = out / "scope.json"
     if scope_path.is_file():
         try:
-            scope = _read_json(scope_path)
-            if scope.get("status") == "complete":
-                enabled.update(scope.get("capabilities") or [])
+            scope_errors = validate_artifact_file(scope_path, root / "schema" / "scope.schema.json")
+            if not scope_errors:
+                scope = _read_json(scope_path)
+                if scope.get("status") == "complete":
+                    enabled.update(scope.get("capabilities") or [])
         except Exception:
-            # Invalid scope is handled by the normal artifact validator.
+            # Invalid or unreadable scope cannot activate architecture branches.
             pass
 
     return sorted(expand_features(enabled))
@@ -150,7 +152,7 @@ def save_session(out: Path, session: dict[str, Any]) -> None:
 
 def refresh_status(root: Path, out: Path, tree: dict[str, Any]) -> dict[str, Any]:
     session = load_session(out)
-    active_features = resolve_features(out, session)
+    active_features = resolve_features(root, out, session)
     session["active_features"] = active_features
     selected = selected_nodes(tree, session["tier_stop"], active_features)
     by_id = {n["id"]: n for n in selected}
