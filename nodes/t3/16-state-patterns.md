@@ -1,6 +1,6 @@
 # Node 16 — State Patterns
 
-Tier: 3  Prereqs: [13, 14]  Parallel with: [16a, 18]  Input: pages + data hooks  Output: state-model.md  Model: sonnet  Budget: 3000 tokens
+Tier: 3  Prereqs: [13]  Parallel with: [16a, 18]  Input: pages + data hooks/forms when selected  Output: state-model.md  Model: sonnet  Budget: 3000 tokens
 
 ## Working Contract
 
