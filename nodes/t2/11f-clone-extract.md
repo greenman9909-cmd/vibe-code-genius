@@ -1,6 +1,6 @@
 # Node 11f — Clone Extract
 
-Tier: 2  Prereqs: 02  Parallel with: 07, 08, 09, 10, 11  Input: reference_url + output_dir  Output: clone/ + clone-manifest.json + clone-motion.json + clone-components.json  Model: sonnet  Budget: 3500
+Tier: 2  Prereqs: [02]  Parallel with: [07, 08, 09, 10, 11, 11a]  Input: reference_url + output_dir  Output: clone/ + clone-manifest.json + clone-motion.json + clone-components.json  Model: sonnet  Budget: 3500
 
 ## Working Contract
 
