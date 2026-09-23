@@ -1,69 +1,33 @@
 # Node 11a — Design System Extract
 
-Tier: 2  Prereqs: 11f  Parallel with: —  Input: clone/  Output: design_system.json  Model: sonnet  Budget: 3000
+Tier: 2  Prereqs: [02, 01d]  Parallel with: [11, 12]  Input: reference.json + system.json + rendered pages when available  Output: design_system.json  Model: sonnet  Budget: 3000 tokens
 
 ## Working Contract
 
-Read `contracts/working-contract.md` and the declared input only. Emit the exact declared artifact, validate it against its schema, and update the manifest. Keep evidence separate from inference.
+Read `contracts/working-contract.md`, `contracts/human-quality-contract.md`, and `contracts/extracted-design-learning-contract.md`. Extract only what the available evidence supports. Clone artifacts are optional evidence, never a mandatory prerequisite.
 
 ## Instructions
 
-1. Read `clone-manifest.json` for the file list.
-2. Parse every `*.css` file for:
-   - CSS custom properties in `:root` declarations
-   - Color values: hex, rgb, hsl, and oklch
-   - `font-family` declarations
-   - `border-radius` values
-   - `box-shadow` values
-   - Spacing patterns in margin and padding
-3. Read `clone-motion.json` for animation and transition data.
-4. Read `clone-components.json` for the component inventory.
-5. For each component in the inventory, note:
-   - Its source file path in the clone
-   - The count of occurrences in CSS, representing how many classes it likely has
-6. Read `contracts/extracted-design-learning-contract.md`. Analyze the extracted frontend as a design system, not just a token dump. Record:
-   - composition, grid, alignment, whitespace, and information density;
+1. Start with `reference.json` and `system.json`. Distinguish observed reference facts from product requirements.
+2. If rendered pages, screenshots, DOM/CSS evidence, or a cached clone are available, inspect them. If `clone-manifest.json`, `clone-motion.json`, or `clone-components.json` exist, use them as additional evidence; do not require or fabricate them.
+3. Record observed:
+   - composition, grid, alignment, whitespace, density, and responsive changes;
    - typography hierarchy and text treatment;
-   - surface, border, radius, shadow, overlay, and contrast patterns;
-   - component composition, variants, states, and repeated interaction patterns;
-   - navigation hierarchy, CTA placement, and content ordering;
-   - responsive behavior and density changes across breakpoints;
-   - motion timing, easing, sequencing, hover/focus behavior, and reduced-motion implications;
-   - how utility surfaces such as auth, settings, profile, forms, dialogs, loading, empty, and error states inherit the same language when evidence exists.
-   For each major pattern, explain why it works and how new product features should remix it without introducing a second, generic design system.
-7. Emit `design_system.json` with the extracted evidence plus a `design_analysis` object containing `patterns`, `rationale`, `remix_rules`, and `anti_patterns`:
-
-   ```json
-   {
-     "tokens": {
-       "colors": {},
-       "fonts": {},
-       "spacing": [],
-       "radii": [],
-       "shadows": []
-     },
-     "motion": "<contents of clone-motion.json>",
-     "components": "<contents of clone-components.json>",
-     "design_analysis": {
-       "patterns": [],
-       "rationale": [],
-       "remix_rules": [],
-       "anti_patterns": []
-     },
-     "source": "clone-extracted"
-   }
-   ```
-
-8. Mark complete. Announce unlocked: 11b, 11c, 11d.
+   - color/surface/overlay/border/radius/shadow behavior;
+   - repeated components, variants, states, and navigation patterns;
+   - form, auth, settings, profile, loading, empty, error, and dialog treatment when evidence exists;
+   - motion timing/easing/sequencing and reduced-motion implications.
+4. Explain why each major pattern supports the product task or reference composition. Separate rationale from observation.
+5. When there is no visual reference, derive a minimal product design system from `system.json` and the Human Quality Contract, mark the source as `product-derived`, and do not claim it was extracted.
+6. When clone/reference evidence exists, mark the source accordingly and preserve provenance.
+7. Do not force arbitrary counts of components, tokens, or keyframes. Static products may have zero keyframes; small products may have a small component vocabulary.
+8. Produce `design_system.json` with evidence, source mode, tokens, components, motion/keyframes, and a non-empty `design_analysis` containing observed patterns, rationale, remix rules, and anti-patterns appropriate to the product.
+9. Validate before completion.
 
 ## Output Contract
 
-The output is `design_system.json`. It must contain the extracted design evidence and a non-empty `design_analysis` section that explains the observed patterns, why they work, how they should be remixed, and which generic fallback patterns would violate the reference language. Preserve `source: "clone-extracted"`. Validate it against `schema/design_system.schema.json` when present before marking complete.
+`design_system.json` must satisfy `schema/design_system.schema.json`. Every extracted claim must be traceable to current evidence; every product-derived rule must be labelled as a decision.
 
 ## If this fails
 
-Log the node id, input hash, invocation, error, and minimal reproduction to `session.log`. Apply the declared fallback in `contracts/repair-contract.md`; do not silently fabricate a result.
-
-## Do not
-
-Do not invent design evidence, modify the clone, or substitute category-based assumptions for values that can be extracted from the clone. Do not stop at colors and tokens when real component/layout code is available. Do not design new auth, profile, settings, library, admin, form, or utility surfaces as generic AI UI when the extracted system provides patterns that can be remixed.
+Record the missing evidence precisely. Fall back from clone/rendered evidence to normalized reference evidence, then to product-derived design guidance. Never invent CSS values, components, screenshots, or motion to satisfy the schema.
