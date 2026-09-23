@@ -1,6 +1,6 @@
 # Node 23b — Final Ship Gate
 
-Tier: 5  Prereqs: [18e, 20a, 20b, 20c, 20d, 22, 23]  Parallel with: [25]  Input: full build  Output: ship-report.json  Model: opus  Budget: 4000 tokens
+Tier: 5  Prereqs: [18e, 24b, 20a, 20b, 20c, 20d, 22, 23]  Parallel with: [25]  Input: full build  Output: ship-report.json  Model: opus  Budget: 4000 tokens
 
 ## Working Contract
 
