@@ -1,6 +1,6 @@
 # Node 19 — Test Scaffold
 
-Tier: 4  Prereqs: [12, 14, 18]  Parallel with: [19a, 24]  Input: app  Output: tests/index.test.ts  Model: sonnet  Budget: 3000 tokens
+Tier: 4  Prereqs: [12, 13, 16]  Parallel with: [19a, 24]  Input: app + scope + active capabilities  Output: tests/index.test.ts  Model: sonnet  Budget: 3000 tokens
 
 ## Working Contract
 
