@@ -4,58 +4,25 @@ Tier: 2  Prereqs: [11]  Parallel with: [11d, 12]  Input: design tokens + referen
 
 ## Working Contract
 
-Read `contracts/working-contract.md` and the declared input only. Emit the exact declared artifact, validate it against its schema, and update the manifest. Keep evidence separate from inference.
+Read `contracts/working-contract.md`, `contracts/human-quality-contract.md`, and `references/signs-of-ai-design.md`. Emit only the declared artifact and keep evidence separate from judgment.
 
 ## Instructions
 
-1. Confirm every prerequisite artifact exists and has the expected version.
-2. Inspect the input and extract only facts relevant to design slop lint.
-3. Produce `slop-lint.json` with deterministic ordering, explicit nulls, and no invented evidence.
-4. Resolve every import, route, API call, token, environment variable, locale key, and component reference before writing.
-5. Record decisions and unresolved blockers in the artifact's evidence or report field.
-6. Mark the corresponding manifest item complete only after validation passes.
+1. Audit only patterns that are actually present in the current design evidence or declared design direction.
+2. Use the anti-pattern registry as a detector catalogue, not as a universal ban list. A dark theme, glass, cards, gradients, pills, centered copy, or motion can be valid when the product/reference clearly calls for it.
+3. Record every source/registry actually consulted. `rules_checked` is the number genuinely evaluated, not a target quota.
+4. For each violation record the surface, observable evidence, concrete fix, and any context exception. If a flagged pattern is intentional and well-supported, keep it and explain the exception.
+5. Prioritize structural generated-UI tells: card soup, identical feature tiles, arbitrary rounded containers, decorative glow/gradient defaults, repeated eyebrow labels, weak hierarchy, random spacing, gratuitous animation, placeholder imagery, and design-system drift.
+6. Check accessibility and product behavior together with aesthetics: focus, contrast, text scale, overflow, labels, reduced motion, responsive density, and meaningful states.
+7. Do not mutate `prompt.md` or write a hidden companion file. Downstream nodes consume `slop-lint.json` and the design contract directly.
+8. Validate `slop-lint.json` before completion.
 
 ## Output Contract
 
-Output: slop-lint.json AND a markdown fragment called
-first-build/banned-patterns.md containing:
+Before marking complete:
 
-  ## BANNED PATTERNS
-  - <rule name>: <what it looks like>: <the fix>
-  ...one line per rule triggered by the reference or product category...
-
-This file MUST be included verbatim in prompt.md under a new section
-called '## BANNED PATTERNS'. The coding AI uses it to avoid slop.
-
-Before marking complete: python scripts/validate-artifact.py --node 11c --artifact slop-lint.json --schema schema/slop-lint.schema.json. If validation fails, halt. Do not substitute a different artifact. Do not continue.
-
-
-
-
-
-
-
-
-
+python scripts/validate-artifact.py --node 11c --artifact slop-lint.json --schema schema/slop-lint.schema.json
 
 ## If this fails
 
-
-
-Log the node id, input hash, invocation, error, and minimal reproduction to `session.log`. Use datetime.utcnow().isoformat(timespec="microseconds") + "Z" (microseconds MUST vary between events). Apply the declared fallback in `contracts/repair-contract.md`; do not silently fabricate a result.
-
-
-Do not invent pages, proof, metrics, integrations, credentials, routes, or reference evidence. Do not bypass schemas, disable a failing check, write unresolved references, or emit prose in place of the artifact.
-
-## Example output
-
-```json
-{
-  "node": "11c",
-  "status": "complete",
-  "artifact": "slop-lint.json",
-  "version": "1.0.0",
-  "evidence": ["declared input validated"],
-  "unresolved": []
-}
-```
+Record the exact detector/source failure and continue only through the declared fallback. Never invent violations, rule counts, screenshots, or tool output.
