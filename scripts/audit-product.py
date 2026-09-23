@@ -49,6 +49,28 @@ def main() -> int:
         skill = ROOT / node["skill_file"]
         if not skill.is_file():
             errors.append(f"node {nid}: missing skill file {node['skill_file']}")
+        else:
+            text = skill.read_text(encoding="utf-8", errors="replace")
+            header = "\n".join(text.splitlines()[:6])
+            prereq_match = re.search(r"Prereqs:\s*([^\n]+?)\s+Parallel with:", header)
+            input_match = re.search(r"Input:\s*([^\n]+?)\s+Output:", header)
+            output_match = re.search(r"Output:\s*([^\n]+?)\s+Model:", header)
+            expected_prereqs = "[" + ", ".join(node.get("prereqs", [])) + "]" if node.get("prereqs") else "[none]"
+            if prereq_match and prereq_match.group(1).strip() != expected_prereqs:
+                errors.append(
+                    f"node {nid}: skill header prereqs {prereq_match.group(1).strip()!r} "
+                    f"!= tree {expected_prereqs!r}"
+                )
+            if input_match and input_match.group(1).strip() != node.get("input", "").strip():
+                errors.append(
+                    f"node {nid}: skill header input {input_match.group(1).strip()!r} "
+                    f"!= tree {node.get('input', '').strip()!r}"
+                )
+            if output_match and output_match.group(1).strip() != node.get("output", "").strip():
+                errors.append(
+                    f"node {nid}: skill header output {output_match.group(1).strip()!r} "
+                    f"!= tree {node.get('output', '').strip()!r}"
+                )
 
         schema_rel = node.get("artifact_schema")
         if not schema_rel:
