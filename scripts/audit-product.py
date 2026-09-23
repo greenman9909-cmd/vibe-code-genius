@@ -133,10 +133,11 @@ def main() -> int:
         if schema.get("type") == "object":
             required = schema.get("required")
             headings = schema.get("required_headings")
+            patterns = schema.get("x-required-patterns")
             if required == []:
                 errors.append(f"{title}: required is empty; schema is vacuous")
-            if not required and not headings and title != "node.schema.json":
-                errors.append(f"{title}: object schema has no required fields or required_headings")
+            if not required and not headings and not patterns and title != "node.schema.json":
+                errors.append(f"{title}: object schema has no required fields, required_headings, or x-required-patterns")
             status = schema.get("properties", {}).get("status")
             if status and status.get("type") == "string" and "enum" not in status:
                 warnings.append(f"{title}: status is unconstrained")
