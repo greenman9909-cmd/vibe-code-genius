@@ -4,50 +4,26 @@ Tier: 4  Prereqs: [12, 13, 16]  Parallel with: [19a, 24]  Input: app + scope + a
 
 ## Working Contract
 
-Read `contracts/working-contract.md` and the declared input only. Emit the exact declared artifact, validate it against its schema, and update the manifest. Keep evidence separate from inference.
+Create tests from scope, product invariants, route/state behavior and active capabilities. Test count is not a quality metric; cover risks and contracts that can regress.
 
 ## Instructions
 
-1. Confirm every prerequisite artifact exists and has the expected version.
-2. Inspect the input and extract only facts relevant to test scaffold.
-3. Produce `tests/` with deterministic ordering, explicit nulls, and no invented evidence.
-4. Resolve every import, route, API call, token, environment variable, locale key, and component reference before writing.
-5. Record decisions and unresolved blockers in the artifact's evidence or report field.
-6. Mark the corresponding manifest item complete only after validation passes.
+1. Map acceptance criteria and critical flows to executable tests before adding incidental unit coverage.
+2. Cover loading, empty, success, validation/error and recovery behavior for interactive/network flows.
+3. Cover route/deep-link behavior, important accessibility interactions, state transitions and persistence as applicable.
+4. When auth is active, include anonymous/authenticated/expired/denied paths. When database/RLS is active, include positive and negative authorization tests.
+5. Mock only external boundaries where deterministic isolation is needed; do not mock the unit whose behavior the test claims to verify.
+6. Avoid snapshot-only coverage for behavior that should be asserted semantically.
+7. Export/declare the executable test suite from `tests/index.test.ts`; use the project's existing runner and conventions.
 
 ## Output Contract
 
-The output is `tests/index.test.ts`. It is versioned, machine-readable when the artifact is JSON, and contains a `version`, `generated_at`, `evidence`, and `status` field where the artifact shape permits.
+`tests/index.test.ts` must satisfy `schema/tests.schema.json` and contain actual executable test blocks.
 
-Before marking complete: python scripts/validate-artifact.py --node 19 --artifact tests/index.test.ts --schema schema/tests.schema.json. If validation fails, halt. Do not substitute a different artifact. Do not continue.
+Before marking complete:
 
-
-
-
-
-
-
-
-
+python scripts/validate-artifact.py --node 19 --artifact tests/index.test.ts --schema schema/tests.schema.json
 
 ## If this fails
 
-
-
-Log the node id, input hash, invocation, error, and minimal reproduction to `session.log`. Use datetime.utcnow().isoformat(timespec="microseconds") + "Z" (microseconds MUST vary between events). Apply the declared fallback in `contracts/repair-contract.md`; do not silently fabricate a result.
-
-
-Do not invent pages, proof, metrics, integrations, credentials, routes, or reference evidence. Do not bypass schemas, disable a failing check, write unresolved references, or emit prose in place of the artifact.
-
-## Example output
-
-```json
-{
-  "node": "19",
-  "status": "complete",
-  "artifact": "tests/",
-  "version": "1.0.0",
-  "evidence": ["declared input validated"],
-  "unresolved": []
-}
-```
+Do not create trivial always-pass assertions or skip the failing product behavior.
