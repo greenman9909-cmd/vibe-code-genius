@@ -5,23 +5,103 @@
   "type": "object",
   "additionalProperties": false,
   "properties": {
-    "session_id": {
+    "version": {
       "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "ready",
+        "complete",
+        "blocked",
+        "failed"
+      ]
+    },
+    "session_id": {
+      "type": "string",
+      "minLength": 1
     },
     "started_at": {
       "type": "string"
     },
-    "intent": {
+    "updated_at": {
       "type": "string"
     },
-    "scope": {
-      "type": "string"
+    "intent": {
+      "type": "string",
+      "minLength": 1
+    },
+    "reference_url": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "tier_stop": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 5
+    },
+    "features": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
     },
     "active_skills": {
-      "type": "array"
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "nodes": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": true,
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": [
+              "pending",
+              "ready",
+              "complete",
+              "blocked",
+              "failed",
+              "skipped"
+            ]
+          },
+          "artifact": {
+            "type": "string"
+          },
+          "errors": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "blocked_by": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "status",
+          "artifact",
+          "errors"
+        ]
+      }
     },
     "artifacts": {
-      "type": "array"
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
     },
     "checkpoints": {
       "type": "array"
@@ -34,35 +114,20 @@
     }
   },
   "required": [
+    "version",
+    "status",
     "session_id",
     "started_at",
+    "updated_at",
     "intent",
-    "scope",
+    "reference_url",
+    "tier_stop",
+    "features",
     "active_skills",
+    "nodes",
     "artifacts",
     "checkpoints",
     "budget",
     "why_log"
-  ],
-  "$defs": {
-    "status": {
-      "type": "string",
-      "enum": [
-        "pending",
-        "complete",
-        "blocked",
-        "failed"
-      ]
-    },
-    "evidence": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      }
-    },
-    "artifact": {
-      "type": "object",
-      "additionalProperties": true
-    }
-  }
+  ]
 }
