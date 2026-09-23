@@ -3,6 +3,8 @@ from pathlib import Path
 from .engine import plan
 from .tooling import acquire_reference, preflight_payload, run_slop_check
 from .agent_gateway import discovery_payload, create_task_packet
+from .project_graph import save_graph, query_graph
+from .mission_engine import create_mission
 
 def _auth_from_env(name):
     if not name:
@@ -46,6 +48,16 @@ def main(argv=None):
     t.add_argument("--allow", action="append", default=[])
     t.add_argument("--deny", action="append", default=[])
     t.add_argument("--accept", action="append", default=[])
+
+    g=sub.add_parser("graph")
+    g.add_argument("--repo", default=".")
+    g.add_argument("--out", default=".godtree/graph.json")
+    g.add_argument("--query")
+
+    m=sub.add_parser("mission")
+    m.add_argument("--objective", required=True)
+    m.add_argument("--repo", default=".")
+    m.add_argument("--out", default=".godtree/missions")
 
     s=sub.add_parser("slop-check")
     s.add_argument("path")
@@ -110,6 +122,18 @@ def main(argv=None):
         path=create_task_packet(args.objective, Path(args.repo), Path(args.out),
                                 allowed=args.allow, forbidden=args.deny, acceptance=args.accept)
         print(str(path))
+        return 0
+
+    if args.command=="graph":
+        out=save_graph(Path(args.repo), Path(args.out))
+        if args.query:
+            payload=json.loads(out.read_text(encoding="utf-8"))
+            print(json.dumps(query_graph(payload,args.query),indent=2))
+        else: print(str(out))
+        return 0
+
+    if args.command=="mission":
+        print(str(create_mission(args.objective,Path(args.repo),Path(args.out))))
         return 0
 
     if args.command=="slop-check":
