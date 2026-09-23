@@ -5,6 +5,7 @@ from pathlib import Path
 
 from vibe_code_genius.engine import load_tree, plan
 from vibe_code_genius.runtime import ready_nodes, refresh_status, validate_artifact, write_task_packet
+from vibe_code_genius.validation import validate_artifact_file
 
 
 class RuntimeTests(unittest.TestCase):
@@ -39,6 +40,26 @@ class RuntimeTests(unittest.TestCase):
             session = refresh_status(self.root, out, self.tree)
             self.assertEqual(session["status"], "failed")
             self.assertEqual(session["nodes"]["01"]["status"], "failed")
+
+    def test_failed_artifact_is_runnable_for_repair(self):
+        with tempfile.TemporaryDirectory() as d:
+            out = Path(d)
+            plan("Build a product", out, self.root)
+            (out / "intent.json").write_text("{}\n")
+            failed = ready_nodes(self.root, out, self.tree, include_failed=True)
+            self.assertEqual([n["id"] for n in failed], ["01"])
+
+    def test_text_validation_uses_schema_contract_not_global_padding(self):
+        with tempfile.TemporaryDirectory() as d:
+            root = Path(d)
+            artifact = root / "note.md"
+            schema = root / "schema.json"
+            artifact.write_text("# Required\nshort but complete\n")
+            schema.write_text(json.dumps({
+                "type": "object",
+                "required_headings": ["# Required"]
+            }))
+            self.assertEqual(validate_artifact_file(artifact, schema), [])
 
     def test_validate_artifact_accepts_schema_valid_intent(self):
         with tempfile.TemporaryDirectory() as d:
