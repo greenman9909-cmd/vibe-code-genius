@@ -1,6 +1,6 @@
 # Node 22 — Diff-Merge
 
-Tier: 5  Prereqs: [21]  Parallel with: [23, 23b]  Input: reference + build  Output: diff-report.json  Model: opus  Budget: 3000 tokens
+Tier: 5  Prereqs: [24]  Parallel with: [23, 23b]  Input: reference + build  Output: diff-report.json  Model: opus  Budget: 3000 tokens
 
 ## Working Contract
 
