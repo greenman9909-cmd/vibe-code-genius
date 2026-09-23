@@ -1,0 +1,157 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vibe-code-genius.dev/schema/deployment-config.schema.json",
+  "title": "deployment-config",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "complete",
+        "blocked",
+        "failed"
+      ]
+    },
+    "version": {
+      "type": "string"
+    },
+    "generated_at": {
+      "type": "string"
+    },
+    "provider": {
+      "type": "string",
+      "minLength": 1
+    },
+    "environment": {
+      "type": "string",
+      "minLength": 1
+    },
+    "root_directory": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "build_command": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "start_command": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "env_vars": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "required": {
+            "type": "boolean"
+          },
+          "secret": {
+            "type": "boolean"
+          },
+          "environments": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "name",
+          "required",
+          "secret",
+          "environments"
+        ]
+      }
+    },
+    "domains": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "health_check": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "path": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "expected_statuses": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 100,
+            "maximum": 599
+          }
+        }
+      },
+      "required": [
+        "path",
+        "expected_statuses"
+      ]
+    },
+    "rollback": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "strategy": {
+          "type": "string",
+          "minLength": 1
+        },
+        "verified": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "strategy",
+        "verified"
+      ]
+    },
+    "observability": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    }
+  },
+  "required": [
+    "status",
+    "version",
+    "generated_at",
+    "provider",
+    "environment",
+    "root_directory",
+    "build_command",
+    "start_command",
+    "env_vars",
+    "domains",
+    "health_check",
+    "rollback",
+    "observability",
+    "evidence"
+  ]
+}
