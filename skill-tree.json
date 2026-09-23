@@ -1340,7 +1340,7 @@
       "output": "deployment/config.json",
       "activates_when": "prerequisites complete for node 20",
       "skill_file": "nodes/t4/20-deploy-wiring.md",
-      "artifact_schema": "schema/wiring_report.schema.json",
+      "artifact_schema": "schema/deployment-config.schema.json",
       "model": "sonnet",
       "max_response_tokens": 3000,
       "version": "1.0.0",
