@@ -109,6 +109,22 @@ def main() -> int:
         if len(required_owners) > 1:
             errors.append(f"artifact {path} has multiple required producers: {', '.join(owners)}")
 
+    # JSON-producing nodes require real JSON Schema constraints, not text-only heading metadata.
+    for node in nodes:
+        artifact = node.get("expected_artifact_path", "")
+        if not artifact.endswith(".json"):
+            continue
+        schema_path = ROOT / node["artifact_schema"]
+        if not schema_path.is_file():
+            continue
+        schema = load_json(schema_path)
+        required = schema.get("required")
+        if not isinstance(required, list) or not required:
+            errors.append(
+                f"node {node['id']}: JSON artifact {artifact} is bound to "
+                f"{node['artifact_schema']} without non-empty JSON Schema required fields"
+            )
+
     # Artifact schemas must actually reject incomplete JSON artifacts.
     schema_dir = ROOT / "schema"
     for schema_path in sorted(schema_dir.glob("*.schema.json")):
