@@ -45,4 +45,4 @@ if errors:
     print('TREE INVALID')
     print('\n'.join(errors))
     sys.exit(1)
-print(f"TREE VALID: {len(nodes)} listed nodes; {tree.get('declared_node_count')} core-node declaration; prerequisites acyclic; no orphan node files")
+print(f"TREE VALID: {len(nodes)} nodes; prerequisites acyclic; no orphan node files")
