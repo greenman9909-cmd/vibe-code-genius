@@ -1,6 +1,6 @@
 # Node 10 — Section Detect
 
-Tier: 2  Prereqs: [02]  Parallel with: [13, 11]  Input: reference.json.sections  Output: sections.json  Model: sonnet  Budget: 2500 tokens
+Tier: 2  Prereqs: [02, 01d]  Parallel with: [13, 11]  Input: reference.json.sections  Output: sections.json  Model: sonnet  Budget: 2500 tokens
 
 ## Working Contract
 
