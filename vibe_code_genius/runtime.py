@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 import os
+import shlex
 import subprocess
 from datetime import datetime, timezone
 from pathlib import Path
@@ -151,10 +152,20 @@ def refresh_status(root: Path, out: Path, tree: dict[str, Any]) -> dict[str, Any
     return session
 
 
-def ready_nodes(root: Path, out: Path, tree: dict[str, Any]) -> list[dict[str, Any]]:
+def ready_nodes(root: Path, out: Path, tree: dict[str, Any], *, include_failed: bool = False) -> list[dict[str, Any]]:
     session = refresh_status(root, out, tree)
     selected = selected_nodes(tree, session["tier_stop"], session.get("features", []))
-    return [n for n in selected if session["nodes"][n["id"]]["status"] == "ready"]
+    runnable = []
+    for node in selected:
+        state = session["nodes"][node["id"]]
+        if state["status"] == "ready":
+            runnable.append(node)
+            continue
+        if include_failed and state["status"] == "failed":
+            blockers = state.get("blocked_by") or []
+            if not blockers:
+                runnable.append(node)
+    return runnable
 
 
 def write_task_packet(root: Path, out: Path, node: dict[str, Any]) -> Path:
@@ -193,6 +204,7 @@ def execute(
     *,
     executor: str,
     stop_after: int | None = None,
+    timeout_seconds: int = 1800,
 ) -> dict[str, Any]:
     completed_this_run: list[str] = []
     attempts = 0
@@ -201,11 +213,7 @@ def execute(
         session = refresh_status(root, out, tree)
         if session["status"] == "complete":
             return {"status": "complete", "completed": completed_this_run, "session": str(_session_path(out))}
-        if session["status"] == "failed":
-            failed = [nid for nid, state in session["nodes"].items() if state["status"] == "failed"]
-            return {"status": "failed", "failed": failed, "completed": completed_this_run}
-
-        ready = ready_nodes(root, out, tree)
+        ready = ready_nodes(root, out, tree, include_failed=True)
         if not ready:
             return {"status": "blocked", "reason": "no ready nodes and workflow is incomplete", "completed": completed_this_run}
 
@@ -220,7 +228,25 @@ def execute(
             "VIBE_ARTIFACT_PATH": str((out / node["expected_artifact_path"]).resolve()),
             "VIBE_SCHEMA_PATH": str((root / node["artifact_schema"]).resolve()),
         })
-        proc = subprocess.run([executor], cwd=str(root), env=env, check=False)
+        try:
+            command = shlex.split(executor)
+            if not command:
+                return {"status": "failed", "node": node["id"], "error": "empty executor command"}
+            proc = subprocess.run(
+                command,
+                cwd=str(root),
+                env=env,
+                check=False,
+                timeout=timeout_seconds,
+            )
+        except subprocess.TimeoutExpired:
+            session = load_session(out)
+            session["nodes"][node["id"]]["status"] = "failed"
+            session["nodes"][node["id"]]["errors"] = [f"executor timed out after {timeout_seconds}s"]
+            session["status"] = "failed"
+            save_session(out, session)
+            return {"status": "failed", "node": node["id"], "timeout_seconds": timeout_seconds}
+
         attempts += 1
         if proc.returncode != 0:
             session = load_session(out)
