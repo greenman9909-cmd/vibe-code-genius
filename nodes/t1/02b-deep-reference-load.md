@@ -1,6 +1,6 @@
 # Node 02b — Deep Reference Load
 
-Tier: 1  Prereqs: [02]  Parallel with: [03, 04, 06, 07, 08, 09, 10, 11]  Input: reference.json + reference-source.json/endpoints  Output: reference-deep.json  Model: sonnet  Budget: 3000 tokens
+Tier: 1  Prereqs: [02]  Parallel with: [11a, 11f]  Input: reference.json + reference-source.json/endpoints  Output: reference-deep.json  Model: sonnet  Budget: 3000 tokens
 
 ## Working Contract
 
