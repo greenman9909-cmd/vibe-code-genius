@@ -4,50 +4,26 @@ Tier: 4  Prereqs: [18b, 18c]  Parallel with: [18e, 20d]  Input: security report 
 
 ## Working Contract
 
-Read `contracts/working-contract.md` and the declared input only. Emit the exact declared artifact, validate it against its schema, and update the manifest. Keep evidence separate from inference.
+Repair verified security findings without broad rewrites. Read the review report, edge/runtime evidence, current source, and `references/production-engineering-2026.md`.
 
 ## Instructions
 
-1. Confirm every prerequisite artifact exists and has the expected version.
-2. Inspect the input and extract only facts relevant to security hardening.
-3. Produce `harden_report.json` with deterministic ordering, explicit nulls, and no invented evidence.
-4. Resolve every import, route, API call, token, environment variable, locale key, and component reference before writing.
-5. Record decisions and unresolved blockers in the artifact's evidence or report field.
-6. Mark the corresponding manifest item complete only after validation passes.
+1. Prioritize blocking/high-confidence findings by exploitability and product impact; do not churn code for theoretical low-value issues.
+2. Apply the smallest fix that restores the intended security invariant while preserving product behavior.
+3. Strengthen authorization at the authoritative boundary, not only in UI code.
+4. Correct RLS/grants, secret exposure, input validation, CSP/headers, CORS/CSRF/session handling, unsafe external fetches, webhook verification, dependency issues, or rate controls only where the evidence requires them.
+5. Add a regression test or reproducible verification for each material fix.
+6. Re-run the affected security checks after each repair batch.
+7. Produce `harden_report.json` using the shared security schema with `stage: hardening`, listing patches and any remaining blocking findings.
 
 ## Output Contract
 
-The output is `harden_report.json`. It is versioned, machine-readable when the artifact is JSON, and contains a `version`, `generated_at`, `evidence`, and `status` field where the artifact shape permits.
+`harden_report.json` must satisfy `schema/security_report.schema.json`; `pass: true` means the blocking findings from the review were actually remediated and rechecked.
 
-Before marking complete: python scripts/validate-artifact.py --node 18d --artifact harden_report.json --schema schema/security_report.schema.json. If validation fails, halt. Do not substitute a different artifact. Do not continue.
+Before marking complete:
 
-
-
-
-
-
-
-
-
+python scripts/validate-artifact.py --node 18d --artifact harden_report.json --schema schema/security_report.schema.json
 
 ## If this fails
 
-
-
-Log the node id, input hash, invocation, error, and minimal reproduction to `session.log`. Use datetime.utcnow().isoformat(timespec="microseconds") + "Z" (microseconds MUST vary between events). Apply the declared fallback in `contracts/repair-contract.md`; do not silently fabricate a result.
-
-
-Do not invent pages, proof, metrics, integrations, credentials, routes, or reference evidence. Do not bypass schemas, disable a failing check, write unresolved references, or emit prose in place of the artifact.
-
-## Example output
-
-```json
-{
-  "node": "18d",
-  "status": "complete",
-  "artifact": "harden_report.json",
-  "version": "1.0.0",
-  "evidence": ["declared input validated"],
-  "unresolved": []
-}
-```
+Leave unresolved findings explicit. Do not downgrade severity, suppress tests, or weaken a policy merely to make the report pass.
