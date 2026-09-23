@@ -19,7 +19,13 @@
       "type": "string"
     },
     "status": {
-      "type": "string"
+      "type": "string",
+      "enum": [
+        "pending",
+        "complete",
+        "blocked",
+        "failed"
+      ]
     },
     "colors": {
       "type": "object",
