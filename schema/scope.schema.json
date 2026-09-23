@@ -3,14 +3,7 @@
   "$id": "https://vibe-code-genius.dev/schema/scope.schema.json",
   "title": "scope",
   "type": "object",
-  "required": [
-    "status",
-    "version",
-    "deliverable",
-    "tier_stop",
-    "routes_include",
-    "evidence"
-  ],
+  "additionalProperties": false,
   "properties": {
     "status": {
       "type": "string",
@@ -25,18 +18,80 @@
       "type": "string"
     },
     "deliverable": {
-      "type": "string"
+      "type": "string",
+      "minLength": 1
     },
     "tier_stop": {
-      "type": "integer"
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 5
     },
     "routes_include": {
       "type": "array",
-      "minItems": 0
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "routes_exclude": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "capabilities": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "enum": [
+          "api",
+          "backend",
+          "database",
+          "auth",
+          "forms",
+          "integrations",
+          "deployment",
+          "motion",
+          "multi_agent",
+          "reference_comparison",
+          "deep_reference",
+          "clone_extract"
+        ]
+      }
+    },
+    "acceptance_criteria": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "out_of_scope": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
     },
     "evidence": {
       "type": "array",
+      "items": {
+        "type": "string"
+      },
       "minItems": 1
     }
-  }
+  },
+  "required": [
+    "status",
+    "version",
+    "deliverable",
+    "tier_stop",
+    "routes_include",
+    "routes_exclude",
+    "capabilities",
+    "acceptance_criteria",
+    "out_of_scope",
+    "evidence"
+  ]
 }
