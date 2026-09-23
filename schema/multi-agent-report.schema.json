@@ -3,7 +3,113 @@
   "$id": "https://vibe-code-genius.dev/schema/multi-agent-report.schema.json",
   "title": "multi-agent-report",
   "type": "object",
-  "required_headings": [
-    "multi-agent-report"
+  "additionalProperties": false,
+  "properties": {
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "complete",
+        "blocked",
+        "failed"
+      ]
+    },
+    "version": {
+      "type": "string"
+    },
+    "generated_at": {
+      "type": "string"
+    },
+    "pass": {
+      "type": "boolean"
+    },
+    "workstreams": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "scope": {
+            "type": "string"
+          },
+          "inputs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "outputs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "complete",
+              "blocked",
+              "failed",
+              "rejected"
+            ]
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "minItems": 1
+          }
+        },
+        "required": [
+          "id",
+          "scope",
+          "inputs",
+          "outputs",
+          "status",
+          "evidence"
+        ]
+      }
+    },
+    "conflicts": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "rejected_outputs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "merged_artifacts": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    }
+  },
+  "required": [
+    "status",
+    "version",
+    "generated_at",
+    "pass",
+    "workstreams",
+    "conflicts",
+    "rejected_outputs",
+    "merged_artifacts",
+    "evidence"
   ]
 }
