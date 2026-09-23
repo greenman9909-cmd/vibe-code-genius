@@ -1,26 +1,10 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://vibe-code-genius.dev/schema/wiring_report.schema.json",
-  "title": "wiring_report",
+  "title": "wiring-report",
   "type": "object",
   "additionalProperties": false,
   "properties": {
-    "unresolved": {
-      "type": "array"
-    },
-    "summary": {
-      "type": "object"
-    },
-    "exit_code": {
-      "type": "integer"
-    }
-  },
-  "required": [
-    "unresolved",
-    "summary",
-    "exit_code"
-  ],
-  "$defs": {
     "status": {
       "type": "string",
       "enum": [
@@ -30,15 +14,152 @@
         "failed"
       ]
     },
-    "evidence": {
+    "version": {
+      "type": "string"
+    },
+    "generated_at": {
+      "type": "string"
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "checked": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "fixed": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "remaining": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "checked",
+        "fixed",
+        "remaining"
+      ]
+    },
+    "issues": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "source": {
+            "type": "string"
+          },
+          "severity": {
+            "type": "string",
+            "enum": [
+              "info",
+              "low",
+              "medium",
+              "high",
+              "critical"
+            ]
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "open",
+              "fixed",
+              "blocked",
+              "accepted"
+            ]
+          },
+          "reproduction": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "fix": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "verification": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "id",
+          "source",
+          "severity",
+          "status",
+          "reproduction",
+          "fix",
+          "verification"
+        ]
+      }
+    },
+    "unresolved": {
       "type": "array",
       "items": {
         "type": "string"
       }
     },
-    "artifact": {
-      "type": "object",
-      "additionalProperties": true
+    "exit_code": {
+      "type": "integer"
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
     }
-  }
+  },
+  "required": [
+    "status",
+    "version",
+    "generated_at",
+    "summary",
+    "issues",
+    "unresolved",
+    "exit_code",
+    "evidence"
+  ],
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "exit_code": {
+            "const": 0
+          }
+        },
+        "required": [
+          "exit_code"
+        ]
+      },
+      "then": {
+        "properties": {
+          "status": {
+            "const": "complete"
+          },
+          "unresolved": {
+            "maxItems": 0
+          },
+          "summary": {
+            "properties": {
+              "remaining": {
+                "const": 0
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
 }
