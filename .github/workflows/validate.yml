@@ -8,6 +8,7 @@ jobs:
       - uses: actions/setup-python@v5
         with: {python-version: '3.11'}
       - run: pip install -e .
+      - run: python -m compileall -q vibe_code_genius scripts tests
       - run: python scripts/validate-tree.py
       - run: python scripts/validate-structure.py
       - run: python scripts/validate-references.py
