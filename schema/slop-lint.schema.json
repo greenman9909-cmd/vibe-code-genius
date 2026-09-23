@@ -4,17 +4,85 @@
   "title": "slop-lint",
   "type": "object",
   "required": [
+    "status",
+    "version",
     "rules_checked",
-    "violations"
+    "sources",
+    "violations",
+    "context_exceptions",
+    "evidence"
   ],
-  "minProperties": 2,
   "properties": {
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "complete",
+        "blocked",
+        "failed"
+      ]
+    },
+    "version": {
+      "type": "string"
+    },
     "rules_checked": {
       "type": "integer",
-      "minimum": 100
+      "minimum": 0
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
     },
     "violations": {
-      "type": "array"
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "rule": {
+            "type": "string"
+          },
+          "surface": {
+            "type": "string"
+          },
+          "evidence": {
+            "type": "string"
+          },
+          "fix": {
+            "type": "string"
+          },
+          "context_exception": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "rule",
+          "surface",
+          "evidence",
+          "fix",
+          "context_exception"
+        ]
+      }
+    },
+    "context_exceptions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
     }
-  }
+  },
+  "additionalProperties": false
 }
