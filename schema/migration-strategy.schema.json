@@ -4,6 +4,8 @@
   "title": "migration-strategy",
   "type": "object",
   "required_headings": [
-    "migration-strategy"
+    "Migration Plan",
+    "Rollback",
+    "Verification"
   ]
 }
