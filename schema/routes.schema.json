@@ -10,7 +10,7 @@
   "properties": {
     "routes": {
       "type": "array",
-      "minItems": 5,
+      "minItems": 0,
       "items": {
         "type": "object",
         "required": [
@@ -27,10 +27,19 @@
             "type": "string"
           },
           "status": {
-            "type": "string"
+            "type": "string",
+            "enum": [
+              "planned",
+              "implemented",
+              "blocked",
+              "excluded",
+              "reference-only"
+            ]
           }
-        }
+        },
+        "additionalProperties": true
       }
     }
-  }
+  },
+  "additionalProperties": false
 }
