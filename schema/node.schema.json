@@ -1,42 +1,86 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://vibe-code-genius.dev/schema/node.schema.json",
-  "title": "node",
+  "title": "God Tree node",
   "type": "object",
   "additionalProperties": false,
   "properties": {
     "id": {
-      "type": "string"
+      "type": "string",
+      "pattern": "^[0-9]{2}[a-z]?$"
     },
     "name": {
-      "type": "string"
+      "type": "string",
+      "minLength": 2
     },
     "tier": {
-      "type": "integer"
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 5
     },
     "prereqs": {
-      "type": "array"
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
     },
     "parallel_with": {
-      "type": "array"
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
     },
     "input": {
-      "type": "string"
+      "type": "string",
+      "minLength": 1
     },
     "output": {
-      "type": "string"
+      "type": "string",
+      "minLength": 1
     },
-    "model": {
-      "type": "string"
-    },
-    "max_response_tokens": {
-      "type": "integer"
-    },
-    "version": {
-      "type": "string"
+    "activates_when": {
+      "type": "string",
+      "minLength": 1
     },
     "skill_file": {
-      "type": "string"
+      "type": "string",
+      "pattern": "^nodes/.+\\.md$"
+    },
+    "artifact_schema": {
+      "type": "string",
+      "pattern": "^schema/.+\\.schema\\.json$"
+    },
+    "model": {
+      "type": "string",
+      "minLength": 1
+    },
+    "max_response_tokens": {
+      "type": "integer",
+      "minimum": 100
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "consumers": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "expected_artifact_path": {
+      "type": "string",
+      "minLength": 1
+    },
+    "optional": {
+      "type": "boolean"
+    },
+    "activation_key": {
+      "type": "string",
+      "minLength": 1
     }
   },
   "required": [
@@ -47,30 +91,32 @@
     "parallel_with",
     "input",
     "output",
+    "activates_when",
+    "skill_file",
+    "artifact_schema",
     "model",
     "max_response_tokens",
     "version",
-    "skill_file"
+    "consumers",
+    "expected_artifact_path"
   ],
-  "$defs": {
-    "status": {
-      "type": "string",
-      "enum": [
-        "pending",
-        "complete",
-        "blocked",
-        "failed"
-      ]
-    },
-    "evidence": {
-      "type": "array",
-      "items": {
-        "type": "string"
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "optional": {
+            "const": true
+          }
+        },
+        "required": [
+          "optional"
+        ]
+      },
+      "then": {
+        "required": [
+          "activation_key"
+        ]
       }
-    },
-    "artifact": {
-      "type": "object",
-      "additionalProperties": true
     }
-  }
+  ]
 }
