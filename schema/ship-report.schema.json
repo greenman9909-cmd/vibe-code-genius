@@ -6,21 +6,6 @@
   "additionalProperties": false,
   "properties": {
     "status": {
-      "type": "string"
-    },
-    "version": {
-      "type": "string"
-    },
-    "evidence": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      }
-    }
-  },
-  "required": [],
-  "$defs": {
-    "status": {
       "type": "string",
       "enum": [
         "pending",
@@ -29,15 +14,149 @@
         "failed"
       ]
     },
-    "evidence": {
+    "version": {
+      "type": "string"
+    },
+    "generated_at": {
+      "type": "string"
+    },
+    "decision": {
+      "type": "string",
+      "enum": [
+        "ship",
+        "blocked"
+      ]
+    },
+    "scope_complete": {
+      "type": "boolean"
+    },
+    "manifest_complete": {
+      "type": "boolean"
+    },
+    "gates": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "static": {
+          "type": "boolean"
+        },
+        "runtime": {
+          "type": "boolean"
+        },
+        "security": {
+          "type": "boolean"
+        },
+        "performance": {
+          "type": "boolean"
+        },
+        "deployment": {
+          "type": "boolean"
+        },
+        "design": {
+          "type": "boolean"
+        },
+        "completeness": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "static",
+        "runtime",
+        "security",
+        "performance",
+        "deployment",
+        "design",
+        "completeness"
+      ]
+    },
+    "unresolved": {
       "type": "array",
       "items": {
         "type": "string"
       }
     },
-    "artifact": {
-      "type": "object",
-      "additionalProperties": true
+    "blockers": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
     }
-  }
+  },
+  "required": [
+    "status",
+    "version",
+    "generated_at",
+    "decision",
+    "scope_complete",
+    "manifest_complete",
+    "gates",
+    "unresolved",
+    "blockers",
+    "evidence"
+  ],
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "decision": {
+            "const": "ship"
+          }
+        },
+        "required": [
+          "decision"
+        ]
+      },
+      "then": {
+        "properties": {
+          "status": {
+            "const": "complete"
+          },
+          "scope_complete": {
+            "const": true
+          },
+          "manifest_complete": {
+            "const": true
+          },
+          "gates": {
+            "properties": {
+              "static": {
+                "const": true
+              },
+              "runtime": {
+                "const": true
+              },
+              "security": {
+                "const": true
+              },
+              "performance": {
+                "const": true
+              },
+              "deployment": {
+                "const": true
+              },
+              "design": {
+                "const": true
+              },
+              "completeness": {
+                "const": true
+              }
+            }
+          },
+          "unresolved": {
+            "maxItems": 0
+          },
+          "blockers": {
+            "maxItems": 0
+          }
+        }
+      }
+    }
+  ]
 }
