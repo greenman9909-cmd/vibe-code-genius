@@ -1,6 +1,6 @@
 # Node 11 — Design Tokens
 
-Tier: 2  Prereqs: [02, 01d]  Parallel with: [11a, 11b, 11c, 11d, 12]  Input: reference.json.design_tokens  Output: design-tokens.json  Model: sonnet  Budget: 3500 tokens
+Tier: 2  Prereqs: [02, 01d]  Parallel with: [11a, 11b, 11c, 11d, 12]  Input: reference.json.design_tokens + system.json + intent.json  Output: design-tokens.json  Model: sonnet  Budget: 3500 tokens
 
 ## Working Contract
 
