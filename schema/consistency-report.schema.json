@@ -3,7 +3,123 @@
   "$id": "https://vibe-code-genius.dev/schema/consistency-report.schema.json",
   "title": "consistency-report",
   "type": "object",
-  "required_headings": [
-    "consistency-report"
+  "additionalProperties": false,
+  "properties": {
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "complete",
+        "blocked",
+        "failed"
+      ]
+    },
+    "version": {
+      "type": "string"
+    },
+    "generated_at": {
+      "type": "string"
+    },
+    "pass": {
+      "type": "boolean"
+    },
+    "surfaces": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "violations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "surface": {
+            "type": "string"
+          },
+          "rule": {
+            "type": "string"
+          },
+          "severity": {
+            "type": "string",
+            "enum": [
+              "info",
+              "minor",
+              "major",
+              "blocking"
+            ]
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "minItems": 1
+          },
+          "resolution": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "surface",
+          "rule",
+          "severity",
+          "evidence",
+          "resolution"
+        ]
+      }
+    },
+    "blocking_violations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    }
+  },
+  "required": [
+    "status",
+    "version",
+    "generated_at",
+    "pass",
+    "surfaces",
+    "violations",
+    "blocking_violations",
+    "evidence"
+  ],
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "pass": {
+            "const": true
+          }
+        },
+        "required": [
+          "pass"
+        ]
+      },
+      "then": {
+        "properties": {
+          "status": {
+            "const": "complete"
+          },
+          "blocking_violations": {
+            "maxItems": 0
+          }
+        }
+      }
+    }
   ]
 }
