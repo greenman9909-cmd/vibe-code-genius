@@ -4,50 +4,27 @@ Tier: 4  Prereqs: [16]  Parallel with: [18b, 18c]  Input: auth requirements + st
 
 ## Working Contract
 
-Read `contracts/working-contract.md` and the declared input only. Emit the exact declared artifact, validate it against its schema, and update the manifest. Keep evidence separate from inference.
+Implement identity/session/authorization only when the `auth` capability is active. Preserve the product's existing auth UI/design contract; this node owns behavior and security, not gratuitous redesign.
 
 ## Instructions
 
-1. Confirm every prerequisite artifact exists and has the expected version.
-2. Inspect the input and extract only facts relevant to auth layer.
-3. Produce `auth/` with deterministic ordering, explicit nulls, and no invented evidence.
-4. Resolve every import, route, API call, token, environment variable, locale key, and component reference before writing.
-5. Record decisions and unresolved blockers in the artifact's evidence or report field.
-6. Mark the corresponding manifest item complete only after validation passes.
+1. Define the authoritative identity source, session mechanism, expiration/refresh/logout behavior, and redirect/callback rules.
+2. Separate authentication from authorization. Protect server/data operations with verified identity and policy checks, not just client route guards.
+3. Do not put service-role keys, private API keys, signing secrets, or privileged tokens in browser code.
+4. Handle loading, anonymous, authenticated, expired, error, and recovery states without flashes that expose protected content.
+5. Preserve intended destination through sign-in when safe; validate redirect targets to avoid open redirects.
+6. Apply CSRF/session/cookie protections appropriate to the selected auth mechanism and runtime.
+7. Integrate database/RLS ownership rules when the database capability is active.
+8. Export the real auth/session interfaces from `auth/index.ts` and test sign-in/sign-out/session restore plus denied access.
 
 ## Output Contract
 
-The output is `auth/index.ts`. It is versioned, machine-readable when the artifact is JSON, and contains a `version`, `generated_at`, `evidence`, and `status` field where the artifact shape permits.
+`auth/index.ts` must satisfy `schema/auth.schema.json` and contain real session/auth behavior for the selected provider.
 
-Before marking complete: python scripts/validate-artifact.py --node 18 --artifact auth/index.ts --schema schema/auth.schema.json. If validation fails, halt. Do not substitute a different artifact. Do not continue.
+Before marking complete:
 
-
-
-
-
-
-
-
-
+python scripts/validate-artifact.py --node 18 --artifact auth/index.ts --schema schema/auth.schema.json
 
 ## If this fails
 
-
-
-Log the node id, input hash, invocation, error, and minimal reproduction to `session.log`. Use datetime.utcnow().isoformat(timespec="microseconds") + "Z" (microseconds MUST vary between events). Apply the declared fallback in `contracts/repair-contract.md`; do not silently fabricate a result.
-
-
-Do not invent pages, proof, metrics, integrations, credentials, routes, or reference evidence. Do not bypass schemas, disable a failing check, write unresolved references, or emit prose in place of the artifact.
-
-## Example output
-
-```json
-{
-  "node": "18",
-  "status": "complete",
-  "artifact": "auth/",
-  "version": "1.0.0",
-  "evidence": ["declared input validated"],
-  "unresolved": []
-}
-```
+Do not bypass auth, weaken policies, expose secrets, or replace the requested provider with a fake local session.
