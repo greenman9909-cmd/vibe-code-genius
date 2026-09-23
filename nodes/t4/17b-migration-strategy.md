@@ -4,50 +4,25 @@ Tier: 4  Prereqs: [17]  Parallel with: [07f, 20c]  Input: database schema + targ
 
 ## Working Contract
 
-Read `contracts/working-contract.md` and the declared input only. Emit the exact declared artifact, validate it against its schema, and update the manifest. Keep evidence separate from inference.
+Describe how the approved schema reaches each environment safely. Use `references/production-engineering-2026.md` when Supabase/Postgres or production database concerns apply.
 
 ## Instructions
 
-1. Confirm every prerequisite artifact exists and has the expected version.
-2. Inspect the input and extract only facts relevant to migration strategy.
-3. Produce `migration-strategy.md` with deterministic ordering, explicit nulls, and no invented evidence.
-4. Resolve every import, route, API call, token, environment variable, locale key, and component reference before writing.
-5. Record decisions and unresolved blockers in the artifact's evidence or report field.
-6. Mark the corresponding manifest item complete only after validation passes.
+1. Under `Migration Plan`, define migration ordering, environment flow, seed/test data policy, compatibility constraints, and how schema changes are reviewed/applied.
+2. Identify changes that require expand/contract, backfill, dual-read/write, maintenance windows, or data transformation.
+3. Under `Rollback`, distinguish reversible migrations from changes that require forward-fix or restore. State backup/restore expectations when data loss is possible.
+4. Under `Verification`, define automated migration checks, schema/data assertions, and permission/RLS tests where relevant.
+5. For Supabase, require migrations in version control and RLS allow/deny tests for exposed tables before production.
+6. Never describe rollback as `git revert` when database state has already changed.
 
 ## Output Contract
 
-The output is `migration-strategy.md`. It is versioned, machine-readable when the artifact is JSON, and contains a `version`, `generated_at`, `evidence`, and `status` field where the artifact shape permits.
+`migration-strategy.md` must contain the headings `Migration Plan`, `Rollback`, and `Verification` and satisfy `schema/migration-strategy.schema.json`.
 
-Before marking complete: python scripts/validate-artifact.py --node 17b --artifact migration-strategy.md --schema schema/migration-strategy.schema.json. If validation fails, halt. Do not substitute a different artifact. Do not continue.
+Before marking complete:
 
-
-
-
-
-
-
-
-
+python scripts/validate-artifact.py --node 17b --artifact migration-strategy.md --schema schema/migration-strategy.schema.json
 
 ## If this fails
 
-
-
-Log the node id, input hash, invocation, error, and minimal reproduction to `session.log`. Use datetime.utcnow().isoformat(timespec="microseconds") + "Z" (microseconds MUST vary between events). Apply the declared fallback in `contracts/repair-contract.md`; do not silently fabricate a result.
-
-
-Do not invent pages, proof, metrics, integrations, credentials, routes, or reference evidence. Do not bypass schemas, disable a failing check, write unresolved references, or emit prose in place of the artifact.
-
-## Example output
-
-```json
-{
-  "node": "17b",
-  "status": "complete",
-  "artifact": "migration-strategy.md",
-  "version": "1.0.0",
-  "evidence": ["declared input validated"],
-  "unresolved": []
-}
-```
+Keep deployment of schema changes blocked until rollback and verification are concrete.
