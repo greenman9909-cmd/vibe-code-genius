@@ -1,7 +1,6 @@
 {
-  "version": "1.0.0",
+  "version": "1.1.0",
   "node_count": 62,
-  "declared_node_count": 42,
   "nodes": [
     {
       "id": "01",
@@ -165,37 +164,24 @@
       "name": "Deep Reference Load",
       "tier": 1,
       "prereqs": [
-        "01"
+        "02"
       ],
       "parallel_with": [
-        "03",
-        "04",
-        "06",
-        "07",
-        "08",
-        "09",
-        "10",
-        "11"
+        "11a",
+        "11f"
       ],
-      "input": "intent.json",
-      "output": "reference.json",
+      "input": "reference.json + reference-source.json/endpoints",
+      "output": "reference-deep.json",
       "activates_when": "prerequisites complete for node 02b",
       "skill_file": "nodes/t1/02b-deep-reference-load.md",
       "artifact_schema": "schema/reference.schema.json",
       "model": "sonnet",
       "max_response_tokens": 3000,
       "version": "1.0.0",
-      "consumers": [
-        "03",
-        "04",
-        "06",
-        "07",
-        "08",
-        "09",
-        "10",
-        "11"
-      ],
-      "expected_artifact_path": "reference.json"
+      "consumers": [],
+      "expected_artifact_path": "reference-deep.json",
+      "optional": true,
+      "activation_key": "deep_reference"
     },
     {
       "id": "03",
@@ -425,7 +411,7 @@
         "17a"
       ],
       "input": "system.json.integrations",
-      "output": "integrations/resend.md",
+      "output": "integrations/research.md",
       "activates_when": "prerequisites complete for node 07b",
       "skill_file": "nodes/t2/07b-third-party-api-research.md",
       "artifact_schema": "schema/integrations.schema.json",
@@ -437,7 +423,7 @@
         "07g",
         "17a"
       ],
-      "expected_artifact_path": "integrations/resend.md"
+      "expected_artifact_path": "integrations/research.md"
     },
     {
       "id": "07c",
@@ -563,7 +549,7 @@
         "20c"
       ],
       "input": "integrations + server",
-      "output": "webhooks/resend-events.ts",
+      "output": "webhooks/integration-events.ts",
       "activates_when": "prerequisites complete for node 07g",
       "skill_file": "nodes/t2/07g-integration-wiring.md",
       "artifact_schema": "schema/webhook-handler.schema.json",
@@ -574,7 +560,7 @@
         "19a",
         "20c"
       ],
-      "expected_artifact_path": "webhooks/resend-events.ts"
+      "expected_artifact_path": "webhooks/integration-events.ts"
     },
     {
       "id": "08",
@@ -838,7 +824,9 @@
         "11a",
         "12"
       ],
-      "expected_artifact_path": "clone-manifest.json"
+      "expected_artifact_path": "clone-manifest.json",
+      "optional": true,
+      "activation_key": "clone_extract"
     },
     {
       "id": "12",
