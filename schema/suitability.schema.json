@@ -13,15 +13,21 @@
   "minProperties": 5,
   "properties": {
     "status": {
-      "type": "string"
+      "type": "string",
+      "enum": [
+        "pending",
+        "complete",
+        "blocked",
+        "failed"
+      ]
     },
     "version": {
       "type": "string"
     },
     "suitability_score": {
       "type": "number",
-      "minimum": 0.0,
-      "maximum": 1.0
+      "minimum": 0,
+      "maximum": 1
     },
     "product_category": {
       "type": "string"
