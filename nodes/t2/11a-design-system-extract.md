@@ -44,6 +44,12 @@ Read `contracts/working-contract.md` and the declared input only. Emit the exact
      },
      "motion": "<contents of clone-motion.json>",
      "components": "<contents of clone-components.json>",
+     "design_analysis": {
+       "patterns": [],
+       "rationale": [],
+       "remix_rules": [],
+       "anti_patterns": []
+     },
      "source": "clone-extracted"
    }
    ```
