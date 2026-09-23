@@ -164,20 +164,30 @@ def refresh_status(root: Path, out: Path, tree: dict[str, Any]) -> dict[str, Any
 
     for nid in topo_order(selected):
         node = by_id[nid]
+        blockers = [p for p in node.get("prereqs", []) if p in by_id and p not in complete]
         artifact = out / node["expected_artifact_path"]
+
         if artifact.exists():
             ok, errors = validate_artifact(root, out, node)
-            state = "complete" if ok else "failed"
-            session["nodes"][nid] = {
-                "status": state,
-                "artifact": node["expected_artifact_path"],
-                "errors": errors,
-            }
-            if ok:
-                complete.add(nid)
+            if blockers:
+                session["nodes"][nid] = {
+                    "status": "blocked",
+                    "artifact": node["expected_artifact_path"],
+                    "errors": errors,
+                    "blocked_by": blockers,
+                }
+            else:
+                state = "complete" if ok else "failed"
+                session["nodes"][nid] = {
+                    "status": state,
+                    "artifact": node["expected_artifact_path"],
+                    "errors": errors,
+                    "blocked_by": [],
+                }
+                if ok:
+                    complete.add(nid)
             continue
 
-        blockers = [p for p in node.get("prereqs", []) if p in by_id and p not in complete]
         state = "pending" if blockers else "ready"
         session["nodes"][nid] = {
             "status": state,
