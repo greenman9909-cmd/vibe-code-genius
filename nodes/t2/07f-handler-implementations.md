@@ -1,6 +1,6 @@
 # Node 07f — Handler Implementations
 
-Tier: 2  Prereqs: [07e]  Parallel with: [19a, 20c]  Input: server + openapi.yaml  Output: handlers/waitlist.ts  Model: sonnet  Budget: 5000 tokens
+Tier: 2  Prereqs: [07e]  Parallel with: [19a, 20c]  Input: server + openapi.yaml + database artifacts when selected  Output: handlers/index.ts  Model: sonnet  Budget: 5000 tokens
 
 ## Working Contract
 
