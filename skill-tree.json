@@ -927,7 +927,8 @@
       "prereqs": [
         "09",
         "10",
-        "12"
+        "12",
+        "11b"
       ],
       "parallel_with": [
         "13a",
@@ -935,7 +936,7 @@
         "15",
         "16"
       ],
-      "input": "router + components",
+      "input": "routes + sections + component kit + copy cleanse",
       "output": "pages/index.tsx",
       "activates_when": "prerequisites complete for node 13",
       "skill_file": "nodes/t3/13-route-builder.md",
