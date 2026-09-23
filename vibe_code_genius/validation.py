@@ -1,13 +1,14 @@
 from __future__ import annotations
 
 import json
+import re
 from pathlib import Path
 from typing import Any
 
 from jsonschema import Draft202012Validator
 
 
-TEXT_SUFFIXES = {".md", ".ts", ".tsx", ".js", ".jsx", ".css", ".html", ".yaml", ".yml"}
+TEXT_SUFFIXES = {".md", ".ts", ".tsx", ".js", ".jsx", ".css", ".html", ".yaml", ".yml", ".sql", ".txt"}
 
 
 def load_json(path: Path) -> dict[str, Any]:
@@ -48,10 +49,20 @@ def validate_artifact_file(artifact_path: Path, schema_path: Path) -> list[str]:
         if isinstance(min_bytes, int) and len(raw.encode("utf-8")) < min_bytes:
             errors.append(f"artifact too thin: {len(raw.encode('utf-8'))} bytes < {min_bytes}")
 
+        required_patterns = schema.get("x-required-patterns") or []
+        for pattern in required_patterns:
+            if not re.search(pattern, raw, flags=re.IGNORECASE | re.MULTILINE):
+                errors.append(f"missing required pattern: {pattern}")
+
         forbidden = schema.get("x-forbidden-snippets") or []
         for snippet in forbidden:
             if snippet in raw:
                 errors.append(f"forbidden placeholder/snippet present: {snippet}")
+
+        forbidden_patterns = schema.get("x-forbidden-patterns") or []
+        for pattern in forbidden_patterns:
+            if re.search(pattern, raw, flags=re.IGNORECASE | re.MULTILINE):
+                errors.append(f"forbidden pattern present: {pattern}")
 
         return errors
 
