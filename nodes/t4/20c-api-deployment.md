@@ -1,6 +1,6 @@
 # Node 20c — API Deployment
 
-Tier: 4  Prereqs: [07f, 07g, 20]  Parallel with: [23b]  Input: backend + deployment  Output: api-deployment.md  Model: sonnet  Budget: 2400 tokens
+Tier: 4  Prereqs: [07e, 07f, 07g, 19a, 20]  Parallel with: [23b]  Input: backend + deployment  Output: api-deployment.md  Model: sonnet  Budget: 2400 tokens
 
 ## Working Contract
 
