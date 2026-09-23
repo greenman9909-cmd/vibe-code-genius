@@ -1,6 +1,6 @@
 # Node 01c — Budget Estimate
 
-Tier: 1  Prereqs: [01b]  Parallel with: [none]  Input: scope.json  Output: estimate.json  Model: haiku  Budget: 500 tokens
+Tier: 1  Prereqs: [01b]  Parallel with: []  Input: scope.json  Output: estimate.json  Model: haiku  Budget: 500 tokens
 
 ## Working Contract
 
