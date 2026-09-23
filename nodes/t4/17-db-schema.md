@@ -1,6 +1,6 @@
 # Node 17 — DB Schema
 
-Tier: 4  Prereqs: [07]  Parallel with: [17a, 17b, 07f]  Input: api surface  Output: migrations/schema.sql  Model: sonnet  Budget: 3000 tokens
+Tier: 4  Prereqs: [01d]  Parallel with: [17a, 17b, 07f]  Input: system persistence + API/backend artifacts when selected  Output: migrations/schema.sql  Model: sonnet  Budget: 3000 tokens
 
 ## Working Contract
 
