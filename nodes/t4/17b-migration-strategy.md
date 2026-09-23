@@ -1,6 +1,6 @@
 # Node 17b — Migration Strategy
 
-Tier: 4  Prereqs: [17]  Parallel with: [07f, 20c]  Input: database schema  Output: migration-strategy.md  Model: sonnet  Budget: 1800 tokens
+Tier: 4  Prereqs: [17]  Parallel with: [07f, 20c]  Input: database schema + target database/runtime  Output: migration-strategy.md  Model: sonnet  Budget: 1800 tokens
 
 ## Working Contract
 
