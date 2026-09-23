@@ -13,7 +13,10 @@ Read `contracts/working-contract.md` and the declared input only. Emit the exact
 3. Produce `ship-report.json` with deterministic ordering, explicit nulls, and no invented evidence.
 4. Resolve every import, route, API call, token, environment variable, locale key, and component reference before writing.
 5. Record decisions and unresolved blockers in the artifact's evidence or report field.
-6. Mark the corresponding manifest item complete only after validation passes.
+6. Audit declared scope against `system.json` and `manifest.json`. Fail the gate if any required route, interaction, state, integration, responsive surface, or acceptance criterion is pending, stubbed, dead, placeholder-only, or unverified.
+7. When extracted/reference design evidence was used, audit the major product surfaces against `contracts/extracted-design-learning-contract.md`. Fail the gate if newly added flows fall back to an unrelated generic design system instead of remixing the approved visual language.
+8. Verify there are no knowingly dead buttons, unresolved TODO/STUB placeholders, silent network fallbacks, or "finish later" implementations inside declared scope.
+9. Mark the corresponding manifest item complete only after all required verification passes. If an external blocker remains, status must be blocked rather than complete.
 
 ## Output Contract
 
