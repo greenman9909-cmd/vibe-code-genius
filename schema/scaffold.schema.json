@@ -3,9 +3,33 @@
   "$id": "https://vibe-code-genius.dev/schema/scaffold.schema.json",
   "title": "scaffold",
   "type": "object",
-  "required_headings": [
-    "package.json",
-    "tsconfig.json",
-    "tailwind.config.ts"
+  "additionalProperties": true,
+  "properties": {
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "private": {
+      "type": "boolean"
+    },
+    "scripts": {
+      "type": "object",
+      "minProperties": 1
+    },
+    "dependencies": {
+      "type": "object"
+    },
+    "devDependencies": {
+      "type": "object"
+    }
+  },
+  "required": [
+    "name",
+    "version",
+    "scripts"
   ]
 }
