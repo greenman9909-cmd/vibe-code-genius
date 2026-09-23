@@ -63,15 +63,21 @@ def resolve_features(root: Path, out: Path, session: dict[str, Any]) -> list[str
         enabled.add("reference_comparison")
 
     scope_path = out / "scope.json"
-    if scope_path.is_file():
+    intent_path = out / "intent.json"
+    suitability_path = out / "suitability.json"
+    if scope_path.is_file() and intent_path.is_file() and suitability_path.is_file():
         try:
+            prereq_errors = [
+                *validate_artifact_file(intent_path, root / "schema" / "intent.schema.json"),
+                *validate_artifact_file(suitability_path, root / "schema" / "suitability.schema.json"),
+            ]
             scope_errors = validate_artifact_file(scope_path, root / "schema" / "scope.schema.json")
-            if not scope_errors:
+            if not prereq_errors and not scope_errors:
                 scope = _read_json(scope_path)
                 if scope.get("status") == "complete":
                     enabled.update(scope.get("capabilities") or [])
         except Exception:
-            # Invalid or unreadable scope cannot activate architecture branches.
+            # Invalid or unreadable scope/prerequisites cannot activate architecture branches.
             pass
 
     return sorted(expand_features(enabled))
