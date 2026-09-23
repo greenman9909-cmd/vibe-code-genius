@@ -4,50 +4,27 @@ Tier: 2  Prereqs: [07c]  Parallel with: [07e, 07f, 14, 19a]  Input: backend-deci
 
 ## Working Contract
 
-Read `contracts/working-contract.md` and the declared input only. Emit the exact declared artifact, validate it against its schema, and update the manifest. Keep evidence separate from inference.
+Use the approved backend decision as the source of truth. The OpenAPI document is an executable contract, not illustrative documentation.
 
 ## Instructions
 
-1. Confirm every prerequisite artifact exists and has the expected version.
-2. Inspect the input and extract only facts relevant to api design.
-3. Produce `openapi.yaml` with deterministic ordering, explicit nulls, and no invented evidence.
-4. Resolve every import, route, API call, token, environment variable, locale key, and component reference before writing.
-5. Record decisions and unresolved blockers in the artifact's evidence or report field.
-6. Mark the corresponding manifest item complete only after validation passes.
+1. Define only endpoints required by the scoped product flows.
+2. For every operation specify method, path, request parameters/body, success response, meaningful error responses, authentication/authorization requirements, and stable identifiers.
+3. Reuse consistent error envelopes, pagination/filtering conventions, idempotency semantics, and versioning rules where applicable.
+4. Model validation constraints in schemas rather than prose alone. Do not accept arbitrary objects when the server expects a known shape.
+5. Mark operations that are rate-limited, async, retriable, or idempotent in descriptions/extensions where the chosen tooling supports it.
+6. Do not expose server secrets, internal database structure, or privileged provider credentials through the browser contract.
+7. Keep the spec consistent with the backend architecture and integrations actually selected.
+8. Validate `openapi.yaml` before completion and use it later as the basis for handlers and contract tests.
 
 ## Output Contract
 
-The output is `openapi.yaml`. It is versioned, machine-readable when the artifact is JSON, and contains a `version`, `generated_at`, `evidence`, and `status` field where the artifact shape permits.
+`openapi.yaml` must contain a valid OpenAPI root with `openapi:`, `info:`, and `paths:` and represent the complete scoped backend surface.
 
-Before marking complete: python scripts/validate-artifact.py --node 07d --artifact openapi.yaml --schema schema/openapi.schema.json. If validation fails, halt. Do not substitute a different artifact. Do not continue.
+Before marking complete:
 
-
-
-
-
-
-
-
-
+python scripts/validate-artifact.py --node 07d --artifact openapi.yaml --schema schema/openapi.schema.json
 
 ## If this fails
 
-
-
-Log the node id, input hash, invocation, error, and minimal reproduction to `session.log`. Use datetime.utcnow().isoformat(timespec="microseconds") + "Z" (microseconds MUST vary between events). Apply the declared fallback in `contracts/repair-contract.md`; do not silently fabricate a result.
-
-
-Do not invent pages, proof, metrics, integrations, credentials, routes, or reference evidence. Do not bypass schemas, disable a failing check, write unresolved references, or emit prose in place of the artifact.
-
-## Example output
-
-```json
-{
-  "node": "07d",
-  "status": "complete",
-  "artifact": "openapi.yaml",
-  "version": "1.0.0",
-  "evidence": ["declared input validated"],
-  "unresolved": []
-}
-```
+Repair the contract. Do not implement handlers against an ambiguous or contradictory API spec.
