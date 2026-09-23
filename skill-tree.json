@@ -188,13 +188,14 @@
       "name": "Code Style Lock",
       "tier": 1,
       "prereqs": [
-        "02"
+        "02",
+        "01d"
       ],
       "parallel_with": [
         "04",
         "06"
       ],
-      "input": "reference.json",
+      "input": "reference.json + system.json",
       "output": "style-rules.md",
       "activates_when": "prerequisites complete for node 03",
       "skill_file": "nodes/t1/03-code-style-lock.md",
@@ -567,13 +568,14 @@
       "name": "Stack Fingerprint",
       "tier": 2,
       "prereqs": [
-        "02"
+        "02",
+        "01d"
       ],
       "parallel_with": [
         "11",
         "05"
       ],
-      "input": "reference.json.stack",
+      "input": "reference.json.stack + system.json.stack",
       "output": "stack-decision.md",
       "activates_when": "prerequisites complete for node 08",
       "skill_file": "nodes/t2/08-stack-fingerprint.md",
@@ -592,13 +594,14 @@
       "name": "Route Extract",
       "tier": 2,
       "prereqs": [
-        "02"
+        "02",
+        "01d"
       ],
       "parallel_with": [
         "13",
         "04a"
       ],
-      "input": "reference.json.routes",
+      "input": "reference.json.routes + system.json.routes",
       "output": "routes.json",
       "activates_when": "prerequisites complete for node 09",
       "skill_file": "nodes/t2/09-route-extract.md",
@@ -617,13 +620,14 @@
       "name": "Section Detect",
       "tier": 2,
       "prereqs": [
-        "02"
+        "02",
+        "01d"
       ],
       "parallel_with": [
         "13",
         "11"
       ],
-      "input": "reference.json.sections",
+      "input": "reference.json.sections + system.json.key_flows",
       "output": "sections.json",
       "activates_when": "prerequisites complete for node 10",
       "skill_file": "nodes/t2/10-section-detect.md",
@@ -642,7 +646,8 @@
       "name": "Design Tokens",
       "tier": 2,
       "prereqs": [
-        "02"
+        "02",
+        "01d"
       ],
       "parallel_with": [
         "11a",
@@ -651,7 +656,7 @@
         "11d",
         "12"
       ],
-      "input": "reference.json.design_tokens",
+      "input": "reference.json.design_tokens + system.json + intent.json",
       "output": "design-tokens.json",
       "activates_when": "prerequisites complete for node 11",
       "skill_file": "nodes/t2/11-design-tokens.md",
@@ -673,13 +678,14 @@
       "name": "Design System Extract",
       "tier": 2,
       "prereqs": [
-        "02"
+        "02",
+        "01d"
       ],
       "parallel_with": [
         "11",
         "12"
       ],
-      "input": "reference.json + rendered pages",
+      "input": "reference.json + system.json + rendered pages when available",
       "output": "design_system.json",
       "activates_when": "prerequisites complete for node 11a",
       "skill_file": "nodes/t2/11a-design-system-extract.md",
