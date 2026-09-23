@@ -6,11 +6,10 @@
   "required": [
     "sections"
   ],
-  "minProperties": 1,
   "properties": {
     "sections": {
       "type": "array",
-      "minItems": 4,
+      "minItems": 0,
       "items": {
         "type": "object",
         "required": [
@@ -30,5 +29,6 @@
         }
       }
     }
-  }
+  },
+  "additionalProperties": false
 }
