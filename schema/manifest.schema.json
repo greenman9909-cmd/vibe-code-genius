@@ -15,7 +15,13 @@
   "minProperties": 7,
   "properties": {
     "status": {
-      "type": "string"
+      "type": "string",
+      "enum": [
+        "pending",
+        "complete",
+        "blocked",
+        "failed"
+      ]
     },
     "version": {
       "type": "string"
