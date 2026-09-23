@@ -4,50 +4,27 @@ Tier: 2  Prereqs: [07e]  Parallel with: [19a, 20c]  Input: server + openapi.yaml
 
 ## Working Contract
 
-Read `contracts/working-contract.md` and the declared input only. Emit the exact declared artifact, validate it against its schema, and update the manifest. Keep evidence separate from inference.
+Implement the approved OpenAPI/backend behavior in the selected server stack. The declared output is the handler module index; product-specific handler modules may be imported/exported from it.
 
 ## Instructions
 
-1. Confirm every prerequisite artifact exists and has the expected version.
-2. Inspect the input and extract only facts relevant to handler implementations.
-3. Produce `handlers/` with deterministic ordering, explicit nulls, and no invented evidence.
-4. Resolve every import, route, API call, token, environment variable, locale key, and component reference before writing.
-5. Record decisions and unresolved blockers in the artifact's evidence or report field.
-6. Mark the corresponding manifest item complete only after validation passes.
+1. Map each scoped OpenAPI operation to a real implementation or an explicit blocked state; no fake success handlers.
+2. Validate untrusted input at the boundary and return contract-consistent errors.
+3. Enforce authorization before privileged reads/writes. Never trust client-supplied ownership or role claims without verification.
+4. Use parameterized database operations/approved client APIs. Keep secrets server-side.
+5. Implement idempotency, retry-safe behavior, transactions, or concurrency controls where the backend decision requires them.
+6. Normalize provider failures without erasing useful diagnostic context; log server-side details without leaking secrets to clients.
+7. Export the implemented handlers from `handlers/index.ts` and ensure imports resolve.
+8. Handler tests must cover happy path plus validation, authorization, provider/database failure, and duplicate/retry behavior where relevant.
 
 ## Output Contract
 
-The output is `handlers/waitlist.ts`. It is versioned, machine-readable when the artifact is JSON, and contains a `version`, `generated_at`, `evidence`, and `status` field where the artifact shape permits.
+`handlers/index.ts` must satisfy `schema/handlers.schema.json` and export real request-handling behavior for the scoped backend.
 
-Before marking complete: python scripts/validate-artifact.py --node 07f --artifact handlers/waitlist.ts --schema schema/handlers.schema.json. If validation fails, halt. Do not substitute a different artifact. Do not continue.
+Before marking complete:
 
-
-
-
-
-
-
-
-
+python scripts/validate-artifact.py --node 07f --artifact handlers/index.ts --schema schema/handlers.schema.json
 
 ## If this fails
 
-
-
-Log the node id, input hash, invocation, error, and minimal reproduction to `session.log`. Use datetime.utcnow().isoformat(timespec="microseconds") + "Z" (microseconds MUST vary between events). Apply the declared fallback in `contracts/repair-contract.md`; do not silently fabricate a result.
-
-
-Do not invent pages, proof, metrics, integrations, credentials, routes, or reference evidence. Do not bypass schemas, disable a failing check, write unresolved references, or emit prose in place of the artifact.
-
-## Example output
-
-```json
-{
-  "node": "07f",
-  "status": "complete",
-  "artifact": "handlers/",
-  "version": "1.0.0",
-  "evidence": ["declared input validated"],
-  "unresolved": []
-}
-```
+Keep the node blocked. Do not restore waitlist/demo handlers, framework-specific placeholders, or hard-coded success responses.
