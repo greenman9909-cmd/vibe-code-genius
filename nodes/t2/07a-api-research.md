@@ -1,6 +1,6 @@
 # Node 07a — API Research
 
-Tier: 2  Prereqs: [02]  Parallel with: [07c, 07d, 17a]  Input: endpoints.txt  Output: api_research.json  Model: sonnet  Budget: 4500 tokens
+Tier: 2  Prereqs: [01d, 02]  Parallel with: [07c, 07d, 17a]  Input: reference-source.json/endpoints + system.json API requirements  Output: api_research.json  Model: sonnet  Budget: 4500 tokens
 
 ## Working Contract
 
