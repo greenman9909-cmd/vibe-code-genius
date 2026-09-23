@@ -4,50 +4,26 @@ Tier: 4  Prereqs: [19, 19a]  Parallel with: [24b]  Input: app + tests + backend 
 
 ## Working Contract
 
-Read `contracts/working-contract.md` and the declared input only. Emit the exact declared artifact, validate it against its schema, and update the manifest. Keep evidence separate from inference.
+Prove the repository builds and its selected test suites pass from a clean environment. This node records commands and exit codes; it does not infer build health from source inspection.
 
 ## Instructions
 
-1. Confirm every prerequisite artifact exists and has the expected version.
-2. Inspect the input and extract only facts relevant to build verify.
-3. Produce `build-report.json` with deterministic ordering, explicit nulls, and no invented evidence.
-4. Resolve every import, route, API call, token, environment variable, locale key, and component reference before writing.
-5. Record decisions and unresolved blockers in the artifact's evidence or report field.
-6. Mark the corresponding manifest item complete only after validation passes.
+1. Use the project's pinned runtime/package manager and lockfile.
+2. Run the relevant install, lint, typecheck, unit/integration tests and production build commands. Do not invent commands that the repository does not define.
+3. Include backend/database test results when those capabilities are selected and their suites exist.
+4. Record each command, kind, exit code and evidence. Capture warnings separately from failures.
+5. Verify expected build artifacts are produced and no unresolved import/config/environment placeholder blocks runtime.
+6. A non-zero required command or missing required build artifact makes `pass: false`.
+7. Produce `build-report.json` only from executed evidence.
 
 ## Output Contract
 
-The output is `build-report.json`. It is versioned, machine-readable when the artifact is JSON, and contains a `version`, `generated_at`, `evidence`, and `status` field where the artifact shape permits.
+`build-report.json` must satisfy `schema/build-report.schema.json`. `pass: true` requires an empty failures list.
 
-Before marking complete: python scripts/validate-artifact.py --node 24 --artifact build-report.json --schema schema/build-report.schema.json. If validation fails, halt. Do not substitute a different artifact. Do not continue.
+Before marking complete:
 
-
-
-
-
-
-
-
-
+python scripts/validate-artifact.py --node 24 --artifact build-report.json --schema schema/build-report.schema.json
 
 ## If this fails
 
-
-
-Log the node id, input hash, invocation, error, and minimal reproduction to `session.log`. Use datetime.utcnow().isoformat(timespec="microseconds") + "Z" (microseconds MUST vary between events). Apply the declared fallback in `contracts/repair-contract.md`; do not silently fabricate a result.
-
-
-Do not invent pages, proof, metrics, integrations, credentials, routes, or reference evidence. Do not bypass schemas, disable a failing check, write unresolved references, or emit prose in place of the artifact.
-
-## Example output
-
-```json
-{
-  "node": "24",
-  "status": "complete",
-  "artifact": "build-report.json",
-  "version": "1.0.0",
-  "evidence": ["declared input validated"],
-  "unresolved": []
-}
-```
+Repair the actual build/test failure or record a blocker. Never delete/disable a required command to get green.
