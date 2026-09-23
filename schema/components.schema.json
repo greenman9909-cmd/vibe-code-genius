@@ -3,7 +3,7 @@
   "$id": "https://vibe-code-genius.dev/schema/components.schema.json",
   "title": "components",
   "type": "object",
-  "required_headings": [
-    "components"
+  "x-required-patterns": [
+    "\\bexport\\b"
   ]
 }
