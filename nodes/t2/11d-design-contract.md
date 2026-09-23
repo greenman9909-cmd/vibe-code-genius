@@ -4,58 +4,27 @@ Tier: 2  Prereqs: [06a, 11, 11a, 11c]  Parallel with: [12, 13, 12b]  Input: desi
 
 ## Working Contract
 
-Read `contracts/working-contract.md` and the declared input only. Emit the exact declared artifact, validate it against its schema, and update the manifest. Keep evidence separate from inference.
+Read `contracts/working-contract.md` and `contracts/human-quality-contract.md`. Reconcile the declared design commitment, extracted/product-derived system, tokens, and contextual slop findings into one implementation contract.
 
 ## Instructions
 
-1. Confirm every prerequisite artifact exists and has the expected version.
-2. Inspect the input and extract only facts relevant to design contract.
-3. Produce `design-contract.md` with deterministic ordering, explicit nulls, and no invented evidence.
-4. Resolve every import, route, API call, token, environment variable, locale key, and component reference before writing.
-5. Record decisions and unresolved blockers in the artifact's evidence or report field.
-6. Mark the corresponding manifest item complete only after validation passes.
+1. Verify all prerequisite artifacts and identify conflicts between commitment, observed reference evidence, tokens, and lint findings.
+2. Resolve conflicts explicitly: reference fidelity and product usability outrank generic detector preferences; accessibility and declared user requirements may override visual mimicry.
+3. Specify implementation rules for layout, typography, spacing, color, surfaces, states, responsive behavior, imagery, motion, focus, and reduced motion.
+4. Turn only relevant lint findings into banned patterns. A detector rule is not automatically a global prohibition.
+5. Define allowed exceptions with evidence. For example, gradients, glass, pills, dark mode, or rounded containers may remain when they are part of the reference/product language and pass accessibility checks.
+6. Define how new routes and utility surfaces inherit the same design language so they do not collapse into generic dashboard/auth-card UI.
+7. Do not require a second undeclared output. If a project wants executable lint rules, a later tooling step may compile this contract into project-specific lint configuration.
+8. Produce and validate `design-contract.md`.
 
 ## Output Contract
 
-Output: design-contract.md AND eslint.config.slop.js (a shareable
-ESLint config). The config must contain rules that fail on:
-  - 'bg-gradient', 'from-', 'via-', 'to-' Tailwind utilities (purple gradients)
-  - 'text-transparent' + 'bg-clip-text' (gradient text)
-  - arbitrary color values in className ('bg-[#...]')
-  - emoji characters in JSX text
-  - border-radius values outside the token scale
+The declared output is only `design-contract.md`; it must satisfy `schema/design-contract.schema.json` and be concrete enough to review implementation drift.
 
-Each rule has a message pointing to references/signs-of-ai-design.md.
+Before marking complete:
 
-Before marking complete: python scripts/validate-artifact.py --node 11d --artifact design-contract.md --schema schema/design-contract.schema.json. If validation fails, halt. Do not substitute a different artifact. Do not continue.
-
-
-
-
-
-
-
-
-
+python scripts/validate-artifact.py --node 11d --artifact design-contract.md --schema schema/design-contract.schema.json
 
 ## If this fails
 
-
-
-Log the node id, input hash, invocation, error, and minimal reproduction to `session.log`. Use datetime.utcnow().isoformat(timespec="microseconds") + "Z" (microseconds MUST vary between events). Apply the declared fallback in `contracts/repair-contract.md`; do not silently fabricate a result.
-
-
-Do not invent pages, proof, metrics, integrations, credentials, routes, or reference evidence. Do not bypass schemas, disable a failing check, write unresolved references, or emit prose in place of the artifact.
-
-## Example output
-
-```json
-{
-  "node": "11d",
-  "status": "complete",
-  "artifact": "design-contract.md",
-  "version": "1.0.0",
-  "evidence": ["declared input validated"],
-  "unresolved": []
-}
-```
+Record the conflicting evidence or missing prerequisite. Do not resolve ambiguity by banning whole classes of visual patterns or by inventing a second design system.
