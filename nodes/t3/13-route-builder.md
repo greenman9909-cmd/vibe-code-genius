@@ -1,6 +1,6 @@
 # Node 13 — Route Builder
 
-Tier: 3  Prereqs: [09, 10, 12]  Parallel with: [13a, 14, 15, 16]  Input: router + components  Output: pages/index.tsx  Model: sonnet  Budget: 5000 tokens
+Tier: 3  Prereqs: [09, 10, 12, 11b]  Parallel with: [13a, 14, 15, 16]  Input: router + components  Output: pages/index.tsx  Model: sonnet  Budget: 5000 tokens
 
 ## Working Contract
 
