@@ -4,50 +4,27 @@ Tier: 2  Prereqs: [01d]  Parallel with: [07d, 07e]  Input: system.json + API/int
 
 ## Working Contract
 
-Read `contracts/working-contract.md` and the declared input only. Emit the exact declared artifact, validate it against its schema, and update the manifest. Keep evidence separate from inference.
+Read `contracts/working-contract.md`, the active scope/capabilities, and current API/integration research when those artifacts exist. This node chooses the smallest backend architecture that satisfies the product; it must not add a server merely because a server pattern is familiar.
 
 ## Instructions
 
-1. Confirm every prerequisite artifact exists and has the expected version.
-2. Inspect the input and extract only facts relevant to backend architecture.
-3. Produce `backend-decision.md` with deterministic ordering, explicit nulls, and no invented evidence.
-4. Resolve every import, route, API call, token, environment variable, locale key, and component reference before writing.
-5. Record decisions and unresolved blockers in the artifact's evidence or report field.
-6. Mark the corresponding manifest item complete only after validation passes.
+1. Start from `system.json` and the scoped backend capability. Identify trusted boundaries, request/response responsibilities, persistence needs, background work, third-party integrations, and expected load.
+2. Reuse an existing platform/backend capability when it already satisfies the requirements. Do not create duplicate services, proxy layers, queues, caches, or repositories without a concrete need.
+3. Define service boundaries, data ownership, execution environment, validation boundary, auth/authorization boundary, error model, retry/idempotency needs, rate/abuse controls, observability, and deployment constraints.
+4. Separate browser-safe direct calls from operations that require server-side secrets or privileged access.
+5. For external APIs, record timeout, cancellation, retry/backoff, rate-limit and failure behavior. Do not hide provider failure behind fake success.
+6. Identify what must be tested at unit, contract, integration, and runtime level.
+7. Write `backend-decision.md` with headings `Decisions`, `Validation`, and `Abuse Prevention`. Include rejected alternatives and why they were rejected.
+8. Validate the artifact before completion.
 
 ## Output Contract
 
-The output is `backend-decision.md`. It is versioned, machine-readable when the artifact is JSON, and contains a `version`, `generated_at`, `evidence`, and `status` field where the artifact shape permits.
+`backend-decision.md` must satisfy `schema/backend-decision.schema.json`. Architecture statements must be traceable to scope, system requirements, official provider evidence, or measured constraints.
 
-Before marking complete: python scripts/validate-artifact.py --node 07c --artifact backend-decision.md --schema schema/backend-decision.schema.json. If validation fails, halt. Do not substitute a different artifact. Do not continue.
+Before marking complete:
 
-
-
-
-
-
-
-
-
+python scripts/validate-artifact.py --node 07c --artifact backend-decision.md --schema schema/backend-decision.schema.json
 
 ## If this fails
 
-
-
-Log the node id, input hash, invocation, error, and minimal reproduction to `session.log`. Use datetime.utcnow().isoformat(timespec="microseconds") + "Z" (microseconds MUST vary between events). Apply the declared fallback in `contracts/repair-contract.md`; do not silently fabricate a result.
-
-
-Do not invent pages, proof, metrics, integrations, credentials, routes, or reference evidence. Do not bypass schemas, disable a failing check, write unresolved references, or emit prose in place of the artifact.
-
-## Example output
-
-```json
-{
-  "node": "07c",
-  "status": "complete",
-  "artifact": "backend-decision.md",
-  "version": "1.0.0",
-  "evidence": ["declared input validated"],
-  "unresolved": []
-}
-```
+Record the missing architectural decision or conflicting requirement. Do not solve uncertainty by adding infrastructure or by inventing capacity/security claims.
