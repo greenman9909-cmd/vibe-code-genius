@@ -1,6 +1,6 @@
 # Node 24 — Build Verify
 
-Tier: 4  Prereqs: [19, 19a, 20]  Parallel with: [24b]  Input: scaffold output  Output: build-report.json  Model: sonnet  Budget: 3000 tokens
+Tier: 4  Prereqs: [19, 19a]  Parallel with: [24b]  Input: app + tests + backend tests when selected  Output: build-report.json  Model: sonnet  Budget: 3000 tokens
 
 ## Working Contract
 
