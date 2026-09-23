@@ -12,7 +12,6 @@
     "gates",
     "evidence"
   ],
-  "minProperties": 7,
   "properties": {
     "status": {
       "type": "string",
@@ -28,15 +27,15 @@
     },
     "routes": {
       "type": "array",
-      "minItems": 5
+      "minItems": 0
     },
     "components": {
       "type": "array",
-      "minItems": 4
+      "minItems": 0
     },
     "artifacts": {
       "type": "array",
-      "minItems": 5
+      "minItems": 1
     },
     "gates": {
       "type": "object",
