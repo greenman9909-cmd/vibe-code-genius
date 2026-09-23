@@ -1,6 +1,6 @@
 # Node 20 — Deploy Wiring
 
-Tier: 4  Prereqs: [05, 07e]  Parallel with: [20a, 20b, 20c, 20d, 24]  Input: app + backend  Output: deployment/config.json  Model: sonnet  Budget: 3000 tokens
+Tier: 4  Prereqs: [24]  Parallel with: [20a, 20b, 20c, 20d, 24]  Input: build report + deployment requirements  Output: deployment/config.json  Model: sonnet  Budget: 3000 tokens
 
 ## Working Contract
 
