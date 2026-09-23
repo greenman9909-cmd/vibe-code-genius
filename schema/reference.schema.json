@@ -13,7 +13,10 @@
     "components",
     "design_tokens",
     "api_surface",
-    "external_hosts"
+    "external_hosts",
+    "version",
+    "status",
+    "evidence"
   ],
   "properties": {
     "version": {
@@ -21,10 +24,18 @@
     },
     "status": {
       "type": "string",
-      "enum": ["pending", "complete", "blocked", "failed"]
+      "enum": [
+        "pending",
+        "complete",
+        "blocked",
+        "failed"
+      ]
     },
     "reference_url": {
-      "type": "string",
+      "type": [
+        "string",
+        "null"
+      ],
       "format": "uri"
     },
     "acquired_at": {
@@ -61,7 +72,9 @@
       "type": "array",
       "items": {
         "type": "string"
-      }
+      },
+      "minItems": 1
     }
-  }
+  },
+  "additionalProperties": false
 }
