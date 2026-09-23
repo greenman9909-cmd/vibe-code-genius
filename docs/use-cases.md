@@ -14,8 +14,11 @@
 1. Start with a reference URL and a product brief.
 2. Run Reference Load and validate `reference.json`.
 3. Review `file-tree.md`, `manifest.json`, and `design-commitment.md` before implementation.
-4. Use the reference only for structure, interaction patterns, and design evidence; do not invent proof or copy private data.
-5. Run the static, runtime, edge, security, and final ship gates.
+4. When extracted code is available, run Design System Extract and analyze how the real layout, components, typography, responsive rules, interaction states, and motion are composed. Record why the patterns work and how new features should remix them.
+5. Preserve/remix the extracted visual language for new surfaces such as login, signup, profile, settings, library, forms, dialogs, and admin instead of introducing generic AI-generated UI.
+6. Use the reference only for structure, interaction patterns, and design evidence; do not invent proof or copy private data.
+7. Finish the complete declared scope. Do not call the project done with dead flows, placeholders, missing responsive states, or unverified integrations.
+8. Run the static, runtime, edge, security, design-consistency, completeness, and final ship gates.
 
 ## Recipe: API-first product
 
