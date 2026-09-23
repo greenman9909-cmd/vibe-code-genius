@@ -1,6 +1,6 @@
 # Node 07c — Backend Architecture
 
-Tier: 2  Prereqs: [07, 07a, 07b]  Parallel with: [07d, 07e]  Input: API research + integrations  Output: backend-decision.md  Model: sonnet  Budget: 3500 tokens
+Tier: 2  Prereqs: [01d]  Parallel with: [07d, 07e]  Input: system.json + API/integration research when selected  Output: backend-decision.md  Model: sonnet  Budget: 3500 tokens
 
 ## Working Contract
 
