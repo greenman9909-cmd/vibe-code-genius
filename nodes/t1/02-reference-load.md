@@ -32,6 +32,19 @@ If no qualifying SPA-Ripper entry exists, fall through to the live acquisition c
 
 Record the selected acquirer, invocation, timestamp, source URL, route count, section count, design-token count, and any fallback or unresolved blocker in `reference.json`. A failed scrape is a failed acquisition, not permission to use an authored fixture as evidence.
 
+## No-reference mode
+
+A reference URL is optional. If the session/request explicitly contains no reference URL, do **not** search for, infer, or fabricate one. Emit a schema-valid neutral `reference.json` with:
+
+- `reference_url: null`
+- `acquirer: "none"`
+- empty observed collections for routes, sections, components, design tokens, API surface, and external hosts
+- `stack: {}`
+- `status: "complete"`
+- evidence stating that no reference URL was supplied and downstream nodes must use the product brief/system model instead
+
+This mode represents the absence of reference evidence; it is not failed acquisition and must never be described as scraped evidence.
+
 ## Instructions
 
 0. Check for `./reference-source.json` in the output directory. If it exists AND `mode == "cached"`:
