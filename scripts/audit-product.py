@@ -155,6 +155,22 @@ def main() -> int:
                     scan_cardinality(child, f"{path}[{index}]")
         scan_cardinality(schema)
 
+    # Node instructions must be product-specific, not generated boilerplate.
+    forbidden_node_boilerplate = [
+        "Inspect the input and extract only facts relevant to",
+        "with deterministic ordering, explicit nulls, and no invented evidence",
+        "Resolve every import, route, API call, token, environment variable, locale key, and component reference before writing",
+        '"evidence": ["declared input validated"]',
+        'datetime.utcnow().isoformat(timespec="microseconds")',
+    ]
+    for node_file in sorted((ROOT / "nodes").rglob("*.md")):
+        text = node_file.read_text(encoding="utf-8", errors="replace")
+        for phrase in forbidden_node_boilerplate:
+            if phrase in text:
+                errors.append(
+                    f"{node_file.relative_to(ROOT)}: contains generated boilerplate: {phrase!r}"
+                )
+
     # Source-of-truth docs must not advertise stale node counts.
     readme = (ROOT / "README.md").read_text(encoding="utf-8")
     stale_patterns = [
