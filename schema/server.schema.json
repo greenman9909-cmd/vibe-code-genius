@@ -3,7 +3,8 @@
   "$id": "https://vibe-code-genius.dev/schema/server.schema.json",
   "title": "server",
   "type": "object",
-  "required_headings": [
-    "handleApiError"
+  "x-required-patterns": [
+    "\\bexport\\b",
+    "\\b(handler|router|server|app|request|response)\\b"
   ]
 }
