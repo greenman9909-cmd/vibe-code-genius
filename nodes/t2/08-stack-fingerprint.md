@@ -1,6 +1,6 @@
 # Node 08 — Stack Fingerprint
 
-Tier: 2  Prereqs: [02]  Parallel with: [11, 05]  Input: reference.json.stack  Output: stack-decision.md  Model: haiku  Budget: 1200 tokens
+Tier: 2  Prereqs: [02, 01d]  Parallel with: [11, 05]  Input: reference.json.stack  Output: stack-decision.md  Model: haiku  Budget: 1200 tokens
 
 ## Working Contract
 
