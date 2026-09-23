@@ -1,6 +1,6 @@
 # Node 06a — Design Commitment
 
-Tier: 1  Prereqs: [06]  Parallel with: —  Input: intent.json + reference.json + design-tokens.json (if present) + references/aesthetic-directions.md  Output: design-commitment.md  Model: sonnet  Budget: 2500
+Tier: 1  Prereqs: [06]  Parallel with: —  Input: prompt.md + intent.json + reference.json + design-tokens.json (optional) + references/aesthetic-directions.md  Output: design-commitment.md  Model: sonnet  Budget: 2500 tokens
 
 ## Working Contract
 
