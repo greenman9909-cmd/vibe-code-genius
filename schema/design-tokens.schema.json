@@ -13,7 +13,6 @@
     "shadows",
     "evidence"
   ],
-  "minProperties": 8,
   "properties": {
     "version": {
       "type": "string"
@@ -28,8 +27,7 @@
       ]
     },
     "colors": {
-      "type": "object",
-      "minProperties": 4
+      "type": "object"
     },
     "typography": {
       "type": "object",
