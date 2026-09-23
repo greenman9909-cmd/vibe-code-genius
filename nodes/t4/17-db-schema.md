@@ -4,50 +4,27 @@ Tier: 4  Prereqs: [01d]  Parallel with: [17a, 17b, 07f]  Input: system persisten
 
 ## Working Contract
 
-Read `contracts/working-contract.md` and the declared input only. Emit the exact declared artifact, validate it against its schema, and update the manifest. Keep evidence separate from inference.
+Design persistence only for the scoped `database` capability. Read the system model and any selected backend/API artifacts. The migration is source-controlled infrastructure, not a prose sketch.
 
 ## Instructions
 
-1. Confirm every prerequisite artifact exists and has the expected version.
-2. Inspect the input and extract only facts relevant to db schema.
-3. Produce `migrations/` with deterministic ordering, explicit nulls, and no invented evidence.
-4. Resolve every import, route, API call, token, environment variable, locale key, and component reference before writing.
-5. Record decisions and unresolved blockers in the artifact's evidence or report field.
-6. Mark the corresponding manifest item complete only after validation passes.
+1. Model entities from product invariants and access patterns, not from UI component names.
+2. Define primary keys, foreign keys, nullability, uniqueness, checks, defaults, timestamps, and lifecycle rules deliberately.
+3. Add indexes for demonstrated query/access patterns; avoid speculative indexes.
+4. Define delete/update behavior and concurrency/transaction requirements for related writes.
+5. If using Supabase or another exposed data API, include grants/RLS or equivalent authorization controls in versioned migrations, not dashboard-only state.
+6. Keep migrations deterministic and safe to apply to the declared target database.
+7. Add comments only where they explain a non-obvious invariant or security decision.
+8. Validate the SQL artifact before completion; database-specific execution tests belong in the migration/test nodes.
 
 ## Output Contract
 
-The output is `migrations/schema.sql`. It is versioned, machine-readable when the artifact is JSON, and contains a `version`, `generated_at`, `evidence`, and `status` field where the artifact shape permits.
+`migrations/schema.sql` must contain real DDL and satisfy `schema/db-schema.schema.json`.
 
-Before marking complete: python scripts/validate-artifact.py --node 17 --artifact migrations/schema.sql --schema schema/db-schema.schema.json. If validation fails, halt. Do not substitute a different artifact. Do not continue.
+Before marking complete:
 
-
-
-
-
-
-
-
-
+python scripts/validate-artifact.py --node 17 --artifact migrations/schema.sql --schema schema/db-schema.schema.json
 
 ## If this fails
 
-
-
-Log the node id, input hash, invocation, error, and minimal reproduction to `session.log`. Use datetime.utcnow().isoformat(timespec="microseconds") + "Z" (microseconds MUST vary between events). Apply the declared fallback in `contracts/repair-contract.md`; do not silently fabricate a result.
-
-
-Do not invent pages, proof, metrics, integrations, credentials, routes, or reference evidence. Do not bypass schemas, disable a failing check, write unresolved references, or emit prose in place of the artifact.
-
-## Example output
-
-```json
-{
-  "node": "17",
-  "status": "complete",
-  "artifact": "migrations/",
-  "version": "1.0.0",
-  "evidence": ["declared input validated"],
-  "unresolved": []
-}
-```
+Do not replace SQL with pseudo-code. Record the target-database blocker or missing product invariant.
