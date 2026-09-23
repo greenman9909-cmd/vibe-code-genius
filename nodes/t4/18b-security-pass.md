@@ -4,50 +4,26 @@ Tier: 4  Prereqs: [16a]  Parallel with: [18d, 18e]  Input: application + auth/ba
 
 ## Working Contract
 
-Read `contracts/working-contract.md` and the declared input only. Emit the exact declared artifact, validate it against its schema, and update the manifest. Keep evidence separate from inference.
+Perform a threat-surface review of the actual application after runtime verification. Use `references/production-engineering-2026.md` and relevant current primary docs. OWASP ASVS 5.0 is a requirements vocabulary, not a box-ticking score.
 
 ## Instructions
 
-1. Confirm every prerequisite artifact exists and has the expected version.
-2. Inspect the input and extract only facts relevant to security pass.
-3. Produce `security-report.json` with deterministic ordering, explicit nulls, and no invented evidence.
-4. Resolve every import, route, API call, token, environment variable, locale key, and component reference before writing.
-5. Record decisions and unresolved blockers in the artifact's evidence or report field.
-6. Mark the corresponding manifest item complete only after validation passes.
+1. Enumerate exposed surfaces: browser routes, APIs, auth/session, database/storage, uploads, webhooks, external fetches, secrets/config, deployment headers and privileged operations.
+2. Test authorization and negative cases, not only successful access. Verify tenant/user isolation where applicable.
+3. Check input/output handling for injection/XSS/HTML injection, unsafe command/process use, path traversal, SSRF, open redirects, insecure deserialization and untrusted URLs as relevant.
+4. Review CORS, CSRF/session/cookie behavior, CSP/security headers, transport, caching of sensitive responses, secrets, dependency risk, rate limiting and abuse controls.
+5. For Supabase/exposed databases, verify RLS/grants and require allow/deny CRUD tests for relevant roles.
+6. For every finding record proof, severity, current status and a concrete fix. Do not report theoretical vulnerabilities unsupported by the architecture.
+7. Produce `security-report.json` with `stage: review`, baseline references, checks, findings, blocking findings and evidence.
 
 ## Output Contract
 
-The output is `security-report.json`. It is versioned, machine-readable when the artifact is JSON, and contains a `version`, `generated_at`, `evidence`, and `status` field where the artifact shape permits.
+`security-report.json` must satisfy `schema/security_report.schema.json`. `pass: true` requires no blocking findings.
 
-Before marking complete: python scripts/validate-artifact.py --node 18b --artifact security-report.json --schema schema/security_report.schema.json. If validation fails, halt. Do not substitute a different artifact. Do not continue.
+Before marking complete:
 
-
-
-
-
-
-
-
-
+python scripts/validate-artifact.py --node 18b --artifact security-report.json --schema schema/security_report.schema.json
 
 ## If this fails
 
-
-
-Log the node id, input hash, invocation, error, and minimal reproduction to `session.log`. Use datetime.utcnow().isoformat(timespec="microseconds") + "Z" (microseconds MUST vary between events). Apply the declared fallback in `contracts/repair-contract.md`; do not silently fabricate a result.
-
-
-Do not invent pages, proof, metrics, integrations, credentials, routes, or reference evidence. Do not bypass schemas, disable a failing check, write unresolved references, or emit prose in place of the artifact.
-
-## Example output
-
-```json
-{
-  "node": "18b",
-  "status": "complete",
-  "artifact": "security-report.json",
-  "version": "1.0.0",
-  "evidence": ["declared input validated"],
-  "unresolved": []
-}
-```
+Keep the security gate failed. Never remove a failing check to obtain a green report.
