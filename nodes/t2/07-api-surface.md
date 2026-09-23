@@ -1,6 +1,6 @@
 # Node 07 — API Surface
 
-Tier: 2  Prereqs: [02]  Parallel with: [07c, 07d, 07e, 14, 17]  Input: reference.json.api_surface  Output: api_client/api_client.ts  Model: sonnet  Budget: 6000 tokens
+Tier: 2  Prereqs: [01d, 02]  Parallel with: [07c, 07d, 07e, 14, 17]  Input: reference.json.api_surface + system.json API requirements  Output: api_client/api_client.ts  Model: sonnet  Budget: 6000 tokens
 
 ## Working Contract
 
