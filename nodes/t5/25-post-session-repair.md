@@ -1,6 +1,6 @@
 # Node 25 — Post-Session Repair
 
-Tier: 5  Prereqs: [23b]  Parallel with: [none]  Input: session.log + ship report  Output: repair-report.json  Model: opus  Budget: 3500 tokens
+Tier: 5  Prereqs: [23b]  Parallel with: []  Input: session.log + ship report  Output: repair-report.json  Model: opus  Budget: 3500 tokens
 
 ## Working Contract
 
