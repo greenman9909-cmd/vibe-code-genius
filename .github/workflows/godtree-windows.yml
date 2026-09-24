@@ -18,10 +18,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-          cache: npm
-          cache-dependency-path: desktop_app/package-lock.json
-      - uses: dtolnay/rust-toolchain@stable
-      - run: npm install
+                - uses: dtolnay/rust-toolchain@stable
+      - run: npm install --no-audit --no-fund
       - run: npm run build
       - run: npm run desktop:build
       - uses: actions/upload-artifact@v4
