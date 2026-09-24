@@ -1,16 +1,23 @@
 import React, { useMemo, useState } from "react";
+import { invoke } from "@tauri-apps/api/core";
 import tree from "../../skill-tree.json";
 import { buildRuntime, runnable, validateContract, type TreeContract } from "./runtime";
 import "./app.css";
 
+type Snapshot = { workspace:string; name:string; branch?:string; dirty:boolean; changed_files:string[]; godtree_store:boolean };
 const nav = ["Command", "Projects", "Missions", "Agents", "Evidence", "Git", "Tools"];
 
 export default function App() {
   const contract = tree as TreeContract;
   const [completed, setCompleted] = useState<Set<string>>(new Set());
+  const [workspace,setWorkspace]=useState("");
+  const [snapshot,setSnapshot]=useState<Snapshot|null>(null);
+  const [nativeError,setNativeError]=useState("");
   const nodes = useMemo(() => buildRuntime(contract, completed), [contract, completed]);
   const ready = runnable(nodes);
   const errors = validateContract(contract);
+
+  async function connectRepo(){ setNativeError(""); try { setSnapshot(await invoke<Snapshot>("inspect_project",{workspace})); } catch(e){ setNativeError(String(e)); } }
 
   function complete(id: string) {
     setCompleted((current) => new Set([...current, id]));
@@ -23,7 +30,7 @@ export default function App() {
       <div className="health"><i /> Runtime contract<br/><small>{errors.length ? errors.join(", ") : "verified locally"}</small></div>
     </aside>
     <main>
-      <header><div><p className="eyebrow">AGENTIC DEVELOPMENT OS</p><h1>Command Center</h1></div><button className="primary">New mission</button></header>
+      <header><div><p className="eyebrow">AGENTIC DEVELOPMENT OS</p><h1>Command Center</h1></div><div className="connect"><input value={workspace} onChange={e=>setWorkspace(e.target.value)} placeholder="C:\\path\\to\\repository"/><button className="primary" onClick={connectRepo}>Connect repo</button></div></header>{nativeError&&<div className="error">{nativeError}</div>}
       <section className="hero">
         <div><span className="status">TREE ONLINE</span><h2>{contract.node_count} contract nodes.<br/>One execution graph.</h2><p>GodTree exposes the repository's real dependency graph instead of inventing activity. Nodes unlock only when their declared prerequisites are satisfied.</p></div>
         <div className="orb"><b>{ready.length}</b><span>READY</span></div>
