@@ -1,0 +1,33 @@
+name: GodTree Windows Desktop
+on:
+  push:
+    branches: [feat/godtree-os-core-v0.1]
+    paths:
+      - 'desktop_app/**'
+      - '.github/workflows/godtree-windows.yml'
+  workflow_dispatch:
+
+jobs:
+  build-windows:
+    runs-on: windows-latest
+    defaults:
+      run:
+        working-directory: desktop_app
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: desktop_app/package-lock.json
+      - uses: dtolnay/rust-toolchain@stable
+      - run: npm install
+      - run: npm run build
+      - run: npm run desktop:build
+      - uses: actions/upload-artifact@v4
+        with:
+          name: GodTree-Windows-x64
+          path: |
+            desktop_app/src-tauri/target/release/bundle/nsis/*.exe
+            desktop_app/src-tauri/target/release/godtree-desktop.exe
+          if-no-files-found: error
