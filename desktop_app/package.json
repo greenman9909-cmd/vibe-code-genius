@@ -8,7 +8,8 @@
     "build": "tsc --noEmit && vite build",
     "tauri": "tauri",
     "desktop:dev": "tauri dev",
-    "desktop:build": "tauri build"
+    "desktop:build": "tauri build",
+    "ci:lock": "npm install --package-lock-only"
   },
   "dependencies": {
     "@tauri-apps/api": "2.8.0",
